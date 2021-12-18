@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include "../API/URLSession.hpp"
+#include "../util/Minecraft.hpp"
 
 class GDMC {
     URLSession session;
@@ -19,6 +20,7 @@ public:
     ~GDMC();
     
     std::string getBlock(int x, int y, int z);
+    std::string getBlockMoreInfo(int x, int y, int z);
     std::string setBlock(int x, int y, int z);
 };
 

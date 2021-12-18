@@ -26,4 +26,16 @@ std::string GDMC::getBlock(int x, int y, int z){
     return blockName;
 }
 
+std::string GDMC::getBlockMoreInfo(int x, int y, int z){
+    std::string blockName;
+    std::string url = "http://localhost:9000/blocks?x={"+std::to_string(x)+"}&y={"+std::to_string(y)+"}&z={"+std::to_string(z)+"}&includeState=true";
+    
+    try {
+        blockName = session.httpGet(url);
+    } catch (error) {
+        return "minecraft:void_air";
+    }
+    
+    return blockName;
+}
 
