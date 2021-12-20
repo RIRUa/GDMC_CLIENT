@@ -9,27 +9,31 @@
 #define Minecraft_hpp
 
 #include <iostream>
+#include "Position.hpp"
 
 
 namespace Minecraft {
 
     enum class MinecraftBlock:int {
+        air,
         stone,
         cobbleStone
     };
 
     std::string getMinecraftBlockName(MinecraftBlock block, std::string addition);
-
-    using position = int64_t;
     
-    typedef struct __blockInfo {
-        position x;
-        position y;
-        position z;
+    struct blockInfo {
+        WN::Vec3 position;
         MinecraftBlock block;
+        std::string addition;
         
-        std::string getInfo();
-    }blockInfo;
+        // コンストラクタ
+        blockInfo(WN::position x, WN::position y, WN::position z, MinecraftBlock block, std::string addition);
+        blockInfo(WN::Vec3 vec, MinecraftBlock block, std::string addition);
+        
+        // チルダ形式の情報を入手
+        std::string getTildeText();
+    };
 }
 
 
