@@ -26,13 +26,13 @@ public:
     ~URLSession();
     
     // GETメソッドでHTTPSessionをする関数
-    std::string httpGet(const std::string url) throw(error);
+    std::string httpGet(const std::string &url) throw(error);
     // POSTメソッドでHTTPSessionをする関数
-    std::string httpPost(const std::string url, const std::string requestBody) throw(error);
+    std::string httpPost(const std::string &url, const std::string &requestBody) throw(error);
     // PUTメソッドでHTTPSessionをする関数
-    std::string httpPut(const std::string url, const std::string requestBody) throw(error);
+    std::string httpPut(const std::string &url, const std::string &requestBody) throw(error);
     // DELETEメソッドでHTTPSessionをする関数
-    std::string httpDelete(const std::string url) throw(error);
+    std::string httpDelete(const std::string &url) throw(error);
 };
 
 static size_t callbackWrite(char *ptr, size_t size, size_t nmemb, std::string *stream) {
