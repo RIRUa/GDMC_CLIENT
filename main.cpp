@@ -10,7 +10,7 @@ int main(){
     
     Minecraft::blockInfo a(1,2,3,Minecraft::MinecraftBlock::stone,"");
 
-    std::cout << a.getTildeText() << std::endl;
+    std::cout << sizeof(a) << std::endl;
     
     return 0;
 }

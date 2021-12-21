@@ -13,6 +13,10 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
     
     // static_cast<int>でMinecraftBlock->intのキャストを行う
     switch (block) {
+        case static_cast<int>(Minecraft::MinecraftBlock::air):
+            blockName += "air";
+            break;
+            
         case static_cast<int>(Minecraft::MinecraftBlock::stone):
             blockName += "stone";
             break;
