@@ -8,6 +8,11 @@ file(GLOB API "API/*pp")
 file(GLOB INTERFACE "Interface/*pp")
 file(GLOB UTIL "util/*pp")
 
+source_group("API" FILES ${API})
+source_group("Interface" FILES ${INTERFACE})
+source_group("util" FILES ${UTIL})
+
+
 # 実行ファイルに追加
 add_executable(GDMC_CLIENT
 	main.cpp
