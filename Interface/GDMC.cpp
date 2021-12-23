@@ -39,3 +39,15 @@ std::string GDMC::getBlockMoreInfo(int x, int y, int z){
     return blockName;
 }
 
+std::string GDMC::setBlock(const Minecraft::blockInfo &info) {
+    std::string result;
+    std::string url = "http://localhost:9000/blocks?x={"+std::to_string(info.position.x)+"}&y={"+std::to_string(info.position.y)+"}&z={"+std::to_string(info.position.z)+"}";
+    
+    try {
+        result = this->session.httpPut(url, Minecraft::getMinecraftBlockName(info.block, info.addition));
+    } catch (error) {
+        return "";
+    }
+    
+    return result;
+}
