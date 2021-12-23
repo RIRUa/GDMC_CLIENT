@@ -35,6 +35,9 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
     return blockName;
 }
 
+Minecraft::blockInfo::blockInfo(){}
+Minecraft::blockInfo::~blockInfo(){}
+
 Minecraft::blockInfo::blockInfo(WN::position x, WN::position y, WN::position z, MinecraftBlock block, std::string addition) {
     this->position.x = x;
     this->position.y = y;
