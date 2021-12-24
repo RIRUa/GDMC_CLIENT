@@ -1,6 +1,12 @@
 cmake_minimum_required(VERSION 3.1)
 project (GDMC_CLIENT)
 
+# windowsの場合のコンパイラの設定
+if(WIN32)
+	set(CMAKE_CXX_COMPILER C:¥Mingw¥bin¥g++)
+endif(WIN32)
+
+
 # cmakeがヘッダーを自動で割り出すので無視
 
 # 変数APIにAPIディレクトリ下のcppファイルを追加
