@@ -3,7 +3,8 @@ project (GDMC_CLIENT)
 
 # windowsの場合のコンパイラの設定
 if(WIN32)
-	set(CMAKE_CXX_COMPILER C:¥Mingw¥bin¥g++)
+	set(CMAKE_CXX_COMPILER C:/Mingw/bin/g++)
+	set(CMAKE_C_COMPILER C:/Mingw/bin/gcc)
 endif(WIN32)
 
 
