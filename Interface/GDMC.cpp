@@ -39,3 +39,37 @@ std::string GDMC::getBlockMoreInfo(int x, int y, int z){
     return blockName;
 }
 
+std::string GDMC::setBlock(const Minecraft::blockInfo &info) {
+    std::string result;
+    std::string url = "http://localhost:9000/blocks?x={"+std::to_string(info.position.x)+"}&y={"+std::to_string(info.position.y)+"}&z={"+std::to_string(info.position.z)+"}";
+    
+    try {
+        result = this->session.httpPut(url, Minecraft::getMinecraftBlockName(info.block, info.addition));
+    } catch (error) {
+        return "";
+    }
+    
+    return result;
+}
+
+std::string GDMC::setBlocks(const WN::Vec3 center, const Minecraft::blockInfoOf3D &info) {
+    std::string result;
+    std::string url = "http://localhost:9000/blocks?x={"+std::to_string(center.x)+"}&y={"+std::to_string(center.y)+"}&z={"+std::to_string(center.z)+"}";
+    std::string blocks = "";
+    
+    for (auto &block2d : info) {
+        for (auto &block1d : block2d) {
+            for (auto block : block1d) {
+                blocks += block.getTildeText();
+            }
+        }
+    }
+    
+    try {
+        result = this->session.httpPut(url, blocks);
+    } catch (error) {
+        return "";
+    }
+    
+    return result;
+}

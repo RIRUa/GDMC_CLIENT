@@ -12,6 +12,9 @@ source_group("API" FILES ${API})
 source_group("Interface" FILES ${INTERFACE})
 source_group("util" FILES ${UTIL})
 
+# オプション
+set(CMAKE_CXX_FLAGS "-std=c++17 -Wall")
+
 
 # 実行ファイルに追加
 add_executable(GDMC_CLIENT

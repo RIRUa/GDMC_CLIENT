@@ -9,6 +9,7 @@
 #define Minecraft_hpp
 
 #include <iostream>
+#include <vector>
 #include "Position.hpp"
 
 
@@ -27,13 +28,20 @@ namespace Minecraft {
         MinecraftBlock block;
         std::string addition;
         
+        
+        
         // コンストラクタ
+        blockInfo();
         blockInfo(WN::position x, WN::position y, WN::position z, MinecraftBlock block, std::string addition);
         blockInfo(WN::Vec3 vec, MinecraftBlock block, std::string addition);
+        // デストラクタ
+        ~blockInfo();
         
         // チルダ形式の情報を入手
         std::string getTildeText();
     };
+
+    using blockInfoOf3D = std::vector<std::vector<std::vector<blockInfo>>>;
 }
 
 

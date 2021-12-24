@@ -11,13 +11,12 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
     
     std::string blockName = "minecraft:";
     
-    // static_cast<int>でMinecraftBlock->intのキャストを行う
     switch (block) {
-        case static_cast<int>(Minecraft::MinecraftBlock::air):
+        case Minecraft::MinecraftBlock::air:
             blockName += "air";
             break;
             
-        case static_cast<int>(Minecraft::MinecraftBlock::stone):
+        case Minecraft::MinecraftBlock::stone:
             blockName += "stone";
             break;
             
@@ -32,8 +31,13 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
         blockName += "]";
     }
     
+    blockName += "\n";
+    
     return blockName;
 }
+
+Minecraft::blockInfo::blockInfo(){}
+Minecraft::blockInfo::~blockInfo(){}
 
 Minecraft::blockInfo::blockInfo(WN::position x, WN::position y, WN::position z, MinecraftBlock block, std::string addition) {
     this->position.x = x;

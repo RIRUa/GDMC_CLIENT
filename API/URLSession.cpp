@@ -19,7 +19,7 @@ URLSession::~URLSession(){
     curl_easy_cleanup(this->curl);
 }
 
-std::string URLSession::httpGet(const std::string &url) throw(error) {
+std::string URLSession::httpGet(const std::string &url) noexcept(false) {
     
     std::string chunk;
     curl_easy_setopt(this->curl, CURLOPT_URL, url.c_str());
@@ -36,7 +36,7 @@ std::string URLSession::httpGet(const std::string &url) throw(error) {
     return chunk;
 }
 
-std::string URLSession::httpPost(const std::string &url, const std::string &requestBody) throw(error) {
+std::string URLSession::httpPost(const std::string &url, const std::string &requestBody) noexcept(false) {
     std::string chunk;
     curl_easy_setopt(this->curl, CURLOPT_URL, url.c_str());
     curl_easy_setopt(this->curl, CURLOPT_POST, 1);
@@ -56,7 +56,7 @@ std::string URLSession::httpPost(const std::string &url, const std::string &requ
     return chunk;
 }
 
-std::string URLSession::httpPut(const std::string &url, const std::string &requestBody) throw(error) {
+std::string URLSession::httpPut(const std::string &url, const std::string &requestBody) noexcept(false) {
     std::string chunk;
     curl_easy_setopt(this->curl, CURLOPT_URL, url.c_str());
     curl_easy_setopt(this->curl, CURLOPT_CUSTOMREQUEST, "PUT");
@@ -76,7 +76,7 @@ std::string URLSession::httpPut(const std::string &url, const std::string &reque
     return chunk;
 }
 
-std::string URLSession::httpDelete(const std::string &url) throw(error) {
+std::string URLSession::httpDelete(const std::string &url) noexcept(false) {
     std::string chunk;
     curl_easy_setopt(this->curl, CURLOPT_URL, url.c_str());
     curl_easy_setopt(this->curl, CURLOPT_CUSTOMREQUEST, "DELETE");

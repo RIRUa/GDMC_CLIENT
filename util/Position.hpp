@@ -9,7 +9,7 @@
 #define Position_hpp
 
 namespace WN {
-    using position = int64_t;
+    using position = long long int;
 
     struct Vec3 {
         position x;
