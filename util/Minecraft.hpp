@@ -9,6 +9,7 @@
 #define Minecraft_hpp
 
 #include <iostream>
+#include <vector>
 #include "Position.hpp"
 
 
@@ -39,6 +40,8 @@ namespace Minecraft {
         // チルダ形式の情報を入手
         std::string getTildeText();
     };
+
+    using blockInfoOf3D = std::vector<std::vector<std::vector<blockInfo>>>;
 }
 
 
