@@ -31,6 +31,8 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
         blockName += "]";
     }
     
+    blockName += "\n";
+    
     return blockName;
 }
 

@@ -22,7 +22,7 @@ public:
     std::string getBlock(int x, int y, int z);
     std::string getBlockMoreInfo(int x, int y, int z);
     std::string setBlock(const Minecraft::blockInfo &info);
-    std::string setBlocks(const Minecraft::blockInfo &info);
+    std::string setBlocks(const WN::Vec3 center, const Minecraft::blockInfoOf3D &info);
 };
 
 
