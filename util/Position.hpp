@@ -15,6 +15,9 @@ namespace WN {
         position x;
         position y;
         position z;
+        
+        Vec3();
+        Vec3(position posx, position posy, position posz);
     };
 }
 
