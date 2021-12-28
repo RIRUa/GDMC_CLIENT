@@ -14,10 +14,13 @@ endif(WIN32)
 file(GLOB API "API/*pp")
 file(GLOB INTERFACE "Interface/*pp")
 file(GLOB UTIL "util/*pp")
+file(GLOB PROCESS "Procession/*pp")
+
 
 source_group("API" FILES ${API})
 source_group("Interface" FILES ${INTERFACE})
 source_group("util" FILES ${UTIL})
+source_group("Procession" FILES ${PROCESS})
 
 # オプション
 set(CMAKE_CXX_FLAGS "-std=c++17 -Wall")
@@ -29,6 +32,7 @@ add_executable(GDMC_CLIENT
 	${API}
 	${INTERFACE}
 	${UTIL}
+	${PROCESS}
 )
 
 # libcurl用の設定

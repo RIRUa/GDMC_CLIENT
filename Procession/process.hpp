@@ -8,6 +8,18 @@
 #ifndef process_hpp
 #define process_hpp
 
-#include <stdio.h>
+#include "../Interface/GDMC.hpp"
+
+class Process {
+    Minecraft::blockInfoOf3D blocks;
+    
+public:
+    Process();
+    ~Process();
+    
+    bool init();
+    
+    Minecraft::blockInfoOf3D scan3dObject(const WN::Vec3 &Vec);
+};
 
 #endif /* process_hpp */
