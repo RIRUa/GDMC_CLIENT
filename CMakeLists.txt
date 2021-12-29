@@ -15,14 +15,11 @@ file(GLOB API "API/*pp")
 file(GLOB INTERFACE "Interface/*pp")
 file(GLOB UTIL "util/*pp")
 file(GLOB PROCESS "Procession/*pp")
-file(GLOB MINECRAFT "Minecraft/*pp")
-
 
 source_group("API" FILES ${API})
 source_group("Interface" FILES ${INTERFACE})
 source_group("util" FILES ${UTIL})
 source_group("Procession" FILES ${PROCESS})
-source_group("Minecraft" FILES ${MINECRAFT})
 
 # オプション
 set(CMAKE_CXX_FLAGS "-std=c++17 -Wall")
