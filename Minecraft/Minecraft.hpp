@@ -39,9 +39,12 @@ namespace Minecraft {
         
         // チルダ形式の情報を入手
         std::string getTildeText();
+        // 情報をセットする関数
+        void setInfo(WN::Vec3 vec, MinecraftBlock block, std::string addition);
     };
 
     using blockInfoOf3D = std::vector<std::vector<std::vector<blockInfo>>>;
+    void initBlockInfoOf3D(blockInfoOf3D &object, const WN::Vec3 &size);
 }
 
 

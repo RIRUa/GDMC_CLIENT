@@ -10,7 +10,7 @@
 
 #include <iostream>
 #include "../API/URLSession.hpp"
-#include "../util/Minecraft.hpp"
+#include "../Minecraft/Minecraft.hpp"
 
 class GDMC {
     URLSession session;
