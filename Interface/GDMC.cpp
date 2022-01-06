@@ -15,7 +15,7 @@ GDMC::~GDMC(){
 
 std::string GDMC::getBlock(int x, int y, int z){
     std::string blockName;
-    std::string url = "http://localhost:9000/blocks?x={"+std::to_string(x)+"}&y={"+std::to_string(y)+"}&z={"+std::to_string(z)+"}";
+    std::string url = "http://localhost:9000/blocks?x="+std::to_string(x)+"&y="+std::to_string(y)+"&z="+std::to_string(z);
     
     try {
         blockName = session.httpGet(url);
@@ -28,7 +28,7 @@ std::string GDMC::getBlock(int x, int y, int z){
 
 std::string GDMC::getBlockMoreInfo(int x, int y, int z){
     std::string blockName;
-    std::string url = "http://localhost:9000/blocks?x={"+std::to_string(x)+"}&y={"+std::to_string(y)+"}&z={"+std::to_string(z)+"}&includeState=true";
+    std::string url = "http://localhost:9000/blocks?x="+std::to_string(x)+"&y="+std::to_string(y)+"&z="+std::to_string(z)+"&includeState=true";
     
     try {
         blockName = session.httpGet(url);
@@ -41,7 +41,7 @@ std::string GDMC::getBlockMoreInfo(int x, int y, int z){
 
 std::string GDMC::setBlock(const Minecraft::blockInfo &info) {
     std::string result;
-    std::string url = "http://localhost:9000/blocks?x={"+std::to_string(info.position.x)+"}&y={"+std::to_string(info.position.y)+"}&z={"+std::to_string(info.position.z)+"}";
+    std::string url = "http://localhost:9000/blocks?x="+std::to_string(info.position.x)+"&y="+std::to_string(info.position.y)+"&z="+std::to_string(info.position.z);
     
     try {
         result = this->session.httpPut(url, Minecraft::getMinecraftBlockName(info.block, info.addition));
@@ -54,7 +54,7 @@ std::string GDMC::setBlock(const Minecraft::blockInfo &info) {
 
 std::string GDMC::setBlocks(const WN::Vec3 center, const Minecraft::blockInfoOf3D &info) {
     std::string result;
-    std::string url = "http://localhost:9000/blocks?x={"+std::to_string(center.x)+"}&y={"+std::to_string(center.y)+"}&z={"+std::to_string(center.z)+"}";
+    std::string url = "http://localhost:9000/blocks?x="+std::to_string(center.x)+"&y="+std::to_string(center.y)+"&z="+std::to_string(center.z);
     std::string blocks = "";
     
     for (auto &block2d : info) {

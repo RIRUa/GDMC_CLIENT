@@ -68,3 +68,38 @@ std::string Minecraft::blockInfo::getTildeText() {
     
     return pos;
 }
+
+void Minecraft::blockInfo::setInfo(WN::Vec3 vec, MinecraftBlock block, std::string addition) {
+    this->position = vec;
+    this->block = block;
+    this->addition = addition;
+}
+
+void Minecraft::initBlockInfoOf3D(blockInfoOf3D &object, const WN::Vec3 &size) {
+    object.reserve(size.y);
+    for (auto &block2d : object) {
+        block2d.reserve(size.z);
+        for (auto &block1d : block2d) {
+            block1d.reserve(size.x);
+        }
+    }
+    
+    for (int i = 0; i < size.y; ++i) {
+        object.push_back(std::vector<std::vector<Minecraft::blockInfo>>());
+        for (int j = 0; j < size.z; ++j) {
+            object[i].push_back(std::vector<Minecraft::blockInfo>());
+            for (int k = 0; k < size.x; ++k) {
+                object[i][j].push_back(Minecraft::blockInfo(
+                                                            k,
+                                                            i,
+                                                            j,
+                                                            MinecraftBlock::air,
+                                                            ""
+                                                            )
+                                       );
+            }
+        }
+    }
+    
+    
+}
