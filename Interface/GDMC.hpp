@@ -12,8 +12,8 @@
 #include "../API/URLSession.hpp"
 #include "../util/Minecraft.hpp"
 
-class GDMC {
-    URLSession session;
+class GDMC :private URLSession{
+//    URLSession session;
     
 public:
     GDMC();
