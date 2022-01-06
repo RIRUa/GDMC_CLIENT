@@ -9,7 +9,7 @@
 #define GDMC_hpp
 
 #include <iostream>
-#include "../API/URLSession.hpp"
+#include "URLSession.hpp"
 #include "../util/Minecraft.hpp"
 
 class GDMC :private URLSession{
