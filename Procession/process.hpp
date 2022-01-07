@@ -8,7 +8,7 @@
 #ifndef process_hpp
 #define process_hpp
 
-#include "../Interface/GDMC.hpp"
+#include "../untouchable/GDMC.hpp"
 
 class Process {
     Minecraft::blockInfoOf3D blocks;
