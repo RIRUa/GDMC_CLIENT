@@ -84,15 +84,17 @@ void Minecraft::initBlockInfoOf3D(blockInfoOf3D &object, const WN::Vec3 &size) {
         }
     }
     
-    for (int i = 0; i < size.y; ++i) {
+    int height, depth, width;
+    
+    for (height = 0; height < size.y; ++height) {
         object.push_back(std::vector<std::vector<Minecraft::blockInfo>>());
-        for (int j = 0; j < size.z; ++j) {
-            object[i].push_back(std::vector<Minecraft::blockInfo>());
-            for (int k = 0; k < size.x; ++k) {
-                object[i][j].push_back(Minecraft::blockInfo(
-                                                            k,
-                                                            i,
-                                                            j,
+        for (depth = 0; depth < size.z; ++depth) {
+            object[height].push_back(std::vector<Minecraft::blockInfo>());
+            for (width = 0; width < size.x; ++width) {
+                object[height][depth].push_back(Minecraft::blockInfo(
+                                                            width,
+                                                            height,
+                                                            depth,
                                                             MinecraftBlock::air,
                                                             ""
                                                             )
@@ -101,5 +103,40 @@ void Minecraft::initBlockInfoOf3D(blockInfoOf3D &object, const WN::Vec3 &size) {
         }
     }
     
+}
+
+void Minecraft::initBlockInfoOf3D(blockInfoOf3D &object, const WN::Vec3 &size, const WN::Vec3 &center) {
+    WN::Vec3 begPosi(
+                     center.x - 1 * size.x / 2,
+                     center.y - 1 * size.y / 2,
+                     center.z - 1 * size.z / 2
+                     );
+    
+    object.reserve(size.y);
+    for (auto &block2d : object) {
+        block2d.reserve(size.z);
+        for (auto &block1d : block2d) {
+            block1d.reserve(size.x);
+        }
+    }
+    
+    int height, depth, width;
+    
+    for (height = 0; height < size.y; ++height) {
+        object.push_back(std::vector<std::vector<Minecraft::blockInfo>>());
+        for (depth = 0; depth < size.z; ++depth) {
+            object[height].push_back(std::vector<Minecraft::blockInfo>());
+            for (width = 0; width < size.x; ++width) {
+                object[height][depth].push_back(Minecraft::blockInfo(
+                                                            begPosi.x + width,
+                                                            height,
+                                                            begPosi.z + depth,
+                                                            MinecraftBlock::air,
+                                                            ""
+                                                            )
+                                       );
+            }
+        }
+    }
     
 }
