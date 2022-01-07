@@ -16,7 +16,12 @@
 namespace Minecraft {
 
     enum class MinecraftBlock:int {
+        // 気体
         air,
+        // 液体
+        water,
+        flowingWater,
+        // 固体
         stone,
         cobbleStone
     };
