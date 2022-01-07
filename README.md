@@ -18,7 +18,7 @@ cd /GDMC_CLIENT
 ## prepare run
 make prebuild
 cd build
-cmake ..
+cmake -G "MinGW Makefiles" ..
 make
 ## run
 ./GDMC_CLIENT
