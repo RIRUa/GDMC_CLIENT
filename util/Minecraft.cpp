@@ -23,6 +23,14 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
         case Minecraft::MinecraftBlock::flowingWater:
             blockName += "flowing_water";
             break;
+
+        case Minecraft::MinecraftBlock::lava:
+            blockName += "lava";
+            break;
+
+        case Minecraft::MinecraftBlock::flowingLava:
+            blockName += "flowing_lava";
+            break;
             
         case Minecraft::MinecraftBlock::stone:
             blockName += "stone";
@@ -31,6 +39,11 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
         case Minecraft::MinecraftBlock::cobbleStone:
             blockName += "cobblestone";
             break;
+
+        case Minecraft::MinecraftBlock::beacon:
+            blockName += "beacon";
+            break;
+
 
         default:
             blockName += "air";

@@ -21,9 +21,13 @@ namespace Minecraft {
         // 液体
         water,
         flowingWater,
+        lava,
+        flowingLava,
         // 固体
         stone,
-        cobbleStone
+        cobbleStone,
+        //その他
+        beacon
     };
 
     std::string getMinecraftBlockName(MinecraftBlock block, std::string addition);
