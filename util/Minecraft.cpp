@@ -12,10 +12,12 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
     std::string blockName = "minecraft:";
     
     switch (block) {
+        // 気体
         case Minecraft::MinecraftBlock::air:
             blockName += "air";
             break;
 
+        // 液体
         case Minecraft::MinecraftBlock::water:
             blockName += "water";
             break;
@@ -32,6 +34,7 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "flowing_lava";
             break;
             
+        // 固体
         case Minecraft::MinecraftBlock::stone:
             blockName += "stone";
             break;
@@ -40,6 +43,7 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "cobblestone";
             break;
 
+        // その他
         case Minecraft::MinecraftBlock::beacon:
             blockName += "beacon";
             break;
