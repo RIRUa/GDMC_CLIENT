@@ -35,6 +35,8 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             break;
             
         // 固体
+        
+        // 石材
         case Minecraft::MinecraftBlock::stone:
             blockName += "stone";
             break;
@@ -42,6 +44,8 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
         case Minecraft::MinecraftBlock::cobbleStone:
             blockName += "cobblestone";
             break;
+
+        // 木材
 
         // その他
         case Minecraft::MinecraftBlock::beacon:

@@ -18,16 +18,32 @@ namespace Minecraft {
     enum class MinecraftBlock:int {
         // 気体
         air,
+
         // 液体
         water,
         flowingWater,
         lava,
         flowingLava,
+
         // 固体
+
+        // 石材
         stone,
         cobbleStone,
+
+        // 鉱材
+        smoothQuartz,
+        ironBlock,
+        goldBlock,
+        diamondBlock,
+
+        // 木材
+        oakPlanks,
+        birchPlanks,
+
         //その他
-        beacon
+        beacon,
+        glowstone
     };
 
     std::string getMinecraftBlockName(MinecraftBlock block, std::string addition);
