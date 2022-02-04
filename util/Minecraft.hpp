@@ -57,10 +57,46 @@ namespace Minecraft {
         birchPlanks,
 
         /***** その他 *****/
+
+        /***** 光源 *****/
+        // ランタン
+        lantern,
+        // ソウルランタン
+        soulLantern,
+        // グロウストーン
+        glowstone,
+
+        /***** レッドストーン系 *****/
+
+        /********** 信号を伝えたりするもの **********/
+        // レッドストーンワイヤー
+        redstoneWire,
+        // レッドストーントーチ
+        redstoneTorch,
+        // 壁付きのレッドストーントーチ
+        redstoneWallTorch,
+        // リピーター
+        repeater,
+        // レッドストーンコンパレーター
+        comparator,
+
+        /********** レッドストーン信号で動く物 **********/
+        // ピストン
+        piston,
+        // 粘着ピストン
+        stickyPiston,
+        // パワードレール
+        poweredRail,
+        // ディテクターレール（感知レール）
+        detectorRail,
+
+        /***** その他 *****/
+        // レール
+        rail,
+        // トロッコ
+        minecart,
         // ビーコン
         beacon,
-        // グロウストーン
-        glowstone
     };
 
     std::string getMinecraftBlockName(MinecraftBlock block, std::string addition);
