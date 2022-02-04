@@ -59,6 +59,14 @@ namespace Minecraft {
         /***** その他 *****/
 
         /***** 光源 *****/
+        // トーチ
+        torch,
+        // 壁付きのトーチ
+        wallTorch,
+        // ソウルトーチ
+        soulTorch,
+        // 壁付きのソウルトーチ
+        soulWallTorch,
         // ランタン
         lantern,
         // ソウルランタン
