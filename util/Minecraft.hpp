@@ -16,33 +16,50 @@
 namespace Minecraft {
 
     enum class MinecraftBlock:int {
-        // 気体
+        /***** 気体 *****/
+        // 空気
         air,
 
-        // 液体
+        /***** 液体 *****/
+        // 水源
         water,
+        // 水流
         flowingWater,
+        // 溶岩源
         lava,
+        // 溶岩流
         flowingLava,
 
-        // 固体
+        /***** 固体 *****/
 
-        // 石材
+        /***** 石材 *****/
+        // 石
         stone,
+        // 丸石
         cobbleStone,
 
-        // 鉱材
+        /***** 鉱材 *****/
+        // クォーツブロック
+        quartzBlock,
+        // 滑らかなクォーツブロック
         smoothQuartz,
+        // 鉄ブロック
         ironBlock,
+        // 金ブロック
         goldBlock,
+        // ダイアモンドブロック
         diamondBlock,
 
-        // 木材
+        /***** 木材 *****/
+        // オークの木材
         oakPlanks,
+        // 白樺の木材
         birchPlanks,
 
-        //その他
+        /***** その他 *****/
+        // ビーコン
         beacon,
+        // グロウストーン
         glowstone
     };
 
