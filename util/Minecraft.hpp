@@ -129,7 +129,7 @@ namespace Minecraft {
         void setInfo(WN::Vec3 vec, MinecraftBlock block, std::string addition);
     };
 
-    using blockInfoOf3D = std::vector<std::vector<std::vector<blockInfo>>>;
+    using blockInfoOf3D = std::vector<std::vector<std::vector<blockInfo> > >;
     void initBlockInfoOf3D(blockInfoOf3D &object, const WN::Vec3 &size);
     void initBlockInfoOf3D(blockInfoOf3D &object, const WN::Vec3 &size, const WN::Vec3 &center);
 }
