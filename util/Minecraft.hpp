@@ -16,9 +16,95 @@
 namespace Minecraft {
 
     enum class MinecraftBlock:int {
+        /***** 気体 *****/
+        // 空気
         air,
+
+        /***** 液体 *****/
+        // 水源
+        water,
+        // 水流
+        flowingWater,
+        // 溶岩源
+        lava,
+        // 溶岩流
+        flowingLava,
+
+        /***** 固体 *****/
+
+        /***** 石材 *****/
+        // 石
         stone,
-        cobbleStone
+        // 丸石
+        cobbleStone,
+
+        /***** 鉱材 *****/
+        // クォーツブロック
+        quartzBlock,
+        // 滑らかなクォーツブロック
+        smoothQuartz,
+        // 鉄ブロック
+        ironBlock,
+        // 金ブロック
+        goldBlock,
+        // ダイアモンドブロック
+        diamondBlock,
+
+        /***** 木材 *****/
+        // オークの木材
+        oakPlanks,
+        // 白樺の木材
+        birchPlanks,
+
+        /***** その他 *****/
+
+        /***** 光源 *****/
+        // トーチ
+        torch,
+        // 壁付きのトーチ
+        wallTorch,
+        // ソウルトーチ
+        soulTorch,
+        // 壁付きのソウルトーチ
+        soulWallTorch,
+        // ランタン
+        lantern,
+        // ソウルランタン
+        soulLantern,
+        // グロウストーン
+        glowstone,
+
+        /***** レッドストーン系 *****/
+
+        /********** 信号を伝えたりするもの **********/
+        // レッドストーンワイヤー
+        redstoneWire,
+        // レッドストーントーチ
+        redstoneTorch,
+        // 壁付きのレッドストーントーチ
+        redstoneWallTorch,
+        // リピーター
+        repeater,
+        // レッドストーンコンパレーター
+        comparator,
+
+        /********** レッドストーン信号で動く物 **********/
+        // ピストン
+        piston,
+        // 粘着ピストン
+        stickyPiston,
+        // パワードレール
+        poweredRail,
+        // ディテクターレール（感知レール）
+        detectorRail,
+
+        /***** その他 *****/
+        // レール
+        rail,
+        // トロッコ
+        minecart,
+        // ビーコン
+        beacon,
     };
 
     std::string getMinecraftBlockName(MinecraftBlock block, std::string addition);
@@ -43,7 +129,7 @@ namespace Minecraft {
         void setInfo(WN::Vec3 vec, MinecraftBlock block, std::string addition);
     };
 
-    using blockInfoOf3D = std::vector<std::vector<std::vector<blockInfo>>>;
+    using blockInfoOf3D = std::vector<std::vector<std::vector<blockInfo> > >;
     void initBlockInfoOf3D(blockInfoOf3D &object, const WN::Vec3 &size);
     void initBlockInfoOf3D(blockInfoOf3D &object, const WN::Vec3 &size, const WN::Vec3 &center);
 }

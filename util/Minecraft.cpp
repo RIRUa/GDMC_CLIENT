@@ -12,14 +12,155 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
     std::string blockName = "minecraft:";
     
     switch (block) {
+        /***** 気体 *****/
         case Minecraft::MinecraftBlock::air:
             blockName += "air";
             break;
+
+        /***** 液体 *****/
+        case Minecraft::MinecraftBlock::water:
+            blockName += "water";
+            break;
+        
+        case Minecraft::MinecraftBlock::flowingWater:
+            blockName += "flowing_water";
+            break;
+
+        case Minecraft::MinecraftBlock::lava:
+            blockName += "lava";
+            break;
+
+        case Minecraft::MinecraftBlock::flowingLava:
+            blockName += "flowing_lava";
+            break;
             
+        /***** 固体 *****/
+
+        /***** 石材 *****/
         case Minecraft::MinecraftBlock::stone:
             blockName += "stone";
             break;
             
+        case Minecraft::MinecraftBlock::cobbleStone:
+            blockName += "cobblestone";
+            break;
+            
+        /***** 鉱材 *****/
+        case Minecraft::MinecraftBlock::quartzBlock:
+            blockName += "quartz_block";
+            break;
+            
+        case Minecraft::MinecraftBlock::smoothQuartz:
+            blockName += "smooth_quartz";
+            break;
+            
+        case Minecraft::MinecraftBlock::ironBlock:
+            blockName += "iron_block";
+            break;
+            
+        case Minecraft::MinecraftBlock::goldBlock:
+            blockName += "gold_block";
+            break;
+            
+        case Minecraft::MinecraftBlock::diamondBlock:
+            blockName += "diamond_block";
+            break;
+
+        /***** 木材 *****/
+            
+        case Minecraft::MinecraftBlock::oakPlanks:
+            blockName += "oak_planks";
+            break;
+            
+        case Minecraft::MinecraftBlock::birchPlanks:
+            blockName += "birch_planks";
+            break;
+            
+        /***** その他 *****/
+
+        /***** 光源 *****/
+        case Minecraft::MinecraftBlock::torch:
+            blockName += "torch";
+            break;
+            
+        case Minecraft::MinecraftBlock::wallTorch:
+            blockName += "wall_torch";
+            break;
+            
+        case Minecraft::MinecraftBlock::soulTorch:
+            blockName += "soul_torch";
+            break;
+            
+        case Minecraft::MinecraftBlock::soulWallTorch:
+            blockName += "soul_wall_torch";
+            break;
+            
+        case Minecraft::MinecraftBlock::lantern:
+            blockName += "lantern";
+            break;
+            
+        case Minecraft::MinecraftBlock::soulLantern:
+            blockName += "soul_lantern";
+            break;
+            
+        case Minecraft::MinecraftBlock::glowstone:
+            blockName += "glowstone";
+            break;
+            
+        /***** レッドストーン系 *****/
+
+        /********** 信号を伝えたりするもの **********/
+        case Minecraft::MinecraftBlock::redstoneWire:
+            blockName += "redstone_wire";
+            break;
+            
+        case Minecraft::MinecraftBlock::redstoneTorch:
+            blockName += "redstone_torch";
+            break;
+            
+        case Minecraft::MinecraftBlock::redstoneWallTorch:
+            blockName += "redstone_wall_torch";
+            break;
+            
+        case Minecraft::MinecraftBlock::repeater:
+            blockName += "repeater";
+            break;
+            
+        case Minecraft::MinecraftBlock::comparator:
+            blockName += "comparator";
+            break;
+            
+        /********** レッドストーン信号で動く物 **********/
+        case Minecraft::MinecraftBlock::piston:
+            blockName += "piston";
+            break;
+            
+        case Minecraft::MinecraftBlock::stickyPiston:
+            blockName += "sticky_piston";
+            break;
+            
+        case Minecraft::MinecraftBlock::poweredRail:
+            blockName += "powered_rail";
+            break;
+            
+        case Minecraft::MinecraftBlock::detectorRail:
+            blockName += "detector_rail";
+            break;
+            
+        /***** その他 *****/
+        case Minecraft::MinecraftBlock::rail:
+            blockName += "rail";
+            break;
+            
+        case Minecraft::MinecraftBlock::minecart:
+            blockName += "minecart";
+            break;
+            
+        case Minecraft::MinecraftBlock::beacon:
+            blockName += "beacon";
+            break;
+
+
         default:
             blockName += "air";
             break;
