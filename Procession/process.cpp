@@ -15,11 +15,14 @@ Process::~Process() {
 
 bool Process::init() {
     
-    return true;
-}
-
-Minecraft::blockInfoOf3D Process::scan3dObject(const WN::Vec3 &Vec) {
-    Minecraft::blockInfoOf3D object;
+    this->createArea = std::make_shared< Minecraft::blockInfoOf3D >();
+    Minecraft::initBlockInfoOf3D(
+                                 *(this->createArea),
+                                 this->area,
+                                 WN::Vec3(0, 0, 0)
+                                 );
+    this->possibility = std::make_shared< possibilities >( this->area.z, std::vector< bool >(this->area.x, true) );
     
-    return object;
+    
+    return true;
 }
