@@ -8,6 +8,7 @@
 #include "process.hpp"
 
 Process::Process() {
+    this->init();
 }
 
 Process::~Process() {

@@ -6,5 +6,8 @@
 #include "Procession/process.hpp"
 
 int main(){
+    
+    Process p = Process();
+    
     return 0;
 }
