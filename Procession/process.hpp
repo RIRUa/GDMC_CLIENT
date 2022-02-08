@@ -17,7 +17,7 @@ using possibilities = std::vector< std::vector<bool> >;
 
 class Process {
     // width, height, depth
-    const WN::Vec3 area = WN::Vec3(30, 30, 30);
+    const WN::Vec3 area = WN::Vec3(40, 30, 40);
     
     std::shared_ptr< Minecraft::blockInfoOf3D > createArea;
     std::shared_ptr< possibilities > possibility;
@@ -27,6 +27,9 @@ public:
     ~Process();
     
     bool init();
+    bool sendDatas();
+    
+    void createHouse1(const WN::Vec3 &center);
 };
 
 #endif /* process_hpp */

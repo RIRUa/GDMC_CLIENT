@@ -27,3 +27,28 @@ bool Process::init() {
     
     return true;
 }
+
+bool Process::sendDatas() {
+    GDMC session;
+    
+    session.setBlocks(WN::Vec3(0, 4, 0),
+                      *(this->createArea)
+                      );
+    
+    return true;
+}
+
+void Process::createHouse1(const WN::Vec3 &center) {
+    
+    int width, /*height,*/ depth;
+    
+    for (depth = 0; depth < this->area.z; ++depth) {
+        for (width = 0; width < this->area.x; ++width) {
+            
+            if (depth<=3 || width==0 || depth == this->area.z-1 || width == this->area.x-1) {
+                (*this->createArea)[0][depth][width].block = Minecraft::MinecraftBlock::stone;
+            }
+            
+        }
+    }
+}
