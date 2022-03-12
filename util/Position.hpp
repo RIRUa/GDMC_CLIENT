@@ -9,6 +9,7 @@
 #define Position_hpp
 
 #include <cmath>
+#include <iostream>
 
 namespace WN {
     using position = long long int;
@@ -26,8 +27,12 @@ namespace WN {
         North = 0,
         East = 90,
         South = 180,
-        West = 270
+        West = 270,
+        Down = 1000,
+        Up = 1500
     };
+
+    std::string facingDirection(const direction &angle);
 
 
 }
