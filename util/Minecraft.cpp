@@ -177,8 +177,12 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
     return blockName;
 }
 
-Minecraft::blockInfo::blockInfo(){}
-Minecraft::blockInfo::~blockInfo(){}
+Minecraft::blockInfo::blockInfo(){
+    this->angle = nullptr;
+}
+Minecraft::blockInfo::~blockInfo(){
+    this->angle = nullptr;
+}
 
 Minecraft::blockInfo::blockInfo(WN::position x, WN::position y, WN::position z, MinecraftBlock block, std::string addition) {
     this->position.x = x;
@@ -186,12 +190,14 @@ Minecraft::blockInfo::blockInfo(WN::position x, WN::position y, WN::position z, 
     this->position.z = z;
     this->block = block;
     this->addition = addition;
+    this->angle = nullptr;
 }
 
 Minecraft::blockInfo::blockInfo(WN::Vec3 vec, MinecraftBlock block, std::string addition) {
     this->position = vec;
     this->block = block;
     this->addition = addition;
+    this->angle = nullptr;
 }
 
 std::string Minecraft::blockInfo::getTildeText() {
@@ -204,6 +210,10 @@ std::string Minecraft::blockInfo::getTildeText() {
     pos += " ~";
     pos += std::to_string(this->position.z);
     pos += " ";
+    
+    if (this->angle != nullptr) {
+        addition += " facing=" + WN::facingDirection(*(this->angle));
+    }
     
     pos += Minecraft::getMinecraftBlockName(block, addition);
     
