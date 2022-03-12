@@ -24,6 +24,16 @@ bool Process::init() {
                                  );
     this->possibility = std::make_shared< possibilities >( this->area.z, std::vector< bool >(this->area.x, true) );
     
+    int height;
+    
+    for (height = 0; height < this->groundHeight; ++height) {
+        for (auto &block1d : (*this->createArea)[height]) {
+            for (auto &block : block1d) {
+                block.block = Minecraft::MinecraftBlock::stone;
+            }
+        }
+    }
+    
     
     return true;
 }
@@ -40,15 +50,28 @@ bool Process::sendDatas() {
 
 void Process::createHouse1(const WN::Vec3 &center) {
     
-    int width, /*height,*/ depth;
+    const houseSize size = {30,30};
     
-    for (depth = 0; depth < this->area.z; ++depth) {
-        for (width = 0; width < this->area.x; ++width) {
-            
-            if (depth<=3 || width==0 || depth == this->area.z-1 || width == this->area.x-1) {
-                (*this->createArea)[0][depth][width].block = Minecraft::MinecraftBlock::stone;
+    WN::Vec3 posi(0,0,0);
+    
+    int width, height, depth;
+    
+    /****/
+    for (height = 0; height < 20; ++height) {
+        /**　四方へのブロック配置処理　**/
+        for (depth = 0; depth < size.depth; ++depth) {
+            for (width = 0; width < size.width; ++width) {
+                
+                if (depth<=3 || width==0 || depth == this->area.z-1 || width == this->area.x-1 || depth >= size.depth-1 || width >= size.width-1) {
+                    posi.z = this->area.z/2 + center.z - size.depth/2 + depth;
+                    posi.x = this->area.x/2 + center.z - size.width/2 + width;
+                    // ブロックの挿入
+                    (*this->createArea)[this->groundHeight + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzBlock;
+                }
+
             }
-            
         }
     }
+    
+    
 }
