@@ -25,12 +25,14 @@ namespace WN {
 
     enum class direction{
         North = 0,
-        East = 90,
+        West = 90,
         South = 180,
-        West = 270,
+        East = 270,
         Down = 1000,
         Up = 1500
     };
+
+    direction& operator++(direction &angle);
 
     std::string facingDirection(const direction &angle);
 

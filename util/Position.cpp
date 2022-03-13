@@ -43,3 +43,28 @@ std::string WN::facingDirection(const direction &angle){
     
     return "";
 }
+
+WN::direction& operator++(WN::direction &angle) {
+    switch (angle) {
+        case WN::direction::North:
+            return angle = WN::direction::West;
+            
+        case WN::direction::West:
+            return angle = WN::direction::South;
+            
+        case WN::direction::South:
+            return angle = WN::direction::East;
+            
+        case WN::direction::East:
+            return angle = WN::direction::North;
+            
+        case WN::direction::Up:
+            return angle = WN::direction::Down;
+            
+        case WN::direction::Down:
+            return angle = WN::direction::Up;
+            
+        default:
+            return angle = WN::direction::North;
+    }
+}
