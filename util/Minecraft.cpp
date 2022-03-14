@@ -45,6 +45,10 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "cobblestone";
             break;
             
+        case Minecraft::MinecraftBlock::polishedBlackstoneBricks:
+            blockName += "polished_blackstone_bricks";
+            break;
+            
         /***** 鉱材 *****/
         case Minecraft::MinecraftBlock::quartzBlock:
             blockName += "quartz_block";

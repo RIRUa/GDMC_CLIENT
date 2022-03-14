@@ -37,6 +37,8 @@ namespace Minecraft {
         stone,
         // 丸石
         cobbleStone,
+        // 磨かれたブラックストーンレンガ
+        polishedBlackstoneBricks,
 
         /***** 鉱材 *****/
         // クォーツブロック
