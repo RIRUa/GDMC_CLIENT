@@ -37,6 +37,8 @@ namespace Minecraft {
         stone,
         // 丸石
         cobbleStone,
+        // 磨かれたブラックストーンレンガ
+        polishedBlackstoneBricks,
 
         /***** 鉱材 *****/
         // クォーツブロック
@@ -113,9 +115,8 @@ namespace Minecraft {
         WN::Vec3 position;
         MinecraftBlock block;
         std::string addition;
-        
-        
-        
+        std::shared_ptr<WN::direction> angle;
+
         // コンストラクタ
         blockInfo();
         blockInfo(WN::position x, WN::position y, WN::position z, MinecraftBlock block, std::string addition);

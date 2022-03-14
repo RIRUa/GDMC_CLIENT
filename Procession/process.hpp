@@ -14,10 +14,19 @@
 // WFCの可能性を入れる配列の型の定義
 using possibilities = std::vector< std::vector<bool> >;
 
+// 家の縦横のサイズを保存する構造体
+struct houseSize {
+    unsigned int width;
+    unsigned int depth;
+};
+
+
 
 class Process {
     // width, height, depth
-    const WN::Vec3 area = WN::Vec3(40, 30, 40);
+    const WN::Vec3 area = WN::Vec3(100, 30, 100);
+    // 地面の高さ（+1すると空気）
+    const int groundHeight = 5;
     
     std::shared_ptr< Minecraft::blockInfoOf3D > createArea;
     std::shared_ptr< possibilities > possibility;
