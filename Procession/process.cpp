@@ -38,7 +38,7 @@ bool Process::init() {
     return true;
 }
 
-bool Process::sendDatas() {
+bool Process::sendData() {
     GDMC session;
     
     session.setBlocks(WN::Vec3(0, 4, 0),

@@ -1,0 +1,14 @@
+{
+	"language": "en",
+	"words": [
+		"GDMC",
+		"pos",
+		"posi",
+		"posx",
+		"posy",
+		"posz"
+	],
+	"ignorePaths": [
+		"README.md"
+	]
+}

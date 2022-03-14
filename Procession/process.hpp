@@ -36,7 +36,7 @@ public:
     ~Process();
     
     bool init();
-    bool sendDatas();
+    bool sendData();
     
     void createHouse1(const WN::Vec3 &center);
 };
