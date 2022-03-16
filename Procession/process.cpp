@@ -86,8 +86,18 @@ void Process::createHouse1(const WN::Vec3 &center) {
                     wallCounter++;
                 }
                 
+                // ２階の床用
+                if (height == 4) {
+                    wallCounter == 0 ? wallCounter++: wallCounter;
+                }
+                
                 posi.z = this->area.z/2 + center.z - size.depth/2 + depth;
                 posi.x = this->area.x/2 + center.z - size.width/2 + width;
+                
+                // 照明の追加
+                if (height == 3 && posi.x%3 == 0 && posi.z%3 == 0) {
+                    (*this->createArea)[this->groundHeight + 3][posi.z][posi.x].block = Minecraft::MinecraftBlock::lantern;
+                }
                 // ブロックの挿入
                 if (wallCounter == 2 && !(depth > 0 && depth <= 3)) {
                     (*this->createArea)[this->groundHeight + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::polishedBlackstoneBricks;
