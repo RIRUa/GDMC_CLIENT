@@ -10,6 +10,7 @@
 
 #include <cmath>
 #include <iostream>
+#include <memory>
 
 namespace WN {
     using position = long long int;
@@ -36,7 +37,14 @@ namespace WN {
 
     std::string facingDirection(const direction &angle);
 
-
+    struct EveryDirection {
+        std::shared_ptr<direction> front;
+        std::shared_ptr<direction> left;
+        std::shared_ptr<direction> right;
+        std::shared_ptr<direction> behind;
+        
+        EveryDirection();
+    };
 }
 
 #endif /* Position_hpp */

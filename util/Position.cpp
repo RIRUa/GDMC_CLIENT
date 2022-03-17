@@ -68,3 +68,10 @@ WN::direction& operator++(WN::direction &angle) {
             return angle = WN::direction::North;
     }
 }
+
+WN::EveryDirection::EveryDirection() {
+    this->front = std::make_shared<WN::direction>(WN::direction::North);
+    this->right = std::make_shared<WN::direction>(WN::direction::East);
+    this->left = std::make_shared<WN::direction>(WN::direction::West);
+    this->behind = std::make_shared<WN::direction>(WN::direction::South);
+}
