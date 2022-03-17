@@ -114,6 +114,17 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
         /***** レッドストーン系 *****/
 
         /********** 信号を伝えたりするもの **********/
+            
+        /*********************************レッドストーン以外で作られるもの*********************************/
+        case Minecraft::MinecraftBlock::lever:
+            blockName += "lever";
+            break;
+            
+        case Minecraft::MinecraftBlock::stonePressurePlate:
+            blockName += "stone_pressure_plate";
+            break;
+            
+        /*********************************レッドストーンで作られるもの*********************************/
         case Minecraft::MinecraftBlock::redstoneWire:
             blockName += "redstone_wire";
             break;
