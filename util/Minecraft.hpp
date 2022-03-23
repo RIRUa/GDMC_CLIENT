@@ -43,6 +43,10 @@ namespace Minecraft {
         // 磨かれたブラックストーンレンガ
         polishedBlackstoneBricks,
 
+        /***** ガラス類 *****/
+        // 透明ガラスブロック
+        glass,
+
         /***** 鉱材 *****/
         // クォーツブロック
         quartzBlock,
