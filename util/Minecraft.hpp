@@ -42,6 +42,8 @@ namespace Minecraft {
         cobbleStone,
         // 磨かれたブラックストーンレンガ
         polishedBlackstoneBricks,
+        // プリズマリンの塀
+        prismarineWall,
 
         /***** 鉱材 *****/
         // クォーツブロック
