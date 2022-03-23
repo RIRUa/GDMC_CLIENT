@@ -51,6 +51,9 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             
         case Minecraft::MinecraftBlock::prismarineWall:
             blockName += "prismarine_wall";
+        /***** ガラス類 *****/
+        case Minecraft::MinecraftBlock::glass:
+            blockName += "glass";
             break;
             
         /***** 鉱材 *****/

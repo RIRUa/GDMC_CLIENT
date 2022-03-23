@@ -45,6 +45,10 @@ namespace Minecraft {
         // プリズマリンの塀
         prismarineWall,
 
+        /***** ガラス類 *****/
+        // 透明ガラスブロック
+        glass,
+
         /***** 鉱材 *****/
         // クォーツブロック
         quartzBlock,
