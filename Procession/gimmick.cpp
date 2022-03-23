@@ -113,35 +113,16 @@ void gimmick::automaticDoor(
         }
     }
     
-    for (height = 0; height <= 2; ++height) {
-        if (height == 1) {
+    height = 0;
+    depth = 0;
+    for (depth = 0; depth <= 2; ++depth) {
+        if (depth == 1) {
             continue;
         }
-        for (depth = 0; depth <= 2; ++depth) {
-            if (depth == 1) {
-                continue;
-            }
-            for (width = 15; width <=16; ++width) {
-                switch (height) {
-                    case 0:
-                        block = Minecraft::MinecraftBlock::stonePressurePlate;
-                        break;
-                        
-                    case 2:
-                        block = Minecraft::MinecraftBlock::lantern;
-                        break;
-                        
-                    default:
-                        continue;
-                }
-                
-                posi.z = defaultPosi.z + depth;
-                posi.x = defaultPosi.x + width;
-                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = block;
-                if (height == 2) {
-                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "east=side,north=side,power=15,south=side,west=side";
-                }
-            }
+        for (width = 15; width <=16; ++width) {
+            posi.z = defaultPosi.z + depth;
+            posi.x = defaultPosi.x + width;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::stonePressurePlate;
         }
     }
 }
