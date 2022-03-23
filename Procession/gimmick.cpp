@@ -28,7 +28,7 @@ void gimmick::automaticDoor(
     // ピストン埋め
     for (height = 0; height < 3; ++height) {
         for (depth = 1; depth < 2; ++depth) {
-            width = 13;
+            width = doorPosi - 2;
             posi.z = defaultPosi.z + depth;
             posi.x = defaultPosi.x + width;
             
@@ -36,7 +36,7 @@ void gimmick::automaticDoor(
             (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
             
             
-            width = 18;
+            width = doorPosi+3;
             posi.z = defaultPosi.z + depth;
             posi.x = defaultPosi.x + width;
             
@@ -47,7 +47,7 @@ void gimmick::automaticDoor(
     
     // レッドストーンワイヤの回路
     for (depth = 0; depth <= 2; ++depth) {
-        for (width = 13; width <= 18; ++width) {
+        for (width = doorPosi - 2; width <= doorPosi+3; ++width) {
             wallCounter = 0;
             if (depth == 0) {
                 wallCounter++;
@@ -55,10 +55,10 @@ void gimmick::automaticDoor(
             if (depth == 2) {
                 wallCounter++;
             }
-            if (width <= 14) {
+            if (width <= doorPosi - 1) {
                 wallCounter++;
             }
-            if (width >= 17) {
+            if (width >= doorPosi+2) {
                 wallCounter++;
             }
             // 大地を削らなくていい場所を省く
@@ -67,7 +67,7 @@ void gimmick::automaticDoor(
             }
             
             // 13と18の時は１ます上に
-            if (width == 13 || width == 18) {
+            if (width == doorPosi - 2 || width == doorPosi+3) {
                 height = -1;
             }else{
                 height = -2;
@@ -76,7 +76,7 @@ void gimmick::automaticDoor(
             posi.z = defaultPosi.z + depth;
             posi.x = defaultPosi.x + width;
             
-            if (depth == 1 && (width == 14 || width == 17)) {
+            if (depth == 1 && (width == doorPosi - 1 || width == doorPosi+2)) {
                 (*block3d)[defaultPosi.y - 1][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
             }
             (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
@@ -86,8 +86,8 @@ void gimmick::automaticDoor(
     Minecraft::MinecraftBlock block = Minecraft::MinecraftBlock::air;
     depth = 1;
     for (height = 0; height <= 2; ++height) {
-        for (width = 12; width <= 19; ++width) {
-            if (width >= 13 && width <= 18) {
+        for (width = doorPosi - 3; width <= doorPosi+4; ++width) {
+            if (width >= doorPosi - 2 && width <= doorPosi+3) {
                 continue;
             }
             
@@ -119,7 +119,7 @@ void gimmick::automaticDoor(
         if (depth == 1) {
             continue;
         }
-        for (width = 15; width <=16; ++width) {
+        for (width = doorPosi; width <= doorPosi + 1; ++width) {
             posi.z = defaultPosi.z + depth;
             posi.x = defaultPosi.x + width;
             (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::stonePressurePlate;

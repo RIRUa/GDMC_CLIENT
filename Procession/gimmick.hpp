@@ -17,7 +17,7 @@ namespace gimmick {
      * @brief
      * 
      * @param block3d area that is written block infomations.
-     * @param doorPosi door's left position
+     * @param doorPosi door's left position when you see outside
      * @param angle building facing direction
      * @param blockType Door's material
      * @param defaultPosi

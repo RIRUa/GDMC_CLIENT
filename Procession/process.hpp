@@ -10,17 +10,11 @@
 
 #include "../untouchable/GDMC.hpp"
 #include "gimmick.hpp"
+#include "building.hpp"
 #include <memory>
 
 // WFCの可能性を入れる配列の型の定義
 using possibilities = std::vector< std::vector<bool> >;
-
-// 家の縦横のサイズを保存する構造体
-struct houseSize {
-    unsigned int width;
-    unsigned int depth;
-};
-
 
 
 class Process {
