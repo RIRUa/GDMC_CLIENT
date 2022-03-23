@@ -77,3 +77,20 @@ void Process::createHouse1(const WN::Vec3 &center) {
                            );
     
 }
+
+void  Process::createHouse2(const WN::Vec3 &center) {
+    const houseSize size = {30,30};
+
+    WN::Vec3 defaultPosi(
+                         this->area.x/2 + center.x - size.width/2,
+                         this->groundHeight,
+                         this->area.z/2 + center.z - size.depth/2
+                         );
+
+    building::createHouse2(
+                           this->createArea,
+                           WN::Vec3(0,0,0),
+                           WN::direction::North,
+                           defaultPosi
+                           );
+}
