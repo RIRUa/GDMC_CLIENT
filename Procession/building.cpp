@@ -15,60 +15,125 @@ void building::createHouse1(
                             ) {
     WN::EveryDirection directions = WN::EveryDirection();
     
-    const houseSize size = {30,30};
+    const houseSize size = {40,40};
     
     WN::Vec3 posi(0,0,0);
     
     int width, height, depth;
     
-    // その位置が壁か角か判別するためのカウンター
-    int wallCounter;
+    // カウンター
+    int counter;
     
-    /****/
-    for (height = 0; height < 10; ++height) {
-        /**　四方へのブロック配置処理　**/
-        for (depth = 0; depth < size.depth; ++depth) {
-            for (width = 0; width < size.width; ++width) {
-                // カウンターを０に
-                wallCounter = 0;
-                
-                if (depth <= 2) {
-                    // 入口用ドアのスペースを開ける
-                    if ((width == 15 || width == 16) && height < 3 ) {
-                        continue;
-                    }
-                    wallCounter++;
-                }
-                if (width == 0) {
-                    wallCounter++;
-                }
-                if (depth >= size.depth-1) {
-                    wallCounter++;
-                }
-                if (width >= size.width-1) {
-                    wallCounter++;
-                }
-                
-                // ２階の床用
-                if (height == 4 || height == 9) {
-                    wallCounter == 0 ? wallCounter++: wallCounter;
-                }
-                
+    /**　四方への塀の配置処理　**/
+    for (depth = 0; depth < size.depth; ++depth) {
+        for (width = 0; width < size.width; ++width) {
+            counter = 0;
+            if (depth == 0 && !((width >= size.width/2-1) && (width <= size.width/2))) {
+                counter++;
+            }
+            if (width == 0) {
+                counter++;
+            }
+            if (depth == (size.depth - 1)) {
+                counter++;
+            }
+            if (width == (size.width - 1)) {
+                counter++;
+            }
+            
+            if (counter > 0) {
                 posi.z = defaultPosi.z + depth;
                 posi.x = defaultPosi.x + width;
                 
-                // 照明の追加
-                if ( (height == 3 || height == 8) && posi.x%3 == 0 && posi.z%3 == 0) {
-                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::lantern;
-                }
-                // 壁にブロックの挿入
-                if (wallCounter == 2 && !(depth > 0 && depth <= 3)) {
-                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::polishedBlackstoneBricks;
-                } else if (wallCounter >= 1) {
-                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzBlock;
-                }
-                
+                (*block3d)[defaultPosi.y][posi.z][posi.x].block = Minecraft::MinecraftBlock::prismarineWall;
             }
         }
     }
+    
+    /**　１階部分の作成　**/
+    for (height = 0; height < 5; ++height) {
+        for (depth = 7; depth < size.depth-15; ++depth) {
+            for (width = 2; width < size.width-2; ++width) {
+                // 玄関前の凹みを作成
+                if (depth < 10 && (width > 14 && width < (size.width - 15))) {
+                    continue;
+                }
+                
+                counter = 0;
+                if (height == 4) {
+                    counter++;
+                }
+                // 壁を作成
+                if (depth == 7) {
+                    counter++;
+                }
+                if (width == 2) {
+                    counter++;
+                }
+                // TODO: 後で高さ制限をつける
+                if (depth == (size.depth - 16)) {
+                    if ((width >= size.width/2-1) && (width <= size.width/2)) {
+                        if (height >= 2) {
+                            counter++;
+                        }
+                        counter--;
+                    }
+                    counter++;
+                }
+                if (width == (size.width - 3)) {
+                    counter++;
+                }
+                if (depth < 13) {
+                    if (width <= 13 || width >= 26) {
+                        counter--;
+                    }
+                    counter++;
+                }
+                if (depth == 12) {
+                    if ((width >= 11 && width <= 12) ||
+                        (width >= (size.width - 13) &&
+                         width <= (size.width - 12))
+                        ) {
+                        if (height >= 2) {
+                            counter++;
+                        }
+                        counter--;
+                    }
+                    counter++;
+                }
+                if (depth >= (size.depth - 21)) {
+                    if (width != 15 && width != (size.width - 17)) {
+                        counter--;
+                    }
+                    counter++;
+                }
+                if (depth == (size.depth - 21)) {
+                    if (width > 12 && width < (size.width - 14)) {
+                        if (height >= 2 &&
+                            !(width >= 15 && width <= (size.width - 17))
+                            ) {
+                            counter++;
+                        }
+                        counter--;
+                    }
+                    counter++;
+                }
+                
+                
+                if (counter > 0) {
+                    posi.z = defaultPosi.z + depth;
+                    posi.x = defaultPosi.x + width;
+                        
+                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzBlock;
+                } else if (height == 3 && (width%3 == 0 && depth%3 == 0)) {
+                    posi.z = defaultPosi.z + depth;
+                    posi.x = defaultPosi.x + width;
+                    
+                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::lantern;
+                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "hanging=true";
+                }
+            }
+        }
+    }
+    
 }

@@ -51,7 +51,7 @@ bool Process::sendData() {
 void Process::createHouse1(const WN::Vec3 &center) {
     WN::EveryDirection directions = WN::EveryDirection();
     
-    const houseSize size = {30,30};
+    const houseSize size = {40,40};
     
     WN::Vec3 posi(0,0,0);
     
@@ -65,14 +65,6 @@ void Process::createHouse1(const WN::Vec3 &center) {
                            this->createArea,
                            WN::Vec3(0,0,0),
                            WN::direction::North,
-                           defaultPosi
-                           );
-    
-    gimmick::automaticDoor(
-                           this->createArea,
-                           15,
-                           WN::direction::North,
-                           Minecraft::MinecraftBlock::diamondBlock,
                            defaultPosi
                            );
     
