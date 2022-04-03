@@ -64,6 +64,12 @@ namespace Minecraft {
         oakPlanks,
         // 白樺の木材
         birchPlanks,
+        //本棚
+        bookshelf,
+        //オークのフェンス
+        oak_fence,
+        //オークの看板
+        oak_sign,
 
         /***** その他 *****/
 
@@ -82,6 +88,8 @@ namespace Minecraft {
         soulLantern,
         // グロウストーン
         glowstone,
+        // ジャックオランタン
+        jack_o_lantern,
 
         /***** レッドストーン系 *****/
 

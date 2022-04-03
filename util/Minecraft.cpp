@@ -85,6 +85,18 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "birch_planks";
             break;
             
+        case Minecraft::MinecraftBlock::bookshelf:
+            blockName += "bookshelf";
+            break;
+
+        case Minecraft::MinecraftBlock::oak_fence:
+            blockName += "oak_fence";
+            break;
+
+        case Minecraft::MinecraftBlock::oak_sign:
+            blockName += "oak_sign";
+            break;
+
         /***** その他 *****/
 
         /***** 光源 *****/
@@ -116,6 +128,9 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "glowstone";
             break;
             
+        case Minecraft::MinecraftBlock::jack_o_lantern:
+            blockName += "jack_o_lantern";
+            break;
         /***** レッドストーン系 *****/
 
         /********** 信号を伝えたりするもの **********/
