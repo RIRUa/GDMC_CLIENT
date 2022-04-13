@@ -7,6 +7,7 @@
 
 #include "building.hpp"
 
+// FIXME: ダイアモンドブロックを全てガラスに変更
 void building::createHouse1(
                             std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
                             const WN::Vec3 &center,
@@ -23,6 +24,8 @@ void building::createHouse1(
     
     // カウンター
     int counter;
+    // ガラスを使うか
+    bool isGlassBlock = false;
     
     /**　四方への塀の配置処理　**/
     for (depth = 0; depth < size.depth; ++depth) {
@@ -54,8 +57,25 @@ void building::createHouse1(
     for (height = 0; height < 5; ++height) {
         for (depth = 7; depth < size.depth-15; ++depth) {
             for (width = 2; width < size.width-2; ++width) {
-                // 玄関前の凹みを作成
-                if (depth < 10 && (width > 14 && width < (size.width - 15))) {
+                // 玄関前の凹みを作成（一階の天井以下を凹ませる）
+                if (height < 4 &&
+                    (depth < 10 &&
+                     (width > 14 &&
+                      width < (size.width - 15)
+                      )
+                     )
+                    ) {
+                    continue;
+                }
+                
+                // 階段用の穴
+                if (height <= 4 &&
+                    height >= 3 &&
+                    width <= (size.width - 4) &&
+                    width >= (size.width - 5) &&
+                    depth <= 18 &&
+                    depth >= 13
+                    ) {
                     continue;
                 }
                 
@@ -132,6 +152,73 @@ void building::createHouse1(
                     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::lantern;
                     (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "hanging=true";
                 }
+            }
+        }
+    }
+    
+    /**　２階部分の作成　**/
+    for (; height < 10; ++height) {
+        for (depth = 7; depth < size.depth-15; ++depth) {
+            for (width = 2; width < size.width-2; ++width) {
+                
+                if (width < (size.width / 2) &&
+                    width % 2 == 1 &&
+                    depth > 7 &&
+                    depth < (size.depth - 16) &&
+                    height == 9) {
+                    continue;
+                }
+                
+                counter = 0;
+                isGlassBlock = false;
+                // 天井
+                if (height == 9) {
+                    counter++;
+                }
+                // 壁
+                if (width == (size.width - 3)) {
+                    counter++;
+                }
+                if (width > (size.width / 2) &&
+                    depth == (size.depth - 16)
+                    ) {
+                    counter++;
+                }
+                if (width < (size.width - 3) &&
+                    width > (size.width / 2) &&
+                    (depth == 7 ||
+                     depth == (size.depth - 16)
+                    )&&
+                    height < 9
+                    ) {
+                    counter++;
+                    isGlassBlock = true;
+                }
+                if (width == (size.width / 2) &&
+                    height < 9) {
+                    counter++;
+                    isGlassBlock = true;
+                }
+                // 柱
+                if (width == 2 &&
+                    (depth == 7 ||
+                     depth == (size.depth - 16))
+                    ) {
+                    counter++;
+                }
+                
+                
+                if (counter > 0) {
+                    posi.z = defaultPosi.z + depth;
+                    posi.x = defaultPosi.x + width;
+                    
+                    if (isGlassBlock) {
+                        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::diamondBlock;
+                    } else {
+                        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzBlock;
+                    }
+                }
+                
             }
         }
     }
