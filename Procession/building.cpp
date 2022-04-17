@@ -7,7 +7,6 @@
 
 #include "building.hpp"
 
-// FIXME: ダイアモンドブロックを全てガラスに変更
 void building::createHouse1(
                             std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
                             const WN::Vec3 &center,
@@ -213,7 +212,7 @@ void building::createHouse1(
                     posi.x = defaultPosi.x + width;
                     
                     if (isGlassBlock) {
-                        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::diamondBlock;
+                        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
                     } else {
                         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzBlock;
                     }
