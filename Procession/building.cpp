@@ -89,7 +89,6 @@ void building::createHouse1(
                 if (width == 2) {
                     counter++;
                 }
-                // TODO: 後で高さ制限をつける
                 if (depth == (size.depth - 16)) {
                     if ((width >= size.width/2-1) && (width <= size.width/2)) {
                         if (height >= 2) {
