@@ -25,6 +25,8 @@ void building::createHouse1(
     // ガラスを使うか
     bool isGlassBlock = false;
     
+    // TODO: 地面の作成
+    
     /**　四方への塀の配置処理　**/
     for (depth = 0; depth < size.depth; ++depth) {
         for (width = 0; width < size.width; ++width) {
