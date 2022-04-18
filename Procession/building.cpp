@@ -11,11 +11,10 @@ void building::createHouse1(
                             std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
                             const WN::Vec3 &center,
                             WN::direction direction,
-                            const WN::Vec3 &defaultPosi
+                            const WN::Vec3 &defaultPosi,
+                            const houseSize &size
                             ) {
     WN::EveryDirection directions = WN::EveryDirection();
-    
-    const houseSize size = {40,40};
     
     WN::Vec3 posi(0,0,0);
     
