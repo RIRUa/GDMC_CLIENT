@@ -144,6 +144,9 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "stone_pressure_plate";
             break;
             
+        case Minecraft::MinecraftBlock::stone_button:
+            blockName += "stone_button";
+            break;
         /*********************************レッドストーンで作られるもの*********************************/
         case Minecraft::MinecraftBlock::redstoneWire:
             blockName += "redstone_wire";
@@ -182,6 +185,9 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "detector_rail";
             break;
             
+        case Minecraft::MinecraftBlock::observer:
+            blockName += "observer";
+            break;
         /***** その他 *****/
         case Minecraft::MinecraftBlock::rail:
             blockName += "rail";

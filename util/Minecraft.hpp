@@ -99,6 +99,8 @@ namespace Minecraft {
         lever,
         // 石の感圧板
         stonePressurePlate,
+        // 石のボタン
+        stone_button,
         
         /*********************************レッドストーンで作られるもの*********************************/
         // レッドストーンワイヤー
@@ -121,6 +123,8 @@ namespace Minecraft {
         poweredRail,
         // ディテクターレール（感知レール）
         detectorRail,
+        //オブザーバー
+        observer,
 
         /***** その他 *****/
         // レール
