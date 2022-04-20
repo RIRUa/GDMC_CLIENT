@@ -102,12 +102,14 @@ void building::createHouse1(
                 if (width == (size.width - 3)) {
                     counter++;
                 }
+                // 凹みの作成
                 if (depth < 13) {
                     if (width <= 13 || width >= 26) {
                         counter--;
                     }
                     counter++;
                 }
+                // 部屋割りの作成
                 if (depth == 12) {
                     if ((width >= 11 && width <= 12) ||
                         (width >= (size.width - 13) &&
