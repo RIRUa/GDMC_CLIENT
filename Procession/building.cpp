@@ -79,15 +79,24 @@ void building::createHouse1(
                     continue;
                 }
                 
+                // 追加するブロックを決定するために初期化
                 counter = 0;
+                isGlassBlock = false;
+                
                 if (height == 4) {
                     counter++;
                 }
                 // 壁を作成
                 if (depth == 7) {
+                    if (height >= 1 && height <=2) {
+                        isGlassBlock = true;
+                    }
                     counter++;
                 }
                 if (width == 2) {
+                    if (height >= 1 && height <=2) {
+                        isGlassBlock = true;
+                    }
                     counter++;
                 }
                 if (depth == (size.depth - 16)) {
@@ -97,9 +106,15 @@ void building::createHouse1(
                         }
                         counter--;
                     }
+                    if (height >= 1 && height <=2) {
+                        isGlassBlock = true;
+                    }
                     counter++;
                 }
                 if (width == (size.width - 3)) {
+                    if (height >= 1 && height <=2) {
+                        isGlassBlock = true;
+                    }
                     counter++;
                 }
                 // 凹みの作成
@@ -144,8 +159,12 @@ void building::createHouse1(
                 if (counter > 0) {
                     posi.z = defaultPosi.z + depth;
                     posi.x = defaultPosi.x + width;
-                        
-                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzBlock;
+                    
+                    if (isGlassBlock && counter == 1) {
+                        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
+                    } else {
+                        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzBlock;
+                    }
                 } else if (height == 3 && (width%3 == 0 && depth%3 == 0)) {
                     posi.z = defaultPosi.z + depth;
                     posi.x = defaultPosi.x + width;
