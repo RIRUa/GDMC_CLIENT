@@ -56,6 +56,7 @@ void building::createHouse1(
         }
     }
     
+    /**　基礎の作成　**/
     for (depth = 7; depth < size.depth-15; ++depth) {
         for (width = 2; width < size.width-2; ++width) {
             posi.z = defaultPosi.z + depth;
