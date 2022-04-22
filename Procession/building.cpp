@@ -20,6 +20,9 @@ void building::createHouse1(
     
     int width, height, depth;
     
+    // 高さ用のデフォルト値
+    const int heightDefault = defaultPosi.y + 1;
+    
     // カウンター
     int counter;
     // ガラスを使うか
@@ -50,6 +53,15 @@ void building::createHouse1(
                 
                 (*block3d)[defaultPosi.y][posi.z][posi.x].block = Minecraft::MinecraftBlock::prismarineWall;
             }
+        }
+    }
+    
+    for (depth = 7; depth < size.depth-15; ++depth) {
+        for (width = 2; width < size.width-2; ++width) {
+            posi.z = defaultPosi.z + depth;
+            posi.x = defaultPosi.x + width;
+            
+            (*block3d)[defaultPosi.y][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzBlock;
         }
     }
     
@@ -161,16 +173,16 @@ void building::createHouse1(
                     posi.x = defaultPosi.x + width;
                     
                     if (isGlassBlock && counter == 1) {
-                        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
+                        (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
                     } else {
-                        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzBlock;
+                        (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzBlock;
                     }
                 } else if (height == 3 && (width%3 == 0 && depth%3 == 0)) {
                     posi.z = defaultPosi.z + depth;
                     posi.x = defaultPosi.x + width;
                     
-                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::lantern;
-                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "hanging=true";
+                    (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::lantern;
+                    (*block3d)[heightDefault + height][posi.z][posi.x].addition = "hanging=true";
                 }
             }
         }
@@ -233,9 +245,9 @@ void building::createHouse1(
                     posi.x = defaultPosi.x + width;
                     
                     if (isGlassBlock) {
-                        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
+                        (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
                     } else {
-                        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzBlock;
+                        (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzBlock;
                     }
                 }
                 
