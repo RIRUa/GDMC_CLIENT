@@ -113,6 +113,7 @@ void building::createHouse1(
                     counter++;
                 }
                 if (depth == (size.depth - 16)) {
+                    // 裏口の扉用のIF分
                     if ((width >= size.width/2-1) && (width <= size.width/2)) {
                         if (height >= 2) {
                             counter++;
@@ -122,6 +123,11 @@ void building::createHouse1(
                     if (height >= 1 && height <=2) {
                         isGlassBlock = true;
                     }
+                    // サンルーム用
+                    if (width > 2 && width < 15) {
+                        counter--;
+                    }
+                    
                     counter++;
                 }
                 if (width == (size.width - 3)) {
@@ -221,7 +227,7 @@ void building::createHouse1(
                     width > (size.width / 2) &&
                     (depth == 7 ||
                      depth == (size.depth - 16)
-                    )&&
+                     )&&
                     height < 9
                     ) {
                     counter++;
@@ -250,6 +256,48 @@ void building::createHouse1(
                     } else {
                         (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzBlock;
                     }
+                }
+                
+            }
+        }
+    }
+    
+    /**　サンルームの作成　**/
+    for (height = 0; height < 6; ++height) {
+        for (depth = size.depth-15; depth < size.depth-10; ++depth) {
+            for (width = 2; width < 16; ++width) {
+                // ブロックを置くカウンターの初期化
+                counter = 0;
+                
+                // サンルームの壁の作成
+                if (width == 2) {
+                    counter++;
+                }
+                if (width == 15) {
+                    counter++;
+                }
+                if (depth == size.depth-15) {
+                    counter++;
+                }
+                if (depth == size.depth-11) {
+                    counter++;
+                }
+                if (height == 0) {
+                    counter += 2;
+                }
+                if (height == 5) {
+                    counter++;
+                }
+                
+                
+                if (counter == 1 && depth != size.depth-15) {
+                    posi.z = defaultPosi.z + depth;
+                    posi.x = defaultPosi.x + width;
+                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
+                } else if (counter >= 2) {
+                    posi.z = defaultPosi.z + depth;
+                    posi.x = defaultPosi.x + width;
+                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzBlock;
                 }
                 
             }
