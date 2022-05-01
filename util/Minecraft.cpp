@@ -53,6 +53,20 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "prismarine_wall";
             break;
             
+        /*****コンクリート類 *****/
+        // 白色コンクリート
+        case Minecraft::MinecraftBlock::whiteConcrete:
+            blockName += "white_concrete";
+            break;
+        // 灰色コンクリート
+        case Minecraft::MinecraftBlock::grayConcrete:
+            blockName += "gray_concrete";
+            break;
+        // 薄灰色コンクリート
+        case Minecraft::MinecraftBlock::lightGrayConcrete:
+            blockName += "light_gray_concrete";
+            break;
+            
         /***** ガラス類 *****/
         case Minecraft::MinecraftBlock::glass:
             blockName += "glass";

@@ -44,6 +44,14 @@ namespace Minecraft {
         polishedBlackstoneBricks,
         // プリズマリンの塀
         prismarineWall,
+        
+        /*****コンクリート類 *****/
+        // 白色コンクリート
+        whiteConcrete,
+        // 灰色コンクリート
+        grayConcrete,
+        // 薄灰色コンクリート
+        lightGrayConcrete,
 
         /***** ガラス類 *****/
         // 透明ガラスブロック
