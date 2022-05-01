@@ -36,6 +36,10 @@ namespace Minecraft {
         /***** 固体 *****/
 
         /***** 石材 *****/
+        // 土
+        dirt,
+        // 草ブロック
+        grassBlock,
         // 石
         stone,
         // 丸石

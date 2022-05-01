@@ -37,6 +37,14 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
         /***** 固体 *****/
 
         /***** 石材 *****/
+        case Minecraft::MinecraftBlock::dirt:
+            blockName += "dirt";
+            break;
+        
+        case Minecraft::MinecraftBlock::grassBlock:
+            blockName += "grass_block";
+            break;
+            
         case Minecraft::MinecraftBlock::stone:
             blockName += "stone";
             break;
@@ -54,15 +62,15 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             break;
             
         /*****コンクリート類 *****/
-        // 白色コンクリート
+            
         case Minecraft::MinecraftBlock::whiteConcrete:
             blockName += "white_concrete";
             break;
-        // 灰色コンクリート
+        
         case Minecraft::MinecraftBlock::grayConcrete:
             blockName += "gray_concrete";
             break;
-        // 薄灰色コンクリート
+        
         case Minecraft::MinecraftBlock::lightGrayConcrete:
             blockName += "light_gray_concrete";
             break;
