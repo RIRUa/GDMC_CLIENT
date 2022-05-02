@@ -28,7 +28,19 @@ void building::createHouse1(
     // ガラスを使うか
     bool isGlassBlock = false;
     
-    // TODO: 地面の作成
+    for (depth = 1; depth < size.depth - 1; ++depth) {
+        for (width = 1; width < size.width - 1; ++width) {
+            posi.z = defaultPosi.z + depth;
+            posi.x = defaultPosi.x + width;
+            
+            if (depth < size.depth - 15) {
+                (*block3d)[defaultPosi.y - 1][posi.z][posi.x].block = Minecraft::MinecraftBlock::polishedBlackstoneBricks;
+            }else {
+                (*block3d)[defaultPosi.y - 1][posi.z][posi.x].block = Minecraft::MinecraftBlock::grassBlock;
+            }
+            
+        }
+    }
     
     /**　四方への塀の配置処理　**/
     for (depth = 0; depth < size.depth; ++depth) {
@@ -303,5 +315,7 @@ void building::createHouse1(
             }
         }
     }
+    
+    // TODO: ２階に鉄格子
     
 }
