@@ -69,4 +69,12 @@ void Process::createHouse1(const WN::Vec3 &center) {
                            size
                            );
     
+    interior::createHouse1(
+                           this->createArea,
+                           center,
+                           WN::direction::North,
+                           defaultPosi,
+                           size
+                           );
+    
 }
