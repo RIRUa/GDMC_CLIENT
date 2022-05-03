@@ -63,7 +63,7 @@ void Process::createHouse1(const WN::Vec3 &center) {
     
     building::createHouse1(
                            this->createArea,
-                           WN::Vec3(0,0,0),
+                           center,
                            WN::direction::North,
                            defaultPosi,
                            size
