@@ -299,7 +299,10 @@ std::string Minecraft::blockInfo::getTildeText() {
     pos += " ";
     
     if (this->angle != nullptr) {
-        addition += " facing=" + WN::facingDirection(*(this->angle));
+        if (this->addition != "") {
+            addition += ",";
+        }
+        addition += "facing=" + WN::facingDirection(*(this->angle));
     }
     
     pos += Minecraft::getMinecraftBlockName(block, addition);
