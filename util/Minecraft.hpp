@@ -121,6 +121,8 @@ namespace Minecraft {
         soulLantern,
         // グロウストーン
         glowstone,
+        // シーランタン
+        seaLantern,
 
         /***** レッドストーン系 *****/
 

@@ -183,6 +183,10 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "glowstone";
             break;
             
+        case Minecraft::MinecraftBlock::seaLantern:
+            blockName += "sea_lantern";
+            break;
+            
         /***** レッドストーン系 *****/
 
         /********** 信号を伝えたりするもの **********/
