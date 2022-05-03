@@ -62,7 +62,6 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             break;
             
         /*****コンクリート類 *****/
-            
         case Minecraft::MinecraftBlock::whiteConcrete:
             blockName += "white_concrete";
             break;
@@ -102,7 +101,6 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             break;
 
         /***** 木材 *****/
-            
         case Minecraft::MinecraftBlock::oakPlanks:
             blockName += "oak_planks";
             break;
@@ -112,9 +110,45 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             break;
             
         /***** 階段 *****/
-            
         case Minecraft::MinecraftBlock::smoothQuartzStairs:
             blockName += "smooth_quartz_stairs";
+            break;
+            
+        /***** ドア *****/
+        case Minecraft::MinecraftBlock::ironDoor:
+            blockName += "iron_door";
+            break;
+            
+        case Minecraft::MinecraftBlock::oakDoor:
+            blockName += "oak_door";
+            break;
+            
+        case Minecraft::MinecraftBlock::spruceDoor:
+            blockName += "spruce_door";
+            break;
+            
+        case Minecraft::MinecraftBlock::birchDoor:
+            blockName += "birch_door";
+            break;
+            
+        case Minecraft::MinecraftBlock::jungleDoor:
+            blockName += "jungle_door";
+            break;
+            
+        case Minecraft::MinecraftBlock::acaciaDoor:
+            blockName += "acacia_door";
+            break;
+            
+        case Minecraft::MinecraftBlock::darkOakDoor:
+            blockName += "dark_oak_door";
+            break;
+            
+        case Minecraft::MinecraftBlock::crimsonDoor:
+            blockName += "crimson_door";
+            break;
+            
+        case Minecraft::MinecraftBlock::warpedDoor:
+            blockName += "warped_door";
             break;
             
             

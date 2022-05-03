@@ -82,6 +82,27 @@ namespace Minecraft {
         /***** 階段 *****/
         // なめらかなクォーツの階段
         smoothQuartzStairs,
+        
+        /***** ドア *****/
+        // 鉄のドア
+        ironDoor,
+        // オークのドア
+        oakDoor,
+        // マツのドア
+        spruceDoor,
+        // シラカバのドア
+        birchDoor,
+        // ジャングルのドア
+        jungleDoor,
+        // アカシアのドア
+        acaciaDoor,
+        // ダークオークのドア
+        darkOakDoor,
+        // 真紅のドア
+        crimsonDoor,
+        // 歪んだドア
+        warpedDoor,
+        
 
         /***** その他 *****/
 
