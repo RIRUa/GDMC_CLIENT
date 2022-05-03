@@ -74,9 +74,24 @@ void building::createHouse1(
             posi.z = defaultPosi.z + depth;
             posi.x = defaultPosi.x + width;
             
-            (*block3d)[defaultPosi.y][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzBlock;
+            (*block3d)[defaultPosi.y][posi.z][posi.x].block = Minecraft::MinecraftBlock::whiteConcrete;
         }
     }
+    
+    
+    /**　玄関前の階段の作成　**/
+    depth = 6;
+    for (width = 15; width < (size.width - 15); ++width) {
+        posi.z = defaultPosi.z + depth;
+        posi.x = defaultPosi.x + width;
+        
+        (*block3d)[defaultPosi.y][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
+        (*block3d)[defaultPosi.y][posi.z][posi.x].angle = directions.behind;
+    }
+    
+    // ドアを入れるか
+    bool isDoor = false;
+    Minecraft::MinecraftBlock block;
     
     /**　１階部分の作成　**/
     for (height = 0; height < 5; ++height) {
@@ -107,6 +122,7 @@ void building::createHouse1(
                 // 追加するブロックを決定するために初期化
                 counter = 0;
                 isGlassBlock = false;
+                isDoor = false;
                 
                 if (height == 4) {
                     counter++;
@@ -130,6 +146,7 @@ void building::createHouse1(
                         if (height >= 2) {
                             counter++;
                         }
+                        isDoor = true;
                         counter--;
                     }
                     if (height >= 1 && height <=2) {
@@ -148,7 +165,7 @@ void building::createHouse1(
                     }
                     counter++;
                 }
-                // 凹みの作成
+                // 玄関前の凹みの作成
                 if (depth < 13) {
                     if (width <= 13 || width >= 26) {
                         counter--;
@@ -164,6 +181,7 @@ void building::createHouse1(
                         if (height >= 2) {
                             counter++;
                         }
+                        isDoor = true;
                         counter--;
                     }
                     counter++;
@@ -176,10 +194,12 @@ void building::createHouse1(
                 }
                 if (depth == (size.depth - 21)) {
                     if (width > 12 && width < (size.width - 14)) {
-                        if (height >= 2 &&
-                            !(width >= 15 && width <= (size.width - 17))
-                            ) {
-                            counter++;
+                        if (width < 15 || width > (size.width - 17)) {
+                            if (height >= 2) {
+                                counter++;
+                            } else {
+                                isDoor = true;
+                            }
                         }
                         counter--;
                     }
@@ -194,7 +214,7 @@ void building::createHouse1(
                     if (isGlassBlock && counter == 1) {
                         (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
                     } else {
-                        (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzBlock;
+                        (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::whiteConcrete;
                     }
                 } else if (height == 3 && (width%3 == 0 && depth%3 == 0)) {
                     posi.z = defaultPosi.z + depth;
@@ -202,6 +222,11 @@ void building::createHouse1(
                     
                     (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::lantern;
                     (*block3d)[heightDefault + height][posi.z][posi.x].addition = "hanging=true";
+                } else if (isDoor) {
+                    posi.z = defaultPosi.z + depth;
+                    posi.x = defaultPosi.x + width;
+                    
+                    (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneTorch;
                 }
             }
         }
@@ -266,7 +291,7 @@ void building::createHouse1(
                     if (isGlassBlock) {
                         (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
                     } else {
-                        (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzBlock;
+                        (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::whiteConcrete;
                     }
                 }
                 
@@ -309,7 +334,7 @@ void building::createHouse1(
                 } else if (counter >= 2) {
                     posi.z = defaultPosi.z + depth;
                     posi.x = defaultPosi.x + width;
-                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzBlock;
+                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::whiteConcrete;
                 }
                 
             }
