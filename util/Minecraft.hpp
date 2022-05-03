@@ -78,6 +78,10 @@ namespace Minecraft {
         oakPlanks,
         // 白樺の木材
         birchPlanks,
+        
+        /***** 階段 *****/
+        // なめらかなクォーツの階段
+        smoothQuartzStairs,
 
         /***** その他 *****/
 

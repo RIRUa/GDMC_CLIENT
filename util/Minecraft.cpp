@@ -111,6 +111,13 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "birch_planks";
             break;
             
+        /***** 階段 *****/
+            
+        case Minecraft::MinecraftBlock::smoothQuartzStairs:
+            blockName += "smooth_quartz_stairs";
+            break;
+            
+            
         /***** その他 *****/
 
         /***** 光源 *****/
