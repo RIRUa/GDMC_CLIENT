@@ -91,7 +91,12 @@ void building::createHouse1(
     
     // ドアを入れるか
     bool isDoor = false;
-    Minecraft::MinecraftBlock block;
+    // ドアの種類
+    Minecraft::MinecraftBlock doorType;
+    // ドアの向き
+    std::shared_ptr<WN::direction> facing;
+    // 蝶番の位置
+    bool hinge = false;
     
     /**　１階部分の作成　**/
     for (height = 0; height < 5; ++height) {
@@ -147,6 +152,10 @@ void building::createHouse1(
                             counter++;
                         }
                         isDoor = true;
+                        doorType = Minecraft::MinecraftBlock::jungleDoor;
+                        hinge = !hinge;
+                        facing = directions.front;
+                        
                         counter--;
                     }
                     if (height >= 1 && height <=2) {
@@ -182,6 +191,10 @@ void building::createHouse1(
                             counter++;
                         }
                         isDoor = true;
+                        doorType = Minecraft::MinecraftBlock::acaciaDoor;
+                        hinge = !hinge;
+                        facing = directions.front;
+                        
                         counter--;
                     }
                     counter++;
@@ -199,6 +212,9 @@ void building::createHouse1(
                                 counter++;
                             } else {
                                 isDoor = true;
+                                doorType = Minecraft::MinecraftBlock::acaciaDoor;
+                                hinge = !hinge;
+                                facing = directions.behind;
                             }
                         }
                         counter--;
@@ -226,7 +242,19 @@ void building::createHouse1(
                     posi.z = defaultPosi.z + depth;
                     posi.x = defaultPosi.x + width;
                     
-                    (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneTorch;
+                    (*block3d)[heightDefault + height][posi.z][posi.x].block = doorType;
+                    (*block3d)[heightDefault + height][posi.z][posi.x].angle = facing;
+                    if (height == 1) {
+                        (*block3d)[heightDefault + height][posi.z][posi.x].addition = "half=upper";
+                    } else {
+                        (*block3d)[heightDefault + height][posi.z][posi.x].addition = "half=lower";
+                    }
+                    
+                    if (hinge) {
+                        (*block3d)[heightDefault + height][posi.z][posi.x].addition += ",hinge=left";
+                    } else {
+                        (*block3d)[heightDefault + height][posi.z][posi.x].addition += ",hinge=right";
+                    }
                 }
             }
         }
