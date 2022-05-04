@@ -42,6 +42,14 @@ namespace Minecraft {
         cobbleStone,
         // 磨かれたブラックストーンレンガ
         polishedBlackstoneBricks,
+        //ネザーレンガのハーフブロック
+        nether_brick_slab,
+        //ネザーレンガ
+        nether_bricks,
+        //ネザーレンガの階段
+        nether_brick_stairs,
+        //ネザーレンガのフェンス
+        nether_brick_fence,
 
         /***** ガラス類 *****/
         // 透明ガラスブロック
@@ -52,6 +60,8 @@ namespace Minecraft {
         quartzBlock,
         // 滑らかなクォーツブロック
         smoothQuartz,
+        // クォーツの階段
+        quartz_stairs,
         // 鉄ブロック
         ironBlock,
         // 金ブロック
@@ -70,6 +80,8 @@ namespace Minecraft {
         oak_fence,
         //オークの看板
         oak_sign,
+        //歪んだフェンス
+        warped_fence,
 
         /***** その他 *****/
 

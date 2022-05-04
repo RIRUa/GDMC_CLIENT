@@ -48,7 +48,23 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
         case Minecraft::MinecraftBlock::polishedBlackstoneBricks:
             blockName += "polished_blackstone_bricks";
             break;
+        
+        case Minecraft::MinecraftBlock::nether_brick_slab:
+            blockName += "nether_brick_slab";
+            break;
             
+        case Minecraft::MinecraftBlock::nether_bricks:
+            blockName += "nether_bricks";
+            break;
+
+        case Minecraft::MinecraftBlock::nether_brick_stairs:
+            blockName += "nether_brick_stairs";
+            break;
+        
+        case Minecraft::MinecraftBlock::nether_brick_fence:
+            blockName += "nether_brick_fence";
+            break;
+
         /***** ガラス類 *****/
         case Minecraft::MinecraftBlock::glass:
             blockName += "glass";
@@ -63,6 +79,10 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "smooth_quartz";
             break;
             
+        case Minecraft::MinecraftBlock::quartz_stairs:
+            blockName += "quartz_stairs";
+            break;
+
         case Minecraft::MinecraftBlock::ironBlock:
             blockName += "iron_block";
             break;
@@ -95,6 +115,10 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
 
         case Minecraft::MinecraftBlock::oak_sign:
             blockName += "oak_sign";
+            break;
+
+        case Minecraft::MinecraftBlock::warped_fence:
+            blockName += "warped_fence";
             break;
 
         /***** その他 *****/
