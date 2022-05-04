@@ -89,4 +89,26 @@ void interior::createHouse1(
     
     (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
     
+    
+    // 玄関前の灯り
+    height = 3;
+    width = 15;
+    depth = 9;
+    
+    posi.z = defaultPosi.z + depth;
+    posi.x = defaultPosi.x + width;
+    
+    (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::lantern;
+    (*block3d)[heightDefault + height][posi.z][posi.x].addition = "hanging=true";
+    
+    height = 3;
+    width = (size.width - 16);
+    depth = 9;
+    
+    posi.z = defaultPosi.z + depth;
+    posi.x = defaultPosi.x + width;
+    
+    (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::lantern;
+    (*block3d)[heightDefault + height][posi.z][posi.x].addition = "hanging=true";
+    
 }
