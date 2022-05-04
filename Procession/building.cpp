@@ -332,7 +332,13 @@ void building::createHouse1(
                     if (isGlassBlock) {
                         (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
                     } else {
-                        (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::whiteConcrete;
+                        if (height == 9 &&
+                            (width%3 == 0 && depth%3 == 0)
+                            ) {
+                            (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
+                        } else {
+                            (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::whiteConcrete;
+                        }
                     }
                 } else if (isDoor) {
                     posi.z = defaultPosi.z + depth;
