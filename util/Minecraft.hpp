@@ -103,6 +103,9 @@ namespace Minecraft {
         // 歪んだドア
         warpedDoor,
         
+        /***** ゲート *****/
+        // 歪んだフェンスゲート
+        warpedFenceGate,
 
         /***** その他 *****/
 

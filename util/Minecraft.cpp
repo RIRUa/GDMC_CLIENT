@@ -151,6 +151,11 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "warped_door";
             break;
             
+        /***** ゲート *****/
+        case Minecraft::MinecraftBlock::warpedFenceGate:
+            blockName += "warped_fence_gate";
+            break;
+            
             
         /***** その他 *****/
 

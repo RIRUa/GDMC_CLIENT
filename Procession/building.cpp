@@ -64,6 +64,11 @@ void building::createHouse1(
                 posi.x = defaultPosi.x + width;
                 
                 (*block3d)[defaultPosi.y][posi.z][posi.x].block = Minecraft::MinecraftBlock::prismarineWall;
+            } else if (depth == 0 && (width >= size.width/2-1) && (width <= size.width/2)) {
+                posi.z = defaultPosi.z + depth;
+                posi.x = defaultPosi.x + width;
+                
+                (*block3d)[defaultPosi.y][posi.z][posi.x].block = Minecraft::MinecraftBlock::warpedFenceGate;
             }
         }
     }
