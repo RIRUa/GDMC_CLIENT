@@ -59,83 +59,89 @@ void gimmick::automaticDoor(std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
     }
     
     // レッドストーンワイヤの回路
-//    for (depth = 0; depth <= 2; ++depth) {
-//        for (width = doorLeftPosi.x - 2; width <= doorLeftPosi.x + 3; ++width) {
-//            wallCounter = 0;
-//            if (depth == 0) {
-//                wallCounter++;
-//            }
-//            if (depth == 2) {
-//                wallCounter++;
-//            }
-//            if (width <= doorLeftPosi.x - 1) {
-//                wallCounter++;
-//            }
-//            if (width >= doorLeftPosi.x + 2) {
-//                wallCounter++;
-//            }
-//            // 大地を削らなくていい場所を省く
-//            if (wallCounter == 2) {
-//                continue;
-//            }
-//
-//            // 13と18の時は１ます上に
-//            if (width == doorLeftPosi.x - 2 || width == doorLeftPosi.x + 3) {
-//                height = -1;
-//            }else{
-//                height = -2;
-//            }
-//
-//            posi.z = defaultPosi.z + doorLeftPosi.z + depth;
-//            posi.x = defaultPosi.x + doorLeftPosi.z + width;
-//
-//            if (depth == 1 && (width == doorLeftPosi.x - 1 || width == doorLeftPosi.x + 2)) {
-//                (*block3d)[doorLeftPosi.y - 1][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
-//            }
-//            (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
-//        }
-//    }
-//
-//    Minecraft::MinecraftBlock block = Minecraft::MinecraftBlock::air;
-//    depth = 1;
-//    for (height = 0; height <= 2; ++height) {
-//        for (width = doorLeftPosi.x - 3; width <= doorLeftPosi.x + 4; ++width) {
-//            if (width >= doorLeftPosi.x - 2 && width <= doorLeftPosi.x + 3) {
-//                continue;
-//            }
-//
-//            switch (height) {
-//                case 0:
-//                    block = Minecraft::MinecraftBlock::redstoneTorch;
-//                    break;
-//
-//                case 2:
-//                    block = Minecraft::MinecraftBlock::redstoneWire;
-//                    break;
-//
-//                default:
-//                    continue;
-//            }
-//
-//            posi.z = defaultPosi.z + doorLeftPosi.z + depth;
-//            posi.x = defaultPosi.x + doorLeftPosi.z + width;
-//            (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].block = block;
-//            if (height == 2) {
-//                (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].addition = "east=side,north=side,power=15,south=side,west=side";
-//            }
-//        }
-//    }
-//
-//    height = 0;
-//    depth = 0;
-//    for (depth = 0; depth <= 2; ++depth) {
-//        if (depth == 1) {
-//            continue;
-//        }
-//        for (width = doorLeftPosi.x; width <= doorLeftPosi.x + 1; ++width) {
-//            posi.z = defaultPosi.z + doorLeftPosi.z + depth;
-//            posi.x = defaultPosi.x + doorLeftPosi.z + width;
-//            (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::stonePressurePlate;
-//        }
-//    }
+    for (depth = 0; depth <= 2; ++depth) {
+        for (width = doorLeftPosi.x - 2; width <= doorLeftPosi.x + 3; ++width) {
+            wallCounter = 0;
+            if (depth == 0) {
+                wallCounter++;
+            }
+            if (depth == 2) {
+                wallCounter++;
+            }
+            if (width <= doorLeftPosi.x - 1) {
+                wallCounter++;
+            }
+            if (width >= doorLeftPosi.x + 2) {
+                wallCounter++;
+            }
+            // 大地を削らなくていい場所を省く
+            if (wallCounter == 2) {
+                continue;
+            }
+
+            // 13と18の時は１ます上に
+            if (width == doorLeftPosi.x - 2 || width == doorLeftPosi.x + 3) {
+                height = -1;
+            }else{
+                height = -2;
+            }
+
+            posi.z = defaultPosi.z + doorLeftPosi.z + depth;
+            posi.x = defaultPosi.x + doorLeftPosi.z + width;
+
+            if (depth == 1 && (width == doorLeftPosi.x - 1 || width == doorLeftPosi.x + 2)) {
+                (*block3d)[doorLeftPosi.y - 1][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+            }
+            (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
+        }
+    }
+
+    Minecraft::MinecraftBlock block = Minecraft::MinecraftBlock::air;
+    depth = 1;
+    for (height = 0; height <= 2; ++height) {
+        for (width = doorLeftPosi.x - 3; width <= doorLeftPosi.x + 4; ++width) {
+            if (width >= doorLeftPosi.x - 2 && width <= doorLeftPosi.x + 3) {
+                continue;
+            }
+
+            switch (height) {
+                case 0:
+                    block = Minecraft::MinecraftBlock::redstoneTorch;
+                    break;
+
+                case 2:
+                    block = Minecraft::MinecraftBlock::redstoneWire;
+                    break;
+
+                default:
+                    continue;
+            }
+
+            posi.z = defaultPosi.z + doorLeftPosi.z + depth;
+            posi.x = defaultPosi.x + doorLeftPosi.z + width;
+            (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].block = block;
+            if (height == 2) {
+                (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].addition = "east=side,north=side,power=15,south=side,west=side";
+            }
+        }
+    }
+
+    depth = 0;
+    for (height = 0; height < 3; ++height) {
+        for (depth = 0; depth <= 2; ++depth) {
+            if (depth == 1) {
+                continue;
+            }
+            for (width = doorLeftPosi.x; width <= doorLeftPosi.x + 1; ++width) {
+                posi.z = defaultPosi.z + doorLeftPosi.z + depth;
+                posi.x = defaultPosi.x + doorLeftPosi.z + width;
+                if (height > 0) {
+                    (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+                } else {
+                    (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::stonePressurePlate;
+                }
+                    
+            }
+        }
+    }
 }
