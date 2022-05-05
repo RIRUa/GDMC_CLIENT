@@ -6,7 +6,8 @@
 		"posi",
 		"posx",
 		"posy",
-		"posz"
+		"posz",
+		"prismarine"
 	],
 	"ignorePaths": [
 		"README.md"

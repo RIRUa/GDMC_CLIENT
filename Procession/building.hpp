@@ -21,7 +21,8 @@ namespace building {
     void createHouse1(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
                       const WN::Vec3 &center,
                       WN::direction direction,
-                      const WN::Vec3 &defaultPosi
+                      const WN::Vec3 &defaultPosi,
+                      const houseSize &size
                       );
 
     void createHouse2(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,

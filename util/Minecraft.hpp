@@ -36,20 +36,28 @@ namespace Minecraft {
         /***** 固体 *****/
 
         /***** 石材 *****/
+        // 土
+        dirt,
+        // 草ブロック
+        grassBlock,
         // 石
         stone,
         // 丸石
         cobbleStone,
         // 磨かれたブラックストーンレンガ
         polishedBlackstoneBricks,
-        //ネザーレンガのハーフブロック
-        nether_brick_slab,
         //ネザーレンガ
         nether_bricks,
-        //ネザーレンガの階段
-        nether_brick_stairs,
-        //ネザーレンガのフェンス
-        nether_brick_fence,
+        // プリズマリンの塀
+        prismarineWall,
+        
+        /*****コンクリート類 *****/
+        // 白色コンクリート
+        whiteConcrete,
+        // 灰色コンクリート
+        grayConcrete,
+        // 薄灰色コンクリート
+        lightGrayConcrete,
 
         /***** ガラス類 *****/
         // 透明ガラスブロック
@@ -69,19 +77,58 @@ namespace Minecraft {
         // ダイアモンドブロック
         diamondBlock,
 
+        /***** ハーフブロック *****/
+        //ネザーレンガのハーフブロック
+        nether_brick_slab,
+
         /***** 木材 *****/
         // オークの木材
         oakPlanks,
         // 白樺の木材
         birchPlanks,
-        //本棚
-        bookshelf,
-        //オークのフェンス
-        oak_fence,
+
+        /***** 看板 *****/
         //オークの看板
         oak_sign,
+
+        /***** 階段 *****/
+        // なめらかなクォーツの階段
+        smoothQuartzStairs,
+        //ネザーレンガの階段
+        nether_brick_stairs,
+        
+        /***** ドア *****/
+        // 鉄のドア
+        ironDoor,
+        // オークのドア
+        oakDoor,
+        // マツのドア
+        spruceDoor,
+        // シラカバのドア
+        birchDoor,
+        // ジャングルのドア
+        jungleDoor,
+        // アカシアのドア
+        acaciaDoor,
+        // ダークオークのドア
+        darkOakDoor,
+        // 真紅のドア
+        crimsonDoor,
+        // 歪んだドア
+        warpedDoor,
+
+        /***** フェンス *****/
+        //ネザーレンガのフェンス
+        nether_brick_fence,
         //歪んだフェンス
         warped_fence,
+        //オークのフェンス
+        oak_fence,
+
+        /***** ゲート *****/
+        // 歪んだフェンスゲート
+        warpedFenceGate,
+        
 
         /***** その他 *****/
 
@@ -102,6 +149,8 @@ namespace Minecraft {
         glowstone,
         // ジャックオランタン
         jack_o_lantern,
+        // シーランタン
+        seaLantern,
 
         /***** レッドストーン系 *****/
 
@@ -109,10 +158,14 @@ namespace Minecraft {
         /*********************************レッドストーン以外で作られるもの*********************************/
         // レバー
         lever,
-        // 石の感圧板
-        stonePressurePlate,
         // 石のボタン
         stone_button,
+        // 石の感圧板
+        stonePressurePlate,
+        // 歪んだ感圧板
+        warpedPressurePlate,
+        // 磨かれたブラックストーンの感圧板
+        polishedBlackstonePressurePlate,
         
         /*********************************レッドストーンで作られるもの*********************************/
         // レッドストーンワイヤー
@@ -145,6 +198,8 @@ namespace Minecraft {
         minecart,
         // ビーコン
         beacon,
+        //本棚
+        bookshelf,
     };
 
     std::string getMinecraftBlockName(MinecraftBlock block, std::string addition);
