@@ -36,12 +36,30 @@ namespace Minecraft {
         /***** 固体 *****/
 
         /***** 石材 *****/
+        // 土
+        dirt,
+        // 草ブロック
+        grassBlock,
         // 石
         stone,
         // 丸石
         cobbleStone,
         // 磨かれたブラックストーンレンガ
         polishedBlackstoneBricks,
+        // プリズマリンの塀
+        prismarineWall,
+        
+        /*****コンクリート類 *****/
+        // 白色コンクリート
+        whiteConcrete,
+        // 灰色コンクリート
+        grayConcrete,
+        // 薄灰色コンクリート
+        lightGrayConcrete,
+
+        /***** ガラス類 *****/
+        // 透明ガラスブロック
+        glass,
 
         /***** 鉱材 *****/
         // クォーツブロック
@@ -60,6 +78,34 @@ namespace Minecraft {
         oakPlanks,
         // 白樺の木材
         birchPlanks,
+        
+        /***** 階段 *****/
+        // なめらかなクォーツの階段
+        smoothQuartzStairs,
+        
+        /***** ドア *****/
+        // 鉄のドア
+        ironDoor,
+        // オークのドア
+        oakDoor,
+        // マツのドア
+        spruceDoor,
+        // シラカバのドア
+        birchDoor,
+        // ジャングルのドア
+        jungleDoor,
+        // アカシアのドア
+        acaciaDoor,
+        // ダークオークのドア
+        darkOakDoor,
+        // 真紅のドア
+        crimsonDoor,
+        // 歪んだドア
+        warpedDoor,
+        
+        /***** ゲート *****/
+        // 歪んだフェンスゲート
+        warpedFenceGate,
 
         /***** その他 *****/
 
@@ -78,6 +124,8 @@ namespace Minecraft {
         soulLantern,
         // グロウストーン
         glowstone,
+        // シーランタン
+        seaLantern,
 
         /***** レッドストーン系 *****/
 
@@ -87,6 +135,10 @@ namespace Minecraft {
         lever,
         // 石の感圧板
         stonePressurePlate,
+        // 歪んだ感圧板
+        warpedPressurePlate,
+        // 磨かれたブラックストーンの感圧板
+        polishedBlackstonePressurePlate,
         
         /*********************************レッドストーンで作られるもの*********************************/
         // レッドストーンワイヤー

@@ -11,6 +11,7 @@
 #include "../untouchable/GDMC.hpp"
 #include "gimmick.hpp"
 #include "building.hpp"
+#include "interior.hpp"
 #include <memory>
 
 // WFCの可能性を入れる配列の型の定義

@@ -10,27 +10,17 @@
 
 #include "../util/Minecraft.hpp"
 #include "../util/Position.hpp"
+#include "building.hpp"
 
 namespace gimmick {
 
-    /**
-     * @brief
-     * 
-     * @param block3d area that is written block infomations.
-     * @param doorPosi door's left position when you see outside
-     * @param angle building facing direction
-     * @param blockType Door's material
-     * @param defaultPosi
-     * x:The position where writing started
-     * y:The height at which the door is in block3d
-     * z:The position where writing started
-     */
-    void automaticDoor(
-                       std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
-                       int doorPosi,
-                       WN::direction angle,
-                       Minecraft::MinecraftBlock blockType,
-                       WN::Vec3 defaultPosi
+    void automaticDoor(std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
+                       const WN::Vec3 &center,
+                       WN::direction direction,
+                       const WN::Vec3 &defaultPosi,
+                       const houseSize &size,
+                       WN::Vec3 doorLeftPosi,
+                       Minecraft::MinecraftBlock blockType
                        );
 
 }
