@@ -205,6 +205,14 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "stone_pressure_plate";
             break;
             
+        case Minecraft::MinecraftBlock::warpedPressurePlate:
+            blockName += "warped_pressure_plate";
+            break;
+            
+        case Minecraft::MinecraftBlock::polishedBlackstonePressurePlate:
+            blockName += "polished_blackstone_pressure_plate";
+            break;
+            
         /*********************************レッドストーンで作られるもの*********************************/
         case Minecraft::MinecraftBlock::redstoneWire:
             blockName += "redstone_wire";

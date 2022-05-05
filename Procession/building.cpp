@@ -69,6 +69,12 @@ void building::createHouse1(
                 posi.x = defaultPosi.x + width;
                 
                 (*block3d)[defaultPosi.y][posi.z][posi.x].block = Minecraft::MinecraftBlock::warpedFenceGate;
+                (*block3d)[defaultPosi.y][posi.z][posi.x].angle = directions.front;
+                
+                posi.z = defaultPosi.z + 1 + depth;
+                posi.x = defaultPosi.x + width;
+                
+                (*block3d)[defaultPosi.y][posi.z][posi.x].block = Minecraft::MinecraftBlock::polishedBlackstonePressurePlate;
             }
         }
     }

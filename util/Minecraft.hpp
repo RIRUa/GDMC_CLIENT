@@ -135,6 +135,10 @@ namespace Minecraft {
         lever,
         // 石の感圧板
         stonePressurePlate,
+        // 歪んだ感圧板
+        warpedPressurePlate,
+        // 磨かれたブラックストーンの感圧板
+        polishedBlackstonePressurePlate,
         
         /*********************************レッドストーンで作られるもの*********************************/
         // レッドストーンワイヤー
