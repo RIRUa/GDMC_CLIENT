@@ -90,7 +90,7 @@ void building::createHouse2(
     int wallCounter;
     
     /****/
-    for (height = 0; height < 10; ++height) {
+    for (height = 0; height < 5; ++height) {
         /**　四方へのブロック配置処理　**/
         for (depth = 0; depth < 31; ++depth) {
             for (width = 0; width < 31; ++width) {
@@ -126,12 +126,142 @@ void building::createHouse2(
                 // 壁にブロックの挿入
                 if (wallCounter == 2 && !(depth > 0 && depth <= 3)) {
                     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
-                } else if (wallCounter >= 1) {
+                }else if (wallCounter >= 1) {
                     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
                 }
                 
             }
         }
     }
+
+//warped_fence
+    for (width = -7; width < 30; ++width){
+                height = 0; depth = -5;
+
+                posi.z = defaultPosi.z + depth;
+                posi.x = defaultPosi.x + width;
+
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::warped_fence;
+                if(width == 15 || width == 16){
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+                }
+            }
+
+    for (width = -7; width < 30; ++width){
+                height = 0; depth = 35;
+
+                posi.z = defaultPosi.z + depth;
+                posi.x = defaultPosi.x + width;
+
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::warped_fence;
+                
+            }
+
+    for (depth = -5; depth < 35; ++depth){
+                height = 0; width = 30;
+
+                posi.z = defaultPosi.z + depth;
+                posi.x = defaultPosi.x + width;
+
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::warped_fence;
+                
+            }
+    
+    for (depth = -5; depth < 35; ++depth){
+                height = 0; width = -7;
+
+                posi.z = defaultPosi.z + depth;
+                posi.x = defaultPosi.x + width;
+
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::warped_fence;
+                
+            }
+
+// dark fence 
+    for(width = 0; width < 17; ++width){
+        height = 5; depth = 0;
+
+        posi.z = defaultPosi.z + depth;
+        posi.x = defaultPosi.x + width;
+
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_fence;
+    }
+
+    for(depth = 0; depth < 11; ++depth){
+        width = 0; height = 5;
+
+        posi.z = defaultPosi.z + depth;
+        posi.x = defaultPosi.x + width;
+
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_fence;
+    }
+
+// second floor
+    for(width = 17; width < 31; ++width){
+        for(height = 5; height < 10; ++height){
+            for(depth = 0; depth < 31; ++depth){
+                if(depth == 0 || depth == 30){
+                    posi.z = defaultPosi.z + depth;
+                    posi.x = defaultPosi.x + width;
+
+                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+                }
+            }
+        }
+    }
+
+    for(height = 5; height < 10; ++height){
+        for(depth = 0; depth < 31; ++depth){
+            for(width = 17; width < 31; ++width){
+                if(width == 17 || width == 30){
+                    posi.z = defaultPosi.z + depth;
+                    posi.x = defaultPosi.x + width;
+
+                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+                }
+            }
+        }
+    }   
+
+    for(depth = 0; depth < 31; ++depth){
+        for(width = 17; width < 31; ++width){
+            height = 10;
+
+            posi.z = defaultPosi.z + depth;
+            posi.x = defaultPosi.x + width;
+
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+        }
+    } 
+
+    for(width = 0; width < 17; ++width){
+        for(height = 5; height < 11; ++height){
+            for(depth = 10; depth < 31; ++depth){
+                if(depth == 10 || depth == 30){
+                
+                posi.z = defaultPosi.z + depth;
+                posi.x = defaultPosi.x + width;
+
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+                }
+            }
+        }
+    }
+
+    for(height = 5; height < 11; ++height){
+        for(depth = 11; depth < 30; ++depth){
+            width = 0;
+
+            posi.z = defaultPosi.z + depth;
+            posi.x = defaultPosi.x + width;
+
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
+        }
+    }
+
+//stair
+    // for(width = 4; width < 14; ++width){
+        
+    // }
 }
 

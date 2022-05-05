@@ -126,3 +126,71 @@ void gimmick::automaticDoor(
         }
     }
 }
+
+void gimmick::waterElevator(
+                            std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
+                            int elePosi,
+                            WN::direction angle,
+                            Minecraft::MinecraftBlock blockType,
+                            WN::Vec3 defaultPosi
+                            ) {
+    /** 使用変数の定義**/
+    int wallCounter = 0;
+    // 方角指定
+    WN::EveryDirection directions = WN::EveryDirection();
+    // for用
+    int width, height, depth;
+    
+    //　配列の指定子
+    WN::Vec3 posi(0,0,0);
+
+    /** 自動水流エレベーター作成開始**/
+    // ピストン埋め
+    height = 0; depth =0;
+    width = elePosi + 2;
+    posi.z = defaultPosi.z + depth;
+    posi.x = defaultPosi.x + width;
+    
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::stickyPiston;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
+
+    width = elePosi -2;
+    posi.z = defaultPosi.z + depth;
+    posi.x = defaultPosi.x + width;
+
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::stickyPiston;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
+    // レッドストーンワイヤの回路
+    height = 0; depth =-1;
+    width = elePosi + 2;
+    posi.z = defaultPosi.z + depth;
+    posi.x = defaultPosi.x + width;
+
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
+
+    width = elePosi - 2;
+    posi.z = defaultPosi.z + depth;
+    posi.x = defaultPosi.x + width;
+
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
+
+    //オブザーバーの設置
+    for (height = 0; height < 15; ++height) {
+    depth =0;
+    width = elePosi + 2;
+    posi.z = defaultPosi.z + depth;
+    posi.x = defaultPosi.x + width;
+    
+    (*block3d)[defaultPosi.y + height + 1][posi.z][posi.x].block = Minecraft::MinecraftBlock::observer;
+    (*block3d)[defaultPosi.y + height + 1][posi.z][posi.x].angle = directions.front;
+
+    width = elePosi - 2;
+    posi.z = defaultPosi.z + depth;
+    posi.x = defaultPosi.x + width;
+
+    (*block3d)[defaultPosi.y + height + 1][posi.z][posi.x].block = Minecraft::MinecraftBlock::observer;
+    (*block3d)[defaultPosi.y + height + 1][posi.z][posi.x].angle = directions.behind;
+    }
+}

@@ -33,6 +33,16 @@ namespace gimmick {
                        WN::Vec3 defaultPosi
                        );
 
+
+
+    void waterElevator(
+                        std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
+                        int elePosi,
+                        WN::direction angle,
+                        Minecraft::MinecraftBlock blockType,
+                        WN::Vec3 defaultPosi
+                        );
+
 }
 
 #endif /* gimmick_hpp */
