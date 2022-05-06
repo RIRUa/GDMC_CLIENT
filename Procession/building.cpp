@@ -44,46 +44,52 @@ void building::createHouse1(
             
         }
     }
-//
-//    /**　四方への塀の配置処理　**/
-//    for (depth = 0; depth < size.depth; ++depth) {
-//        for (width = 0; width < size.width; ++width) {
-//            counter = 0;
-//            if (depth == 0 && !((width >= size.width/2-1) && (width <= size.width/2))) {
-//                counter++;
-//            }
-//            if (width == 0) {
-//                counter++;
-//            }
-//            if (depth == (size.depth - 1)) {
-//                counter++;
-//            }
-//            if (width == (size.width - 1)) {
-//                counter++;
-//            }
-//
-//            if (counter > 0) {
-//                posi.z = defaultPosi.z + depth;
-//                posi.x = defaultPosi.x + width;
-//                posi.rotation(facing);
-//
-//                (*block3d)[defaultPosi.y][posi.z][posi.x].block = Minecraft::MinecraftBlock::prismarineWall;
-//            } else if (depth == 0 && (width >= size.width/2-1) && (width <= size.width/2)) {
-//                posi.z = defaultPosi.z + depth;
-//                posi.x = defaultPosi.x + width;
-//                posi.rotation(facing);
-//
-//                (*block3d)[defaultPosi.y][posi.z][posi.x].block = Minecraft::MinecraftBlock::warpedFenceGate;
-//                (*block3d)[defaultPosi.y][posi.z][posi.x].angle = directions.front;
-//
-//                posi.z = defaultPosi.z + 1 + depth;
-//                posi.x = defaultPosi.x + width;
-//                posi.rotation(facing);
-//
-//                (*block3d)[defaultPosi.y][posi.z][posi.x].block = Minecraft::MinecraftBlock::polishedBlackstonePressurePlate;
-//            }
-//        }
-//    }
+
+    /**　四方への塀の配置処理　**/
+    for (depth = 0; depth < size.depth; ++depth) {
+        for (width = 0; width < size.width; ++width) {
+            counter = 0;
+            if (depth == 0 && !((width >= size.width/2-1) && (width <= size.width/2))) {
+                counter++;
+            }
+            if (width == 0) {
+                counter++;
+            }
+            if (depth == (size.depth - 1)) {
+                counter++;
+            }
+            if (width == (size.width - 1)) {
+                counter++;
+            }
+
+            if (counter > 0) {
+                posi.z = depth;
+                posi.x = width;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z;
+                posi.x += defaultPosi.x;
+                
+                (*block3d)[defaultPosi.y][posi.z][posi.x].block = Minecraft::MinecraftBlock::prismarineWall;
+            } else if (depth == 0 && (width >= size.width/2-1) && (width <= size.width/2)) {
+                posi.z = depth;
+                posi.x = width;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z;
+                posi.x += defaultPosi.x;
+
+                (*block3d)[defaultPosi.y][posi.z][posi.x].block = Minecraft::MinecraftBlock::warpedFenceGate;
+                (*block3d)[defaultPosi.y][posi.z][posi.x].angle = directions.front;
+
+                posi.z = 1 + depth;
+                posi.x = width;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z;
+                posi.x += defaultPosi.x;
+
+                (*block3d)[defaultPosi.y][posi.z][posi.x].block = Minecraft::MinecraftBlock::polishedBlackstonePressurePlate;
+            }
+        }
+    }
 //
 //    /**　基礎の作成　**/
 //    for (depth = 7; depth < size.depth-15; ++depth) {
