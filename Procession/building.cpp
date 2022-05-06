@@ -32,6 +32,7 @@ void building::createHouse1(
         for (width = 1; width < size.width - 1; ++width) {
             posi.z = defaultPosi.z + depth;
             posi.x = defaultPosi.x + width;
+            posi.rotation(facing);
             
             if (depth < size.depth - 15) {
                 (*block3d)[defaultPosi.y - 1][posi.z][posi.x].block = Minecraft::MinecraftBlock::polishedBlackstoneBricks;
@@ -62,17 +63,20 @@ void building::createHouse1(
             if (counter > 0) {
                 posi.z = defaultPosi.z + depth;
                 posi.x = defaultPosi.x + width;
+                posi.rotation(facing);
                 
                 (*block3d)[defaultPosi.y][posi.z][posi.x].block = Minecraft::MinecraftBlock::prismarineWall;
             } else if (depth == 0 && (width >= size.width/2-1) && (width <= size.width/2)) {
                 posi.z = defaultPosi.z + depth;
                 posi.x = defaultPosi.x + width;
+                posi.rotation(facing);
                 
                 (*block3d)[defaultPosi.y][posi.z][posi.x].block = Minecraft::MinecraftBlock::warpedFenceGate;
                 (*block3d)[defaultPosi.y][posi.z][posi.x].angle = directions.front;
                 
                 posi.z = defaultPosi.z + 1 + depth;
                 posi.x = defaultPosi.x + width;
+                posi.rotation(facing);
                 
                 (*block3d)[defaultPosi.y][posi.z][posi.x].block = Minecraft::MinecraftBlock::polishedBlackstonePressurePlate;
             }
@@ -84,6 +88,7 @@ void building::createHouse1(
         for (width = 2; width < size.width-2; ++width) {
             posi.z = defaultPosi.z + depth;
             posi.x = defaultPosi.x + width;
+            posi.rotation(facing);
             
             (*block3d)[defaultPosi.y][posi.z][posi.x].block = Minecraft::MinecraftBlock::whiteConcrete;
         }
@@ -95,6 +100,7 @@ void building::createHouse1(
     for (width = 15; width < (size.width - 15); ++width) {
         posi.z = defaultPosi.z + depth;
         posi.x = defaultPosi.x + width;
+        posi.rotation(facing);
         
         (*block3d)[defaultPosi.y][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
         (*block3d)[defaultPosi.y][posi.z][posi.x].angle = directions.behind;
@@ -237,6 +243,7 @@ void building::createHouse1(
                 if (counter > 0) {
                     posi.z = defaultPosi.z + depth;
                     posi.x = defaultPosi.x + width;
+                    posi.rotation(facing);
                     
                     if (isGlassBlock && counter == 1) {
                         (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
@@ -246,12 +253,14 @@ void building::createHouse1(
                 } else if (height == 3 && (width%3 == 0 && depth%3 == 0)) {
                     posi.z = defaultPosi.z + depth;
                     posi.x = defaultPosi.x + width;
+                    posi.rotation(facing);
                     
                     (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::lantern;
                     (*block3d)[heightDefault + height][posi.z][posi.x].addition = "hanging=true";
                 } else if (isDoor) {
                     posi.z = defaultPosi.z + depth;
                     posi.x = defaultPosi.x + width;
+                    posi.rotation(facing);
                     
                     (*block3d)[heightDefault + height][posi.z][posi.x].block = doorType;
                     (*block3d)[heightDefault + height][posi.z][posi.x].angle = doorFacing;
@@ -339,6 +348,7 @@ void building::createHouse1(
                 if (counter > 0) {
                     posi.z = defaultPosi.z + depth;
                     posi.x = defaultPosi.x + width;
+                    posi.rotation(facing);
                     
                     if (isGlassBlock) {
                         (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
@@ -354,6 +364,7 @@ void building::createHouse1(
                 } else if (isDoor) {
                     posi.z = defaultPosi.z + depth;
                     posi.x = defaultPosi.x + width;
+                    posi.rotation(facing);
                     
                     (*block3d)[heightDefault + height][posi.z][posi.x].block = doorType;
                     (*block3d)[heightDefault + height][posi.z][posi.x].angle = doorFacing;
@@ -405,10 +416,14 @@ void building::createHouse1(
                 if (counter == 1 && depth != size.depth-15) {
                     posi.z = defaultPosi.z + depth;
                     posi.x = defaultPosi.x + width;
+                    posi.rotation(facing);
+                    
                     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
                 } else if (counter >= 2) {
                     posi.z = defaultPosi.z + depth;
                     posi.x = defaultPosi.x + width;
+                    posi.rotation(facing);
+                    
                     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::whiteConcrete;
                 }
                 
