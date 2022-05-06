@@ -48,14 +48,22 @@ void interior::createHouse1(
                 }
                 
                 if (counter == 1) {
-                    posi.z = defaultPosi.z + depth;
-                    posi.x = defaultPosi.x + width;
+                    posi.z = depth;
+                    posi.x = width;
+                    posi.rotation(facing);
+                    posi.z += defaultPosi.z;
+                    posi.x += defaultPosi.x;
                     
                     (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::whiteConcrete;
                     
                     if (isStair) {
-                        (*block3d)[heightDefault + height][posi.z + 1][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
-                        (*block3d)[heightDefault + height][posi.z + 1][posi.x].angle = directions.front;
+                        posi.z = depth + 1;
+                        posi.x = width;
+                        posi.rotation(facing);
+                        posi.z += defaultPosi.z;
+                        posi.x += defaultPosi.x;
+                        (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
+                        (*block3d)[heightDefault + height][posi.z][posi.x].angle = directions.front;
                     }
                 }
                 
@@ -67,16 +75,25 @@ void interior::createHouse1(
     width = (size.width - 6);
     
     for (depth = 17; depth < 19; ++depth) {
-        posi.z = defaultPosi.z + depth;
-        posi.x = defaultPosi.x + width;
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
         
         (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::whiteConcrete;
         
         (*block3d)[heightDefault + height + 1][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
         (*block3d)[heightDefault + height + 1][posi.z][posi.x].angle = directions.right;
         
-        (*block3d)[heightDefault + height][posi.z][posi.x - 1].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
-        (*block3d)[heightDefault + height][posi.z][posi.x - 1].angle = directions.right;
+        posi.z = depth;
+        posi.x = width - 1;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        
+        (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
+        (*block3d)[heightDefault + height][posi.z][posi.x].angle = directions.right;
         
     }
     
@@ -84,8 +101,11 @@ void interior::createHouse1(
     width = (size.width - 7);
     depth = 18;
     
-    posi.z = defaultPosi.z + depth;
-    posi.x = defaultPosi.x + width;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
     
     (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
     
@@ -95,8 +115,11 @@ void interior::createHouse1(
     width = 15;
     depth = 9;
     
-    posi.z = defaultPosi.z + depth;
-    posi.x = defaultPosi.x + width;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
     
     (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::lantern;
     (*block3d)[heightDefault + height][posi.z][posi.x].addition = "hanging=true";
@@ -105,8 +128,11 @@ void interior::createHouse1(
     width = (size.width - 16);
     depth = 9;
     
-    posi.z = defaultPosi.z + depth;
-    posi.x = defaultPosi.x + width;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
     
     (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::lantern;
     (*block3d)[heightDefault + height][posi.z][posi.x].addition = "hanging=true";

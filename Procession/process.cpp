@@ -76,13 +76,13 @@ void Process::createHouse1(const WN::Vec3 &center) {
                            size
                            );
     
-//    interior::createHouse1(
-//                           this->createArea,
-//                           center,
-//                           facing,
-//                           defaultPosi,
-//                           size
-//                           );
+    interior::createHouse1(
+                           this->createArea,
+                           center,
+                           facing,
+                           defaultPosi,
+                           size
+                           );
     
 //    gimmick::automaticDoor(
 //                           this->createArea,
