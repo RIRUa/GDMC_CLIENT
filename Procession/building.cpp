@@ -10,7 +10,7 @@
 void building::createHouse1(
                             std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
                             const WN::Vec3 &center,
-                            WN::direction direction,
+                            WN::direction facing,
                             const WN::Vec3 &defaultPosi,
                             const houseSize &size
                             ) {
@@ -105,7 +105,7 @@ void building::createHouse1(
     // ドアの種類
     Minecraft::MinecraftBlock doorType;
     // ドアの向き
-    std::shared_ptr<WN::direction> facing;
+    std::shared_ptr<WN::direction> doorFacing;
     // 蝶番の位置
     bool hinge = false;
     
@@ -165,7 +165,7 @@ void building::createHouse1(
                         isDoor = true;
                         doorType = Minecraft::MinecraftBlock::jungleDoor;
                         hinge = !hinge;
-                        facing = directions.front;
+                        doorFacing = directions.front;
                         
                         counter--;
                     }
@@ -204,7 +204,7 @@ void building::createHouse1(
                         isDoor = true;
                         doorType = Minecraft::MinecraftBlock::acaciaDoor;
                         hinge = !hinge;
-                        facing = directions.front;
+                        doorFacing = directions.front;
                         
                         counter--;
                     }
@@ -225,7 +225,7 @@ void building::createHouse1(
                                 isDoor = true;
                                 doorType = Minecraft::MinecraftBlock::acaciaDoor;
                                 hinge = !hinge;
-                                facing = directions.behind;
+                                doorFacing = directions.behind;
                             }
                         }
                         counter--;
@@ -254,7 +254,7 @@ void building::createHouse1(
                     posi.x = defaultPosi.x + width;
                     
                     (*block3d)[heightDefault + height][posi.z][posi.x].block = doorType;
-                    (*block3d)[heightDefault + height][posi.z][posi.x].angle = facing;
+                    (*block3d)[heightDefault + height][posi.z][posi.x].angle = doorFacing;
                     if (height == 1) {
                         (*block3d)[heightDefault + height][posi.z][posi.x].addition = "half=upper";
                     } else {
@@ -262,8 +262,8 @@ void building::createHouse1(
                     }
                     
                     if (hinge ^
-                        !(facing == directions.front ||
-                         facing == directions.right)
+                        !(doorFacing == directions.front ||
+                         doorFacing == directions.right)
                         ) {
                         (*block3d)[heightDefault + height][posi.z][posi.x].addition += ",hinge=left";
                     } else {
@@ -322,7 +322,7 @@ void building::createHouse1(
                         isDoor = true;
                         doorType = Minecraft::MinecraftBlock::acaciaDoor;
                         hinge = !hinge;
-                        facing = directions.right;
+                        doorFacing = directions.right;
                     } else {
                         isGlassBlock = true;
                     }
@@ -356,7 +356,7 @@ void building::createHouse1(
                     posi.x = defaultPosi.x + width;
                     
                     (*block3d)[heightDefault + height][posi.z][posi.x].block = doorType;
-                    (*block3d)[heightDefault + height][posi.z][posi.x].angle = facing;
+                    (*block3d)[heightDefault + height][posi.z][posi.x].angle = doorFacing;
                     if (height == 6) {
                         (*block3d)[heightDefault + height][posi.z][posi.x].addition = "half=upper";
                     } else {
