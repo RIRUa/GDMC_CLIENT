@@ -16,6 +16,17 @@ WN::Vec3::Vec3(position posx, position posy, position posz) {
     this->z = posz;
 }
 
+/***
+ *
+ *X = x*cos(D*pi/180) - y*sin(D*pi/180)
+ *Y = x*sin(D*pi/180) + y*cos(D*pi/180)
+ *
+ **/
+
+
+
+
+
 std::string WN::facingDirection(const direction &angle){
     
     switch (angle) {

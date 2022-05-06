@@ -15,15 +15,7 @@
 namespace WN {
     using position = long long int;
 
-    struct Vec3 {
-        position x;
-        position y;
-        position z;
-        
-        Vec3();
-        Vec3(position posx, position posy, position posz);
-    };
-
+    /** 方角 **/
     enum class direction{
         North = 0,
         West = 90,
@@ -33,6 +25,19 @@ namespace WN {
         Up = 1500
     };
 
+    /** ３次ベクトル **/
+    struct Vec3 {
+        position x;
+        position y;
+        position z;
+        
+        Vec3();
+        Vec3(position posx, position posy, position posz);
+        
+        Vec3 rotation(direction facing);
+    };
+
+    
     direction& operator++(direction &angle);
 
     std::string facingDirection(const direction &angle);
