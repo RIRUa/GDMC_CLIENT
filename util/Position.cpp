@@ -89,3 +89,40 @@ WN::EveryDirection::EveryDirection() {
     this->left = std::make_shared<WN::direction>(WN::direction::West);
     this->behind = std::make_shared<WN::direction>(WN::direction::South);
 }
+
+WN::direction getDirect(int dir) {
+    if (dir >= 360) {
+        dir -= 360;
+    }
+    
+    switch (dir) {
+        case static_cast<int>(WN::direction::North):
+            return WN::direction::North;
+            
+        case static_cast<int>(WN::direction::East):
+            return WN::direction::East;
+            
+        case static_cast<int>(WN::direction::West):
+            return WN::direction::West;
+            
+        case static_cast<int>(WN::direction::South):
+            return WN::direction::South;
+            
+        default:
+            break;
+    }
+    
+    return WN::direction::Up;
+}
+
+WN::EveryDirection::EveryDirection(WN::direction facing) {
+    int f = static_cast<int>(WN::direction::North) + static_cast<int>(facing);
+    int r = static_cast<int>(WN::direction::East) + static_cast<int>(facing);
+    int l = static_cast<int>(WN::direction::West) + static_cast<int>(facing);
+    int b = static_cast<int>(WN::direction::South) + static_cast<int>(facing);
+    
+    this->front = std::make_shared<WN::direction>(getDirect(f));
+    this->right = std::make_shared<WN::direction>(getDirect(r));
+    this->left = std::make_shared<WN::direction>(getDirect(l));
+    this->behind = std::make_shared<WN::direction>(getDirect(b));
+}

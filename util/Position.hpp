@@ -49,6 +49,7 @@ namespace WN {
         std::shared_ptr<direction> behind;
         
         EveryDirection();
+        EveryDirection(direction facing);
     };
 }
 

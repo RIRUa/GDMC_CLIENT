@@ -15,7 +15,7 @@ void interior::createHouse1(
                             const WN::Vec3 &defaultPosi,
                             const houseSize &size
                             ) {
-    WN::EveryDirection directions = WN::EveryDirection();
+    WN::EveryDirection directions = WN::EveryDirection(facing);
     
     WN::Vec3 posi(0,0,0);
     
