@@ -16,15 +16,18 @@ WN::Vec3::Vec3(position posx, position posy, position posz) {
     this->z = posz;
 }
 
-/***
- *
- *X = x*cos(D*pi/180) - y*sin(D*pi/180)
- *Y = x*sin(D*pi/180) + y*cos(D*pi/180)
- *
- **/
-
-
-
+WN::Vec3 WN::Vec3::rotation(direction facing) {
+    
+    double sita = static_cast<double>(facing) * std::acos(-1.0) / static_cast<double>(180);
+    
+    auto x = static_cast<double>(this->x) * std::cos(sita) - static_cast<double>(this->z) * std::sin(sita);
+    auto z = static_cast<double>(this->x) * std::sin(sita) + static_cast<double>(this->z) * std::cos(sita);
+    
+    this->x = static_cast<WN::position>(x);
+    this->z = static_cast<WN::position>(z);
+    
+    return *this;
+}
 
 
 std::string WN::facingDirection(const direction &angle){
