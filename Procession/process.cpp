@@ -55,7 +55,7 @@ void Process::createHouse1(const WN::Vec3 &center) {
     
     WN::Vec3 posi(0,0,0);
     
-    WN::direction facing = WN::direction::East;
+    WN::direction facing = WN::direction::North;
     
     WN::Vec3 defaultPosi(
                          size.width/2,
@@ -68,13 +68,13 @@ void Process::createHouse1(const WN::Vec3 &center) {
     
     std::cout << defaultPosi.x << "," << defaultPosi.z << std::endl;
     
-//    building::createHouse1(
-//                           this->createArea,
-//                           center,
-//                           facing,
-//                           defaultPosi,
-//                           size
-//                           );
+    building::createHouse1(
+                           this->createArea,
+                           center,
+                           facing,
+                           defaultPosi,
+                           size
+                           );
     
 //    interior::createHouse1(
 //                           this->createArea,
