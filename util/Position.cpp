@@ -20,8 +20,8 @@ WN::Vec3 WN::Vec3::rotation(direction facing) {
     
     double sita = static_cast<double>(facing) * std::acos(-1.0) / static_cast<double>(180);
     
-    auto x = static_cast<double>(this->x) * std::cos(sita) - static_cast<double>(this->z) * std::sin(sita);
-    auto z = static_cast<double>(this->x) * std::sin(sita) + static_cast<double>(this->z) * std::cos(sita);
+    int x = std::round(static_cast<double>(this->x) * std::cos(sita) - static_cast<double>(this->z) * std::sin(sita));
+    int z = std::round(static_cast<double>(this->x) * std::sin(sita) + static_cast<double>(this->z) * std::cos(sita));
     
     this->x = static_cast<WN::position>(x);
     this->z = static_cast<WN::position>(z);

@@ -55,36 +55,43 @@ void Process::createHouse1(const WN::Vec3 &center) {
     
     WN::Vec3 posi(0,0,0);
     
+    WN::direction facing = WN::direction::East;
+    
     WN::Vec3 defaultPosi(
-                         this->area.x/2 + center.x - size.width/2,
+                         size.width/2,
                          this->groundHeight,
-                         this->area.z/2 + center.z - size.depth/2
+                         size.depth/2
                          );
+    defaultPosi.rotation(facing);
+    defaultPosi.x = this->area.x/2 + center.x - defaultPosi.x;
+    defaultPosi.z = this->area.z/2 + center.z - defaultPosi.z;
     
-    building::createHouse1(
-                           this->createArea,
-                           center,
-                           WN::direction::North,
-                           defaultPosi,
-                           size
-                           );
+    std::cout << defaultPosi.x << "," << defaultPosi.z << std::endl;
     
-    interior::createHouse1(
-                           this->createArea,
-                           center,
-                           WN::direction::North,
-                           defaultPosi,
-                           size
-                           );
+//    building::createHouse1(
+//                           this->createArea,
+//                           center,
+//                           facing,
+//                           defaultPosi,
+//                           size
+//                           );
     
-    gimmick::automaticDoor(
-                           this->createArea,
-                           center,
-                           WN::direction::North,
-                           defaultPosi,
-                           size,
-                           WN::Vec3(9, this->groundHeight + 1, 10),
-                           Minecraft::MinecraftBlock::air
-                           );
+//    interior::createHouse1(
+//                           this->createArea,
+//                           center,
+//                           facing,
+//                           defaultPosi,
+//                           size
+//                           );
+    
+//    gimmick::automaticDoor(
+//                           this->createArea,
+//                           center,
+//                           WN::direction::North,
+//                           defaultPosi,
+//                           size,
+//                           WN::Vec3(9, this->groundHeight + 1, 10),
+//                           Minecraft::MinecraftBlock::air
+//                           );
     
 }
