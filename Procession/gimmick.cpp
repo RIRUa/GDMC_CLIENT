@@ -18,7 +18,7 @@ void gimmick::automaticDoor(std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
     /** 使用変数の定義**/
     int wallCounter = 0;
     // 方角指定
-    WN::EveryDirection directions = WN::EveryDirection();
+    WN::EveryDirection directions = WN::EveryDirection(facing);
     // for用
     int width, height, depth;
     
@@ -31,29 +31,45 @@ void gimmick::automaticDoor(std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
     for (height = 0; height < 3; ++height) {
         
         width = doorLeftPosi.x - 2;
-        posi.z = defaultPosi.z + depth;
-        posi.x = defaultPosi.x + width;
+        
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
         
         (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::stickyPiston;
         (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].angle = directions.right;
         
         width = doorLeftPosi.x - 1;
-        posi.z = defaultPosi.z + depth;
-        posi.x = defaultPosi.x + width;
+        
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
         
         (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
         
         
         width = doorLeftPosi.x + 3;
-        posi.z = defaultPosi.z + depth;
-        posi.x = defaultPosi.x + width;
+        
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
         
         (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::stickyPiston;
         (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].angle = directions.left;
         
         width = doorLeftPosi.x + 2;
-        posi.z = defaultPosi.z + depth;
-        posi.x = defaultPosi.x + width;
+        
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
         
         (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
         
@@ -87,8 +103,11 @@ void gimmick::automaticDoor(std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
                 height = -2;
             }
 
-            posi.z = defaultPosi.z + depth;
-            posi.x = defaultPosi.x + width;
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
 
             if (depth == doorLeftPosi.z + 1 && (width == doorLeftPosi.x - 1 || width == doorLeftPosi.x + 2)) {
                 (*block3d)[doorLeftPosi.y - 1][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
@@ -118,8 +137,12 @@ void gimmick::automaticDoor(std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
                     continue;
             }
 
-            posi.z = defaultPosi.z + depth;
-            posi.x = defaultPosi.x + width;
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            
             (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].block = block;
             if (height == 2) {
                 (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].addition = "east=side,north=side,power=15,south=side,west=side";
@@ -133,8 +156,13 @@ void gimmick::automaticDoor(std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
                 continue;
             }
             for (width = doorLeftPosi.x; width <= doorLeftPosi.x + 1; ++width) {
-                posi.z = defaultPosi.z + depth;
-                posi.x = defaultPosi.x + width;
+                
+                posi.z = depth;
+                posi.x = width;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z;
+                posi.x += defaultPosi.x;
+                
                 if (height > 0) {
                     (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
                 } else {
