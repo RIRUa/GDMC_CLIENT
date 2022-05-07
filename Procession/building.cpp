@@ -10,11 +10,11 @@
 void building::createHouse1(
                             std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
                             const WN::Vec3 &center,
-                            WN::direction direction,
+                            WN::direction facing,
                             const WN::Vec3 &defaultPosi,
                             const houseSize &size
                             ) {
-    WN::EveryDirection directions = WN::EveryDirection();
+    WN::EveryDirection directions = WN::EveryDirection(facing);
     
     WN::Vec3 posi(0,0,0);
     
@@ -30,8 +30,11 @@ void building::createHouse1(
     
     for (depth = 1; depth < size.depth - 1; ++depth) {
         for (width = 1; width < size.width - 1; ++width) {
-            posi.z = defaultPosi.z + depth;
-            posi.x = defaultPosi.x + width;
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
             
             if (depth < size.depth - 15) {
                 (*block3d)[defaultPosi.y - 1][posi.z][posi.x].block = Minecraft::MinecraftBlock::polishedBlackstoneBricks;
@@ -41,7 +44,7 @@ void building::createHouse1(
             
         }
     }
-    
+
     /**　四方への塀の配置処理　**/
     for (depth = 0; depth < size.depth; ++depth) {
         for (width = 0; width < size.width; ++width) {
@@ -58,57 +61,72 @@ void building::createHouse1(
             if (width == (size.width - 1)) {
                 counter++;
             }
-            
+
             if (counter > 0) {
-                posi.z = defaultPosi.z + depth;
-                posi.x = defaultPosi.x + width;
+                posi.z = depth;
+                posi.x = width;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z;
+                posi.x += defaultPosi.x;
                 
                 (*block3d)[defaultPosi.y][posi.z][posi.x].block = Minecraft::MinecraftBlock::prismarineWall;
             } else if (depth == 0 && (width >= size.width/2-1) && (width <= size.width/2)) {
-                posi.z = defaultPosi.z + depth;
-                posi.x = defaultPosi.x + width;
-                
+                posi.z = depth;
+                posi.x = width;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z;
+                posi.x += defaultPosi.x;
+
                 (*block3d)[defaultPosi.y][posi.z][posi.x].block = Minecraft::MinecraftBlock::warpedFenceGate;
                 (*block3d)[defaultPosi.y][posi.z][posi.x].angle = directions.front;
-                
-                posi.z = defaultPosi.z + 1 + depth;
-                posi.x = defaultPosi.x + width;
-                
+
+                posi.z = 1 + depth;
+                posi.x = width;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z;
+                posi.x += defaultPosi.x;
+
                 (*block3d)[defaultPosi.y][posi.z][posi.x].block = Minecraft::MinecraftBlock::polishedBlackstonePressurePlate;
             }
         }
     }
-    
+
     /**　基礎の作成　**/
     for (depth = 7; depth < size.depth-15; ++depth) {
         for (width = 2; width < size.width-2; ++width) {
-            posi.z = defaultPosi.z + depth;
-            posi.x = defaultPosi.x + width;
-            
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+
             (*block3d)[defaultPosi.y][posi.z][posi.x].block = Minecraft::MinecraftBlock::whiteConcrete;
         }
     }
-    
-    
+
+
     /**　玄関前の階段の作成　**/
     depth = 6;
     for (width = 15; width < (size.width - 15); ++width) {
-        posi.z = defaultPosi.z + depth;
-        posi.x = defaultPosi.x + width;
-        
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+
         (*block3d)[defaultPosi.y][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
         (*block3d)[defaultPosi.y][posi.z][posi.x].angle = directions.behind;
     }
-    
+
     // ドアを入れるか
     bool isDoor = false;
     // ドアの種類
     Minecraft::MinecraftBlock doorType;
     // ドアの向き
-    std::shared_ptr<WN::direction> facing;
+    std::shared_ptr<WN::direction> doorFacing;
     // 蝶番の位置
     bool hinge = false;
-    
+
     /**　１階部分の作成　**/
     for (height = 0; height < 5; ++height) {
         for (depth = 7; depth < size.depth-15; ++depth) {
@@ -123,7 +141,7 @@ void building::createHouse1(
                     ) {
                     continue;
                 }
-                
+
                 // 階段用の穴
                 if (height <= 4 &&
                     height >= 3 &&
@@ -134,12 +152,12 @@ void building::createHouse1(
                     ) {
                     continue;
                 }
-                
+
                 // 追加するブロックを決定するために初期化
                 counter = 0;
                 isGlassBlock = false;
                 isDoor = false;
-                
+
                 if (height == 4) {
                     counter++;
                 }
@@ -165,8 +183,8 @@ void building::createHouse1(
                         isDoor = true;
                         doorType = Minecraft::MinecraftBlock::jungleDoor;
                         hinge = !hinge;
-                        facing = directions.front;
-                        
+                        doorFacing = directions.front;
+
                         counter--;
                     }
                     if (height >= 1 && height <=2) {
@@ -176,7 +194,7 @@ void building::createHouse1(
                     if (width > 2 && width < 15) {
                         counter--;
                     }
-                    
+
                     counter++;
                 }
                 if (width == (size.width - 3)) {
@@ -204,8 +222,8 @@ void building::createHouse1(
                         isDoor = true;
                         doorType = Minecraft::MinecraftBlock::acaciaDoor;
                         hinge = !hinge;
-                        facing = directions.front;
-                        
+                        doorFacing = directions.front;
+
                         counter--;
                     }
                     counter++;
@@ -225,45 +243,54 @@ void building::createHouse1(
                                 isDoor = true;
                                 doorType = Minecraft::MinecraftBlock::acaciaDoor;
                                 hinge = !hinge;
-                                facing = directions.behind;
+                                doorFacing = directions.behind;
                             }
                         }
                         counter--;
                     }
                     counter++;
                 }
-                
-                
+
+
                 if (counter > 0) {
-                    posi.z = defaultPosi.z + depth;
-                    posi.x = defaultPosi.x + width;
-                    
+                    posi.z = depth;
+                    posi.x = width;
+                    posi.rotation(facing);
+                    posi.z += defaultPosi.z;
+                    posi.x += defaultPosi.x;
+
                     if (isGlassBlock && counter == 1) {
                         (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
                     } else {
                         (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::whiteConcrete;
                     }
                 } else if (height == 3 && (width%3 == 0 && depth%3 == 0)) {
-                    posi.z = defaultPosi.z + depth;
-                    posi.x = defaultPosi.x + width;
-                    
+                    posi.z = depth;
+                    posi.x = width;
+                    posi.rotation(facing);
+                    posi.z += defaultPosi.z;
+                    posi.x += defaultPosi.x;
+
                     (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::lantern;
                     (*block3d)[heightDefault + height][posi.z][posi.x].addition = "hanging=true";
                 } else if (isDoor) {
-                    posi.z = defaultPosi.z + depth;
-                    posi.x = defaultPosi.x + width;
-                    
+                    posi.z = depth;
+                    posi.x = width;
+                    posi.rotation(facing);
+                    posi.z += defaultPosi.z;
+                    posi.x += defaultPosi.x;
+
                     (*block3d)[heightDefault + height][posi.z][posi.x].block = doorType;
-                    (*block3d)[heightDefault + height][posi.z][posi.x].angle = facing;
+                    (*block3d)[heightDefault + height][posi.z][posi.x].angle = doorFacing;
                     if (height == 1) {
                         (*block3d)[heightDefault + height][posi.z][posi.x].addition = "half=upper";
                     } else {
                         (*block3d)[heightDefault + height][posi.z][posi.x].addition = "half=lower";
                     }
-                    
+
                     if (hinge ^
-                        !(facing == directions.front ||
-                         facing == directions.right)
+                        !(doorFacing == directions.front ||
+                         doorFacing == directions.right)
                         ) {
                         (*block3d)[heightDefault + height][posi.z][posi.x].addition += ",hinge=left";
                     } else {
@@ -273,12 +300,12 @@ void building::createHouse1(
             }
         }
     }
-    
+
     /**　２階部分の作成　**/
     for (; height < 10; ++height) {
         for (depth = 7; depth < size.depth-15; ++depth) {
             for (width = 2; width < size.width-2; ++width) {
-                
+
                 if (width < (size.width / 2) &&
                     width % 2 == 1 &&
                     depth > 7 &&
@@ -286,7 +313,7 @@ void building::createHouse1(
                     height == 9) {
                     continue;
                 }
-                
+
                 counter = 0;
                 isGlassBlock = false;
                 isDoor = false;
@@ -316,13 +343,13 @@ void building::createHouse1(
                 if (width == (size.width / 2) &&
                     height < 9) {
                     counter++;
-                    
+
                     if (depth >= 10 && depth <= 11 && height < 7) {
                         counter = 0;
                         isDoor = true;
                         doorType = Minecraft::MinecraftBlock::acaciaDoor;
                         hinge = !hinge;
-                        facing = directions.right;
+                        doorFacing = directions.right;
                     } else {
                         isGlassBlock = true;
                     }
@@ -334,12 +361,15 @@ void building::createHouse1(
                     ) {
                     counter++;
                 }
-                
-                
+
+
                 if (counter > 0) {
-                    posi.z = defaultPosi.z + depth;
-                    posi.x = defaultPosi.x + width;
-                    
+                    posi.z = depth;
+                    posi.x = width;
+                    posi.rotation(facing);
+                    posi.z += defaultPosi.z;
+                    posi.x += defaultPosi.x;
+
                     if (isGlassBlock) {
                         (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
                     } else {
@@ -352,35 +382,38 @@ void building::createHouse1(
                         }
                     }
                 } else if (isDoor) {
-                    posi.z = defaultPosi.z + depth;
-                    posi.x = defaultPosi.x + width;
-                    
+                    posi.z = depth;
+                    posi.x = width;
+                    posi.rotation(facing);
+                    posi.z += defaultPosi.z;
+                    posi.x += defaultPosi.x;
+
                     (*block3d)[heightDefault + height][posi.z][posi.x].block = doorType;
-                    (*block3d)[heightDefault + height][posi.z][posi.x].angle = facing;
+                    (*block3d)[heightDefault + height][posi.z][posi.x].angle = doorFacing;
                     if (height == 6) {
                         (*block3d)[heightDefault + height][posi.z][posi.x].addition = "half=upper";
                     } else {
                         (*block3d)[heightDefault + height][posi.z][posi.x].addition = "half=lower";
                     }
-                    
+
                     if (hinge) {
                         (*block3d)[heightDefault + height][posi.z][posi.x].addition += ",hinge=left";
                     } else {
                         (*block3d)[heightDefault + height][posi.z][posi.x].addition += ",hinge=right";
                     }
                 }
-                
+
             }
         }
     }
-    
+
     /**　サンルームの作成　**/
     for (height = 0; height < 6; ++height) {
         for (depth = size.depth-15; depth < size.depth-10; ++depth) {
             for (width = 2; width < 16; ++width) {
                 // ブロックを置くカウンターの初期化
                 counter = 0;
-                
+
                 // サンルームの壁の作成
                 if (width == 2) {
                     counter++;
@@ -400,22 +433,30 @@ void building::createHouse1(
                 if (height == 5) {
                     counter++;
                 }
-                
-                
+
+
                 if (counter == 1 && depth != size.depth-15) {
-                    posi.z = defaultPosi.z + depth;
-                    posi.x = defaultPosi.x + width;
+                    posi.z = depth;
+                    posi.x = width;
+                    posi.rotation(facing);
+                    posi.z += defaultPosi.z;
+                    posi.x += defaultPosi.x;
+
                     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
                 } else if (counter >= 2) {
-                    posi.z = defaultPosi.z + depth;
-                    posi.x = defaultPosi.x + width;
+                    posi.z = depth;
+                    posi.x = width;
+                    posi.rotation(facing);
+                    posi.z += defaultPosi.z;
+                    posi.x += defaultPosi.x;
+                    
                     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::whiteConcrete;
                 }
-                
+
             }
         }
     }
-    
+
     // TODO: ２階に鉄格子
-    
+
 }
