@@ -27,45 +27,46 @@ void gimmick::automaticDoor(std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
     
     /** 自動ドア作成開始**/
     // ピストン埋め
+    depth = doorLeftPosi.z + 1;
     for (height = 0; height < 3; ++height) {
-        for (depth = 1; depth < 2; ++depth) {
-            width = doorLeftPosi.x - 2;
-            posi.z = defaultPosi.z + doorLeftPosi.z + depth;
-            posi.x = defaultPosi.x + doorLeftPosi.z + width;
-            
-            (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::stickyPiston;
-            (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].angle = directions.right;
-            
-            width = doorLeftPosi.x - 1;
-            posi.z = defaultPosi.z + doorLeftPosi.z + depth;
-            posi.x = defaultPosi.x + doorLeftPosi.z + width;
-            
-            (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
-            
-            
-            width = doorLeftPosi.x + 3;
-            posi.z = defaultPosi.z + doorLeftPosi.z + depth;
-            posi.x = defaultPosi.x + doorLeftPosi.z + width;
-            
-            (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::stickyPiston;
-            (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].angle = directions.left;
-            
-            width = doorLeftPosi.x + 2;
-            posi.z = defaultPosi.z + doorLeftPosi.z + depth;
-            posi.x = defaultPosi.x + doorLeftPosi.z + width;
-            
-            (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
-        }
+        
+        width = doorLeftPosi.x - 2;
+        posi.z = defaultPosi.z + depth;
+        posi.x = defaultPosi.x + width;
+        
+        (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::stickyPiston;
+        (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].angle = directions.right;
+        
+        width = doorLeftPosi.x - 1;
+        posi.z = defaultPosi.z + depth;
+        posi.x = defaultPosi.x + width;
+        
+        (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+        
+        
+        width = doorLeftPosi.x + 3;
+        posi.z = defaultPosi.z + depth;
+        posi.x = defaultPosi.x + width;
+        
+        (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::stickyPiston;
+        (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].angle = directions.left;
+        
+        width = doorLeftPosi.x + 2;
+        posi.z = defaultPosi.z + depth;
+        posi.x = defaultPosi.x + width;
+        
+        (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+        
     }
     
     // レッドストーンワイヤの回路
-    for (depth = 0; depth <= 2; ++depth) {
+    for (depth = doorLeftPosi.z; depth <= doorLeftPosi.z + 2; ++depth) {
         for (width = doorLeftPosi.x - 2; width <= doorLeftPosi.x + 3; ++width) {
             wallCounter = 0;
-            if (depth == 0) {
+            if (depth == doorLeftPosi.z) {
                 wallCounter++;
             }
-            if (depth == 2) {
+            if (depth == doorLeftPosi.z + 2) {
                 wallCounter++;
             }
             if (width <= doorLeftPosi.x - 1) {
@@ -86,10 +87,10 @@ void gimmick::automaticDoor(std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
                 height = -2;
             }
 
-            posi.z = defaultPosi.z + doorLeftPosi.z + depth;
-            posi.x = defaultPosi.x + doorLeftPosi.z + width;
+            posi.z = defaultPosi.z + depth;
+            posi.x = defaultPosi.x + width;
 
-            if (depth == 1 && (width == doorLeftPosi.x - 1 || width == doorLeftPosi.x + 2)) {
+            if (depth == doorLeftPosi.z + 1 && (width == doorLeftPosi.x - 1 || width == doorLeftPosi.x + 2)) {
                 (*block3d)[doorLeftPosi.y - 1][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
             }
             (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
@@ -97,7 +98,7 @@ void gimmick::automaticDoor(std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
     }
 
     Minecraft::MinecraftBlock block = Minecraft::MinecraftBlock::air;
-    depth = 1;
+    depth = doorLeftPosi.z + 1;
     for (height = 0; height <= 2; ++height) {
         for (width = doorLeftPosi.x - 3; width <= doorLeftPosi.x + 4; ++width) {
             if (width >= doorLeftPosi.x - 2 && width <= doorLeftPosi.x + 3) {
@@ -117,8 +118,8 @@ void gimmick::automaticDoor(std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
                     continue;
             }
 
-            posi.z = defaultPosi.z + doorLeftPosi.z + depth;
-            posi.x = defaultPosi.x + doorLeftPosi.z + width;
+            posi.z = defaultPosi.z + depth;
+            posi.x = defaultPosi.x + width;
             (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].block = block;
             if (height == 2) {
                 (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].addition = "east=side,north=side,power=15,south=side,west=side";
@@ -126,15 +127,14 @@ void gimmick::automaticDoor(std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
         }
     }
 
-    depth = 0;
     for (height = 0; height < 3; ++height) {
-        for (depth = 0; depth <= 2; ++depth) {
-            if (depth == 1) {
+        for (depth = doorLeftPosi.z; depth <= doorLeftPosi.z + 2; ++depth) {
+            if (depth == doorLeftPosi.z + 1) {
                 continue;
             }
             for (width = doorLeftPosi.x; width <= doorLeftPosi.x + 1; ++width) {
-                posi.z = defaultPosi.z + doorLeftPosi.z + depth;
-                posi.x = defaultPosi.x + doorLeftPosi.z + width;
+                posi.z = defaultPosi.z + depth;
+                posi.x = defaultPosi.x + width;
                 if (height > 0) {
                     (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
                 } else {

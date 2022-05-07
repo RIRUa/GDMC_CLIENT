@@ -84,14 +84,14 @@ void Process::createHouse1(const WN::Vec3 &center) {
                            size
                            );
     
-//    gimmick::automaticDoor(
-//                           this->createArea,
-//                           center,
-//                           WN::direction::North,
-//                           defaultPosi,
-//                           size,
-//                           WN::Vec3(9, this->groundHeight + 1, 10),
-//                           Minecraft::MinecraftBlock::air
-//                           );
+    gimmick::automaticDoor(
+                           this->createArea,
+                           center,
+                           WN::direction::North,
+                           defaultPosi,
+                           size,
+                           WN::Vec3(19, this->groundHeight + 1, 10),
+                           Minecraft::MinecraftBlock::air
+                           );
     
 }
