@@ -65,6 +65,13 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "prismarine_wall";
             break;
         
+        case Minecraft::MinecraftBlock::magmaBlock:
+            blockName += "magma_block";
+            break;
+
+        case Minecraft::MinecraftBlock::soulSand:
+            blockName += "soul_sand";
+            break;
 
         /***** ガラス類 *****/
         case Minecraft::MinecraftBlock::glass:

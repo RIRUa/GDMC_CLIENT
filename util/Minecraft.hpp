@@ -50,6 +50,10 @@ namespace Minecraft {
         nether_bricks,
         // プリズマリンの塀
         prismarineWall,
+        //マグマブロック
+        magmaBlock,
+        //ソウルサンド
+        soulSand,
         
         /*****コンクリート類 *****/
         // 白色コンクリート
