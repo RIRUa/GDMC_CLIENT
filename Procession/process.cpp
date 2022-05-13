@@ -126,7 +126,7 @@ void  Process::createHouse2(const WN::Vec3 &center) {
                            size
                            );
 
-    WN::Vec3 elePosi(5, this->groundHeight + 1, 29);
+    WN::Vec3 elePosi(5, this->groundHeight , 29);
 
     gimmick::waterElevator(
                            this->createArea,
@@ -134,6 +134,8 @@ void  Process::createHouse2(const WN::Vec3 &center) {
                            facing,
                            defaultPosi,
                            size,
-                           elePosi
+                           elePosi,
+                           13,
+                           std::vector<int>{5, 11}
                            );
 }
