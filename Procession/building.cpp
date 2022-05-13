@@ -464,7 +464,7 @@ void building::createHouse1(
 void building::createHouse2(
                             std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
                             const WN::Vec3 &center,
-                            WN::direction direction,
+                            WN::direction facing,
                             const WN::Vec3 &defaultPosi,
                             const houseSize &size 
                             ) {
@@ -581,129 +581,6 @@ void building::createHouse2(
                 
             }
 
-// TODO:interior に移す。
-// dark fence 
-    for(width = 0; width < 17; ++width){
-        height = 5; depth = 0;
-
-        posi.z = depth;
-        posi.x = width;
-        posi.rotation(facing);
-        posi.z += defaultPosi.z;
-        posi.x += defaultPosi.x;
-
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_fence;
-    }
-
-    for(depth = 0; depth < 11; ++depth){
-        width = 0; height = 5;
-
-        posi.z = depth;
-        posi.x = width;
-        posi.rotation(facing);
-        posi.z += defaultPosi.z;
-        posi.x += defaultPosi.x;
-
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_fence;
-    }
-
-    for(int i = 0; i < 7; ++i){
-        width = 4; depth = 3 + i; height = 5 + i;
-
-        posi.z = depth;
-        posi.x = width;
-        posi.rotation(facing);
-        posi.z += defaultPosi.z;
-        posi.x += defaultPosi.x;
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_fence;
-
-        width = 13;
-        posi.z = depth;
-        posi.x = width;
-        posi.rotation(facing);
-        posi.z += defaultPosi.z;
-        posi.x += defaultPosi.x;
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_fence;
-    }
-
-    for(width = 0; width < 5; ++width){
-        depth = 10; height = 11;
-        posi.z = depth;
-        posi.x = width;
-        posi.rotation(facing);
-        posi.z += defaultPosi.z;
-        posi.x += defaultPosi.x;
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_fence;
-    }
-
-    for(width = 13; width < 18; ++width){
-        posi.z = depth;
-        posi.x = width;
-        posi.rotation(facing);
-        posi.z += defaultPosi.z;
-        posi.x += defaultPosi.x;
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_fence;
-    }
-
-    for(depth = 11; depth < 31; ++depth){
-        width = 0; height = 11;
-
-        posi.z = depth;
-        posi.x = width;
-        posi.rotation(facing);
-        posi.z += defaultPosi.z;
-        posi.x += defaultPosi.x;
-
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_fence;
-    }
-
-    for(depth = 0; depth < 31; ++depth){
-        width = 30; 
-
-        posi.z = depth;
-        posi.x = width;
-        posi.rotation(facing);
-        posi.z += defaultPosi.z;
-        posi.x += defaultPosi.x;
-
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_fence;
-    }
-
-    for(width = 0; width < 31; ++width){
-        depth = 30; 
-
-        posi.z = depth;
-        posi.x = width;
-        posi.rotation(facing);
-        posi.z += defaultPosi.z;
-        posi.x += defaultPosi.x;
-
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_fence;
-    }
-    
-    for(width = 17; width < 31; ++width){
-        depth = 0;
-
-        posi.z = depth;
-        posi.x = width;
-        posi.rotation(facing);
-        posi.z += defaultPosi.z;
-        posi.x += defaultPosi.x;
-
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_fence;
-    }
-
-    for(depth = 1; depth < 11; ++depth){
-        width =17;
-
-        posi.z = depth;
-        posi.x = width;
-        posi.rotation(facing);
-        posi.z += defaultPosi.z;
-        posi.x += defaultPosi.x;
-
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_fence;
-    } 
 
 //floor
     for (width = 15; width < 17; ++width){
@@ -894,6 +771,43 @@ void building::createHouse2(
         }
     }
 
+//second floor pool
+    for (width = 4; width < 17; ++width){
+        height = 5; depth = 22;
+
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+    }
+
+    for (depth = 10; depth < 22; ++depth){
+        height = 5; width = 4;
+
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+    }
+
+    for (width = 5; width < 17; ++width){
+        for (depth = 11; depth < 22; ++depth){
+            height = 5;
+
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::water;
+        }
+    }
+
+
 //third floor
     for(width = 20; width < 28; ++width){
         for(height = 11; height < 16; ++height){
@@ -1019,6 +933,343 @@ void building::createHouse2(
             (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
         }
     }
+
+//third floor stair roof
+    for(depth = 6; depth < 25; ++depth){
+        for(int i = 0; i < 5; i++){
+            width = 19 + i; height = 16 + i;
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
+        }
+    }
+
+    for(depth = 6; depth < 25; ++depth){
+        for(int i = 0; i < 5; i++){
+            width = 24 + i; height = 20 - i;
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
+        }
+    }
+
+    for(width = 23; width < 25; ++width){
+        for(int i = 0; i < 5; i++){
+            depth = 2 + i; height = 16 + i;
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
+        }
+    }
+
+    for(width = 23; width < 25; ++width){
+        for(int i = 0; i < 5; i++){
+            depth = 24 + i; height = 20 - i;
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+        }
+    }
+
+    for(width = 20; width < 23; ++width){
+        for(int i = 0; i < 2; i++){
+            height = 16 + i; depth = 2 + i;
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
+        }
+    }
+
+    for(width = 25; width < 28; ++width){
+        for(int i = 0; i < 2; i++){
+            height = 16 + i; depth = 2 + i;
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
+        }
+    }
+
+    for(width = 20; width < 23; ++width){
+        for(int i = 0; i < 2; i++){
+            height = 17 - i; depth = 27 + i;
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+        }
+    }
+
+    for(width = 25; width < 28; ++width){
+        for(int i = 0; i < 2; i++){
+            height = 17 - i; depth = 27 + i;
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+        }
+    }
+
+    for(depth = 25; depth < 28; ++depth){
+        for(int i = 0; i < 2; i++){
+            height = 17 - i; width = 27 + i;
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
+        }
+    }
+
+    for(depth = 3; depth < 6; ++depth){
+        for(int i = 0; i < 2; i++){
+            height = 17 - i; width = 27 + i;
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
+        }
+    }
+    
+    for(depth = 25; depth < 28; ++depth){
+        for(int i = 0; i < 2; i++){
+            height = 16 + i; width = 19 + i;
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
+        }
+    }
+
+    for(depth = 3; depth < 6; ++depth){
+        for(int i = 0; i < 2; i++){
+            height = 16 + i; width = 19 + i;
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
+        }
+    }
+
+    height = 16; width = 19; depth = 2; 
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
+
+    width = 28;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
+
+    depth = 28;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+
+    width = 19;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+
+    width = 21; height = 18; depth = 4;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
+
+    depth = 5; 
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
+
+    depth = 25;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
+
+    depth = 26;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
+
+    width = 26; 
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
+
+    depth = 25; 
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
+
+    depth = 5;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
+
+    depth = 4;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
+
+    width = 22; height = 18;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
+
+    height = 19; depth = 5;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
+
+    depth = 25;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+
+    depth = 26; height = 18;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+
+    width = 25;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+
+    height = 19; depth = 25;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+
+    depth = 5;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
+
+    depth = 4; height = 18;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
 
 
 //third floor entry

@@ -55,7 +55,7 @@ void Process::createHouse1(const WN::Vec3 &center) {
     
     WN::Vec3 posi(0,0,0);
     
-    WN::direction facing = WN::direction::North;
+    WN::direction facing = WN::direction::West;
     
     WN::Vec3 defaultPosi(
                          size.width/2,
@@ -99,7 +99,10 @@ void Process::createHouse1(const WN::Vec3 &center) {
 }
 
 void  Process::createHouse2(const WN::Vec3 &center) {
+    WN::EveryDirection directions = WN::EveryDirection();
     const houseSize size = {40,40};
+
+    WN::direction facing = WN::direction::North;
 
     WN::Vec3 defaultPosi(
                          this->area.x/2 + center.x - size.width/2,
@@ -109,9 +112,28 @@ void  Process::createHouse2(const WN::Vec3 &center) {
 
     building::createHouse2(
                            this->createArea,
-                           WN::Vec3(0,0,0),
-                           WN::direction::North,
+                           center,
+                           facing,
                            defaultPosi,
                            size
+                           );
+                        
+    interior::createHouse2(
+                           this->createArea,
+                           center,
+                           facing,
+                           defaultPosi,
+                           size
+                           );
+
+    WN::Vec3 elePosi(5, this->groundHeight + 1, 29);
+
+    gimmick::waterElevator(
+                           this->createArea,
+                           center,
+                           facing,
+                           defaultPosi,
+                           size,
+                           elePosi
                            );
 }
