@@ -8,6 +8,8 @@
 #ifndef gimmick_hpp
 #define gimmick_hpp
 
+#include <algorithm>
+
 #include "../util/Minecraft.hpp"
 #include "../util/Position.hpp"
 #include "building.hpp"
@@ -23,6 +25,18 @@ namespace gimmick {
                        Minecraft::MinecraftBlock blockType
                        );
 
+
+
+void waterElevator(
+                            std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
+                            const WN::Vec3 &center,
+                            WN::direction facing,
+                            const WN::Vec3 &defaultPosi,
+                            const houseSize &size,
+                            WN::Vec3 elePosi,
+                            int elevatorHeight,
+                            const std::vector< int > &floor
+                            );
 }
 
 #endif /* gimmick_hpp */

@@ -46,8 +46,14 @@ namespace Minecraft {
         cobbleStone,
         // 磨かれたブラックストーンレンガ
         polishedBlackstoneBricks,
+        //ネザーレンガ
+        nether_bricks,
         // プリズマリンの塀
         prismarineWall,
+        //マグマブロック
+        magmaBlock,
+        //ソウルサンド
+        soulSand,
         
         /*****コンクリート類 *****/
         // 白色コンクリート
@@ -66,6 +72,8 @@ namespace Minecraft {
         quartzBlock,
         // 滑らかなクォーツブロック
         smoothQuartz,
+        // クォーツの階段
+        quartz_stairs,
         // 鉄ブロック
         ironBlock,
         // 金ブロック
@@ -73,15 +81,25 @@ namespace Minecraft {
         // ダイアモンドブロック
         diamondBlock,
 
+        /***** ハーフブロック *****/
+        //ネザーレンガのハーフブロック
+        nether_brick_slab,
+
         /***** 木材 *****/
         // オークの木材
         oakPlanks,
         // 白樺の木材
         birchPlanks,
-        
+
+        /***** 看板 *****/
+        //オークの看板
+        oak_sign,
+
         /***** 階段 *****/
         // なめらかなクォーツの階段
         smoothQuartzStairs,
+        //ネザーレンガの階段
+        nether_brick_stairs,
         
         /***** ドア *****/
         // 鉄のドア
@@ -102,10 +120,19 @@ namespace Minecraft {
         crimsonDoor,
         // 歪んだドア
         warpedDoor,
-        
+
+        /***** フェンス *****/
+        //ネザーレンガのフェンス
+        nether_brick_fence,
+        //歪んだフェンス
+        warped_fence,
+        //オークのフェンス
+        oak_fence,
+
         /***** ゲート *****/
         // 歪んだフェンスゲート
         warpedFenceGate,
+        
 
         /***** その他 *****/
 
@@ -124,6 +151,8 @@ namespace Minecraft {
         soulLantern,
         // グロウストーン
         glowstone,
+        // ジャックオランタン
+        jack_o_lantern,
         // シーランタン
         seaLantern,
 
@@ -133,6 +162,8 @@ namespace Minecraft {
         /*********************************レッドストーン以外で作られるもの*********************************/
         // レバー
         lever,
+        // 石のボタン
+        stone_button,
         // 石の感圧板
         stonePressurePlate,
         // 歪んだ感圧板
@@ -161,6 +192,8 @@ namespace Minecraft {
         poweredRail,
         // ディテクターレール（感知レール）
         detectorRail,
+        //オブザーバー
+        observer,
 
         /***** その他 *****/
         // レール
@@ -169,6 +202,8 @@ namespace Minecraft {
         minecart,
         // ビーコン
         beacon,
+        //本棚
+        bookshelf,
     };
 
     std::string getMinecraftBlockName(MinecraftBlock block, std::string addition);
