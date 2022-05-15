@@ -480,26 +480,26 @@ void building::createHouse2(
     /****/
     for (height = 0; height < 5; ++height) {
         /**　四方へのブロック配置処理　**/
-        for (depth = 0; depth < 31; ++depth) {
-            for (width = 0; width < 31; ++width) {
+        for (depth = 5; depth < 36; ++depth) {
+            for (width = 5; width < 36; ++width) {
                 // カウンターを０に
                 wallCounter = 0;
                 
-                if (depth <= 0 ){
+                if (depth <= 5 ){
                      // 入口用ドアのスペースを開ける
-                    if ((width == 15 || width == 16) && height < 3 ) {
+                    if ((width == 20 || width == 21) && height < 3 ) {
                         continue;
                     } 
                     wallCounter++;
                 }
 
-                if (width == 0) {
+                if (width == 5) {
                     wallCounter++;
                 }
-                if (depth >= 30) {
+                if (depth >= 35) {
                     wallCounter++;
                 }
-                if (width >= 30) {
+                if (width >= 35) {
                     wallCounter++;
                 }
                 
@@ -516,7 +516,7 @@ void building::createHouse2(
                 
                 
                 // 壁にブロックの挿入
-                if (wallCounter == 2 && !(depth > 0 && depth <= 3)) {
+                if (wallCounter == 2 && !(depth > 5 && depth <= 8)) {
                     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
                 }else if (wallCounter >= 1) {
                     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
@@ -527,65 +527,60 @@ void building::createHouse2(
     }
 
 //warped_fence
-    for (width = -5; width < 35; ++width){
-                height = 0; depth = -5;
+    height = 0; depth = 0;
+    for (width = 0; width < size.width +1; ++width){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
 
-                posi.z = depth;
-                posi.x = width;
-                posi.rotation(facing);
-                posi.z += defaultPosi.z;
-                posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::warped_fence;
+        if(width == 20 || width == 21){
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+        }
+    }
 
-                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::warped_fence;
-                if(width == 15 || width == 16){
-                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
-                }
-            }
+    height = 0; depth = 39;
+    for(width = 0; width < size.width ; ++width){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
 
-    for (width = -5; width < 35; ++width){
-                height = 0; depth = 35;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::warped_fence;
+        
+        }
 
-                posi.z = depth;
-                posi.x = width;
-                posi.rotation(facing);
-                posi.z += defaultPosi.z;
-                posi.x += defaultPosi.x;
+    height = 0; width = 40;
+    for(depth = 0; depth < size.depth ; ++depth){
 
-                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::warped_fence;
-                
-            }
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;    
 
-    for (depth = -5; depth < 36; ++depth){
-                height = 0; width = 35;
-
-                posi.z = depth;
-                posi.x = width;
-                posi.rotation(facing);
-                posi.z += defaultPosi.z;
-                posi.x += defaultPosi.x;    
-
-                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::warped_fence;
-                
-            }
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::warped_fence;
+        }
     
-    for (depth = -5; depth < 35; ++depth){
-                height = 0; width = -5;
+    height = 0; width = 0;
+    for(depth = 0; depth < size.depth ; ++depth){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
 
-                posi.z = depth;
-                posi.x = width;
-                posi.rotation(facing);
-                posi.z += defaultPosi.z;
-                posi.x += defaultPosi.x;
-
-                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::warped_fence;
-                
-            }
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::warped_fence;
+        }
 
 
 //floor
-    for (width = 15; width < 17; ++width){
-        for(depth = -5; depth < 1; ++depth){
-            height = -1; 
+    height = -1;
+    for(width = 20; width < 22; ++width){
+        for(depth = 0; depth < 6; ++depth){ 
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -596,9 +591,8 @@ void building::createHouse2(
         }
     }
 
-    for(width = 0; width < 31; ++width){
-        for(depth = 1; depth < 30; ++depth){
-            height = -1; 
+    for(width = 5; width < size.width -4; ++width){
+        for(depth = 6; depth < size.depth -5; ++depth){ 
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -611,9 +605,9 @@ void building::createHouse2(
 
 //floor stairs
 
-    for (width = 15; width < 17; ++width){
+    for (width = 20; width < 22; ++width){
         for (int i = 0; i < 5; ++i){
-            height = 4 - i; depth = 4 + i;
+            height = 4 - i; depth = 9 + i;
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -624,9 +618,9 @@ void building::createHouse2(
         }
     }
 
-    for (width = 1; width < 3; ++width){
+    for (width = 6; width < 8; ++width){
         for (int i = 0; i < 5; ++i){
-            height = 4 - i; depth = 4 + i;
+            height = 4 - i; depth = 9 + i;
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -638,10 +632,10 @@ void building::createHouse2(
     }
 
 // second floor
-    for(width = 17; width < 31; ++width){
+    for(width = 22; width < size.width -4; ++width){
         for(height = 5; height < 10; ++height){
-            for(depth = 0; depth < 31; ++depth){
-                if(depth == 0 || depth == 30){
+            for(depth = 5; depth < size.depth -4; ++depth){
+                if(depth == 5 || depth == 35){
                     posi.z = depth;
                     posi.x = width;
                     posi.rotation(facing);
@@ -655,9 +649,9 @@ void building::createHouse2(
     }
 
     for(height = 5; height < 10; ++height){
-        for(depth = 0; depth < 31; ++depth){
-            for(width = 17; width < 31; ++width){
-                if(width == 17 || width == 30){
+        for(depth = 5; depth < size.depth -4; ++depth){
+            for(width = 22; width < size.width -4; ++width){
+                if(width == 22 || width == 35){
                     posi.z = depth;
                     posi.x = width;
                     posi.rotation(facing);
@@ -670,10 +664,9 @@ void building::createHouse2(
         }
     }   
 
-    for(depth = 0; depth < 31; ++depth){
-        for(width = 17; width < 31; ++width){
-            height = 10;
-
+    height = 10;
+    for(depth = 5; depth < size.depth -4; ++depth){
+        for(width = 22; width < size.width -4; ++width){
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -684,10 +677,10 @@ void building::createHouse2(
         }
     } 
 
-    for(width = 0; width < 17; ++width){
+    for(width = 5; width < 22; ++width){
         for(height = 5; height < 11; ++height){
-            for(depth = 10; depth < 31; ++depth){
-                if(depth == 10 || depth == 30){
+            for(depth = 15; depth < size.depth -4; ++depth){
+                if(depth == 15 || depth == 35){
                 
                 posi.z = depth;
                 posi.x = width;
@@ -700,10 +693,9 @@ void building::createHouse2(
         }
     }
 
+    width = 5;
     for(height = 5; height < 10; ++height){
-        for(depth = 11; depth < 30; ++depth){
-            width = 0;
-
+        for(depth = 16; depth < size.depth -5; ++depth){
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -714,10 +706,9 @@ void building::createHouse2(
         }
     }
 
-    for(width = 0; width < 17; ++width){
-        for(depth = 11; depth < 30; ++depth){
-            height = 10;
-
+    height = 10;
+    for(width = 5; width < 22; ++width){
+        for(depth = 16; depth < size.depth -5; ++depth){
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -729,11 +720,10 @@ void building::createHouse2(
     }
 
 // root to go up second floor
-    for(width = 0; width < 30; ++width){
-        for(depth = 5; depth < 10; ++depth){
-            if( width == 15 || width == 16 || width == 2 || width == 1){
-                height = 4; 
-
+    height = 4; 
+    for(width = 5; width < size.width -5; ++width){
+        for(depth = 10; depth < 15; ++depth){
+            if( width == 21 || width == 20 || width == 7 || width == 6){
                 posi.z = depth;
                 posi.x = width;
                 posi.rotation(facing);
@@ -745,10 +735,9 @@ void building::createHouse2(
     }
 
 //second floor entry
-    for(depth = 2; depth < 4; ++depth){
+    width = 22;
+    for(depth = 7; depth < 9; ++depth){
         for (height = 5; height < 8; ++height){
-            width = 17;
-
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -758,10 +747,9 @@ void building::createHouse2(
         }
     }
 
-    for(depth = 24; depth < 26; ++depth){
+    width = 22;
+    for(depth = 29; depth < size.depth -9; ++depth){
         for (height = 5; height < 8; ++height){
-            width = 17;
-
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -772,9 +760,8 @@ void building::createHouse2(
     }
 
 //second floor pool
-    for (width = 4; width < 17; ++width){
-        height = 5; depth = 22;
-
+    height = 5; depth = 27;
+    for (width = 9; width < 22; ++width){
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
@@ -783,9 +770,8 @@ void building::createHouse2(
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
     }
 
-    for (depth = 10; depth < 22; ++depth){
-        height = 5; width = 4;
-
+    height = 5; width = 9;
+    for (depth = 15; depth < 27; ++depth){
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
@@ -794,10 +780,9 @@ void building::createHouse2(
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
     }
 
-    for (width = 5; width < 17; ++width){
-        for (depth = 11; depth < 22; ++depth){
-            height = 5;
-
+    height = 5;
+    for (width = 10; width < 22; ++width){
+        for (depth = 16; depth < 27; ++depth){
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -809,9 +794,9 @@ void building::createHouse2(
 
 
 //third floor
-    for(width = 20; width < 28; ++width){
+    for(width = 25; width < size.width -7; ++width){
         for(height = 11; height < 16; ++height){
-            depth = 3;
+            depth = 8;
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -819,7 +804,7 @@ void building::createHouse2(
             posi.x += defaultPosi.x;
             (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
 
-            depth = 27;
+            depth = 32;
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -829,9 +814,9 @@ void building::createHouse2(
         }
     }
 
-    for(depth = 3; depth < 27; ++depth){
+    for(depth = 8; depth < size.depth -8; ++depth){
         for(height = 11; height < 16; ++height){
-            width = 20;
+            width = 25;
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -839,7 +824,7 @@ void building::createHouse2(
             posi.x += defaultPosi.x;
             (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
             
-            width = 27;
+            width = 32;
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -849,9 +834,9 @@ void building::createHouse2(
         }
     }
 
-    for(width = 20; width < 28; ++width){
-        for(depth = 3; depth < 28; ++depth){
-            height =16; 
+    height =16;
+    for(width = 25; width < size.width -7; ++width){
+        for(depth = 8; depth < size.depth -7; ++depth){ 
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -862,9 +847,9 @@ void building::createHouse2(
     }
 
 //third floor roof
-    for(depth = 6; depth < 25; ++depth){
+    for(depth = 11; depth < size.depth -9; ++depth){
         for(int i = 0; i < 4; i++){
-            width = 20 + i; height = 16 + i;
+            width = 25 + i; height = 16 + i;
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -874,9 +859,9 @@ void building::createHouse2(
         }
     }
 
-    for(depth = 6; depth < 25; ++depth){
+    for(depth = 11; depth < 30; ++depth){
         for(int i = 0; i < 4; i++){
-            width = 24 + i; height = 19 - i;
+            width = 29 + i; height = 19 - i;
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -886,9 +871,9 @@ void building::createHouse2(
         }
     }
 
-    for(depth = 25; depth < 27; ++depth){
-        for(width = 21; width < 27; ++width){
-            height = 17;
+    height = 17;
+    for(depth = 30; depth < size.depth -8; ++depth){
+        for(width = 26; width < size.width -8; ++width){
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -898,9 +883,9 @@ void building::createHouse2(
         }
     }
 
-    for(depth = 25; depth < 26; ++depth){
-        for(width = 22; width < 26; ++width){
-            height = 18;
+    height = 18;
+    for(depth = 30; depth < size.depth -9; ++depth){
+        for(width = 27; width < size.width -9; ++width){
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -910,9 +895,9 @@ void building::createHouse2(
         }
     }
 
-    for(depth = 4; depth < 6; ++depth){
-        for(width = 21; width < 27; ++width){
-            height = 17;
+    height = 17;
+    for(depth = 9; depth < 11; ++depth){
+        for(width = 26; width < size.width -8; ++width){
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -922,9 +907,9 @@ void building::createHouse2(
         }
     }
 
-    for(depth = 5; depth < 6; ++depth){
-        for(width = 22; width < 26; ++width){
-            height = 18;
+    height = 18;
+    for(depth = 10; depth < 11; ++depth){
+        for(width = 27; width < size.width-9; ++width){
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -935,9 +920,9 @@ void building::createHouse2(
     }
 
 //third floor stair roof
-    for(depth = 6; depth < 25; ++depth){
+    for(depth = 11; depth < 30; ++depth){
         for(int i = 0; i < 5; i++){
-            width = 19 + i; height = 16 + i;
+            width = 24 + i; height = 16 + i;
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -948,9 +933,9 @@ void building::createHouse2(
         }
     }
 
-    for(depth = 6; depth < 25; ++depth){
+    for(depth = 11; depth < 30; ++depth){
         for(int i = 0; i < 5; i++){
-            width = 24 + i; height = 20 - i;
+            width = 29 + i; height = 20 - i;
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -961,9 +946,9 @@ void building::createHouse2(
         }
     }
 
-    for(width = 23; width < 25; ++width){
+    for(width = 28; width < 30; ++width){
         for(int i = 0; i < 5; i++){
-            depth = 2 + i; height = 16 + i;
+            depth = 7 + i; height = 16 + i;
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -974,48 +959,9 @@ void building::createHouse2(
         }
     }
 
-    for(width = 23; width < 25; ++width){
+    for(width = 28; width < 30; ++width){
         for(int i = 0; i < 5; i++){
-            depth = 24 + i; height = 20 - i;
-            posi.z = depth;
-            posi.x = width;
-            posi.rotation(facing);
-            posi.z += defaultPosi.z;
-            posi.x += defaultPosi.x;
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
-        }
-    }
-
-    for(width = 20; width < 23; ++width){
-        for(int i = 0; i < 2; i++){
-            height = 16 + i; depth = 2 + i;
-            posi.z = depth;
-            posi.x = width;
-            posi.rotation(facing);
-            posi.z += defaultPosi.z;
-            posi.x += defaultPosi.x;
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
-        }
-    }
-
-    for(width = 25; width < 28; ++width){
-        for(int i = 0; i < 2; i++){
-            height = 16 + i; depth = 2 + i;
-            posi.z = depth;
-            posi.x = width;
-            posi.rotation(facing);
-            posi.z += defaultPosi.z;
-            posi.x += defaultPosi.x;
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
-        }
-    }
-
-    for(width = 20; width < 23; ++width){
-        for(int i = 0; i < 2; i++){
-            height = 17 - i; depth = 27 + i;
+            depth = 29 + i; height = 20 - i;
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -1028,7 +974,33 @@ void building::createHouse2(
 
     for(width = 25; width < 28; ++width){
         for(int i = 0; i < 2; i++){
-            height = 17 - i; depth = 27 + i;
+            height = 16 + i; depth = 7 + i;
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
+        }
+    }
+
+    for(width = 30; width < size.width -7; ++width){
+        for(int i = 0; i < 2; i++){
+            height = 16 + i; depth = 7 + i;
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
+        }
+    }
+
+    for(width = 25; width < 28; ++width){
+        for(int i = 0; i < 2; i++){
+            height = 17 - i; depth = 32 + i;
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -1039,9 +1011,22 @@ void building::createHouse2(
         }
     }
 
-    for(depth = 25; depth < 28; ++depth){
+    for(width = 30; width < size.width-7; ++width){
         for(int i = 0; i < 2; i++){
-            height = 17 - i; width = 27 + i;
+            height = 17 - i; depth = 32 + i;
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+        }
+    }
+
+    for(depth = 30; depth < size.depth -7; ++depth){
+        for(int i = 0; i < 2; i++){
+            height = 17 - i; width = 32 + i;
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -1052,9 +1037,9 @@ void building::createHouse2(
         }
     }
 
-    for(depth = 3; depth < 6; ++depth){
+    for(depth = 8; depth < 11; ++depth){
         for(int i = 0; i < 2; i++){
-            height = 17 - i; width = 27 + i;
+            height = 17 - i; width = 32 + i;
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -1065,9 +1050,9 @@ void building::createHouse2(
         }
     }
     
-    for(depth = 25; depth < 28; ++depth){
+    for(depth = 29; depth < size.depth -7; ++depth){
         for(int i = 0; i < 2; i++){
-            height = 16 + i; width = 19 + i;
+            height = 16 + i; width = 24 + i;
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -1078,9 +1063,9 @@ void building::createHouse2(
         }
     }
 
-    for(depth = 3; depth < 6; ++depth){
+    for(depth = 8; depth < 11; ++depth){
         for(int i = 0; i < 2; i++){
-            height = 16 + i; width = 19 + i;
+            height = 16 + i; width = 24 + i;
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -1091,7 +1076,7 @@ void building::createHouse2(
         }
     }
 
-    height = 16; width = 19; depth = 2; 
+    height = 16; width = 24; depth = 7; 
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -1100,7 +1085,7 @@ void building::createHouse2(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
 
-    width = 28;
+    width = 33;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -1109,7 +1094,7 @@ void building::createHouse2(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
 
-    depth = 28;
+    depth = 33;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -1118,7 +1103,7 @@ void building::createHouse2(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
 
-    width = 19;
+    width = 24;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -1127,7 +1112,7 @@ void building::createHouse2(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
 
-    width = 21; height = 18; depth = 4;
+    width = 26; height = 18; depth = 9;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -1136,7 +1121,7 @@ void building::createHouse2(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
 
-    depth = 5; 
+    depth = 10; 
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -1145,7 +1130,7 @@ void building::createHouse2(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
 
-    depth = 25;
+    depth = 30;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -1154,7 +1139,7 @@ void building::createHouse2(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
 
-    depth = 26;
+    depth = 31;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -1163,7 +1148,7 @@ void building::createHouse2(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
 
-    width = 26; 
+    width = 31; 
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -1172,7 +1157,7 @@ void building::createHouse2(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
 
-    depth = 25; 
+    depth = 30; 
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -1181,7 +1166,7 @@ void building::createHouse2(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
 
-    depth = 5;
+    depth = 10;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -1190,7 +1175,7 @@ void building::createHouse2(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
 
-    depth = 4;
+    depth = 9;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -1199,7 +1184,7 @@ void building::createHouse2(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
 
-    width = 22; height = 18;
+    width = 27; height = 18;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -1208,7 +1193,7 @@ void building::createHouse2(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
 
-    height = 19; depth = 5;
+    height = 19; depth = 10;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -1217,7 +1202,7 @@ void building::createHouse2(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
 
-    depth = 25;
+    depth = 30;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -1226,7 +1211,7 @@ void building::createHouse2(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
 
-    depth = 26; height = 18;
+    depth = 31; height = 18;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -1235,7 +1220,7 @@ void building::createHouse2(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
 
-    width = 25;
+    width = 30;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -1244,7 +1229,7 @@ void building::createHouse2(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
 
-    height = 19; depth = 25;
+    height = 19; depth = 30;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -1253,7 +1238,7 @@ void building::createHouse2(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
 
-    depth = 5;
+    depth = 10;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -1262,7 +1247,7 @@ void building::createHouse2(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_stairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
 
-    depth = 4; height = 18;
+    depth = 9; height = 18;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -1273,10 +1258,9 @@ void building::createHouse2(
 
 
 //third floor entry
-    for(depth = 24; depth < 26; ++depth){
+    width = 25;
+    for(depth = 29; depth < size.depth -9; ++depth){
         for (height = 11; height < 14; ++height){
-            width = 20;
-
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -1288,10 +1272,10 @@ void building::createHouse2(
     }
 
 //secondfloor stairs
-    for(width = 4; width < 14; ++width){
-        if(width == 4 || width == 13){
-                depth = 4; height = 5;
-                posi.z = depth;
+    for(width = 9; width < 19; ++width){
+        if(width == 9 || width == 18){
+            depth = 9; height = 5;
+            posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
             posi.z += defaultPosi.z;
@@ -1299,7 +1283,7 @@ void building::createHouse2(
                 (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
             }   
         
-        for(depth = 5; depth < 10; ++depth){
+        for(depth = 10; depth < 15; ++depth){
             height = 5;
             posi.z = depth;
             posi.x = width;
@@ -1308,7 +1292,7 @@ void building::createHouse2(
             posi.x += defaultPosi.x;
 
             (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
-            if(width == 4 || width == 13){
+            if(width == 9 || width == 18){
                 height = 6;
                 posi.z = depth;
                 posi.x = width;
@@ -1320,7 +1304,7 @@ void building::createHouse2(
             }   
         }
 
-        for(depth = 6; depth < 10; ++depth){
+        for(depth = 11; depth < 15; ++depth){
             height = 6;
             posi.z = depth;
             posi.x = width;
@@ -1328,7 +1312,7 @@ void building::createHouse2(
             posi.z += defaultPosi.z;
             posi.x += defaultPosi.x;
             (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
-            if(width == 4 || width == 13){
+            if(width == 9 || width == 18){
                 height = 7;
                 posi.z = depth;
                 posi.x = width;
@@ -1339,7 +1323,7 @@ void building::createHouse2(
             }   
         }
 
-        for(depth = 7; depth < 10; ++depth){
+        for(depth = 12; depth < 15; ++depth){
             height = 7;
             posi.z = depth;
             posi.x = width;
@@ -1348,7 +1332,7 @@ void building::createHouse2(
             posi.x += defaultPosi.x;
 
             (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
-            if(width == 4 || width == 13){
+            if(width == 9 || width == 18){
                 height = 8;
                 posi.z = depth;
                 posi.x = width;
@@ -1359,7 +1343,7 @@ void building::createHouse2(
             }   
         }
 
-        for(depth = 8; depth < 10; ++depth){
+        for(depth = 13; depth < 15; ++depth){
             height = 8;
             posi.z = depth;
             posi.x = width;
@@ -1368,7 +1352,7 @@ void building::createHouse2(
             posi.x += defaultPosi.x;
 
             (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
-            if(width == 4 || width == 13){
+            if(width == 9|| width == 18){
                 height = 9;
                 posi.z = depth;
                 posi.x = width;
@@ -1380,16 +1364,16 @@ void building::createHouse2(
             }   
         }
 
-        for(depth = 9; depth < 10; ++depth){
+        for(depth = 14; depth < 15; ++depth){
             height = 9;
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
             posi.z += defaultPosi.z;
             posi.x += defaultPosi.x;
-
+            
             (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
-            if(width == 4 || width == 13){
+            if(width == 9 || width == 18){
                 height = 10;
                 posi.z = depth;
                 posi.x = width;
