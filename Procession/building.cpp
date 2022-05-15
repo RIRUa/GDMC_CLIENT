@@ -541,8 +541,8 @@ void building::createHouse2(
         }
     }
 
-    height = 0; depth = 40;
-    for(width = 0; width < size.width +1; ++width){
+    height = 0; depth = 39;
+    for(width = 0; width < size.width ; ++width){
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
@@ -554,7 +554,7 @@ void building::createHouse2(
         }
 
     height = 0; width = 40;
-    for(depth = 0; depth < size.depth +1; ++depth){
+    for(depth = 0; depth < size.depth ; ++depth){
 
         posi.z = depth;
         posi.x = width;
@@ -566,7 +566,7 @@ void building::createHouse2(
         }
     
     height = 0; width = 0;
-    for(depth = 0; depth < size.depth +1; ++depth){
+    for(depth = 0; depth < size.depth ; ++depth){
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
