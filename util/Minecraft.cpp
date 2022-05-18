@@ -237,6 +237,9 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "sea_lantern";
             break;
             
+        case Minecraft::MinecraftBlock::redstoneLamp:
+            blockName += "redstone_lamp";
+            break;
         /***** レッドストーン系 *****/
 
         /********** 信号を伝えたりするもの **********/
@@ -302,6 +305,10 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             
         case Minecraft::MinecraftBlock::observer:
             blockName += "observer";
+
+        case Minecraft::MinecraftBlock::daylight_detector_inverted:
+            blockName += "daylight_detector_inverted";
+
             break;
         /***** その他 *****/
         case Minecraft::MinecraftBlock::rail:
@@ -318,6 +325,14 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
         
         case Minecraft::MinecraftBlock::bookshelf:
             blockName += "bookshelf";
+            break;
+
+        case Minecraft::MinecraftBlock::chain:
+            blockName += "chain";
+            break;
+
+        case Minecraft::MinecraftBlock::white_carpet:
+            blockName += "carpet";
             break;
 
         default:
