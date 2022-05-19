@@ -307,7 +307,7 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "observer";
 
         case Minecraft::MinecraftBlock::daylight_detector_inverted:
-            blockName += "daylight_detector_inverted";
+            blockName += "daylight_detector[inverted=true]";
 
             break;
         /***** その他 *****/
@@ -332,7 +332,7 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             break;
 
         case Minecraft::MinecraftBlock::white_carpet:
-            blockName += "carpet";
+            blockName += "white_carpet";
             break;
 
         default:
