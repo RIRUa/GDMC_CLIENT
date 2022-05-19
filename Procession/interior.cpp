@@ -830,6 +830,7 @@ void interior::streetlight1(
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartz_stairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::South);
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half=top";
 
     depth = 3;
     posi.z = depth;
@@ -838,8 +839,8 @@ void interior::streetlight1(
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartz_stairs;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::North);
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half=top";
 
     depth = 2; width = 0;
     posi.z = depth;
@@ -848,8 +849,8 @@ void interior::streetlight1(
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartz_stairs;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::East);
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half=top";
 
     width = 2;
     posi.z = depth;
@@ -858,8 +859,8 @@ void interior::streetlight1(
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartz_stairs;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::West);
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half=top";
 
     //上の支え
     height = 5;
