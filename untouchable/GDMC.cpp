@@ -70,6 +70,7 @@ std::string GDMC::setBlocks(const WN::Vec3 center, const Minecraft::blockInfoOf3
                         return "";
                     }
                     i = 0;
+                    blocks = "";
                 }
                 blocks += block.getTildeText();
             }
