@@ -952,7 +952,9 @@ void interior::streetlight1(
     posi.rotation(facing);
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::daylight_detector_inverted;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::daylight_detector;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "inverted=true";
+
 
     //白のカーペット
     height = 6;
@@ -995,7 +997,8 @@ void interior::streetlight2(
     posi.rotation(facing);
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::daylight_detector_inverted;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::daylight_detector;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "inverted=true";
 
     width = 1;
     posi.z = depth;
@@ -1003,7 +1006,8 @@ void interior::streetlight2(
     posi.rotation(facing);
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::daylight_detector_inverted;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::daylight_detector;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "inverted=true";
 
     //ランプ
     height = 4;

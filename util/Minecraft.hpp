@@ -196,8 +196,8 @@ namespace Minecraft {
         detectorRail,
         //オブザーバー
         observer,
-        //月照センサー
-        daylight_detector_inverted,
+        //日照センサー
+        daylight_detector,
 
         /***** その他 *****/
         // レール
