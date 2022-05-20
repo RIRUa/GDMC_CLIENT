@@ -155,6 +155,8 @@ namespace Minecraft {
         jack_o_lantern,
         // シーランタン
         seaLantern,
+        //レッドストーンランプ
+        redstoneLamp,
 
         /***** レッドストーン系 *****/
 
@@ -194,6 +196,8 @@ namespace Minecraft {
         detectorRail,
         //オブザーバー
         observer,
+        //日照センサー
+        daylight_detector,
 
         /***** その他 *****/
         // レール
@@ -204,6 +208,10 @@ namespace Minecraft {
         beacon,
         //本棚
         bookshelf,
+        //鎖
+        chain,
+        //白のカーペット
+        white_carpet,
     };
 
     std::string getMinecraftBlockName(MinecraftBlock block, std::string addition);

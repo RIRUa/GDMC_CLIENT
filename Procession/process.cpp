@@ -139,3 +139,46 @@ void  Process::createHouse2(const WN::Vec3 &center) {
                            std::vector<int>{5, 11}
                            );
 }
+
+void  Process::streetlight1(const WN::Vec3 &center) {
+    WN::EveryDirection directions = WN::EveryDirection();
+    const houseSize size = {40,40};
+
+    WN::direction facing = WN::direction::North;
+
+    WN::Vec3 defaultPosi(
+                         this->area.x/2 + center.x - size.width/2,
+                         this->groundHeight,
+                         this->area.z/2 + center.z - size.depth/2
+                         );
+
+    interior::streetlight1(
+                           this->createArea,
+                           center,
+                           facing,
+                           defaultPosi,
+                           size
+                           );
+}
+
+void  Process::streetlight2(const WN::Vec3 &center) {
+    WN::EveryDirection directions = WN::EveryDirection();
+    const houseSize size = {40,40};
+
+    WN::direction facing = WN::direction::North;
+
+    WN::Vec3 defaultPosi(
+                         this->area.x/2 + center.x - size.width/2,
+                         this->groundHeight,
+                         this->area.z/2 + center.z - size.depth/2
+                         );
+
+    interior::streetlight2(
+                           this->createArea,
+                           center,
+                           facing,
+                           defaultPosi,
+                           size
+                           );
+}
+
