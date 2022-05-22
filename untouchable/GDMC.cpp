@@ -57,17 +57,28 @@ std::string GDMC::setBlocks(const WN::Vec3 center, const Minecraft::blockInfoOf3
     std::string result;
     std::string url = "http://localhost:9000/blocks?x="+std::to_string(center.x)+"&y="+std::to_string(center.y)+"&z="+std::to_string(center.z);
     std::string blocks = "";
+    int i = 0;
     
     for (auto &block2d : info) {
         for (auto &block1d : block2d) {
             for (auto block : block1d) {
+                i++;
+                if (i >= 4000) {
+                    try {
+                        result += this->httpPut(url, blocks);
+                    } catch (error) {
+                        return "";
+                    }
+                    i = 0;
+                    blocks = "";
+                }
                 blocks += block.getTildeText();
             }
         }
     }
     
     try {
-        result = this->httpPut(url, blocks);
+        result += this->httpPut(url, blocks);
     } catch (error) {
         return "";
     }
