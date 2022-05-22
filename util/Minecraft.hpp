@@ -160,6 +160,8 @@ namespace Minecraft {
         jack_o_lantern,
         // シーランタン
         seaLantern,
+        //レッドストーンランプ
+        redstoneLamp,
 
         /***** レッドストーン系 *****/
 
@@ -199,6 +201,8 @@ namespace Minecraft {
         detectorRail,
         //オブザーバー
         observer,
+        //日照センサー
+        daylight_detector,
         //ディスペンサー
         dispenser,
         //ホッパー
@@ -213,6 +217,10 @@ namespace Minecraft {
         beacon,
         //本棚
         bookshelf,
+        //鎖
+        chain,
+        //白のカーペット
+        white_carpet,
         //チェスト
         chest,
         // 小麦の種

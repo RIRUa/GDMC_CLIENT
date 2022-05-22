@@ -15,7 +15,7 @@ Process::~Process() {
 }
 
 bool Process::init() {
-    
+    this->commands = "";
     this->createArea = std::make_shared< Minecraft::blockInfoOf3D >();
     Minecraft::initBlockInfoOf3D(
                                  *(this->createArea),
@@ -24,12 +24,25 @@ bool Process::init() {
                                  );
     this->possibility = std::make_shared< possibilities >( this->area.z, std::vector< bool >(this->area.x, true) );
     
+    WN::Vec3 defaultPosi(
+                         this->area.x/2,
+                         this->groundHeight,
+                         this->area.z/2
+                         );
     int height;
+    const double PI = std::acos(-1.0);
+    double sita = 0.0;
+    int radius = 0;
+    WN::Vec3 posi(0,0,0);
     
+    // sita += (PI / 1000)のところはもう少し良いアルゴリズムを探すべきかも
     for (height = 0; height < this->groundHeight; ++height) {
-        for (auto &block1d : (*this->createArea)[height]) {
-            for (auto &block : block1d) {
-                block.block = Minecraft::MinecraftBlock::stone;
+        for (sita = 0.0; sita < 2 * PI; sita += (PI / 1000)) {
+            for (radius = (this->area.x / 2 - 1); radius >= 0; radius -= 1) {
+                posi.x = static_cast<WN::position>( std::round( double(radius) * std::cos(sita) ) );
+                posi.z = static_cast<WN::position>( std::round( double(radius) * std::sin(sita) ) );
+                (*this->createArea)[height][defaultPosi.z + posi.z][defaultPosi.x + posi.x].block = Minecraft::MinecraftBlock::lightGrayConcrete;
+                
             }
         }
     }
@@ -44,6 +57,7 @@ bool Process::sendData() {
     session.setBlocks(WN::Vec3(0, 4, 0),
                       *(this->createArea)
                       );
+    session.command(this->commands);
     
     return true;
 }
@@ -73,7 +87,8 @@ void Process::createHouse1(const WN::Vec3 &center) {
                            center,
                            facing,
                            defaultPosi,
-                           size
+                           size,
+                           this->commands
                            );
     
     interior::createHouse1(
@@ -81,7 +96,8 @@ void Process::createHouse1(const WN::Vec3 &center) {
                            center,
                            facing,
                            defaultPosi,
-                           size
+                           size,
+                           this->commands
                            );
     
     WN::Vec3 doorPosi(19, this->groundHeight + 1, 10);
@@ -115,7 +131,8 @@ void  Process::createHouse2(const WN::Vec3 &center) {
                            center,
                            facing,
                            defaultPosi,
-                           size
+                           size,
+                           this->commands
                            );
                         
     interior::createHouse2(
@@ -123,7 +140,8 @@ void  Process::createHouse2(const WN::Vec3 &center) {
                            center,
                            facing,
                            defaultPosi,
-                           size
+                           size,
+                           this->commands
                            );
 
     WN::Vec3 elePosi(10, this->groundHeight , 34);
@@ -137,6 +155,50 @@ void  Process::createHouse2(const WN::Vec3 &center) {
                            elePosi,
                            13,
                            std::vector<int>{5, 11}
+                           );
+}
+
+void  Process::streetlight1(const WN::Vec3 &center) {
+    WN::EveryDirection directions = WN::EveryDirection();
+    const houseSize size = {40,40};
+
+    WN::direction facing = WN::direction::North;
+
+    WN::Vec3 defaultPosi(
+                         this->area.x/2 + center.x - size.width/2,
+                         this->groundHeight,
+                         this->area.z/2 + center.z - size.depth/2
+                         );
+
+    interior::streetlight1(
+                           this->createArea,
+                           center,
+                           facing,
+                           defaultPosi,
+                           size,
+                           this->commands
+                           );
+}
+
+void  Process::streetlight2(const WN::Vec3 &center) {
+    WN::EveryDirection directions = WN::EveryDirection();
+    const houseSize size = {40,40};
+
+    WN::direction facing = WN::direction::North;
+
+    WN::Vec3 defaultPosi(
+                         this->area.x/2 + center.x - size.width/2,
+                         this->groundHeight,
+                         this->area.z/2 + center.z - size.depth/2
+                         );
+
+    interior::streetlight2(
+                           this->createArea,
+                           center,
+                           facing,
+                           defaultPosi,
+                           size,
+                           this->commands
                            );
 }
 
@@ -168,3 +230,4 @@ void  Process::automaticWaterField(const WN::Vec3 &center) {
                            size
                            );
 }
+

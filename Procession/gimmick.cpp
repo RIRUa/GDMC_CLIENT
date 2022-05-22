@@ -184,8 +184,6 @@ void gimmick::waterElevator(
                             int elevatorHeight,
                             const std::vector< int > &floor
                             ) {
-    /** 使用変数の定義**/
-    int wallCounter = 0;
     // 方角指定
     WN::EveryDirection directions = WN::EveryDirection(facing);
     // for用

@@ -20,12 +20,14 @@ using possibilities = std::vector< std::vector<bool> >;
 
 class Process {
     // width, height, depth
-    const WN::Vec3 area = WN::Vec3(100, 30, 100);
+    const WN::Vec3 area = WN::Vec3(300, 30, 300);
     // 地面の高さ（+1すると空気）
     const int groundHeight = 5;
     
     std::shared_ptr< Minecraft::blockInfoOf3D > createArea;
     std::shared_ptr< possibilities > possibility;
+    
+    std::string commands;
     
 public:
     Process();
@@ -36,7 +38,8 @@ public:
     
     void createHouse1(const WN::Vec3 &center);
     void createHouse2(const WN::Vec3 &center);
-
+    void streetlight1(const WN::Vec3 &center);
+    void streetlight2(const WN::Vec3 &center);
     void automaticWaterField(const WN::Vec3 &center);
 };
 
