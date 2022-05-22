@@ -24,12 +24,25 @@ bool Process::init() {
                                  );
     this->possibility = std::make_shared< possibilities >( this->area.z, std::vector< bool >(this->area.x, true) );
     
+    WN::Vec3 defaultPosi(
+                         this->area.x/2,
+                         this->groundHeight,
+                         this->area.z/2
+                         );
     int height;
+    const double PI = std::acos(-1.0);
+    double sita = 0.0;
+    int radius = 0;
+    WN::Vec3 posi(0,0,0);
     
+    // sita += (PI / 1000)のところはもう少し良いアルゴリズムを探すべきかも
     for (height = 0; height < this->groundHeight; ++height) {
-        for (auto &block1d : (*this->createArea)[height]) {
-            for (auto &block : block1d) {
-                block.block = Minecraft::MinecraftBlock::stone;
+        for (sita = 0.0; sita < 2 * PI; sita += (PI / 1000)) {
+            for (radius = (this->area.x / 2 - 1); radius >= 0; radius -= 1) {
+                posi.x = static_cast<WN::position>( std::round( double(radius) * std::cos(sita) ) );
+                posi.z = static_cast<WN::position>( std::round( double(radius) * std::sin(sita) ) );
+                (*this->createArea)[height][defaultPosi.z + posi.z][defaultPosi.x + posi.x].block = Minecraft::MinecraftBlock::lightGrayConcrete;
+                
             }
         }
     }
