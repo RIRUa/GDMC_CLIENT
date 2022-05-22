@@ -19,7 +19,7 @@ public:
     GDMC();
     ~GDMC();
     
-    std::string command(std::string commandText);
+    std::string command(const std::string &commandText);
     std::string getBlock(int x, int y, int z);
     std::string getBlockMoreInfo(int x, int y, int z);
     std::string setBlock(const Minecraft::blockInfo &info);

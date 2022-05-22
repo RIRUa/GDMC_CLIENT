@@ -14,7 +14,7 @@ GDMC::GDMC(){
 GDMC::~GDMC(){
 }
 
-std::string GDMC::command(std::string commandText){
+std::string GDMC::command(const std::string &commandText){
     std::string response;
     std::string url = "http://localhost:9000/command";
     try {
