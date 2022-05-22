@@ -15,7 +15,7 @@ Process::~Process() {
 }
 
 bool Process::init() {
-    
+    this->commands = "";
     this->createArea = std::make_shared< Minecraft::blockInfoOf3D >();
     Minecraft::initBlockInfoOf3D(
                                  *(this->createArea),
@@ -57,6 +57,7 @@ bool Process::sendData() {
     session.setBlocks(WN::Vec3(0, 4, 0),
                       *(this->createArea)
                       );
+    session.command(this->commands);
     
     return true;
 }
@@ -86,7 +87,8 @@ void Process::createHouse1(const WN::Vec3 &center) {
                            center,
                            facing,
                            defaultPosi,
-                           size
+                           size,
+                           this->commands
                            );
     
     interior::createHouse1(
@@ -94,7 +96,8 @@ void Process::createHouse1(const WN::Vec3 &center) {
                            center,
                            facing,
                            defaultPosi,
-                           size
+                           size,
+                           this->commands
                            );
     
     WN::Vec3 doorPosi(19, this->groundHeight + 1, 10);
@@ -128,7 +131,8 @@ void  Process::createHouse2(const WN::Vec3 &center) {
                            center,
                            facing,
                            defaultPosi,
-                           size
+                           size,
+                           this->commands
                            );
                         
     interior::createHouse2(
@@ -136,7 +140,8 @@ void  Process::createHouse2(const WN::Vec3 &center) {
                            center,
                            facing,
                            defaultPosi,
-                           size
+                           size,
+                           this->commands
                            );
 
     WN::Vec3 elePosi(10, this->groundHeight , 34);
@@ -170,7 +175,8 @@ void  Process::streetlight1(const WN::Vec3 &center) {
                            center,
                            facing,
                            defaultPosi,
-                           size
+                           size,
+                           this->commands
                            );
 }
 
@@ -191,7 +197,8 @@ void  Process::streetlight2(const WN::Vec3 &center) {
                            center,
                            facing,
                            defaultPosi,
-                           size
+                           size,
+                           this->commands
                            );
 }
 
