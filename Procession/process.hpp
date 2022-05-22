@@ -36,6 +36,8 @@ public:
     
     void createHouse1(const WN::Vec3 &center);
     void createHouse2(const WN::Vec3 &center);
+
+    void automaticWaterField(const WN::Vec3 &center);
 };
 
 #endif /* process_hpp */
