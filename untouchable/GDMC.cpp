@@ -14,6 +14,18 @@ GDMC::GDMC(){
 GDMC::~GDMC(){
 }
 
+std::string GDMC::command(const std::string &commandText){
+    std::string response;
+    std::string url = "http://localhost:9000/command";
+    try {
+        response = this->httpPost(url, commandText);
+    } catch (error) {
+        return "error";
+    }
+    
+    return response;
+}
+
 std::string GDMC::getBlock(int x, int y, int z){
     std::string blockName;
     std::string url = "http://localhost:9000/blocks?x="+std::to_string(x)+"&y="+std::to_string(y)+"&z="+std::to_string(z);

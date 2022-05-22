@@ -13,7 +13,8 @@ void interior::createHouse1(
                             const WN::Vec3 &center,
                             WN::direction facing,
                             const WN::Vec3 &defaultPosi,
-                            const houseSize &size
+                            const houseSize &size,
+                            std::string &commands
                             ) {
     WN::EveryDirection directions = WN::EveryDirection(facing);
     
@@ -144,7 +145,8 @@ void interior::createHouse2(
                             const WN::Vec3 &center,
                             WN::direction facing,
                             const WN::Vec3 &defaultPosi,
-                            const houseSize &size
+                            const houseSize &size,
+                            std::string &commands
                             ) {
     WN::EveryDirection directions = WN::EveryDirection(facing);
     
@@ -751,7 +753,8 @@ void interior::streetlight1(
                             const WN::Vec3 &center,
                             WN::direction facing,
                             const WN::Vec3 &defaultPosi,
-                            const houseSize &size
+                            const houseSize &size,
+                            std::string &commands
                             ) {
     WN::EveryDirection directions = WN::EveryDirection(facing);
     
@@ -971,7 +974,8 @@ void interior::streetlight2(
                             const WN::Vec3 &center,
                             WN::direction facing,
                             const WN::Vec3 &defaultPosi,
-                            const houseSize &size
+                            const houseSize &size,
+                            std::string &commands
                             ) {
     WN::EveryDirection directions = WN::EveryDirection(facing);
     

@@ -27,6 +27,8 @@ class Process {
     std::shared_ptr< Minecraft::blockInfoOf3D > createArea;
     std::shared_ptr< possibilities > possibility;
     
+    std::string commands;
+    
 public:
     Process();
     ~Process();
