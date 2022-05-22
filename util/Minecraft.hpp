@@ -38,6 +38,8 @@ namespace Minecraft {
         /***** 石材 *****/
         // 土
         dirt,
+        //耕地
+        farmland,
         // 草ブロック
         grassBlock,
         // 石
@@ -84,7 +86,9 @@ namespace Minecraft {
         /***** ハーフブロック *****/
         //ネザーレンガのハーフブロック
         nether_brick_slab,
-
+        //滑らかなクォーツのハーフブロック
+        smooth_quartz_slab,
+        
         /***** 木材 *****/
         // オークの木材
         oakPlanks,
@@ -121,6 +125,10 @@ namespace Minecraft {
         // 歪んだドア
         warpedDoor,
 
+        /***** トラップドア *****/
+        //マツのトラップドア
+        spruce_trapdoor,
+
         /***** フェンス *****/
         //ネザーレンガのフェンス
         nether_brick_fence,
@@ -132,9 +140,6 @@ namespace Minecraft {
         /***** ゲート *****/
         // 歪んだフェンスゲート
         warpedFenceGate,
-        
-
-        /***** その他 *****/
 
         /***** 光源 *****/
         // トーチ
@@ -194,6 +199,10 @@ namespace Minecraft {
         detectorRail,
         //オブザーバー
         observer,
+        //ディスペンサー
+        dispenser,
+        //ホッパー
+        hopper,
 
         /***** その他 *****/
         // レール
@@ -204,6 +213,14 @@ namespace Minecraft {
         beacon,
         //本棚
         bookshelf,
+        //チェスト
+        chest,
+        // 小麦の種
+        wheat,
+        //人参
+        carrots,
+        //じゃがいも
+        potatoes,
     };
 
     std::string getMinecraftBlockName(MinecraftBlock block, std::string addition);

@@ -40,6 +40,10 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
         case Minecraft::MinecraftBlock::dirt:
             blockName += "dirt";
             break;
+
+        case Minecraft::MinecraftBlock::farmland:
+            blockName += "farmland";
+            break;
         
         case Minecraft::MinecraftBlock::grassBlock:
             blockName += "grass_block";
@@ -121,6 +125,10 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "nether_brick_slab";
             break;
 
+        case Minecraft::MinecraftBlock::smooth_quartz_slab:
+            blockName += "smooth_quartz_slab";
+            break;
+
         /***** 階段 *****/
         case Minecraft::MinecraftBlock::smoothQuartzStairs:
             blockName += "smooth_quartz_stairs";
@@ -180,7 +188,13 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
         case Minecraft::MinecraftBlock::warpedDoor:
             blockName += "warped_door";
             break;
-            
+
+        //*****トラップドア *****/
+        //マツのトラップドア
+        case Minecraft::MinecraftBlock::spruce_trapdoor:
+            blockName += "spruce_trapdoor";
+            break;
+
         /***** フェンス *****/
         case Minecraft::MinecraftBlock::nether_brick_fence:
             blockName += "nether_brick_fence";
@@ -199,8 +213,6 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "warped_fence_gate";
             break;
             
-        /***** その他 *****/
-
         /***** 光源 *****/
         case Minecraft::MinecraftBlock::torch:
             blockName += "torch";
@@ -303,6 +315,15 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
         case Minecraft::MinecraftBlock::observer:
             blockName += "observer";
             break;
+
+        case Minecraft::MinecraftBlock::dispenser:
+            blockName += "dispenser";
+            break;
+        
+        case Minecraft::MinecraftBlock::hopper:
+            blockName += "hopper";
+            break;
+
         /***** その他 *****/
         case Minecraft::MinecraftBlock::rail:
             blockName += "rail";
@@ -318,6 +339,22 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
         
         case Minecraft::MinecraftBlock::bookshelf:
             blockName += "bookshelf";
+            break;
+
+        case Minecraft::MinecraftBlock::chest:
+            blockName += "chest";
+            break;
+        
+        case Minecraft::MinecraftBlock::wheat:
+            blockName += "wheat";
+            break;
+
+        case Minecraft::MinecraftBlock::carrots:
+            blockName += "carrots";
+            break;
+
+        case Minecraft::MinecraftBlock::potatoes:
+            blockName += "potatoes";
             break;
 
         default:
