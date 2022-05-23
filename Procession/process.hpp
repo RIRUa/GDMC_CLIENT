@@ -35,6 +35,7 @@ public:
     
     bool init();
     bool sendData();
+    void buildATown();
     
     void createHouse1(const WN::Vec3 &center);
     void createHouse2(const WN::Vec3 &center);

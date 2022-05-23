@@ -62,6 +62,12 @@ bool Process::sendData() {
     return true;
 }
 
+void Process::buildATown() {
+    
+}
+
+
+
 void Process::createHouse1(const WN::Vec3 &center) {
     WN::EveryDirection directions = WN::EveryDirection();
     
