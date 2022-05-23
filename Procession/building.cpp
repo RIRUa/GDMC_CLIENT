@@ -1395,7 +1395,8 @@ void building::automaticWaterField(
                             const WN::Vec3 &center,
                             WN::direction facing,
                             const WN::Vec3 &defaultPosi,
-                            const houseSize &size 
+                            const houseSize &size,
+                            std::string &commands
                             ) {
     WN::EveryDirection directions = WN::EveryDirection(facing);
     
@@ -1796,38 +1797,16 @@ void building::automaticWaterField(
         }
     }
 
-    height = 0; 
-    for(depth = 2; depth < 10; ++depth){
-        for(width = 1; width < 10; ++width){
-            if(width == 5){
-                continue;
-            } 
-            posi.z = depth;
-            posi.x = width;
-            posi.rotation(facing);
-            posi.z += defaultPosi.z;
-            posi.x += defaultPosi.x;
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::wheat;
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "age = 7";
-        }
-    }
+    // width = 0; height = 0; depth = -1;
+    // posi.z = depth;
+    // posi.x = width;
+    // posi.rotation(facing);
+    // posi.z += defaultPosi.z;
+    // posi.x += defaultPosi.x;
+    // (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::chest;
+    // (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::North);
 
-    height = 1;
-    for(depth = 10; depth < 16; ++depth){
-        for(width = 1; width < 10; ++width){
-            if(width == 5){
-                continue;
-            } 
-            posi.z = depth;
-            posi.x = width;
-            posi.rotation(facing);
-            posi.z += defaultPosi.z;
-            posi.x += defaultPosi.x;
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::wheat;
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "age = 7";
-        }
-    }
-
+    //commands += "replaceitem"" ""block"" ""0"" ""0"" ""-1"" ""container.4"" ""minecraft:apple"" ""1";
 }
 
 

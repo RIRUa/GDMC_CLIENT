@@ -1022,3 +1022,144 @@ void interior::streetlight2(
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneLamp;
 }
+
+void interior::potatoes(
+                            std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
+                            const WN::Vec3 &center,
+                            WN::direction facing,
+                            const WN::Vec3 &defaultPosi,
+                            const houseSize &size,
+                            std::string &commands
+                            ) {
+    WN::EveryDirection directions = WN::EveryDirection(facing);
+    
+    WN::Vec3 posi(0,0,0);
+    
+    int width, height, depth;
+
+    height = 0; 
+    for(depth = 2; depth < 10; ++depth){
+        for(width = 1; width < 10; ++width){
+            if(width == 5){
+                continue;
+            } 
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::potatoes;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "age = 7";
+        }
+    }
+
+    height = 1;
+    for(depth = 10; depth < 16; ++depth){
+        for(width = 1; width < 10; ++width){
+            if(width == 5){
+                continue;
+            } 
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::potatoes;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "age = 7";
+        }
+    }
+}
+
+void interior::carrots(
+                            std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
+                            const WN::Vec3 &center,
+                            WN::direction facing,
+                            const WN::Vec3 &defaultPosi,
+                            const houseSize &size,
+                            std::string &commands
+                            ) {
+    WN::EveryDirection directions = WN::EveryDirection(facing);
+    
+    WN::Vec3 posi(0,0,0);
+    
+    int width, height, depth;
+
+    height = 0; 
+    for(depth = 2; depth < 10; ++depth){
+        for(width = 1; width < 10; ++width){
+            if(width == 5){
+                continue;
+            } 
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::carrots;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "age = 7";
+        }
+    }
+
+    height = 1;
+    for(depth = 10; depth < 16; ++depth){
+        for(width = 1; width < 10; ++width){
+            if(width == 5){
+                continue;
+            } 
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::carrots;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "age = 7";
+        }
+    }
+}
+
+void interior::wheat(
+                            std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
+                            const WN::Vec3 &center,
+                            WN::direction facing,
+                            const WN::Vec3 &defaultPosi,
+                            const houseSize &size,
+                            std::string &commands
+                            ) {
+    WN::EveryDirection directions = WN::EveryDirection(facing);
+    
+    WN::Vec3 posi(0,0,0);
+    
+    int width, height, depth;
+
+    height = 0; 
+    for(depth = 2; depth < 10; ++depth){
+        for(width = 1; width < 10; ++width){
+            if(width == 5){
+                continue;
+            } 
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::wheat;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "age = 7";
+        }
+    }
+
+    height = 1;
+    for(depth = 10; depth < 16; ++depth){
+        for(width = 1; width < 10; ++width){
+            if(width == 5){
+                continue;
+            } 
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::wheat;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "age = 7";
+        }
+    }
+}

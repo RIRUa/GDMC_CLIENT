@@ -375,7 +375,8 @@ void gimmick::automaticWaterField(
                             const WN::Vec3 &center,
                             WN::direction facing,
                             const WN::Vec3 &defaultPosi,
-                            const houseSize &size 
+                            const houseSize &size,
+                            std::string &commands
                             ) {
     WN::EveryDirection directions = WN::EveryDirection(facing);
     
@@ -454,4 +455,6 @@ void gimmick::automaticWaterField(
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::dispenser;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
+
+    commands += "replaceitem"" ""block"" ""-15"" ""11"" ""-3"" ""container.4"" ""minecraft:water_bucket"" ""1";
 }

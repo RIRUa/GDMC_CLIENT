@@ -45,6 +45,30 @@ namespace interior {
                       std::string &commands
                       );
 
+    void potatoes(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
+                      const WN::Vec3 &center,
+                      WN::direction facing,
+                      const WN::Vec3 &defaultPosi,
+                      const houseSize &size,
+                      std::string &commands
+                      );
+
+    void carrots(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
+                      const WN::Vec3 &center,
+                      WN::direction facing,
+                      const WN::Vec3 &defaultPosi,
+                      const houseSize &size,
+                      std::string &commands
+                      );
+
+    void wheat(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
+                      const WN::Vec3 &center,
+                      WN::direction facing,
+                      const WN::Vec3 &defaultPosi,
+                      const houseSize &size,
+                      std::string &commands
+                      );
+
 }
 
 #endif /* interior_hpp */
