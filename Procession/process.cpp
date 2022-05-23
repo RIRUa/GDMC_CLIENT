@@ -202,89 +202,9 @@ void  Process::streetlight2(const WN::Vec3 &center) {
                            );
 }
 
-void  Process::automaticWaterField1(const WN::Vec3 &center) {
+    void  Process::automaticWaterField(const WN::Vec3 &center) {
     WN::EveryDirection directions = WN::EveryDirection();
-    const houseSize size = {40,40};
-
-    WN::direction facing = WN::direction::North;
-
-    WN::Vec3 defaultPosi(
-                         this->area.x/2 + center.x - size.width/2,
-                         this->groundHeight,
-                         this->area.z/2 + center.z - size.depth/2
-                         );
-
-    building::automaticWaterField(
-                           this->createArea,
-                           center,
-                           facing,
-                           defaultPosi,
-                           size,
-                           this->commands
-                           );
-
-    gimmick::automaticWaterField(
-                           this->createArea,
-                           center,
-                           facing,
-                           defaultPosi,
-                           size,
-                           this->commands
-                           );
-
-    interior::potatoes(
-                        this->createArea,
-                        center,
-                        facing,
-                        defaultPosi,
-                        size,
-                        this->commands
-                        );
-}
-
-    void  Process::automaticWaterField2(const WN::Vec3 &center) {
-    WN::EveryDirection directions = WN::EveryDirection();
-    const houseSize size = {40,40};
-
-    WN::direction facing = WN::direction::North;
-
-    WN::Vec3 defaultPosi(
-                         this->area.x/2 + center.x - size.width/2,
-                         this->groundHeight,
-                         this->area.z/2 + center.z - size.depth/2
-                         );
-
-    building::automaticWaterField(
-                           this->createArea,
-                           center,
-                           facing,
-                           defaultPosi,
-                           size,
-                           this->commands
-                           );
-
-    gimmick::automaticWaterField(
-                           this->createArea,
-                           center,
-                           facing,
-                           defaultPosi,
-                           size,
-                           this->commands
-                           );
-
-    interior::potatoes(
-                        this->createArea,
-                        center,
-                        facing,
-                        defaultPosi,
-                        size,
-                        this->commands
-                        );
-}
-
-    void  Process::automaticWaterField3(const WN::Vec3 &center) {
-    WN::EveryDirection directions = WN::EveryDirection();
-    const houseSize size = {40,40};
+    const houseSize size = {13,20};
 
     WN::direction facing = WN::direction::North;
 
@@ -312,7 +232,7 @@ void  Process::automaticWaterField1(const WN::Vec3 &center) {
                            this->commands
                            );
 
-    interior::wheat(
+    interior::farmProducts(
                         this->createArea,
                         center,
                         facing,

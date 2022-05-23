@@ -385,8 +385,8 @@ void gimmick::automaticWaterField(
     int width, height, depth;
 
     //レッドストーン回路
-    height = -1; width = 10; 
-    for(depth = 2; depth < 9; ++depth){
+    height = -1; width = size.width-2; 
+    for(depth = 3; depth < 10; ++depth){
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
@@ -395,7 +395,7 @@ void gimmick::automaticWaterField(
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
     }
 
-    height = -1; width = 10; depth = 9;
+    height = -1; width = size.width-2; depth = 10;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -403,8 +403,8 @@ void gimmick::automaticWaterField(
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::repeater;
 
-    height = 0; width = 10;
-    for(depth = 10; depth < 16; ++depth){
+    height = 0; width = size.width-2;
+    for(depth = 11; depth < size.depth-3; ++depth){
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
@@ -413,7 +413,7 @@ void gimmick::automaticWaterField(
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
     }
 
-    height = 0; width = 10; depth = 16;
+    height = 0; width = size.width-2; depth = size.depth-3;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -421,7 +421,7 @@ void gimmick::automaticWaterField(
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::repeater;
 
-    height = 0; width = 10; depth = 17;
+    height = 0; width = size.width-2; depth = size.depth-2;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -429,8 +429,8 @@ void gimmick::automaticWaterField(
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
 
-    depth = 17; 
-    for (width = 6; width < 10; ++width){
+    depth = size.depth-2; 
+    for (width = 7; width < size.width-2; ++width){
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
@@ -439,7 +439,7 @@ void gimmick::automaticWaterField(
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
     }
 
-    height = 1; width = 5; depth = 17; 
+    height = 1; width = 6; depth = size.depth-2; 
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -447,7 +447,7 @@ void gimmick::automaticWaterField(
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneTorch;
 
-    height = 2; width = 5; depth = 17;
+    height = 2; width = 6; depth = size.depth-2;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -455,6 +455,4 @@ void gimmick::automaticWaterField(
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::dispenser;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
-
-    commands += "replaceitem"" ""block"" ""-15"" ""11"" ""-3"" ""container.4"" ""minecraft:water_bucket"" ""1";
 }

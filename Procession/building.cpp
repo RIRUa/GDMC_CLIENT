@@ -1405,8 +1405,8 @@ void building::automaticWaterField(
     int width, height, depth;
 
     //空気
-    height = -1; depth = 1;
-    for(width = 1; width < 10; ++width){
+    height = -1; depth = 2;
+    for(width = 2; width < size.width -2; ++width){
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
@@ -1415,8 +1415,8 @@ void building::automaticWaterField(
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
     }
 
-    height = -1; depth = 0;
-    for(width = 9; width < 11; ++width){
+    height = -1; depth = 1;
+    for(width = 10; width < size.width -1; ++width){
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
@@ -1426,7 +1426,7 @@ void building::automaticWaterField(
     } 
 
     //ホッパー
-    height = -2; depth = 1; width = 9;
+    height = -2; depth = 2; width = size.width -3;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -1437,9 +1437,9 @@ void building::automaticWaterField(
 
 
     //チェスト
-    height = -2; depth =0;
-    for(width = 9; width < 11; ++width){
-        if(width == 9){
+    height = -2; depth =1;
+    for(width = 10; width < size.width -1; ++width){
+        if(width == size.width -3){
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -1459,8 +1459,8 @@ void building::automaticWaterField(
     } 
 
     //囲いクォーツ
-    height = -1; depth = -1;
-    for(width = 0; width < 12; ++width){
+    height = -1; depth = 0;
+    for(width = 1; width < size.width; ++width){
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
@@ -1470,8 +1470,8 @@ void building::automaticWaterField(
     }
 
 
-    height = -1; width = 0;
-    for(depth = 1; depth < 19; ++depth){
+    height = -1; width = 1;
+    for(depth = 2; depth < size.depth; ++depth){
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
@@ -1480,8 +1480,8 @@ void building::automaticWaterField(
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
     }
 
-    height = 1; width = 10;
-    for(depth = 10; depth < 18; ++depth){
+    height = 1; width = size.width -2;
+    for(depth = size.width -2 ; depth < size.depth -1; ++depth){
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
@@ -1490,8 +1490,8 @@ void building::automaticWaterField(
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
     }
 
-    width = 10; height = 0;
-    for(depth = 1; depth < 10; ++depth){
+    width = size.width -2; height = 0;
+    for(depth = 2; depth < 11; ++depth){
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
@@ -1500,7 +1500,7 @@ void building::automaticWaterField(
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
     }
     
-    height = -1; depth = 1;
+    height = -1; depth = 2;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -1509,8 +1509,8 @@ void building::automaticWaterField(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
 
 
-    height = -1; depth = 0;
-    for(width = 0; width < 9; ++width){
+    height = -1; depth = 1;
+    for(width = 1; width < size.width -3; ++width){
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
@@ -1519,8 +1519,8 @@ void building::automaticWaterField(
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
     }
 
-    height = -1; depth = 18;
-    for(width = 0; width < 11; ++width){
+    height = -1; depth = size.depth -1;
+    for(width = 1; width < size.width -1; ++width){
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
@@ -1530,7 +1530,7 @@ void building::automaticWaterField(
     }
 
     //ボタン
-    width = 10; height = -1; depth = 0;
+    width = size.width-2; height = -1; depth = 1;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -1539,7 +1539,7 @@ void building::automaticWaterField(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::stone_button;
 
     //トラップドア
-    width = 5; height = 0; depth = 1;
+    width = 6; height = 0; depth = 2;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -1549,9 +1549,9 @@ void building::automaticWaterField(
 
     //土
     height = -1;
-    for(depth = 2; depth < 10; ++depth){
-        for(width = 1; width < 10; ++width){
-            if(width == 5){
+    for(depth = 3; depth < 11; ++depth){
+        for(width = 2; width < size.width -2; ++width){
+            if(width == 6){
                 posi.z = depth;
                 posi.x = width;
                 posi.rotation(facing);
@@ -1570,9 +1570,9 @@ void building::automaticWaterField(
     }
 
     height = 0;
-    for(depth = 10; depth < 16; ++depth){
-        for(width = 1; width < 10; ++width){
-            if(width == 5){
+    for(depth = 11; depth < size.depth -3; ++depth){
+        for(width = 2; width < size.width-2; ++width){
+            if(width == 6){
                 posi.z = depth;
                 posi.x = width;
                 posi.rotation(facing);
@@ -1591,7 +1591,7 @@ void building::automaticWaterField(
     }
 
     //階段
-    width = 5; depth = 9; height = 0;
+    width = 6; depth = 10; height = 0;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -1601,7 +1601,7 @@ void building::automaticWaterField(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::South);
 
 
-    width = 5; depth = 15; height = 1;
+    width = 6; depth = size.depth-4; height = 1;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -1612,8 +1612,8 @@ void building::automaticWaterField(
 
     //上段クォーツ
     height = 1; 
-    for(depth = 16; depth < 18; ++depth){
-        for(width = 1; width < 10; ++width){
+    for(depth = 17; depth < size.depth-1; ++depth){
+        for(width = 2; width < size.width-2; ++width){
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -1623,8 +1623,8 @@ void building::automaticWaterField(
         }
     }   
 
-    height = 0; depth = 16;
-    for(width = 1; width < 10; ++width){
+    height = 0; depth = size.depth-3;
+    for(width = 2; width < size.width-2; ++width){
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
@@ -1633,7 +1633,7 @@ void building::automaticWaterField(
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
     }
 
-    width = 5; depth = 17; 
+    width = 6; depth = size.depth-2; 
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -1641,9 +1641,9 @@ void building::automaticWaterField(
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
 
-    depth = 18; 
+    depth = size.depth-1; 
     for(height = 0; height < 2; ++height){
-        for(width = 0; width < 11; ++width){
+        for(width = 1; width < size.width-1; ++width){
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -1654,9 +1654,9 @@ void building::automaticWaterField(
     }
 
     //右壁
-    for(width = -1; width < 1; ++width){
-        for(height = 0; height < 2; ++height){
-            for(depth = 0; depth < 19; ++depth){
+    for(width = 0; width < 2; ++width){
+        for(height = 0; height < 3; ++height){
+            for(depth = 1; depth < size.depth; ++depth){
                 posi.z = depth;
                 posi.x = width;
                 posi.rotation(facing);
@@ -1668,8 +1668,8 @@ void building::automaticWaterField(
     }
 
     //左壁
-    width = 10; height = 1; 
-    for(depth = 1; depth < 10; ++depth){
+    width = size.width-2; height = 1; 
+    for(depth = 2; depth < size.width-2; ++depth){
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
@@ -1678,9 +1678,21 @@ void building::automaticWaterField(
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
     }
 
-    width = 11;
+    width = size.width-1;
     for(height = -1; height < 2; ++height){
-        for(depth = 0; depth < 19; ++depth){
+        for(depth = 1; depth < size.depth; ++depth){
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+        }
+    }
+
+    height = 2; 
+    for(width = size.width-2; width < size.width; ++width){
+        for(depth = 1; depth < size.depth; ++depth){
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -1691,7 +1703,7 @@ void building::automaticWaterField(
     }
 
 //水
-    height = -1; depth = 1; width = 1;
+    height = -1; depth = 2; width = 2;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -1699,8 +1711,8 @@ void building::automaticWaterField(
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::water;
 
-    height = -1; depth = 10;
-    for(width = 1; width < 10; ++width){
+    height = -1; depth = size.depth-3;
+    for(width = 2; width < size.width-3; ++width){
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
@@ -1709,8 +1721,8 @@ void building::automaticWaterField(
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::water;
     }
 
-    height = 0; width = 0; 
-    for(depth = 10; depth < 17; ++depth){
+    height = 0; width = 1; 
+    for(depth = 11; depth < size.depth -2; ++depth){
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
@@ -1719,8 +1731,8 @@ void building::automaticWaterField(
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::water;
     }
 
-    height = 0; depth = 16; 
-    for(width = 1; width < 6; ++width){
+    height = 0; depth = size.depth -3; 
+    for(width = 2; width < 6; ++width){
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
@@ -1729,7 +1741,7 @@ void building::automaticWaterField(
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::water;
     }
 
-    height = 0; depth = 15; width = 5;
+    height = 0; depth = size.depth -4; width = 6;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -1738,8 +1750,8 @@ void building::automaticWaterField(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::water;
 
     //ハーフブロック
-    height = 2; depth = 18; 
-    for(width = 1; width < 10; ++width){
+    height = 2; depth = size.depth -1; 
+    for(width = 2; width < size.width -2; ++width){
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
@@ -1749,7 +1761,7 @@ void building::automaticWaterField(
     }
 
     //ネザーブロック
-    width = 5;
+    width = 6;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -1758,8 +1770,8 @@ void building::automaticWaterField(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_bricks;
 
     //ハーフブロック
-    width = 1;
-    for(depth = 16; depth < 18; ++depth){
+    width = 2;
+    for(depth = 17; depth < size.depth -1; ++depth){
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
@@ -1768,8 +1780,8 @@ void building::automaticWaterField(
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_slab;
     }
 
-    width = 9;
-    for(depth = 16; depth < 18; ++depth){
+    width = 10;
+    for(depth = 17; depth < size.depth -1; ++depth){
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
@@ -1778,9 +1790,9 @@ void building::automaticWaterField(
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_slab;
     }
 
-    height = 2; depth = 16; 
-    for(width = 3; width < 8; ++width){
-        if(width == 5){
+    height = 2; depth = size.depth -3; 
+    for(width = 4; width < 9; ++width){
+        if(width == 6){
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
@@ -1797,16 +1809,21 @@ void building::automaticWaterField(
         }
     }
 
-    // width = 0; height = 0; depth = -1;
-    // posi.z = depth;
-    // posi.x = width;
-    // posi.rotation(facing);
-    // posi.z += defaultPosi.z;
-    // posi.x += defaultPosi.x;
-    // (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::chest;
-    // (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::North);
+    width = 1; height = 0; depth = 0;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::chest;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::North);
 
-    //commands += "replaceitem"" ""block"" ""0"" ""0"" ""-1"" ""container.4"" ""minecraft:apple"" ""1";
+    commands += std::string("replaceitem")+" "+"block"+" "+std::to_string(posi.x - defaultPosi.x -6 +center.x)+" "+std::to_string(defaultPosi.y + height + 4)+" "+std::to_string(posi.z -defaultPosi.z -10 +center.z)+" "+"container.0"+" "+"minecraft:netherite_hoe"+" "+"1"+"\n";
+    commands += std::string("replaceitem")+" "+"block"+" "+std::to_string(posi.x - defaultPosi.x -6 +center.x)+" "+std::to_string(defaultPosi.y + height + 4)+" "+std::to_string(posi.z -defaultPosi.z -10 +center.z)+" "+"container.1"+" "+"minecraft:diamond_hoe"+" "+"1"+"\n";
+    commands += std::string("replaceitem")+" "+"block"+" "+std::to_string(posi.x - defaultPosi.x -6 +center.x)+" "+std::to_string(defaultPosi.y + height + 4)+" "+std::to_string(posi.z -defaultPosi.z -10 +center.z)+" "+"container.2"+" "+"minecraft:wheat_seeds"+" "+"64"+"\n";
+    commands += std::string("replaceitem")+" "+"block"+" "+std::to_string(posi.x - defaultPosi.x -1 +center.x)+" "+std::to_string(defaultPosi.y + height + 6 + center.y)+" "+std::to_string(posi.z -defaultPosi.z +8 +center.z)+" "+"container.4"+" "+"minecraft:water_bucket"+" "+"1"+"\n";
 }
+
+
 
 
