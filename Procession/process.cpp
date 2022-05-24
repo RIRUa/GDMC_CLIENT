@@ -69,7 +69,7 @@ void Process::createHouse1(const WN::Vec3 &center) {
     
     WN::Vec3 posi(0,0,0);
     
-    WN::direction facing = WN::direction::West;
+    WN::direction facing = WN::direction::North;
     
     WN::Vec3 defaultPosi(
                          size.width/2,
@@ -160,7 +160,7 @@ void  Process::createHouse2(const WN::Vec3 &center) {
 
 void  Process::streetlight1(const WN::Vec3 &center) {
     WN::EveryDirection directions = WN::EveryDirection();
-    const houseSize size = {40,40};
+    const houseSize size = {4,4};
 
     WN::direction facing = WN::direction::North;
 
@@ -182,7 +182,7 @@ void  Process::streetlight1(const WN::Vec3 &center) {
 
 void  Process::streetlight2(const WN::Vec3 &center) {
     WN::EveryDirection directions = WN::EveryDirection();
-    const houseSize size = {40,40};
+    const houseSize size = {2,2};
 
     WN::direction facing = WN::direction::North;
 

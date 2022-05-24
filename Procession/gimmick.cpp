@@ -168,7 +168,6 @@ void gimmick::automaticDoor(std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
                 } else {
                     (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::stonePressurePlate;
                 }
-                    
             }
         }
     }
