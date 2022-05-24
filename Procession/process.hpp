@@ -20,7 +20,7 @@ using possibilities = std::vector< std::vector<bool> >;
 
 class Process {
     // width, height, depth
-    const WN::Vec3 area = WN::Vec3(300, 30, 300);
+    const WN::Vec3 area = WN::Vec3(200, 30, 200);
     // 地面の高さ（+1すると空気）
     const int groundHeight = 5;
     
@@ -40,6 +40,7 @@ public:
     void createHouse2(const WN::Vec3 &center);
     void streetlight1(const WN::Vec3 &center);
     void streetlight2(const WN::Vec3 &center);
+    void automaticWaterField(const WN::Vec3 &center);
 };
 
 #endif /* process_hpp */

@@ -168,7 +168,6 @@ void gimmick::automaticDoor(std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
                 } else {
                     (*block3d)[doorLeftPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::stonePressurePlate;
                 }
-                    
             }
         }
     }
@@ -369,3 +368,94 @@ void gimmick::waterElevator(
         }
     }
 }
+
+void gimmick::automaticWaterField(
+                            std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
+                            const WN::Vec3 &center,
+                            WN::direction facing,
+                            const WN::Vec3 &defaultPosi,
+                            const houseSize &size,
+                            std::string &commands
+                            ) {
+    WN::EveryDirection directions = WN::EveryDirection(facing);
+    
+    WN::Vec3 posi(0,0,0);
+    
+    int width, height, depth;
+
+    //レッドストーン回路
+    height = -1; width = size.width-2; 
+    for(depth = 3; depth < 10; ++depth){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
+    }
+
+    height = -1; width = size.width-2; depth = 10;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::repeater;
+
+    height = 0; width = size.width-2;
+    for(depth = 11; depth < size.depth-3; ++depth){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
+    }
+
+    height = 0; width = size.width-2; depth = size.depth-3;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::repeater;
+
+    height = 0; width = size.width-2; depth = size.depth-2;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+
+    depth = size.depth-2; 
+    for (width = 7; width < size.width-2; ++width){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
+    }
+
+    height = 1; width = 6; depth = size.depth-2; 
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneTorch;
+
+    height = 2; width = 6; depth = size.depth-2;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::dispenser;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
+    commands += std::string("replaceitem")+" "+"block"+" "+std::to_string(posi.x - defaultPosi.x -6 +center.x)+" "+std::to_string(defaultPosi.y + height + 4 + center.y)+" "+std::to_string(posi.z -defaultPosi.z -10 +center.z)+" "+"container.4"+" "+"minecraft:water_bucket"+" "+"1"+"\n";
+    
+}
+

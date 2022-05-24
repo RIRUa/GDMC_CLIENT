@@ -25,9 +25,7 @@ namespace gimmick {
                        Minecraft::MinecraftBlock blockType
                        );
 
-
-
-void waterElevator(
+    void waterElevator(
                             std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
                             const WN::Vec3 &center,
                             WN::direction facing,
@@ -37,6 +35,16 @@ void waterElevator(
                             int elevatorHeight,
                             const std::vector< int > &floor
                             );
+
+    void automaticWaterField(
+                            std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
+                            const WN::Vec3 &center,
+                            WN::direction facing,
+                            const WN::Vec3 &defaultPosi,
+                            const houseSize &size,
+                            std::string &commands
+                            );
 }
+
 
 #endif /* gimmick_hpp */
