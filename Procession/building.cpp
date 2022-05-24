@@ -1433,7 +1433,7 @@ void building::automaticWaterField(
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::hopper;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::North);
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
 
 
     //チェスト
@@ -1446,6 +1446,7 @@ void building::automaticWaterField(
             posi.z += defaultPosi.z;
             posi.x += defaultPosi.x;
             (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::chest;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
             (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "type = left";
         } else {
             posi.z = depth;
@@ -1454,6 +1455,7 @@ void building::automaticWaterField(
             posi.z += defaultPosi.z;
             posi.x += defaultPosi.x;
             (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::chest;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
             (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "type = right";
         }
     } 
@@ -1537,6 +1539,7 @@ void building::automaticWaterField(
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::stone_button;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
 
     //トラップドア
     width = 6; height = 0; depth = 2;
@@ -1598,7 +1601,7 @@ void building::automaticWaterField(
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartz_stairs;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::South);
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
 
 
     width = 6; depth = size.depth-4; height = 1;
@@ -1608,7 +1611,7 @@ void building::automaticWaterField(
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartz_stairs;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::South);
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
 
     //上段クォーツ
     height = 1; 
@@ -1816,12 +1819,11 @@ void building::automaticWaterField(
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::chest;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::North);
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
 
     commands += std::string("replaceitem")+" "+"block"+" "+std::to_string(posi.x - defaultPosi.x -6 +center.x)+" "+std::to_string(defaultPosi.y + height + 4)+" "+std::to_string(posi.z -defaultPosi.z -10 +center.z)+" "+"container.0"+" "+"minecraft:netherite_hoe"+" "+"1"+"\n";
     commands += std::string("replaceitem")+" "+"block"+" "+std::to_string(posi.x - defaultPosi.x -6 +center.x)+" "+std::to_string(defaultPosi.y + height + 4)+" "+std::to_string(posi.z -defaultPosi.z -10 +center.z)+" "+"container.1"+" "+"minecraft:diamond_hoe"+" "+"1"+"\n";
     commands += std::string("replaceitem")+" "+"block"+" "+std::to_string(posi.x - defaultPosi.x -6 +center.x)+" "+std::to_string(defaultPosi.y + height + 4)+" "+std::to_string(posi.z -defaultPosi.z -10 +center.z)+" "+"container.2"+" "+"minecraft:wheat_seeds"+" "+"64"+"\n";
-    commands += std::string("replaceitem")+" "+"block"+" "+std::to_string(posi.x - defaultPosi.x -1 +center.x)+" "+std::to_string(defaultPosi.y + height + 6 + center.y)+" "+std::to_string(posi.z -defaultPosi.z +8 +center.z)+" "+"container.4"+" "+"minecraft:water_bucket"+" "+"1"+"\n";
 }
 
 

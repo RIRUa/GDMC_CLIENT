@@ -6,11 +6,7 @@
 //
 
 #include "interior.hpp"
-#include <ctime>
-#include <cstdlib>
 #include <random>
-#include <time.h>
-
 
 void interior::createHouse1(
                             std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
@@ -1041,9 +1037,8 @@ void interior::farmProducts(
     
     int width, height, depth;
 
-    srand((unsigned int)time(NULL));
-
     int v = rand() % 3;
+    std::cout << rand();
 
     height = 0; 
     for(depth = 3; depth < 11; ++depth){
