@@ -1827,5 +1827,29 @@ void building::createAutomaticWaterField(
 }
 
 
-
+void building::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
+                     const WN::Vec3 &center,
+                     WN::direction facing,
+                     const WN::Vec3 &defaultPosi,
+                     const houseSize &size,
+                     std::string &commands
+                     ) {
+    WN::EveryDirection directions = WN::EveryDirection(facing);
+    
+    WN::Vec3 posi(0,0,0);
+    
+    int width, height, depth;
+    
+    height = 6;
+    for (depth = 0; depth < size.depth; ++depth) {
+        for (width = 0; width < size.width; ++width) {
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.y][posi.x].block = Minecraft::MinecraftBlock::grassBlock;
+        }
+    }
+}
 

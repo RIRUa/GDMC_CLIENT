@@ -41,6 +41,8 @@ public:
     void createStreetlight1(const WN::Vec3 &center);
     void createStreetlight2(const WN::Vec3 &center);
     void createAutomaticWaterField(const WN::Vec3 &center);
+    
+    void createPigBurner(const WN::Vec3 &center);
 };
 
 #endif /* process_hpp */
