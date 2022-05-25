@@ -29,7 +29,7 @@ namespace interior {
                       std::string &commands
                       );
 
-    void streetlight1(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
+    void createStreetlight1(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
                       const WN::Vec3 &center,
                       WN::direction facing,
                       const WN::Vec3 &defaultPosi,
@@ -37,7 +37,7 @@ namespace interior {
                       std::string &commands
                       );
 
-    void streetlight2(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
+    void createStreetlight2(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
                       const WN::Vec3 &center,
                       WN::direction facing,
                       const WN::Vec3 &defaultPosi,
@@ -45,7 +45,7 @@ namespace interior {
                       std::string &commands
                       );
 
-    void farmProducts(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
+    void createFarmProducts(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
                       const WN::Vec3 &center,
                       WN::direction facing,
                       const WN::Vec3 &defaultPosi,

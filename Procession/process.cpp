@@ -158,7 +158,7 @@ void  Process::createHouse2(const WN::Vec3 &center) {
                            );
 }
 
-void  Process::streetlight1(const WN::Vec3 &center) {
+void  Process::createStreetlight1(const WN::Vec3 &center) {
     WN::EveryDirection directions = WN::EveryDirection();
     const houseSize size = {4,4};
 
@@ -170,7 +170,7 @@ void  Process::streetlight1(const WN::Vec3 &center) {
                          this->area.z/2 + center.z - size.depth/2
                          );
 
-    interior::streetlight1(
+    interior::createStreetlight1(
                            this->createArea,
                            center,
                            facing,
@@ -180,7 +180,7 @@ void  Process::streetlight1(const WN::Vec3 &center) {
                            );
 }
 
-void  Process::streetlight2(const WN::Vec3 &center) {
+void  Process::createStreetlight2(const WN::Vec3 &center) {
     WN::EveryDirection directions = WN::EveryDirection();
     const houseSize size = {2,2};
 
@@ -192,7 +192,7 @@ void  Process::streetlight2(const WN::Vec3 &center) {
                          this->area.z/2 + center.z - size.depth/2
                          );
 
-    interior::streetlight2(
+    interior::createStreetlight2(
                            this->createArea,
                            center,
                            facing,
@@ -202,7 +202,7 @@ void  Process::streetlight2(const WN::Vec3 &center) {
                            );
 }
 
-    void  Process::automaticWaterField(const WN::Vec3 &center) {
+    void  Process::createAutomaticWaterField(const WN::Vec3 &center) {
     WN::EveryDirection directions = WN::EveryDirection();
     const houseSize size = {13,20};
 
@@ -214,7 +214,7 @@ void  Process::streetlight2(const WN::Vec3 &center) {
                         this->area.z/2 + center.z - size.depth/2
                         );
 
-    building::automaticWaterField(
+    building::createAutomaticWaterField(
                            this->createArea,
                            center,
                            facing,
@@ -232,7 +232,7 @@ void  Process::streetlight2(const WN::Vec3 &center) {
                            this->commands
                            );
 
-    interior::farmProducts(
+    interior::createFarmProducts(
                         this->createArea,
                         center,
                         facing,

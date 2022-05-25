@@ -1390,7 +1390,7 @@ void building::createHouse2(
     }
 }
 
-void building::automaticWaterField(
+void building::createAutomaticWaterField(
                             std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
                             const WN::Vec3 &center,
                             WN::direction facing,

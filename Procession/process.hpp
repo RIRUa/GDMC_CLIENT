@@ -38,9 +38,9 @@ public:
     
     void createHouse1(const WN::Vec3 &center);
     void createHouse2(const WN::Vec3 &center);
-    void streetlight1(const WN::Vec3 &center);
-    void streetlight2(const WN::Vec3 &center);
-    void automaticWaterField(const WN::Vec3 &center);
+    void createStreetlight1(const WN::Vec3 &center);
+    void createStreetlight2(const WN::Vec3 &center);
+    void createAutomaticWaterField(const WN::Vec3 &center);
 };
 
 #endif /* process_hpp */

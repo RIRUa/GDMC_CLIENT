@@ -748,7 +748,7 @@ void interior::createHouse2(
     }
 }
     
-void interior::streetlight1(
+void interior::createStreetlight1(
                             std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
                             const WN::Vec3 &center,
                             WN::direction facing,
@@ -969,7 +969,7 @@ void interior::streetlight1(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::white_carpet;
 }
 
-void interior::streetlight2(
+void interior::createStreetlight2(
                             std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
                             const WN::Vec3 &center,
                             WN::direction facing,
@@ -1023,7 +1023,7 @@ void interior::streetlight2(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneLamp;
 }
 
-void interior::farmProducts(
+void interior::createFarmProducts(
                             std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
                             const WN::Vec3 &center,
                             WN::direction facing,

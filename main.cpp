@@ -8,7 +8,7 @@
 int main(){
     
     Process p = Process();
-    p.automaticWaterField(WN::Vec3(10,0,30));
+    p.createAutomaticWaterField(WN::Vec3(10,0,30));
     p.sendData();
     
     return 0;
