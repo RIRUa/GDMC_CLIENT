@@ -1840,14 +1840,49 @@ void building::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &bloc
     
     int width, height, depth;
     
+    // 端を検出
     int edgeCounter = 0;
+    // ディスペンサーを使うか（２以上なら使う）
+    int isDispense = 0;
     
-    for (height = 5; height < 7; ++height) {
+    for (height = 5; height < 8; ++height) {
         for (depth = 0; depth < size.depth; ++depth) {
             for (width = 0; width < size.width; ++width) {
+                // 豚の落ちる穴
+                if (width == ((size.width - 1) / 2) && depth == ((size.depth - 1) / 2)) {
+                    continue;
+                }
+                
                 edgeCounter = 0;
+                isDispense = false;
                 
+                if (width == 0) {
+                    edgeCounter++;
+                }
+                if (depth == 0) {
+                    edgeCounter++;
+                }
+                if (width == (size.width - 1)) {
+                    edgeCounter++;
+                }
+                if (depth == (size.depth - 1)) {
+                    edgeCounter++;
+                }
                 
+                if (height == 6) {
+                    if (width == 1) {
+                        isDispense++;
+                    }
+                    if (depth == 1) {
+                        isDispense++;
+                    }
+                    if (width == (size.width - 2)) {
+                        isDispense++;
+                    }
+                    if (depth == (size.depth - 2)) {
+                        isDispense++;
+                    }
+                }
                 
                 
                 posi.z = depth;
@@ -1859,7 +1894,16 @@ void building::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &bloc
                 if (height == 5) {
                     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::diamondBlock;
                 } else if (height == 6) {
-                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::grassBlock;
+                    
+                    if (isDispense >= 2) {
+                        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::dispenser;
+                        (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared<WN::direction>(WN::direction::Up);
+                    } else {
+                        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::grassBlock;
+                    }
+                    
+                } else if (height == 7 && edgeCounter > 0) {
+                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::goldBlock;
                 }
                 
             }
