@@ -35,10 +35,4 @@ public:
     std::string httpDelete(const std::string &url) noexcept(false);
 };
 
-static size_t callbackWrite(char *ptr, size_t size, size_t nmemb, std::string *stream) {
-        unsigned long dataLength = size * nmemb;
-        stream->append(ptr, dataLength);
-        return dataLength;
-}
-
 #endif /* Request_hpp */

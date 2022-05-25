@@ -7,6 +7,12 @@
 
 #include "URLSession.hpp"
 
+static size_t callbackWrite(char *ptr, size_t size, size_t nmemb, std::string *stream) {
+        unsigned long dataLength = size * nmemb;
+        stream->append(ptr, dataLength);
+        return dataLength;
+}
+
 URLSession::URLSession(){
     this->curl = curl_easy_init();
     if (curl == NULL) {
