@@ -8,7 +8,7 @@
 int main(){
     
     Process p = Process();
-    p.createAutomaticWaterField(WN::Vec3(10,0,30));
+    p.createPigBurner(WN::Vec3(0,0,0));
     p.sendData();
     
     return 0;
