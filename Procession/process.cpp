@@ -7,6 +7,31 @@
 
 #include "process.hpp"
 
+bool isAbleToCreateBuilding(const std::shared_ptr< possibilities > &possibility,
+                            const WN::Vec3 &center,
+                            WN::direction facing,
+                            const WN::Vec3 &defaultPosi,
+                            const houseSize &size) {
+    int depth, width;
+    WN::Vec3 posi(0,0,0);
+    
+    for (depth = 0; depth < size.depth; ++depth) {
+        for (width = 0; width < size.width; ++width) {
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            
+            if ( (*possibility)[posi.z][posi.x] ) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+
 Process::Process() {
     this->init();
 }
@@ -22,7 +47,7 @@ bool Process::init() {
                                  this->area,
                                  WN::Vec3(0, 0, 0)
                                  );
-    this->possibility = std::make_shared< possibilities >( this->area.z, std::vector< bool >(this->area.x, true) );
+    this->possibility = std::make_shared< possibilities >( this->area.z, std::vector< bool >(this->area.x, false) );
     
     WN::Vec3 defaultPosi(
                          this->area.x/2,
@@ -68,9 +93,7 @@ void Process::buildATown() {
 
 
 
-void Process::createHouse1(const WN::Vec3 &center) {
-    WN::EveryDirection directions = WN::EveryDirection();
-    
+void Process::createHouse1(const WN::Vec3 &center) noexcept(false) {
     const houseSize size = {40,40};
     
     WN::Vec3 posi(0,0,0);

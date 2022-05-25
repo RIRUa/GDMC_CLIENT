@@ -37,7 +37,7 @@ public:
     bool sendData();
     void buildATown();
     
-    void createHouse1(const WN::Vec3 &center);
+    void createHouse1(const WN::Vec3 &center) noexcept(false);
     void createHouse2(const WN::Vec3 &center);
     void streetlight1(const WN::Vec3 &center);
     void streetlight2(const WN::Vec3 &center);
