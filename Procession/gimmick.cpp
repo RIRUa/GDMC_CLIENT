@@ -456,6 +456,432 @@ void gimmick::automaticWaterField(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
     commands += std::string("replaceitem")+" "+"block"+" "+std::to_string(posi.x - defaultPosi.x -6 +center.x)+" "+std::to_string(defaultPosi.y + height + 4 + center.y)+" "+std::to_string(posi.z -defaultPosi.z -10 +center.z)+" "+"container.4"+" "+"minecraft:water_bucket"+" "+"1"+"\n";
-    
 }
 
+void gimmick::createFountain(
+                            std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
+                            const WN::Vec3 &center,
+                            WN::direction facing,
+                            const WN::Vec3 &defaultPosi,
+                            const houseSize &size,
+                            std::string &commands
+                            ) {
+    WN::EveryDirection directions = WN::EveryDirection(facing);
+    
+    WN::Vec3 posi(0,0,0);
+    
+    int width, height, depth;
+
+    //レッドストーントーチ
+    width = 0; depth = 0;
+        for(int j = 1; j < 14; j++){
+        height = -3 + 2*j;
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneTorch;
+    }
+
+    //レッドストーンランプ
+    for(int i = 0; i < 13; i++){
+        height = -2 + 2*i ;
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneLamp;
+    }
+
+    //ディスペンサー
+    width = 0; depth = 0; height = 24;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::dispenser;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
+    commands += std::string("replaceitem")+" "+"block"+" "+std::to_string(posi.x - defaultPosi.x  -15+center.x)+" "+std::to_string(defaultPosi.y + height + 4 + center.y)+" "+std::to_string(posi.z -defaultPosi.z -15+center.z)+" "+"container.4"+" "+"minecraft:water_bucket"+" "+"1"+"\n";
+
+    width = 0; depth = -1; height = 15;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::dispenser;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+    commands += std::string("replaceitem")+" "+"block"+" "+std::to_string(posi.x - defaultPosi.x  -15+center.x)+" "+std::to_string(defaultPosi.y + height + 4 + center.y)+" "+std::to_string(posi.z -defaultPosi.z -15+center.z)+" "+"container.4"+" "+"minecraft:water_bucket"+" "+"1"+"\n";
+
+    width = 0; depth = 1; height = 15;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::dispenser;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
+    commands += std::string("replaceitem")+" "+"block"+" "+std::to_string(posi.x - defaultPosi.x  -15+center.x)+" "+std::to_string(defaultPosi.y + height + 4 + center.y)+" "+std::to_string(posi.z -defaultPosi.z -15+center.z)+" "+"container.4"+" "+"minecraft:water_bucket"+" "+"1"+"\n";
+
+    width = 1; depth = 0; height = 15;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::dispenser;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
+    commands += std::string("replaceitem")+" "+"block"+" "+std::to_string(posi.x - defaultPosi.x  -15+center.x)+" "+std::to_string(defaultPosi.y + height + 4 + center.y)+" "+std::to_string(posi.z -defaultPosi.z -15+center.z)+" "+"container.4"+" "+"minecraft:water_bucket"+" "+"1"+"\n";
+    
+    width = -1; depth = 0; height = 15;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::dispenser;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
+    commands += std::string("replaceitem")+" "+"block"+" "+std::to_string(posi.x - defaultPosi.x  -15+center.x)+" "+std::to_string(defaultPosi.y + height + 4 + center.y)+" "+std::to_string(posi.z -defaultPosi.z -15+center.z)+" "+"container.4"+" "+"minecraft:water_bucket"+" "+"1"+"\n";
+    std::cout << commands;
+
+    //ana wo akeru
+    width = -3; depth = 3; height = 13;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+
+    width = -3; depth = -3; height = 13;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+
+    width = 3; depth = 3; height = 13;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+
+    width = 3; depth = -3; height = 13;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+
+    //レッドストーン
+    width = 0; height = -2;
+    for(depth = -2; depth > -13; --depth){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
+    }
+
+    depth = -12; height = -2;
+    for(width = -2; width < 0; ++width){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
+    }
+
+    height = -2; width = -2; 
+    for(depth = -12; depth > -17; --depth){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
+    }
+
+    //リピーター
+    width = 0; depth = -1; height = -2;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::repeater;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+
+    depth = -9; 
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::repeater;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+
+    width = -2; depth = -20; height = -1;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::repeater;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+
+    //クロック回路
+    ////リピータ
+    depth = -12; height = -2;
+    for(width = -3; width > -10; --width){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::repeater;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "delay = 4";
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
+    }
+
+    depth = -13; height = -2;
+    for(width = -3; width > -10; --width){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::repeater;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "delay = 4";
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
+    }
+
+    ////レッドストーン
+    width = -10; height = -2;
+    for(depth = -13; depth < -11; ++depth){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
+    }
+
+
+    //ウォールトーチ
+    width = -2; depth = -18; height = -1;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWallTorch;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
+
+    //レッドストーンコンパレーター
+    height = -2; width = -2; depth = -13; 
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::comparator;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "mode = subtract";
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+
+    //レッドストーン
+    width = -2; depth = -17; height = -1;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
+
+    width = -2; depth = -21; height = 0;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "south = side";
+    
+
+    //椅子
+    height = 0; width = -2; depth = -17; 
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smooth_quartz_slab;
+
+    height = 0; width = 2; depth = -17; 
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smooth_quartz_slab;
+    
+    height = 1; width = -2; depth = -19; 
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smooth_quartz_slab;
+
+    height = 1; width = 2; depth = -19; 
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smooth_quartz_slab;
+
+
+    width = -2; depth = -20; 
+    for(height = 0; height < 2; ++height){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+    }
+
+    width = 2; depth = -20; 
+    for(height = 0; height < 2; ++height){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+    }
+
+    depth = -21; 
+    for(height = 0; height < 2; ++height){
+        for(width = -1;width < 2; ++width){
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+        }
+    }
+
+    height = 0; width = -2; 
+    for(depth = -20; depth < -17; ++depth){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+    }
+
+    height = 0; width = 2; 
+    for(depth = -20; depth < -17; ++depth){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+    }
+
+    //座る部分
+    height = 0;depth = -20; 
+    for(width = -1; width < 2; ++width){
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzBlock;
+    }
+
+    height = 0;depth = -19; 
+    for(width = -1; width < 2; ++width){
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smooth_quartz_slab;
+    }
+
+    height = -1;
+    for(depth = -18; depth < -16; ++depth){ 
+        for(width = -1; width < 2; ++width){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzBlock;
+        }
+    }
+
+    height = -1; depth = -16;
+    for(width = -2; width < 3; ++width){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_slab;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "type = top";
+        }
+
+    //ウォールトーチ
+    width = -2; depth = -21; height = 1;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWallTorch;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+
+    //トリップワイヤー
+    height = 1;depth = -20;width = -1;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::tripwire_hook;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
+
+    height = 1;depth = -20;width = 1;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::tripwire_hook;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
+
+    height = 1;depth = -20;width = 0;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::tripwire;
+    // (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
+}

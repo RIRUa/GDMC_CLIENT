@@ -1038,7 +1038,6 @@ void interior::createFarmProducts(
     int width, height, depth;
 
     int v = rand() % 3;
-    std::cout << rand();
 
     height = 0; 
     for(depth = 3; depth < 11; ++depth){
@@ -1046,7 +1045,7 @@ void interior::createFarmProducts(
             if(width == 6){
                 continue;
             } 
-            if(v == 0){
+            if(v == 2){
                 posi.z = depth;
                 posi.x = width;
                 posi.rotation(facing);
@@ -1080,7 +1079,7 @@ void interior::createFarmProducts(
             if(width == 6){
                 continue;
             } 
-            if(v == 0){
+            if(v == 2){
                 posi.z = depth;
                 posi.x = width;
                 posi.rotation(facing);
