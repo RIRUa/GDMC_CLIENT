@@ -505,3 +505,18 @@ void Minecraft::initBlockInfoOf3D(blockInfoOf3D &object, const WN::Vec3 &size, c
     }
     
 }
+
+std::string Minecraft::Command::itemInBox(
+                                          const WN::Vec3 &posi,
+                                          int containerPosition,
+                                          std::string item,
+                                          int numberOfItems
+                                          ) {
+    std::string command = std::string("replaceitem block ") +
+        std::to_string(static_cast<int>(posi.x)) + " " +
+        std::to_string(static_cast<int>(posi.y)) + " " +
+        std::to_string(static_cast<int>(posi.z)) + " container." +
+        std::to_string(containerPosition) + item + " " +
+        std::to_string(numberOfItems) + "\n";
+    return command;
+}
