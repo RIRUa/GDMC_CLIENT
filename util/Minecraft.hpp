@@ -68,6 +68,8 @@ namespace Minecraft {
         /***** ガラス類 *****/
         // 透明ガラスブロック
         glass,
+        //板ガラス
+        glass_pane,
 
         /***** 鉱材 *****/
         // クォーツブロック
@@ -88,6 +90,8 @@ namespace Minecraft {
         nether_brick_slab,
         //滑らかなクォーツのハーフブロック
         smooth_quartz_slab,
+        //磨かれた閃緑岩のハーフブロック
+        polished_diorite_slab,
         
         /***** 木材 *****/
         // オークの木材
@@ -162,6 +166,8 @@ namespace Minecraft {
         seaLantern,
         //レッドストーンランプ
         redstoneLamp,
+        //エンドロット
+        end_rod,
 
         /***** レッドストーン系 *****/
 
@@ -177,7 +183,10 @@ namespace Minecraft {
         warpedPressurePlate,
         // 磨かれたブラックストーンの感圧板
         polishedBlackstonePressurePlate,
-        
+        //トリップワイヤーフック,
+        tripwire_hook,
+        //トリップワイヤー
+        tripwire,
         /*********************************レッドストーンで作られるもの*********************************/
         // レッドストーンワイヤー
         redstoneWire,
