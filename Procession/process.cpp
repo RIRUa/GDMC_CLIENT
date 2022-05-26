@@ -7,7 +7,8 @@
 
 #include "process.hpp"
 
-Process::Process() {
+Process::Process(WN::Vec3 *sendPosi) {
+    this->sendPosi = sendPosi;
     this->init();
 }
 
@@ -54,7 +55,7 @@ bool Process::init() {
 bool Process::sendData() {
     GDMC session;
     
-    session.setBlocks(WN::Vec3(0, 4, 0),
+    session.setBlocks(*(this->sendPosi),
                       *(this->createArea)
                       );
     session.command(this->commands);

@@ -6,8 +6,8 @@
 #include "Procession/process.hpp"
 
 int main(){
-    
-    Process p = Process();
+    WN::Vec3 center = WN::Vec3(0,0,0);
+    Process p = Process(&center);
     p.createPigBurner(WN::Vec3(0,0,0));
     p.sendData();
     
