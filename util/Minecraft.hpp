@@ -209,6 +209,8 @@ namespace Minecraft {
         hopper,
 
         /***** その他 *****/
+        // スポナー（豚）
+        spawner,
         // レール
         rail,
         // トロッコ

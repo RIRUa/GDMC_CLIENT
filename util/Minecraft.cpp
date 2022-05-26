@@ -332,6 +332,10 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             break;
 
         /***** その他 *****/
+        case Minecraft::MinecraftBlock::spawner:
+            blockName += "spawner";
+            break;
+            
         case Minecraft::MinecraftBlock::rail:
             blockName += "rail";
             break;
