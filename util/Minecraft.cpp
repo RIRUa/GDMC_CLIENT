@@ -516,7 +516,7 @@ std::string Minecraft::Command::itemInBox(
         std::to_string(static_cast<int>(posi.x)) + " " +
         std::to_string(static_cast<int>(posi.y)) + " " +
         std::to_string(static_cast<int>(posi.z)) + " container." +
-        std::to_string(containerPosition) + item + " " +
+        std::to_string(containerPosition) + " " + item + " " +
         std::to_string(numberOfItems) + "\n";
     return command;
 }
