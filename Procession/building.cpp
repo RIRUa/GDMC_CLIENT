@@ -13,6 +13,7 @@ void building::createHouse1(
                             WN::direction facing,
                             const WN::Vec3 &defaultPosi,
                             const houseSize &size,
+                            const WN::Vec3 &sendPosition,
                             std::string &commands
                             ) {
     WN::EveryDirection directions = WN::EveryDirection(facing);
@@ -468,6 +469,7 @@ void building::createHouse2(
                             WN::direction facing,
                             const WN::Vec3 &defaultPosi,
                             const houseSize &size,
+                            const WN::Vec3 &sendPosition,
                             std::string &commands
                             ) {
     WN::EveryDirection directions = WN::EveryDirection(facing);
@@ -1391,13 +1393,14 @@ void building::createHouse2(
 }
 
 void building::createAutomaticWaterField(
-                            std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
-                            const WN::Vec3 &center,
-                            WN::direction facing,
-                            const WN::Vec3 &defaultPosi,
-                            const houseSize &size,
-                            std::string &commands
-                            ) {
+                                         std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
+                                         const WN::Vec3 &center,
+                                         WN::direction facing,
+                                         const WN::Vec3 &defaultPosi,
+                                         const houseSize &size,
+                                         const WN::Vec3 &sendPosition,
+                                         std::string &commands
+                                         ) {
     WN::EveryDirection directions = WN::EveryDirection(facing);
     
     WN::Vec3 posi(0,0,0);
