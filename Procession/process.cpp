@@ -270,6 +270,7 @@ void Process::createPigBurner(const WN::Vec3 &center) {
                               facing,
                               defaultPosi,
                               size,
+                              *(this->sendPosi),
                               this->commands
                               );
 }

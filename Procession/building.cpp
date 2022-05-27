@@ -1828,12 +1828,13 @@ void building::createAutomaticWaterField(
 
 
 void building::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
-                     const WN::Vec3 &center,
-                     WN::direction facing,
-                     const WN::Vec3 &defaultPosi,
-                     const houseSize &size,
-                     std::string &commands
-                     ) {
+                               const WN::Vec3 &center,
+                               WN::direction facing,
+                               const WN::Vec3 &defaultPosi,
+                               const houseSize &size,
+                               const WN::Vec3 &sendPosition,
+                               std::string &commands
+                               ) {
     WN::EveryDirection directions = WN::EveryDirection(facing);
     
     WN::Vec3 posi(0,0,0);
@@ -1845,7 +1846,28 @@ void building::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &bloc
     // ディスペンサーを使うか（２以上なら使う）
     int isDispense = 0;
     
-    for (height = 5; height < 8; ++height) {
+    for (height = 1; height < 5; ++height) {
+        for (depth = 4; depth < (size.depth - 4); ++depth) {
+            for (width = 4; width < (size.width - 4); ++width) {
+                
+                // 豚を落とす穴
+                if (width == 5 && depth == 5) {
+                    continue;
+                }
+                
+                posi.z = depth;
+                posi.x = width;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z;
+                posi.x += defaultPosi.x;
+                
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
+                
+            }
+        }
+    }
+    
+    for (height = 5; height < 9; ++height) {
         for (depth = 0; depth < size.depth; ++depth) {
             for (width = 0; width < size.width; ++width) {
                 // 豚の落ちる穴
@@ -1898,16 +1920,70 @@ void building::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &bloc
                     if (isDispense >= 2) {
                         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::dispenser;
                         (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared<WN::direction>(WN::direction::Up);
+                        // コマンド作成
+                        WN::Vec3 dispensorPosi = (*block3d)[defaultPosi.y + height][posi.z][posi.x].position;
+                        commands += Minecraft::Command::itemInBox(
+                                                                  WN::Vec3(
+                                                                           dispensorPosi.x + sendPosition.x,
+                                                                           dispensorPosi.y + sendPosition.y,
+                                                                           dispensorPosi.z + sendPosition.z
+                                                                           ),
+                                                                  4,
+                                                                  "minecraft:water_bucket",
+                                                                  1
+                                                                  );
                     } else {
                         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::grassBlock;
                     }
                     
-                } else if (height == 7 && edgeCounter > 0) {
-                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::goldBlock;
+                } else if (height >= 7 && edgeCounter > 0) {
+                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
                 }
                 
             }
         }
     }
+    
+    // スポナーの設置
+    height = 8;
+    width = ((size.width - 1) / 2);
+    depth = ((size.depth - 1) / 2);
+    
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::spawner;
+    
+    // ホッパーの設置
+    height = 0;
+    width = 5;
+    depth = 5;
+    
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::hopper;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+    
+    // チェストの設置
+    height = 0;
+    width = 5;
+    depth = 4;
+    
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::chest;
+    
+    
 }
 
