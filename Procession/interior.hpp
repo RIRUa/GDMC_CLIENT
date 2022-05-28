@@ -18,6 +18,7 @@ namespace interior {
                       WN::direction facing,
                       const WN::Vec3 &defaultPosi,
                       const houseSize &size,
+                      const WN::Vec3 &sendPosition,
                       std::string &commands
                       );
 
@@ -26,32 +27,45 @@ namespace interior {
                       WN::direction facing,
                       const WN::Vec3 &defaultPosi,
                       const houseSize &size,
+                      const WN::Vec3 &sendPosition,
                       std::string &commands
                       );
 
     void createStreetlight1(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
-                      const WN::Vec3 &center,
-                      WN::direction facing,
-                      const WN::Vec3 &defaultPosi,
-                      const houseSize &size,
-                      std::string &commands
-                      );
+                            const WN::Vec3 &center,
+                            WN::direction facing,
+                            const WN::Vec3 &defaultPosi,
+                            const houseSize &size,
+                            const WN::Vec3 &sendPosition,
+                            std::string &commands
+                            );
 
     void createStreetlight2(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
-                      const WN::Vec3 &center,
-                      WN::direction facing,
-                      const WN::Vec3 &defaultPosi,
-                      const houseSize &size,
-                      std::string &commands
-                      );
+                            const WN::Vec3 &center,
+                            WN::direction facing,
+                            const WN::Vec3 &defaultPosi,
+                            const houseSize &size,
+                            const WN::Vec3 &sendPosition,
+                            std::string &commands
+                            );
 
     void createFarmProducts(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
-                      const WN::Vec3 &center,
-                      WN::direction facing,
-                      const WN::Vec3 &defaultPosi,
-                      const houseSize &size,
-                      std::string &commands
-                      );
+                            const WN::Vec3 &center,
+                            WN::direction facing,
+                            const WN::Vec3 &defaultPosi,
+                            const houseSize &size,
+                            const WN::Vec3 &sendPosition,
+                            std::string &commands
+                            );
+
+    void createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
+                         const WN::Vec3 &center,
+                         WN::direction facing,
+                         const WN::Vec3 &defaultPosi,
+                         const houseSize &size,
+                         const WN::Vec3 &sendPosition,
+                         std::string &commands
+                         );
 }
 
 #endif /* interior_hpp */

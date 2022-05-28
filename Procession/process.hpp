@@ -24,13 +24,16 @@ class Process {
     // 地面の高さ（+1すると空気）
     const int groundHeight = 5;
     
+    // 送信先の中心座標
+    WN::Vec3 *sendPosi;
+    
     std::shared_ptr< Minecraft::blockInfoOf3D > createArea;
     std::shared_ptr< possibilities > possibility;
     
     std::string commands;
     
 public:
-    Process();
+    Process(WN::Vec3 *sendPosi);
     ~Process();
     
     bool init();
@@ -41,6 +44,8 @@ public:
     void createStreetlight1(const WN::Vec3 &center);
     void createStreetlight2(const WN::Vec3 &center);
     void createAutomaticWaterField(const WN::Vec3 &center);
+    
+    void createPigBurner(const WN::Vec3 &center);
 };
 
 #endif /* process_hpp */

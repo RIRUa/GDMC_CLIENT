@@ -61,7 +61,7 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "polished_blackstone_bricks";
             break;
             
-        case Minecraft::MinecraftBlock::nether_bricks:
+        case Minecraft::MinecraftBlock::netherBricks:
             blockName += "nether_bricks";
             break;
 
@@ -104,7 +104,7 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "smooth_quartz";
             break;
             
-        case Minecraft::MinecraftBlock::quartz_stairs:
+        case Minecraft::MinecraftBlock::quartzStairs:
             blockName += "quartz_stairs";
             break;
 
@@ -121,11 +121,11 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             break;
 
         /***** ハーフブロック *****/
-        case Minecraft::MinecraftBlock::nether_brick_slab:
+        case Minecraft::MinecraftBlock::netherBrickSlab:
             blockName += "nether_brick_slab";
             break;
 
-        case Minecraft::MinecraftBlock::smooth_quartz_slab:
+        case Minecraft::MinecraftBlock::smoothQuartzSlab:
             blockName += "smooth_quartz_slab";
             break;
 
@@ -134,7 +134,7 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "smooth_quartz_stairs";
             break;
 
-        case Minecraft::MinecraftBlock::nether_brick_stairs:
+        case Minecraft::MinecraftBlock::netherBrickStairs:
             blockName += "nether_brick_stairs";
             break;
 
@@ -148,8 +148,13 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             break;
             
         /***** 看板 *****/
-        case Minecraft::MinecraftBlock::oak_sign:
+        case Minecraft::MinecraftBlock::oakSign:
             blockName += "oak_sign";
+            break;
+            
+        /***** 壁付き看板 *****/
+        case Minecraft::MinecraftBlock::oakWallSign:
+            blockName += "oak_wall_sign";
             break;
         
         /***** ドア *****/
@@ -191,20 +196,20 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
 
         //*****トラップドア *****/
         //マツのトラップドア
-        case Minecraft::MinecraftBlock::spruce_trapdoor:
+        case Minecraft::MinecraftBlock::spruceTrapdoor:
             blockName += "spruce_trapdoor";
             break;
 
         /***** フェンス *****/
-        case Minecraft::MinecraftBlock::nether_brick_fence:
+        case Minecraft::MinecraftBlock::netherBrickFence:
             blockName += "nether_brick_fence";
             break;
             
-        case Minecraft::MinecraftBlock::warped_fence:
+        case Minecraft::MinecraftBlock::warpedFence:
             blockName += "warped_fence";
             break;
 
-        case Minecraft::MinecraftBlock::oak_fence:
+        case Minecraft::MinecraftBlock::oakFence:
             blockName += "oak_fence";
             break;
 
@@ -242,7 +247,7 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "glowstone";
             break;
             
-        case Minecraft::MinecraftBlock::jack_o_lantern:
+        case Minecraft::MinecraftBlock::jackOLantern:
             blockName += "jack_o_lantern";
             break;
         case Minecraft::MinecraftBlock::seaLantern:
@@ -261,10 +266,16 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "lever";
             break;
             
-        case Minecraft::MinecraftBlock::stone_button:
+        /***** ボタン *****/
+        case Minecraft::MinecraftBlock::stoneButton:
             blockName += "stone_button";
             break;
             
+        case Minecraft::MinecraftBlock::warpedButton:
+            blockName += "warped_button";
+            break;
+            
+        /***** 感圧板 *****/
         case Minecraft::MinecraftBlock::stonePressurePlate:
             blockName += "stone_pressure_plate";
             break;
@@ -318,7 +329,7 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
         case Minecraft::MinecraftBlock::observer:
             blockName += "observer";
 
-        case Minecraft::MinecraftBlock::daylight_detector:
+        case Minecraft::MinecraftBlock::daylightDetector:
             blockName += "daylight_detector";
 
             break;
@@ -332,6 +343,10 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             break;
 
         /***** その他 *****/
+        case Minecraft::MinecraftBlock::spawner:
+            blockName += "spawner";
+            break;
+            
         case Minecraft::MinecraftBlock::rail:
             blockName += "rail";
             break;
@@ -352,7 +367,7 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "chain";
             break;
 
-        case Minecraft::MinecraftBlock::white_carpet:
+        case Minecraft::MinecraftBlock::whiteCarpet:
             blockName += "white_carpet";
             break;
 
@@ -504,4 +519,19 @@ void Minecraft::initBlockInfoOf3D(blockInfoOf3D &object, const WN::Vec3 &size, c
         }
     }
     
+}
+
+std::string Minecraft::Command::itemInBox(
+                                          const WN::Vec3 &posi,
+                                          int containerPosition,
+                                          std::string item,
+                                          int numberOfItems
+                                          ) {
+    std::string command = std::string("replaceitem block ") +
+        std::to_string(static_cast<int>(posi.x)) + " " +
+        std::to_string(static_cast<int>(posi.y)) + " " +
+        std::to_string(static_cast<int>(posi.z)) + " container." +
+        std::to_string(containerPosition) + " " + item + " " +
+        std::to_string(numberOfItems) + "\n";
+    return command;
 }

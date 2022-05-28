@@ -21,29 +21,43 @@ namespace gimmick {
                        WN::direction facing,
                        const WN::Vec3 &defaultPosi,
                        const houseSize &size,
+                       const WN::Vec3 &sendPosition,
+                       std::string &commands,
                        WN::Vec3 doorLeftPosi,
                        Minecraft::MinecraftBlock blockType
                        );
 
     void waterElevator(
-                            std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
-                            const WN::Vec3 &center,
-                            WN::direction facing,
-                            const WN::Vec3 &defaultPosi,
-                            const houseSize &size,
-                            WN::Vec3 elePosi,
-                            int elevatorHeight,
-                            const std::vector< int > &floor
-                            );
+                       std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
+                       const WN::Vec3 &center,
+                       WN::direction facing,
+                       const WN::Vec3 &defaultPosi,
+                       const houseSize &size,
+                       const WN::Vec3 &sendPosition,
+                       std::string &commands,
+                       WN::Vec3 elePosi,
+                       int elevatorHeight,
+                       const std::vector< int > &floor
+                       );
 
     void automaticWaterField(
-                            std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
-                            const WN::Vec3 &center,
-                            WN::direction facing,
-                            const WN::Vec3 &defaultPosi,
-                            const houseSize &size,
-                            std::string &commands
-                            );
+                             std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
+                             const WN::Vec3 &center,
+                             WN::direction facing,
+                             const WN::Vec3 &defaultPosi,
+                             const houseSize &size,
+                             const WN::Vec3 &sendPosition,
+                             std::string &commands
+                             );
+
+    void createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
+                         const WN::Vec3 &center,
+                         WN::direction facing,
+                         const WN::Vec3 &defaultPosi,
+                         const houseSize &size,
+                         const WN::Vec3 &sendPosition,
+                         std::string &commands
+                         );
 }
 
 

@@ -7,7 +7,8 @@
 
 #include "process.hpp"
 
-Process::Process() {
+Process::Process(WN::Vec3 *sendPosi) {
+    this->sendPosi = sendPosi;
     this->init();
 }
 
@@ -54,7 +55,7 @@ bool Process::init() {
 bool Process::sendData() {
     GDMC session;
     
-    session.setBlocks(WN::Vec3(0, 4, 0),
+    session.setBlocks(*(this->sendPosi),
                       *(this->createArea)
                       );
     session.command(this->commands);
@@ -88,6 +89,7 @@ void Process::createHouse1(const WN::Vec3 &center) {
                            facing,
                            defaultPosi,
                            size,
+                           *(this->sendPosi),
                            this->commands
                            );
     
@@ -97,6 +99,7 @@ void Process::createHouse1(const WN::Vec3 &center) {
                            facing,
                            defaultPosi,
                            size,
+                           *(this->sendPosi),
                            this->commands
                            );
     
@@ -108,6 +111,8 @@ void Process::createHouse1(const WN::Vec3 &center) {
                            facing,
                            defaultPosi,
                            size,
+                           *(this->sendPosi),
+                           this->commands,
                            doorPosi,
                            Minecraft::MinecraftBlock::air
                            );
@@ -117,41 +122,45 @@ void Process::createHouse1(const WN::Vec3 &center) {
 void  Process::createHouse2(const WN::Vec3 &center) {
     WN::EveryDirection directions = WN::EveryDirection();
     const houseSize size = {40,40};
-
+    
     WN::direction facing = WN::direction::North;
-
+    
     WN::Vec3 defaultPosi(
                          this->area.x/2 + center.x - size.width/2,
                          this->groundHeight,
                          this->area.z/2 + center.z - size.depth/2
                          );
-
+    
     building::createHouse2(
                            this->createArea,
                            center,
                            facing,
                            defaultPosi,
                            size,
+                           *(this->sendPosi),
                            this->commands
                            );
-                        
+    
     interior::createHouse2(
                            this->createArea,
                            center,
                            facing,
                            defaultPosi,
                            size,
+                           *(this->sendPosi),
                            this->commands
                            );
-
+    
     WN::Vec3 elePosi(10, this->groundHeight , 34);
-
+    
     gimmick::waterElevator(
                            this->createArea,
                            center,
                            facing,
                            defaultPosi,
                            size,
+                           *(this->sendPosi),
+                           this->commands,
                            elePosi,
                            13,
                            std::vector<int>{5, 11}
@@ -161,84 +170,140 @@ void  Process::createHouse2(const WN::Vec3 &center) {
 void  Process::createStreetlight1(const WN::Vec3 &center) {
     WN::EveryDirection directions = WN::EveryDirection();
     const houseSize size = {4,4};
-
+    
     WN::direction facing = WN::direction::North;
-
+    
     WN::Vec3 defaultPosi(
                          this->area.x/2 + center.x - size.width/2,
                          this->groundHeight,
                          this->area.z/2 + center.z - size.depth/2
                          );
-
+    
     interior::createStreetlight1(
-                           this->createArea,
-                           center,
-                           facing,
-                           defaultPosi,
-                           size,
-                           this->commands
-                           );
+                                 this->createArea,
+                                 center,
+                                 facing,
+                                 defaultPosi,
+                                 size,
+                                 *(this->sendPosi),
+                                 this->commands
+                                 );
 }
 
 void  Process::createStreetlight2(const WN::Vec3 &center) {
     WN::EveryDirection directions = WN::EveryDirection();
     const houseSize size = {2,2};
-
+    
     WN::direction facing = WN::direction::North;
-
+    
     WN::Vec3 defaultPosi(
                          this->area.x/2 + center.x - size.width/2,
                          this->groundHeight,
                          this->area.z/2 + center.z - size.depth/2
                          );
-
+    
     interior::createStreetlight2(
-                           this->createArea,
-                           center,
-                           facing,
-                           defaultPosi,
-                           size,
-                           this->commands
-                           );
+                                 this->createArea,
+                                 center,
+                                 facing,
+                                 defaultPosi,
+                                 size,
+                                 *(this->sendPosi),
+                                 this->commands
+                                 );
 }
 
-    void  Process::createAutomaticWaterField(const WN::Vec3 &center) {
+void  Process::createAutomaticWaterField(const WN::Vec3 &center) {
     WN::EveryDirection directions = WN::EveryDirection();
     const houseSize size = {13,20};
-
-    WN::direction facing = WN::direction::North;
-
+    
+    WN::direction facing = WN::direction::South;
+    
     WN::Vec3 defaultPosi(
-                        this->area.x/2 + center.x - size.width/2,
-                        this->groundHeight,
-                        this->area.z/2 + center.z - size.depth/2
-                        );
-
+                         size.width/2,
+                         this->groundHeight,
+                         size.depth/2
+                         );
+    defaultPosi.rotation(facing);
+    defaultPosi.x = this->area.x/2 + center.x - defaultPosi.x;
+    defaultPosi.z = this->area.z/2 + center.z - defaultPosi.z;
+    
     building::createAutomaticWaterField(
-                           this->createArea,
-                           center,
-                           facing,
-                           defaultPosi,
-                           size,
-                           this->commands
-                           );
-
+                                        this->createArea,
+                                        center,
+                                        facing,
+                                        defaultPosi,
+                                        size,
+                                        *(this->sendPosi),
+                                        this->commands
+                                        );
+    
     gimmick::automaticWaterField(
-                           this->createArea,
-                           center,
-                           facing,
-                           defaultPosi,
-                           size,
-                           this->commands
-                           );
-
+                                 this->createArea,
+                                 center,
+                                 facing,
+                                 defaultPosi,
+                                 size,
+                                 *(this->sendPosi),
+                                 this->commands
+                                 );
+    
     interior::createFarmProducts(
-                        this->createArea,
-                        center,
-                        facing,
-                        defaultPosi,
-                        size,
-                        this->commands
-                        );
+                                 this->createArea,
+                                 center,
+                                 facing,
+                                 defaultPosi,
+                                 size,
+                                 *(this->sendPosi),
+                                 this->commands
+                                 );
 }
 
+void Process::createPigBurner(const WN::Vec3 &center) {
+    WN::EveryDirection directions = WN::EveryDirection();
+    
+    const houseSize size = {11,11};
+    
+    WN::Vec3 posi(0,0,0);
+    
+    WN::direction facing = WN::direction::North;
+    
+    WN::Vec3 defaultPosi(
+                         size.width/2,
+                         this->groundHeight,
+                         size.depth/2
+                         );
+    defaultPosi.rotation(facing);
+    defaultPosi.x = this->area.x/2 + center.x - defaultPosi.x;
+    defaultPosi.z = this->area.z/2 + center.z - defaultPosi.z;
+    
+    building::createPigBurner(
+                              this->createArea,
+                              center,
+                              facing,
+                              defaultPosi,
+                              size,
+                              *(this->sendPosi),
+                              this->commands
+                              );
+    
+    gimmick::createPigBurner(
+                             this->createArea,
+                             center,
+                             facing,
+                             defaultPosi,
+                             size,
+                             *(this->sendPosi),
+                             this->commands
+                             );
+    
+    interior::createPigBurner(
+                              this->createArea,
+                              center,
+                              facing,
+                              defaultPosi,
+                              size,
+                              *(this->sendPosi),
+                              this->commands
+                              );
+}
