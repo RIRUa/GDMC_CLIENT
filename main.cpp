@@ -8,7 +8,7 @@
 int main(){
     WN::Vec3 center = WN::Vec3(0,0,0);
     Process p = Process(&center);
-    p.createAutomaticWaterField(WN::Vec3(0,0,0));
+    p.createStreetlight1(WN::Vec3(0,0,0));
     p.sendData();
     
     return 0;
