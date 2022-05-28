@@ -268,7 +268,7 @@ void Process::createAutomaticWaterField(const WN::Vec3 &center) {
 
 void  Process::createFountain(const WN::Vec3 &center) {
     WN::EveryDirection directions = WN::EveryDirection();
-    const houseSize size = {30,30};
+    const houseSize size = {26,26};
 
     WN::direction facing = WN::direction::North;
 
@@ -289,15 +289,15 @@ void  Process::createFountain(const WN::Vec3 &center) {
                            size,
                            this->commands
                            );
-
-    gimmick::createFountain(
-                           this->createArea,
-                           center,
-                           facing,
-                           defaultPosi,
-                           size,
-                           this->commands
-                           );
+//
+//    gimmick::createFountain(
+//                           this->createArea,
+//                           center,
+//                           facing,
+//                           defaultPosi,
+//                           size,
+//                           this->commands
+//                           );
 
     // interior::createFountain(
     //                     this->createArea,
