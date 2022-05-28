@@ -99,6 +99,7 @@ void Process::createHouse1(const WN::Vec3 &center) {
                            facing,
                            defaultPosi,
                            size,
+                           *(this->sendPosi),
                            this->commands
                            );
     
@@ -146,6 +147,7 @@ void  Process::createHouse2(const WN::Vec3 &center) {
                            facing,
                            defaultPosi,
                            size,
+                           *(this->sendPosi),
                            this->commands
                            );
     
@@ -183,6 +185,7 @@ void  Process::createStreetlight1(const WN::Vec3 &center) {
                                  facing,
                                  defaultPosi,
                                  size,
+                                 *(this->sendPosi),
                                  this->commands
                                  );
 }
@@ -205,6 +208,7 @@ void  Process::createStreetlight2(const WN::Vec3 &center) {
                                  facing,
                                  defaultPosi,
                                  size,
+                                 *(this->sendPosi),
                                  this->commands
                                  );
 }
@@ -250,6 +254,7 @@ void  Process::createAutomaticWaterField(const WN::Vec3 &center) {
                                  facing,
                                  defaultPosi,
                                  size,
+                                 *(this->sendPosi),
                                  this->commands
                                  );
 }

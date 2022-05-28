@@ -14,6 +14,7 @@ void interior::createHouse1(
                             WN::direction facing,
                             const WN::Vec3 &defaultPosi,
                             const houseSize &size,
+                            const WN::Vec3 &sendPosition,
                             std::string &commands
                             ) {
     WN::EveryDirection directions = WN::EveryDirection(facing);
@@ -146,6 +147,7 @@ void interior::createHouse2(
                             WN::direction facing,
                             const WN::Vec3 &defaultPosi,
                             const houseSize &size,
+                            const WN::Vec3 &sendPosition,
                             std::string &commands
                             ) {
     WN::EveryDirection directions = WN::EveryDirection(facing);
@@ -749,13 +751,14 @@ void interior::createHouse2(
 }
     
 void interior::createStreetlight1(
-                            std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
-                            const WN::Vec3 &center,
-                            WN::direction facing,
-                            const WN::Vec3 &defaultPosi,
-                            const houseSize &size,
-                            std::string &commands
-                            ) {
+                                  std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
+                                  const WN::Vec3 &center,
+                                  WN::direction facing,
+                                  const WN::Vec3 &defaultPosi,
+                                  const houseSize &size,
+                                  const WN::Vec3 &sendPosition,
+                                  std::string &commands
+                                  ) {
     WN::EveryDirection directions = WN::EveryDirection(facing);
     
     WN::Vec3 posi(0,0,0);
@@ -970,13 +973,14 @@ void interior::createStreetlight1(
 }
 
 void interior::createStreetlight2(
-                            std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
-                            const WN::Vec3 &center,
-                            WN::direction facing,
-                            const WN::Vec3 &defaultPosi,
-                            const houseSize &size,
-                            std::string &commands
-                            ) {
+                                  std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
+                                  const WN::Vec3 &center,
+                                  WN::direction facing,
+                                  const WN::Vec3 &defaultPosi,
+                                  const houseSize &size,
+                                  const WN::Vec3 &sendPosition,
+                                  std::string &commands
+                                  ) {
     WN::EveryDirection directions = WN::EveryDirection(facing);
     
     WN::Vec3 posi(0,0,0);
@@ -1024,13 +1028,14 @@ void interior::createStreetlight2(
 }
 
 void interior::createFarmProducts(
-                            std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
-                            const WN::Vec3 &center,
-                            WN::direction facing,
-                            const WN::Vec3 &defaultPosi,
-                            const houseSize &size,
-                            std::string &commands
-                            ) {
+                                  std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
+                                  const WN::Vec3 &center,
+                                  WN::direction facing,
+                                  const WN::Vec3 &defaultPosi,
+                                  const houseSize &size,
+                                  const WN::Vec3 &sendPosition,
+                                  std::string &commands
+                                  ) {
     WN::EveryDirection directions = WN::EveryDirection(facing);
     
     WN::Vec3 posi(0,0,0);
