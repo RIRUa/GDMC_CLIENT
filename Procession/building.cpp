@@ -1849,7 +1849,7 @@ void building::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &bloc
     // ディスペンサーを使うか（２以上なら使う）
     int isDispense = 0;
     
-    for (height = 1; height < 5; ++height) {
+    for (height = 1; height < 6; ++height) {
         for (depth = 4; depth < (size.depth - 4); ++depth) {
             for (width = 4; width < (size.width - 4); ++width) {
                 
@@ -1870,7 +1870,7 @@ void building::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &bloc
         }
     }
     
-    for (height = 5; height < 9; ++height) {
+    for (height = 5; height < 10; ++height) {
         for (depth = 0; depth < size.depth; ++depth) {
             for (width = 0; width < size.width; ++width) {
                 // 豚の落ちる穴
@@ -1894,7 +1894,7 @@ void building::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &bloc
                     edgeCounter++;
                 }
                 
-                if (height == 6) {
+                if (height == 7) {
                     if (width == 1) {
                         isDispense++;
                     }
@@ -1916,9 +1916,9 @@ void building::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &bloc
                 posi.z += defaultPosi.z;
                 posi.x += defaultPosi.x;
                 
-                if (height == 5) {
+                if (height == 6) {
                     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::diamondBlock;
-                } else if (height == 6) {
+                } else if (height == 7) {
                     
                     if (isDispense >= 2) {
                         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::dispenser;
@@ -1939,7 +1939,7 @@ void building::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &bloc
                         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::grassBlock;
                     }
                     
-                } else if (height >= 7 && edgeCounter > 0) {
+                } else if (height >= 8 && edgeCounter > 0) {
                     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
                 }
                 
@@ -1948,7 +1948,7 @@ void building::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &bloc
     }
     
     // スポナーの設置
-    height = 8;
+    height = 9;
     width = ((size.width - 1) / 2);
     depth = ((size.depth - 1) / 2);
     
@@ -1986,6 +1986,61 @@ void building::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &bloc
     posi.x += defaultPosi.x;
     
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::chest;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "type=left";
+    
+    height = 0;
+    width = 6;
+    depth = 4;
+    
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::chest;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "type=right";
+    
+    
+    // ３方への壁の設置
+    int i = 0;
+    constexpr int wallWidth = 4;
+    
+    for (height = 0; height < 6; ++height) {
+        for (depth = 0; depth < size.depth; ++depth) {
+            for (i = 0; i < wallWidth; ++i) {
+                width = 0;
+                posi.z = depth;
+                posi.x = width + i;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z;
+                posi.x += defaultPosi.x;
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::whiteConcrete;
+                
+                width = size.width - 1;
+                posi.z = depth;
+                posi.x = width - i;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z;
+                posi.x += defaultPosi.x;
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::whiteConcrete;
+            }
+        }
+        
+        for (width = wallWidth; width < (size.width - wallWidth); ++width) {
+            for (i = 0; i < wallWidth; ++i) {
+                depth = size.depth - 1;
+                posi.z = depth - i;
+                posi.x = width;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z;
+                posi.x += defaultPosi.x;
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::whiteConcrete;
+            }
+        }
+    }
     
     
 }

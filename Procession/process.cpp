@@ -110,6 +110,8 @@ void Process::createHouse1(const WN::Vec3 &center) {
                            facing,
                            defaultPosi,
                            size,
+                           *(this->sendPosi),
+                           this->commands,
                            doorPosi,
                            Minecraft::MinecraftBlock::air
                            );
@@ -155,6 +157,8 @@ void  Process::createHouse2(const WN::Vec3 &center) {
                            facing,
                            defaultPosi,
                            size,
+                           *(this->sendPosi),
+                           this->commands,
                            elePosi,
                            13,
                            std::vector<int>{5, 11}
@@ -236,6 +240,7 @@ void  Process::createAutomaticWaterField(const WN::Vec3 &center) {
                                  facing,
                                  defaultPosi,
                                  size,
+                                 *(this->sendPosi),
                                  this->commands
                                  );
     
