@@ -1823,10 +1823,38 @@ void building::createAutomaticWaterField(
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::chest;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
-
-    commands += std::string("replaceitem")+" "+"block"+" "+std::to_string(posi.x - defaultPosi.x -6 +center.x)+" "+std::to_string(defaultPosi.y + height + 4)+" "+std::to_string(posi.z -defaultPosi.z -10 +center.z)+" "+"container.0"+" "+"minecraft:netherite_hoe"+" "+"1"+"\n";
-    commands += std::string("replaceitem")+" "+"block"+" "+std::to_string(posi.x - defaultPosi.x -6 +center.x)+" "+std::to_string(defaultPosi.y + height + 4)+" "+std::to_string(posi.z -defaultPosi.z -10 +center.z)+" "+"container.1"+" "+"minecraft:diamond_hoe"+" "+"1"+"\n";
-    commands += std::string("replaceitem")+" "+"block"+" "+std::to_string(posi.x - defaultPosi.x -6 +center.x)+" "+std::to_string(defaultPosi.y + height + 4)+" "+std::to_string(posi.z -defaultPosi.z -10 +center.z)+" "+"container.2"+" "+"minecraft:wheat_seeds"+" "+"64"+"\n";
+    // コマンド作成
+    WN::Vec3 chestPosi = (*block3d)[defaultPosi.y + height][posi.z][posi.x].position;
+    
+    commands += Minecraft::Command::itemInBox(WN::Vec3(
+                                                       chestPosi.x + sendPosition.x,
+                                                       chestPosi.y + sendPosition.y,
+                                                       chestPosi.z + sendPosition.z
+                                                       ),
+                                              0,
+                                              "minecraft:netherite_hoe",
+                                              1
+                                              );
+    
+    commands += Minecraft::Command::itemInBox(WN::Vec3(
+                                                       chestPosi.x + sendPosition.x,
+                                                       chestPosi.y + sendPosition.y,
+                                                       chestPosi.z + sendPosition.z
+                                                       ),
+                                              1,
+                                              "minecraft:diamond_hoe",
+                                              1
+                                              );
+    
+    commands += Minecraft::Command::itemInBox(WN::Vec3(
+                                                       chestPosi.x + sendPosition.x,
+                                                       chestPosi.y + sendPosition.y,
+                                                       chestPosi.z + sendPosition.z
+                                                       ),
+                                              2,
+                                              "minecraft:wheat_seeds",
+                                              64
+                                              );
 }
 
 

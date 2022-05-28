@@ -213,7 +213,7 @@ void  Process::createStreetlight2(const WN::Vec3 &center) {
                                  );
 }
 
-void  Process::createAutomaticWaterField(const WN::Vec3 &center) {
+void Process::createAutomaticWaterField(const WN::Vec3 &center) {
     WN::EveryDirection directions = WN::EveryDirection();
     const houseSize size = {13,20};
     
