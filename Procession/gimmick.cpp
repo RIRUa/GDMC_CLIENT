@@ -406,6 +406,7 @@ void gimmick::automaticWaterField(
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::repeater;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
 
     height = 0; width = size.width-2;
     for(depth = 11; depth < size.depth-3; ++depth){
@@ -424,6 +425,7 @@ void gimmick::automaticWaterField(
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::repeater;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
 
     height = 0; width = size.width-2; depth = size.depth-2;
     posi.z = depth;
@@ -458,10 +460,19 @@ void gimmick::automaticWaterField(
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::dispenser;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
-    commands += std::string("replaceitem")+" "+"block"+" "+std::to_string(posi.x - defaultPosi.x -6 +center.x)+" "+std::to_string(defaultPosi.y + height + 4 + center.y)+" "+std::to_string(posi.z -defaultPosi.z -10 +center.z)+" "+"container.4"+" "+"minecraft:water_bucket"+" "+"1"+"\n";
     
+    // コマンド作成
+    WN::Vec3 dispenserPosi = (*block3d)[defaultPosi.y + height][posi.z][posi.x].position;
+    commands += Minecraft::Command::itemInBox(WN::Vec3(
+                                                       dispenserPosi.x + sendPosition.x,
+                                                       dispenserPosi.y + sendPosition.y,
+                                                       dispenserPosi.z + sendPosition.z
+                                                       ),
+                                              4,
+                                              "minecraft:water_bucket",
+                                              1
+                                              );
 }
 
 void gimmick::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,

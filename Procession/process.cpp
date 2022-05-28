@@ -217,7 +217,7 @@ void Process::createAutomaticWaterField(const WN::Vec3 &center) {
     WN::EveryDirection directions = WN::EveryDirection();
     const houseSize size = {13,20};
     
-    WN::direction facing = WN::direction::South;
+    WN::direction facing = WN::direction::North;
     
     WN::Vec3 defaultPosi(
                          size.width/2,
