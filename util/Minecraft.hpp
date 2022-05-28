@@ -49,7 +49,7 @@ namespace Minecraft {
         // 磨かれたブラックストーンレンガ
         polishedBlackstoneBricks,
         //ネザーレンガ
-        nether_bricks,
+        netherBricks,
         // プリズマリンの塀
         prismarineWall,
         //マグマブロック
@@ -75,7 +75,7 @@ namespace Minecraft {
         // 滑らかなクォーツブロック
         smoothQuartz,
         // クォーツの階段
-        quartz_stairs,
+        quartzStairs,
         // 鉄ブロック
         ironBlock,
         // 金ブロック
@@ -85,9 +85,9 @@ namespace Minecraft {
 
         /***** ハーフブロック *****/
         //ネザーレンガのハーフブロック
-        nether_brick_slab,
+        netherBrickSlab,
         //滑らかなクォーツのハーフブロック
-        smooth_quartz_slab,
+        smoothQuartzSlab,
         
         /***** 木材 *****/
         // オークの木材
@@ -97,13 +97,13 @@ namespace Minecraft {
 
         /***** 看板 *****/
         //オークの看板
-        oak_sign,
+        oakSign,
 
         /***** 階段 *****/
         // なめらかなクォーツの階段
         smoothQuartzStairs,
         //ネザーレンガの階段
-        nether_brick_stairs,
+        netherBrickStairs,
         
         /***** ドア *****/
         // 鉄のドア
@@ -127,15 +127,15 @@ namespace Minecraft {
 
         /***** トラップドア *****/
         //マツのトラップドア
-        spruce_trapdoor,
+        spruceTrapdoor,
 
         /***** フェンス *****/
         //ネザーレンガのフェンス
-        nether_brick_fence,
+        netherBrickFence,
         //歪んだフェンス
-        warped_fence,
+        warpedFence,
         //オークのフェンス
-        oak_fence,
+        oakFence,
 
         /***** ゲート *****/
         // 歪んだフェンスゲート
@@ -157,7 +157,7 @@ namespace Minecraft {
         // グロウストーン
         glowstone,
         // ジャックオランタン
-        jack_o_lantern,
+        jackOLantern,
         // シーランタン
         seaLantern,
         //レッドストーンランプ
@@ -169,8 +169,14 @@ namespace Minecraft {
         /*********************************レッドストーン以外で作られるもの*********************************/
         // レバー
         lever,
+        
+        /***** ボタン *****/
         // 石のボタン
-        stone_button,
+        stoneButton,
+        // 歪んだボタン
+        warpedButton,
+        
+        /***** 感圧板 *****/
         // 石の感圧板
         stonePressurePlate,
         // 歪んだ感圧板
@@ -202,7 +208,7 @@ namespace Minecraft {
         //オブザーバー
         observer,
         //日照センサー
-        daylight_detector,
+        daylightDetector,
         //ディスペンサー
         dispenser,
         //ホッパー
@@ -222,7 +228,7 @@ namespace Minecraft {
         //鎖
         chain,
         //白のカーペット
-        white_carpet,
+        whiteCarpet,
         //チェスト
         chest,
         // 小麦の種
