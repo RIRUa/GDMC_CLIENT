@@ -766,8 +766,8 @@ void interior::createStreetlight1(
     int width, height, depth;
 
     //土台
-    for(width = 0; width < 3; ++width){
-        height = 0; depth =1;
+    for(width = 0; width < size.width; ++width){
+        height = 0; depth = 0;
 
         posi.z = depth;
         posi.x = width;
@@ -775,11 +775,11 @@ void interior::createStreetlight1(
         posi.z += defaultPosi.z;
         posi.x += defaultPosi.x;
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::South);
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
     }
 
-    for(width = 0; width < 3; ++width){
-        height = 0; depth =3;
+    for(width = 0; width < size.width; ++width){
+        height = 0; depth = size.depth - 1;
 
         posi.z = depth;
         posi.x = width;
@@ -787,11 +787,11 @@ void interior::createStreetlight1(
         posi.z += defaultPosi.z;
         posi.x += defaultPosi.x;
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::North);
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
     }
 
-    for(depth = 1; depth < 4; ++depth){
-        height = 0; width =0;
+    for(depth = 1; depth < size.depth; ++depth){
+        height = 0; width = 0;
 
         posi.z = depth;
         posi.x = width;
@@ -799,11 +799,11 @@ void interior::createStreetlight1(
         posi.z += defaultPosi.z;
         posi.x += defaultPosi.x;
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::East);
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
     }
 
-    for(depth = 1; depth < 4; ++depth){
-        height = 0; width =2;
+    for(depth = 1; depth < size.depth; ++depth){
+        height = 0; width = size.width - 1;
 
         posi.z = depth;
         posi.x = width;
@@ -811,12 +811,12 @@ void interior::createStreetlight1(
         posi.z += defaultPosi.z;
         posi.x += defaultPosi.x;
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::West);
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
     }
 
 //柱
     for(height = 0; height < 4; ++height){
-        depth = 2; width =1;
+        depth = 1; width = 1;
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
@@ -828,7 +828,7 @@ void interior::createStreetlight1(
 //ライト部分
     //下の支え
     height = 3;
-    depth = 1; width = 1;
+    depth = 0; width = 1;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -838,7 +838,7 @@ void interior::createStreetlight1(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::South);
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half=top";
 
-    depth = 3;
+    depth = size.depth - 1;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -848,7 +848,7 @@ void interior::createStreetlight1(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::North);
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half=top";
 
-    depth = 2; width = 0;
+    depth = 1; width = 0;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -858,7 +858,7 @@ void interior::createStreetlight1(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::East);
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half=top";
 
-    width = 2;
+    width = size.width - 1;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -870,7 +870,7 @@ void interior::createStreetlight1(
 
     //上の支え
     height = 5;
-    depth = 1; width = 1;
+    depth = 0; width = 1;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -879,7 +879,7 @@ void interior::createStreetlight1(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::South);
 
-    depth = 3;
+    depth = size.depth - 1;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -889,7 +889,7 @@ void interior::createStreetlight1(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::North);
 
-    depth = 2; width = 0;
+    depth = 1; width = 0;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -899,7 +899,7 @@ void interior::createStreetlight1(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::East);
 
-    width = 2;
+    width = size.width - 1;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -910,7 +910,7 @@ void interior::createStreetlight1(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::West);
 
     //ライト
-    height = 4; depth = 2; width = 1;
+    height = 4; depth = 1; width = 1;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -919,40 +919,26 @@ void interior::createStreetlight1(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneLamp;
 
     //鎖
-    depth = 1;
-    posi.z = depth;
-    posi.x = width;
-    posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::chain;
-
-    depth = 3;
-    posi.z = depth;
-    posi.x = width;
-    posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::chain;
-
-    depth = 2; width = 0;
-    posi.z = depth;
-    posi.x = width;
-    posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::chain;
-
-    width = 2;
-    posi.z = depth;
-    posi.x = width;
-    posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::chain;
-
+    
+    for (depth = 0; depth < size.depth; ++depth) {
+        for (width = 0; width < size.width; ++width) {
+            
+            if (width == 1 && depth == 1) {
+                continue;
+            }
+            
+            if (width == 1 || depth == 1) {
+                posi.z = depth;
+                posi.x = width;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z;
+                posi.x += defaultPosi.x;
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::chain;
+            }
+        }
+    }
     //月照センサー
-    height = 5; depth = 2; width = 1;
+    height = 5; depth = 1; width = 1;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
@@ -960,8 +946,7 @@ void interior::createStreetlight1(
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::daylightDetector;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "inverted=true";
-
-
+    
     //白のカーペット
     height = 6;
     posi.z = depth;
@@ -999,28 +984,21 @@ void interior::createStreetlight2(
     }
 
     //月照センサー
-    height = 5; depth = 0; width = 0;
-    posi.z = depth;
-    posi.x = width;
-    posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::daylightDetector;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "inverted=true";
-
-    width = 1;
-    posi.z = depth;
-    posi.x = width;
-    posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::daylightDetector;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "inverted=true";
-
+    height = 5; depth = 0;
+    for (width = 0; width < size.width; ++width) {
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::daylightDetector;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "inverted=true";
+    }
+    
     //ランプ
     height = 4;
     posi.z = depth;
-    posi.x = width;
+    posi.x = width - 1;
     posi.rotation(facing);
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
