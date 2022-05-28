@@ -1552,6 +1552,7 @@ void building::createAutomaticWaterField(
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::spruceTrapdoor;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
 
     //土
     height = -1;
@@ -1814,6 +1815,15 @@ void building::createAutomaticWaterField(
             (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::netherBrickSlab;
         }
     }
+    
+    width = size.width - 3; height = -1; depth = 1;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "type=top";
 
     width = 1; height = 0; depth = 0;
     posi.z = depth;
