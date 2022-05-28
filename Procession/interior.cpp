@@ -1113,3 +1113,31 @@ void interior::createFarmProducts(
         }
     }
 }
+
+void interior::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
+                     const WN::Vec3 &center,
+                     WN::direction facing,
+                     const WN::Vec3 &defaultPosi,
+                     const houseSize &size,
+                     const WN::Vec3 &sendPosition,
+                     std::string &commands
+                     ) {
+    WN::EveryDirection directions = WN::EveryDirection(facing);
+    WN::Vec3 posi(0,0,0);
+    int width, height, depth;
+    
+    height = 2;
+    
+    width = (size.width - 1) / 2;
+    depth = (size.depth - 1) / 2;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::lava;
+    
+    height = 1;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakWallSign;
+    
+}

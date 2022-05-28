@@ -296,4 +296,14 @@ void Process::createPigBurner(const WN::Vec3 &center) {
                              *(this->sendPosi),
                              this->commands
                              );
+    
+    interior::createPigBurner(
+                              this->createArea,
+                              center,
+                              facing,
+                              defaultPosi,
+                              size,
+                              *(this->sendPosi),
+                              this->commands
+                              );
 }

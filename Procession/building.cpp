@@ -1844,6 +1844,8 @@ void building::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &bloc
     
     int width, height, depth;
     
+    int i, j;
+    
     // 端を検出
     int edgeCounter = 0;
     // ディスペンサーを使うか（２以上なら使う）
@@ -1917,7 +1919,13 @@ void building::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &bloc
                 posi.x += defaultPosi.x;
                 
                 if (height == 6) {
-                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::diamondBlock;
+                    
+                    if (width % 2 == depth % 2) {
+                        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::diamondBlock;
+                    } else {
+                        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::goldBlock;
+                    }
+                    
                 } else if (height == 7) {
                     
                     if (isDispense >= 2) {
@@ -1949,16 +1957,22 @@ void building::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &bloc
     
     // スポナーの設置
     height = 9;
-    width = ((size.width - 1) / 2);
-    depth = ((size.depth - 1) / 2);
+    constexpr int spawnerPosi = 3;
     
-    posi.z = depth;
-    posi.x = width;
-    posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
-    
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::spawner;
+    for (i = -1; i < 2; i += 2) {
+        for (j = -1; j < 2; j += 2) {
+            width = ((size.width - 1) / 2 + i * spawnerPosi);
+            depth = ((size.depth - 1) / 2 + j * spawnerPosi);
+            
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::spawner;
+        }
+    }
     
     // ホッパーの設置
     height = 0;
@@ -2005,7 +2019,6 @@ void building::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &bloc
     
     
     // ３方への壁の設置
-    int i = 0;
     constexpr int wallWidth = 4;
     
     for (height = 0; height < 6; ++height) {
