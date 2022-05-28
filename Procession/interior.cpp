@@ -265,7 +265,7 @@ void interior::createHouse2(
                 posi.rotation(facing);
                 posi.z += defaultPosi.z;
                 posi.x += defaultPosi.x;
-                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oak_fence;
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakFence;
             }
         }
     }
@@ -281,7 +281,7 @@ void interior::createHouse2(
             posi.rotation(facing);
             posi.z += defaultPosi.z;
             posi.x += defaultPosi.x;
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oak_fence;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakFence;
         }
     }
 
@@ -295,7 +295,7 @@ void interior::createHouse2(
             posi.rotation(facing);
             posi.z += defaultPosi.z;
             posi.x += defaultPosi.x;
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oak_fence;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakFence;
         }
     }
 
@@ -309,7 +309,7 @@ void interior::createHouse2(
             posi.rotation(facing);
             posi.z += defaultPosi.z;
             posi.x += defaultPosi.x;
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oak_fence;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakFence;
         }
     }
 
@@ -323,7 +323,7 @@ void interior::createHouse2(
             posi.rotation(facing);
             posi.z += defaultPosi.z;
             posi.x += defaultPosi.x;
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oak_fence;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakFence;
         }
     }
 
@@ -396,7 +396,7 @@ void interior::createHouse2(
                 posi.rotation(facing);
                 posi.z += defaultPosi.z;
                 posi.x += defaultPosi.x;
-                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oak_fence;
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakFence;
             }
         }
     }
@@ -412,7 +412,7 @@ void interior::createHouse2(
             posi.rotation(facing);
             posi.z += defaultPosi.z;
             posi.x += defaultPosi.x;
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oak_fence;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakFence;
         }
     }
 
@@ -426,7 +426,7 @@ void interior::createHouse2(
             posi.rotation(facing);
             posi.z += defaultPosi.z;
             posi.x += defaultPosi.x;
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oak_fence;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakFence;
         }
     }
 
@@ -440,7 +440,7 @@ void interior::createHouse2(
             posi.rotation(facing);
             posi.z += defaultPosi.z;
             posi.x += defaultPosi.x;
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oak_fence;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakFence;
         }
     }
 
@@ -454,7 +454,7 @@ void interior::createHouse2(
             posi.rotation(facing);
             posi.z += defaultPosi.z;
             posi.x += defaultPosi.x;
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oak_fence;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakFence;
         }
     }
 
@@ -526,7 +526,7 @@ void interior::createHouse2(
         posi.z += defaultPosi.z;
         posi.x += defaultPosi.x;
 
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_fence;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::netherBrickFence;
     }
 
     for(depth = 5; depth < 15; ++depth){
@@ -538,7 +538,7 @@ void interior::createHouse2(
         posi.z += defaultPosi.z;
         posi.x += defaultPosi.x;
 
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_fence;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::netherBrickFence;
     }
 
     for(int i = 0; i < 7; ++i){
@@ -549,7 +549,7 @@ void interior::createHouse2(
         posi.rotation(facing);
         posi.z += defaultPosi.z;
         posi.x += defaultPosi.x;
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_fence;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::netherBrickFence;
 
         width = 18;
         posi.z = depth;
@@ -557,7 +557,7 @@ void interior::createHouse2(
         posi.rotation(facing);
         posi.z += defaultPosi.z;
         posi.x += defaultPosi.x;
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_fence;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::netherBrickFence;
     }
 
     for(width = 5; width < 10; ++width){
@@ -567,7 +567,7 @@ void interior::createHouse2(
         posi.rotation(facing);
         posi.z += defaultPosi.z;
         posi.x += defaultPosi.x;
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_fence;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::netherBrickFence;
     }
 
     for(width = 18; width < 23; ++width){
@@ -576,7 +576,7 @@ void interior::createHouse2(
         posi.rotation(facing);
         posi.z += defaultPosi.z;
         posi.x += defaultPosi.x;
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_fence;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::netherBrickFence;
     }
 
     for(depth = 16; depth < 36; ++depth){
@@ -588,7 +588,7 @@ void interior::createHouse2(
         posi.z += defaultPosi.z;
         posi.x += defaultPosi.x;
 
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_fence;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::netherBrickFence;
     }
 
     for(depth = 5; depth < 36; ++depth){
@@ -600,7 +600,7 @@ void interior::createHouse2(
         posi.z += defaultPosi.z;
         posi.x += defaultPosi.x;
 
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_fence;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::netherBrickFence;
     }
 
     for(width = 5; width < 36; ++width){
@@ -612,7 +612,7 @@ void interior::createHouse2(
         posi.z += defaultPosi.z;
         posi.x += defaultPosi.x;
 
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_fence;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::netherBrickFence;
     }
     
     for(width = 22; width < 36; ++width){
@@ -624,7 +624,7 @@ void interior::createHouse2(
         posi.z += defaultPosi.z;
         posi.x += defaultPosi.x;
 
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_fence;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::netherBrickFence;
     }
 
     for(depth = 6; depth < 16; ++depth){
@@ -636,7 +636,7 @@ void interior::createHouse2(
         posi.z += defaultPosi.z;
         posi.x += defaultPosi.x;
 
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_fence;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::netherBrickFence;
     } 
 
 // 3階の照明
@@ -650,7 +650,7 @@ void interior::createHouse2(
         posi.z += defaultPosi.z;
         posi.x += defaultPosi.x;
 
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oak_fence;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakFence;
     }
 
     height = 15; width = 29;
@@ -663,7 +663,7 @@ void interior::createHouse2(
         posi.z += defaultPosi.z;
         posi.x += defaultPosi.x;
 
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oak_fence;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakFence;
     }
 
     height = 14; width = 28;
@@ -771,7 +771,7 @@ void interior::createStreetlight1(
         posi.rotation(facing);
         posi.z += defaultPosi.z;
         posi.x += defaultPosi.x;
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartz_stairs;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::South);
     }
 
@@ -783,7 +783,7 @@ void interior::createStreetlight1(
         posi.rotation(facing);
         posi.z += defaultPosi.z;
         posi.x += defaultPosi.x;
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartz_stairs;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::North);
     }
 
@@ -795,7 +795,7 @@ void interior::createStreetlight1(
         posi.rotation(facing);
         posi.z += defaultPosi.z;
         posi.x += defaultPosi.x;
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartz_stairs;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::East);
     }
 
@@ -807,7 +807,7 @@ void interior::createStreetlight1(
         posi.rotation(facing);
         posi.z += defaultPosi.z;
         posi.x += defaultPosi.x;
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartz_stairs;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::West);
     }
 
@@ -831,7 +831,7 @@ void interior::createStreetlight1(
     posi.rotation(facing);
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartz_stairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::South);
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half=top";
 
@@ -841,7 +841,7 @@ void interior::createStreetlight1(
     posi.rotation(facing);
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartz_stairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::North);
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half=top";
 
@@ -851,7 +851,7 @@ void interior::createStreetlight1(
     posi.rotation(facing);
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartz_stairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::East);
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half=top";
 
@@ -861,7 +861,7 @@ void interior::createStreetlight1(
     posi.rotation(facing);
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartz_stairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::West);
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half=top";
 
@@ -873,7 +873,7 @@ void interior::createStreetlight1(
     posi.rotation(facing);
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartz_stairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::South);
 
     depth = 3;
@@ -882,7 +882,7 @@ void interior::createStreetlight1(
     posi.rotation(facing);
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartz_stairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::North);
 
@@ -892,7 +892,7 @@ void interior::createStreetlight1(
     posi.rotation(facing);
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartz_stairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::East);
 
@@ -902,7 +902,7 @@ void interior::createStreetlight1(
     posi.rotation(facing);
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartz_stairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::West);
 
@@ -955,7 +955,7 @@ void interior::createStreetlight1(
     posi.rotation(facing);
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::daylight_detector;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::daylightDetector;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "inverted=true";
 
 
@@ -966,7 +966,7 @@ void interior::createStreetlight1(
     posi.rotation(facing);
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::white_carpet;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::whiteCarpet;
 }
 
 void interior::createStreetlight2(
@@ -991,7 +991,7 @@ void interior::createStreetlight2(
         posi.rotation(facing);
         posi.z += defaultPosi.z;
         posi.x += defaultPosi.x;
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::nether_brick_fence;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::netherBrickFence;
     }
 
     //月照センサー
@@ -1001,7 +1001,7 @@ void interior::createStreetlight2(
     posi.rotation(facing);
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::daylight_detector;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::daylightDetector;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "inverted=true";
 
     width = 1;
@@ -1010,7 +1010,7 @@ void interior::createStreetlight2(
     posi.rotation(facing);
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::daylight_detector;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::daylightDetector;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "inverted=true";
 
     //ランプ
