@@ -151,6 +151,11 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
         case Minecraft::MinecraftBlock::oakSign:
             blockName += "oak_sign";
             break;
+            
+        /***** 壁付き看板 *****/
+        case Minecraft::MinecraftBlock::oakWallSign:
+            blockName += "oak_wall_sign";
+            break;
         
         /***** ドア *****/
         case Minecraft::MinecraftBlock::ironDoor:
