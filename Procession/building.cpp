@@ -2027,22 +2027,23 @@ void building::createFountain(
         }
     }
     
-    for (width = 7; width < size.width - 6; ++width) {
-        for (depth = 7; depth < size.depth - 6; ++depth) {
-            
-            if (width != 7 || width != size.width - 7 ||
-                depth != 7 || depth != size.depth - 7
-                ) {
-                continue;
-            }
-            
-            posi.x = width;
-            posi.z = depth;
-            posi.rotation(facing);
-            posi.z += defaultPosi.z;
-            posi.x += defaultPosi.x;
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
-        }
+    
+    
+    for (int i = -5; i < 6; i += 10) {
+        posi.x = i;
+        posi.z = 0;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.width/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
+        
+        posi.x = 0;
+        posi.z = i;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.width/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
+        
     }
     
     
