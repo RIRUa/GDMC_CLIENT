@@ -984,28 +984,21 @@ void interior::createStreetlight2(
     }
 
     //月照センサー
-    height = 5; depth = 0; width = 0;
-    posi.z = depth;
-    posi.x = width;
-    posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::daylightDetector;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "inverted=true";
-
-    width = 1;
-    posi.z = depth;
-    posi.x = width;
-    posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::daylightDetector;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "inverted=true";
-
+    height = 5; depth = 0;
+    for (width = 0; width < size.width; ++width) {
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::daylightDetector;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "inverted=true";
+    }
+    
     //ランプ
     height = 4;
     posi.z = depth;
-    posi.x = width;
+    posi.x = width - 1;
     posi.rotation(facing);
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;

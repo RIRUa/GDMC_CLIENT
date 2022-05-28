@@ -196,7 +196,7 @@ void  Process::createStreetlight1(const WN::Vec3 &center) {
 
 void  Process::createStreetlight2(const WN::Vec3 &center) {
     WN::EveryDirection directions = WN::EveryDirection();
-    const houseSize size = {2,2};
+    const houseSize size = {2,1};
     
     WN::direction facing = WN::direction::North;
     
