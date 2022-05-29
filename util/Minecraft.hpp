@@ -218,6 +218,37 @@ namespace Minecraft {
         //ホッパー
         hopper,
 
+        
+        /********** その他 **********/
+        
+        /***** ユーズフル *****/
+        // クラフトテーブル
+        craftingTable,
+        // かまど
+        furnace,
+        // 燻製機
+        smoker,
+        // 溶鉱炉
+        blastFurnace,
+        // 製図台
+        cartographyTable,
+        // 矢細工台
+        fletchingTable,
+        // 砥石
+        grindstone,
+        // 鍛治台
+        smithingTable,
+        // 石切台
+        stonecutter,
+        // 金床
+        anvil,
+        
+        // ジュークボックス
+        jukebox,
+        // エンダーチェスト
+        enderChest,
+        
+        
         /***** その他 *****/
         // スポナー（豚）
         spawner,

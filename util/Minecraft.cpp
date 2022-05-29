@@ -342,6 +342,48 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "hopper";
             break;
 
+        /********** その他 **********/
+        /***** ユーズフル *****/
+        case Minecraft::MinecraftBlock::craftingTable:
+            blockName += "crafting_table";
+            break;
+            
+        case Minecraft::MinecraftBlock::furnace:
+            blockName += "furnace";
+            break;
+            
+        case Minecraft::MinecraftBlock::smoker:
+            blockName += "smoker";
+            break;
+            
+        case Minecraft::MinecraftBlock::blastFurnace:
+            blockName += "blast_furnace";
+            break;
+            
+        case Minecraft::MinecraftBlock::cartographyTable:
+            blockName += "cartography_table";
+            break;
+            
+        case Minecraft::MinecraftBlock::fletchingTable:
+            blockName += "fletching_table";
+            break;
+            
+        case Minecraft::MinecraftBlock::grindstone:
+            blockName += "grindstone";
+            break;
+            
+        case Minecraft::MinecraftBlock::smithingTable:
+            blockName += "smithing_table";
+            break;
+            
+        case Minecraft::MinecraftBlock::stonecutter:
+            blockName += "stonecutter";
+            break;
+            
+        case Minecraft::MinecraftBlock::anvil:
+            blockName += "anvil";
+            break;
+            
         /***** その他 *****/
         case Minecraft::MinecraftBlock::spawner:
             blockName += "spawner";
