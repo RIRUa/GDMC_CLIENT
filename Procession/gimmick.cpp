@@ -870,7 +870,7 @@ void gimmick::createFountain(
     posi.rotation(facing);
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::tripwire_hook;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::tripwireHook;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
 
     height = 1;depth = -20;width = 1;
@@ -879,7 +879,7 @@ void gimmick::createFountain(
     posi.rotation(facing);
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::tripwire_hook;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::tripwireHook;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
 
     height = 1;depth = -20;width = 0;

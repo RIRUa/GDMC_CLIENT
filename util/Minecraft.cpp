@@ -82,7 +82,7 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "glass";
             break;
 
-        case Minecraft::MinecraftBlock::glass_pane:
+        case Minecraft::MinecraftBlock::glassPane:
             blockName += "glass_pane";
             break;
             
@@ -133,7 +133,7 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "smooth_quartz_slab";
             break;
 
-        case Minecraft::MinecraftBlock::polished_diorite_slab:
+        case Minecraft::MinecraftBlock::polishedDioriteSlab:
             blockName += "polished_diorite_slab";
             break;
 
@@ -266,7 +266,7 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "redstone_lamp";
             break;
         
-        case Minecraft::MinecraftBlock::end_rod:
+        case Minecraft::MinecraftBlock::endRod:
             blockName += "end_rod";
             break;
         /***** レッドストーン系 *****/
@@ -300,7 +300,7 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "polished_blackstone_pressure_plate";
             break;
 
-        case Minecraft::MinecraftBlock::tripwire_hook:
+        case Minecraft::MinecraftBlock::tripwireHook:
             blockName += "tripwire_hook";
             break;
 

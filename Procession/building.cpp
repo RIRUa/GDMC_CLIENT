@@ -1947,7 +1947,7 @@ void building::createFountain(
             posi.rotation(facing);
             posi.z += defaultPosi.z + size.depth/2;
             posi.x += defaultPosi.x + size.width/2;
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::polished_diorite_slab;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::polishedDioriteSlab;
         }
     }
 
@@ -1999,7 +1999,7 @@ void building::createFountain(
             posi.rotation(facing);
             posi.z += defaultPosi.z + size.depth/2;
             posi.x += defaultPosi.x + size.width/2;
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::polished_diorite_slab;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::polishedDioriteSlab;
         }
     }
 
