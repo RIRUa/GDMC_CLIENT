@@ -139,6 +139,27 @@ void interior::createHouse1(
     (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::lantern;
     (*block3d)[heightDefault + height][posi.z][posi.x].addition = "hanging=true";
     
+    // 倉庫作成（納戸）
+    for (height = 0; height < 3; ++height) {
+        for (depth = size.depth-18; depth < size.depth-16; ++depth) {
+            for (width = (size.width - 12); width < (size.width - 3); width += 2) {
+                posi.z = depth;
+                posi.x = width;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z;
+                posi.x += defaultPosi.x;
+                
+                (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::chest;
+                (*block3d)[heightDefault + height][posi.z][posi.x].angle = directions.left;
+                if (depth == size.depth-18) {
+                    (*block3d)[heightDefault + height][posi.z][posi.x].addition = "type=right";
+                } else {
+                    (*block3d)[heightDefault + height][posi.z][posi.x].addition = "type=left";
+                }
+            }
+        }
+    }
+    
 }
 
 void interior::createHouse2(
