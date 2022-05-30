@@ -384,6 +384,23 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "anvil";
             break;
             
+        case Minecraft::MinecraftBlock::jukebox:
+            blockName += "jukebox";
+            break;
+            
+        case Minecraft::MinecraftBlock::enderChest:
+            blockName += "ender_chest";
+            break;
+            
+        /***** ベッド *****/
+        case Minecraft::MinecraftBlock::whiteBed:
+            blockName += "white_bed";
+            break;
+            
+        case Minecraft::MinecraftBlock::magentaBed:
+            blockName += "magenta_bed";
+            break;
+            
         /***** その他 *****/
         case Minecraft::MinecraftBlock::spawner:
             blockName += "spawner";

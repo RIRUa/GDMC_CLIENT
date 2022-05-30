@@ -242,11 +242,16 @@ namespace Minecraft {
         stonecutter,
         // 金床
         anvil,
-        
         // ジュークボックス
         jukebox,
         // エンダーチェスト
         enderChest,
+        
+        /***** ベッド *****/
+        // 白
+        whiteBed,
+        // 赤紫（マゼンタ）
+        magentaBed,
         
         
         /***** その他 *****/
