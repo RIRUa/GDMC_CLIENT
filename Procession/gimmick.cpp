@@ -621,6 +621,16 @@ void gimmick::automaticEquipment(std::shared_ptr< Minecraft::blockInfoOf3D > &bl
     
     WN::Vec3 boxPosi;
     
+    
+    height = equipPosi.y;
+    width = equipPosi.x;depth = equipPosi.z;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::warpedPressurePlate;
+    
     for (i = 0; i < 2; ++i) {
         
         height = equipPosi.y + i;
