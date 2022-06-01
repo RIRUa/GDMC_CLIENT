@@ -270,7 +270,7 @@ void  Process::createFountain(const WN::Vec3 &center) {
     WN::EveryDirection directions = WN::EveryDirection();
     const houseSize size = {26,26};
 
-    WN::direction facing = WN::direction::North;
+    WN::direction facing = WN::direction::East;
 
     WN::Vec3 defaultPosi(
                          size.width/2,
@@ -289,15 +289,16 @@ void  Process::createFountain(const WN::Vec3 &center) {
                            size,
                            this->commands
                            );
-//
-//    gimmick::createFountain(
-//                           this->createArea,
-//                           center,
-//                           facing,
-//                           defaultPosi,
-//                           size,
-//                           this->commands
-//                           );
+
+   gimmick::createFountain(
+                          this->createArea,
+                          center,
+                          facing,
+                          defaultPosi,
+                          size,
+                          *(this->sendPosi),
+                          this->commands
+                          );
 
     // interior::createFountain(
     //                     this->createArea,

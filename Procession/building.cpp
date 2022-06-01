@@ -1989,6 +1989,23 @@ void building::createFountain(
         }
     }
 
+    for (int i = -8; i < 9; i += 16) {
+        posi.x = i;
+        posi.z = 0;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.width/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+        
+        posi.x = 0;
+        posi.z = i;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.width/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+        
+    }
+
 
     //二層目　二段目ハーフブロック
     height = 8;
@@ -2027,8 +2044,42 @@ void building::createFountain(
         }
     }
     
-    
-    
+    height = 6;
+    for (int i = -5; i < 6; i += 10) {
+        posi.x = i;
+        posi.z = i;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.width/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+        
+        posi.x = i;
+        posi.z = -i;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.width/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+        
+    }
+
+    height = 7;
+    for (int i = -3; i < 4; i += 6) {
+        posi.x = i;
+        posi.z = 0;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.width/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::water;
+        
+        posi.x = 0;
+        posi.z = i;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.width/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::water;
+        
+    }
+
     for (int i = -5; i < 6; i += 10) {
         posi.x = i;
         posi.z = 0;
@@ -2045,900 +2096,899 @@ void building::createFountain(
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
         
     }
-    
-    
-//
-//    width =0; depth = -8; height = 7;
-//    posi.x = width;
-//    posi.z = depth;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
-//
-//    width = 0; depth =8;
-//    posi.x = width;
-//    posi.z = depth;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
-//
-//    width = -8; depth =0;
-//    posi.x = width;
-//    posi.z = depth;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
-//
-//    width = 8; depth =0;
-//    posi.x = width;
-//    posi.z = depth;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
-//
-//    //3層目　クォーツブロック
-//    height = 14;
-//    for (sita = 0.0; sita < 2 * PI; sita += (PI/100)) {
-//        for (radius = (12 / 2 - 1); radius >= 0; radius -= 1) {
-//            posi.x = static_cast<WN::position>( std::round( double(radius) * std::cos(sita) ) );
-//            posi.z = static_cast<WN::position>( std::round( double(radius) * std::sin(sita) ) );
-//            posi.rotation(facing);
-//            posi.z += defaultPosi.z;
-//            posi.x += defaultPosi.x;
-//            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
-//        }
-//    }
-//
-//
-//    for (sita = 0.0; sita < 2 * PI; sita += (PI/100)) {
-//        for (radius = (10 / 2 - 1); radius >= 0; radius -= 1) {
-//            posi.x = static_cast<WN::position>( std::round( double(radius) * std::cos(sita) ) );
-//            posi.z = static_cast<WN::position>( std::round( double(radius) * std::sin(sita) ) );
-//            posi.rotation(facing);
-//            posi.z += defaultPosi.z;
-//            posi.x += defaultPosi.x;
-//            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
-//        }
-//    }
-//
-//    width =0; depth = -5; height = 14;
-//    posi.x = width;
-//    posi.z = depth;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
-//
-//    width = 0; depth =5;
-//    posi.x = width;
-//    posi.z = depth;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
-//
-//    width = -5; depth =0;
-//    posi.x = width;
-//    posi.z = depth;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
-//
-//    width = 5; depth =0;
-//    posi.x = width;
-//    posi.z = depth;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
-//
-//    //3層目　二段目ハーフブロック
-//    height = 15;
-//    for (sita = 0.0; sita < 2 * PI; sita += (PI/100)) {
-//        for (radius = (12 / 2 - 1); radius >= 0; radius -= 1) {
-//            posi.x = static_cast<WN::position>( std::round( double(radius) * std::cos(sita) ) );
-//            posi.z = static_cast<WN::position>( std::round( double(radius) * std::sin(sita) ) );
-//            posi.rotation(facing);
-//            posi.z += defaultPosi.z;
-//            posi.x += defaultPosi.x;
-//            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::polished_diorite_slab;
-//        }
-//    }
-//
-//    for (sita = 0.0; sita < 2 * PI; sita += (PI/100)) {
-//        for (radius = (10 / 2 - 1); radius >= 0; radius -= 1) {
-//            posi.x = static_cast<WN::position>( std::round( double(radius) * std::cos(sita) ) );
-//            posi.z = static_cast<WN::position>( std::round( double(radius) * std::sin(sita) ) );
-//            posi.rotation(facing);
-//            posi.z += defaultPosi.z;
-//            posi.x += defaultPosi.x;
-//            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
-//        }
-//    }
-//
-//
-//    //3層目　二段目クォーツブロック
-//    height = 13;
-//    for (sita = 0.0; sita < 2 * PI; sita += (PI/100)) {
-//        for (radius = (10 / 2 - 1); radius >= 0; radius -= 1) {
-//            posi.x = static_cast<WN::position>( std::round( double(radius) * std::cos(sita) ) );
-//            posi.z = static_cast<WN::position>( std::round( double(radius) * std::sin(sita) ) );
-//            posi.rotation(facing);
-//            posi.z += defaultPosi.z;
-//            posi.x += defaultPosi.x;
-//            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
-//        }
-//    }
-//
-//
-//    width =0; depth = -2; height = 13;
-//    posi.x = width;
-//    posi.z = depth;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
-//
-//    width = 0; depth =2;
-//    posi.x = width;
-//    posi.z = depth;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
-//
-//    width = -2; depth =0;
-//    posi.x = width;
-//    posi.z = depth;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
-//
-//    width = 2; depth =0;
-//    posi.x = width;
-//    posi.z = depth;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
-//
-//
-//    //土台の柱作成；一層目
-//    for(height = 1; height < 7; ++height){
-//        for(width =1; width < 3; ++width){
-//            for(depth =1; depth < 3; ++depth){
-//                posi.z = depth;
-//                posi.x = width;
-//                posi.rotation(facing);
-//                posi.z += defaultPosi.z;
-//                posi.x += defaultPosi.x;
-//                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
-//            }
-//        }
-//    }
-//
-//    for(height = 1; height < 7; ++height){
-//        for(width =-2; width < 0; ++width){
-//            for(depth =1; depth < 3; ++depth){
-//                posi.z = depth;
-//                posi.x = width;
-//                posi.rotation(facing);
-//                posi.z += defaultPosi.z;
-//                posi.x += defaultPosi.x;
-//                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
-//            }
-//        }
-//    }
-//
-//    for(height = 1; height < 7; ++height){
-//        for(width =1; width < 3; ++width){
-//            for(depth =-2; depth < 0; ++depth){
-//                posi.z = depth;
-//                posi.x = width;
-//                posi.rotation(facing);
-//                posi.z += defaultPosi.z;
-//                posi.x += defaultPosi.x;
-//                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
-//            }
-//        }
-//    }
-//
-//    for(height = 1; height < 7; ++height){
-//        for(width =-2; width < 0; ++width){
-//            for(depth =-2; depth < 0; ++depth){
-//                posi.z = depth;
-//                posi.x = width;
-//                posi.rotation(facing);
-//                posi.z += defaultPosi.z;
-//                posi.x += defaultPosi.x;
-//                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
-//            }
-//        }
-//    }
-//
-//    //土台の階段作成；一層目
-//    height = 1; depth = -3;
-//    for(width = -2; width < 3; ++width){
-//        if(width == 0 || width == -3){
-//            posi.z = depth;
-//            posi.x = width;
-//            posi.rotation(facing);
-//            posi.z += defaultPosi.z;
-//            posi.x += defaultPosi.x;
-//            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
-//            } else {
-//            posi.z = depth;
-//            posi.x = width;
-//            posi.rotation(facing);
-//            posi.z += defaultPosi.z;
-//            posi.x += defaultPosi.x;
-//            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
-//            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
-//        }
-//    }
-//
-//    //土台のライト
-//    height = 0; width =6; depth = -6;
-//    posi.x = width;
-//    posi.z = depth;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
-//
-//    height = 1;
-//    posi.x = width;
-//    posi.z = depth;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::end_rod;
-//
-//    height = 2;
-//    posi.x = width;
-//    posi.z = depth;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::polished_diorite_slab;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "waterlogged = true";
-//
-//
-//    height = 0;width = -6; depth = -6;
-//    posi.x = width;
-//    posi.z = depth;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
-//
-//    height = 1;
-//    posi.x = width;
-//    posi.z = depth;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::end_rod;
-//
-//    height = 2;
-//    posi.x = width;
-//    posi.z = depth;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::polished_diorite_slab;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "waterlogged = true";
-//
-//    height = 0;width = -6; depth = 6;
-//    posi.x = width;
-//    posi.z = depth;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
-//
-//    height = 1;
-//    posi.x = width;
-//    posi.z = depth;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::end_rod;
-//
-//    height = 2;
-//    posi.x = width;
-//    posi.z = depth;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::polished_diorite_slab;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "waterlogged = true";
-//
-//    height = 0;width = 6; depth = 6;
-//    posi.x = width;
-//    posi.z = depth;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
-//
-//    height = 1;
-//    posi.x = width;
-//    posi.z = depth;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::end_rod;
-//
-//    height = 2;
-//    posi.x = width;
-//    posi.z = depth;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::polished_diorite_slab;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "waterlogged = true";
-//
-//    height = 1; depth = 3;
-//    for(width = -2; width < 3; ++width){
-//        if(width == 0 || width == -3){
-//            posi.z = depth;
-//            posi.x = width;
-//            posi.rotation(facing);
-//            posi.z += defaultPosi.z;
-//            posi.x += defaultPosi.x;
-//            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
-//            } else {
-//            posi.z = depth;
-//            posi.x = width;
-//            posi.rotation(facing);
-//            posi.z += defaultPosi.z;
-//            posi.x += defaultPosi.x;
-//            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
-//            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
-//        }
-//    }
-//
-//    height = 1; width = -3;
-//    for(depth = -2; depth < 3; ++depth){
-//        if(depth == 0 || depth == -3){
-//            posi.z = depth;
-//            posi.x = width;
-//            posi.rotation(facing);
-//            posi.z += defaultPosi.z;
-//            posi.x += defaultPosi.x;
-//            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
-//            } else {
-//            posi.z = depth;
-//            posi.x = width;
-//            posi.rotation(facing);
-//            posi.z += defaultPosi.z;
-//            posi.x += defaultPosi.x;
-//            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
-//            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
-//        }
-//    }
-//
-//    height = 1; width = 3;
-//    for(depth = -3; depth < 3; ++depth){
-//        if(depth == 0 || depth == -3){
-//            posi.z = depth;
-//            posi.x = width;
-//            posi.rotation(facing);
-//            posi.z += defaultPosi.z;
-//            posi.x += defaultPosi.x;
-//            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
-//            } else {
-//            posi.z = depth;
-//            posi.x = width;
-//            posi.rotation(facing);
-//            posi.z += defaultPosi.z;
-//            posi.x += defaultPosi.x;
-//            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
-//            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
-//        }
-//    }
-//
-//    //土台；2層目
-//    height = 7;
-//    for(width = -1; width < 2; ++width){
-//        for(depth = -1; depth < 2; ++depth){
-//            posi.z = depth;
-//            posi.x = width;
-//            posi.rotation(facing);
-//            posi.z += defaultPosi.z;
-//            posi.x += defaultPosi.x;
-//            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
-//        }
-//    }
-//
-//    //土台２層目;柱
-//    ////柵
-//    width = 1; depth = 1;
-//    for(height = 8; height < 13; ++height){
-//        posi.z = depth;
-//        posi.x = width;
-//        posi.rotation(facing);
-//        posi.z += defaultPosi.z;
-//        posi.x += defaultPosi.x;
-//        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass_pane;
-//    }
-//
-//    width = -1; depth = 1;
-//    for(height = 8; height < 13; ++height){
-//        posi.z = depth;
-//        posi.x = width;
-//        posi.rotation(facing);
-//        posi.z += defaultPosi.z;
-//        posi.x += defaultPosi.x;
-//        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass_pane;
-//    }
-//
-//    width = 1; depth = -1;
-//    for(height = 8; height < 13; ++height){
-//        posi.z = depth;
-//        posi.x = width;
-//        posi.rotation(facing);
-//        posi.z += defaultPosi.z;
-//        posi.x += defaultPosi.x;
-//        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass_pane;
-//    }
-//
-//    width = -1; depth = -1;
-//    for(height = 8; height < 13; ++height){
-//        posi.z = depth;
-//        posi.x = width;
-//        posi.rotation(facing);
-//        posi.z += defaultPosi.z;
-//        posi.x += defaultPosi.x;
-//        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass_pane;
-//    }
-//
-//    ////クォーツ
-//    depth = -1; width = 0;
-//    for(height = 8; height < 13; ++height){
-//        posi.z = depth;
-//        posi.x = width;
-//        posi.rotation(facing);
-//        posi.z += defaultPosi.z;
-//        posi.x += defaultPosi.x;
-//        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
-//    }
-//
-//    depth = 1; width = 0;
-//    for(height = 8; height < 13; ++height){
-//        posi.z = depth;
-//        posi.x = width;
-//        posi.rotation(facing);
-//        posi.z += defaultPosi.z;
-//        posi.x += defaultPosi.x;
-//        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
-//    }
-//
-//    depth = 0; width = 1;
-//    for(height = 8; height < 13; ++height){
-//        posi.z = depth;
-//        posi.x = width;
-//        posi.rotation(facing);
-//        posi.z += defaultPosi.z;
-//        posi.x += defaultPosi.x;
-//        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
-//    }
-//
-//    depth = 0; width = -1;
-//    for(height = 8; height < 13; ++height){
-//        posi.z = depth;
-//        posi.x = width;
-//        posi.rotation(facing);
-//        posi.z += defaultPosi.z;
-//        posi.x += defaultPosi.x;
-//        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
-//    }
-//
-//    //3層目;柱
-//    width = 1; depth = 1;
-//    for(height = 13; height < 18; ++height){
-//        posi.z = depth;
-//        posi.x = width;
-//        posi.rotation(facing);
-//        posi.z += defaultPosi.z;
-//        posi.x += defaultPosi.x;
-//        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
-//    }
-//
-//    width = -1; depth = 1;
-//    for(height = 13; height < 18; ++height){
-//        posi.z = depth;
-//        posi.x = width;
-//        posi.rotation(facing);
-//        posi.z += defaultPosi.z;
-//        posi.x += defaultPosi.x;
-//        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
-//    }
-//
-//    width = 1; depth = -1;
-//    for(height = 13; height < 18; ++height){
-//        posi.z = depth;
-//        posi.x = width;
-//        posi.rotation(facing);
-//        posi.z += defaultPosi.z;
-//        posi.x += defaultPosi.x;
-//        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
-//    }
-//
-//    width = -1; depth = -1;
-//    for(height = 13; height < 18; ++height){
-//        posi.z = depth;
-//        posi.x = width;
-//        posi.rotation(facing);
-//        posi.z += defaultPosi.z;
-//        posi.x += defaultPosi.x;
-//        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
-//    }
-//
-//    //3層目;仕上げハーフブロックと階段
-//    ////階段
-//    height =19;
-//    for(width = -2; width < 3; ++width){
-//        for(depth = -2; depth < 3; ++depth){
-//            if(depth == 0 && width == 0){
-//                posi.z = depth;
-//                posi.x = width;
-//                posi.rotation(facing);
-//                posi.z += defaultPosi.z;
-//                posi.x += defaultPosi.x;
-//                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneTorch;
-//                } else {
-//                posi.z = depth;
-//                posi.x = width;
-//                posi.rotation(facing);
-//                posi.z += defaultPosi.z;
-//                posi.x += defaultPosi.x;
-//                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
-//                (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "type = top";
-//            }
-//        }
-//    }
-//
-//    ////シーランタン
-//    height = 19; width = 2; depth = 2;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
-//
-//    width = -2; depth = 2;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
-//
-//    width = 2; depth = -2;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
-//
-//    width = -2; depth = -2;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
-//
-//    height = 18; width = 2; depth = 2;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
-//
-//    width = -2; depth = 2;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
-//
-//    width = 2; depth = -2;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
-//
-//    width = -2; depth = -2;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
-//
-//    ////ハーフブロックと逆階段と中段階段2と最上階の逆階段
-//    height = 18; width = 0; depth = 1;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
-//    height = 19;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half = top";
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
-//    height = 21;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
-//    height = 23;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half = top";
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
-//
-//    height = 18; width = 0; depth = -1;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
-//    height = 19;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half = top";
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
-//    height = 21;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
-//    height = 23;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half = top";
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
-//
-//    height = 18; width = 1; depth = 0;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
-//    height = 19;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half = top";
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
-//    height = 21;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
-//    height = 23;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half = top";
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
-//
-//    height = 18; width = -1; depth = 0;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
-//    height = 19;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half = top";
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
-//    height = 21;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
-//    height = 23;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half = top";
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
-//
-//
-//    //中段階段と最上階ハーフブロック
-//    height = 20;
-//    width = 0; depth = 2;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
-//    height = 24;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
-//
-//    height = 20;
-//    width = 0; depth = -2;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
-//    height = 24;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
-//
-//    height = 20;
-//    width = 2; depth = 0;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
-//    height = 24;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
-//
-//    height = 20;
-//    width = -2; depth = 0;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
-//    height = 24;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
-//
-//    //中段ハーフブロック
-//    height = 20;
-//    width = -1; depth = -3;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
-//    depth = 3;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
-//    width = 1;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
-//    depth = -3;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
-//
-//    width = -3; depth = -1;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
-//    depth = 1;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
-//    width = 3;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
-//    depth = -1;
-//    posi.z = depth;
-//    posi.x = width;
-//    posi.rotation(facing);
-//    posi.z += defaultPosi.z;
-//    posi.x += defaultPosi.x;
-//    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
-}
 
+   //3層目　クォーツブロック
+    height = 14;
+   for (sita = 0.0; sita < 2 * PI; sita += (PI/100)) {
+        for (radius = ((baseRadius - 14) / 2 - 1); radius >= 0; radius -= 1) {
+            posi.x = static_cast<WN::position>( std::round( double(radius) * std::cos(sita) ) );
+            posi.z = static_cast<WN::position>( std::round( double(radius) * std::sin(sita) ) );
+            posi.rotation(facing);
+            posi.z += defaultPosi.z + size.depth/2;
+            posi.x += defaultPosi.x + size.width/2;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+        }
+    }
+
+
+   for (sita = 0.0; sita < 2 * PI; sita += (PI/100)) {
+       for (radius = ((baseRadius -16) / 2 - 1); radius >= 0; radius -= 1) {
+           posi.x = static_cast<WN::position>( std::round( double(radius) * std::cos(sita) ) );
+           posi.z = static_cast<WN::position>( std::round( double(radius) * std::sin(sita) ) );
+           posi.rotation(facing);
+           posi.z += defaultPosi.z + size.depth/2;
+           posi.x += defaultPosi.x + size.width/2;
+           (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+       }
+   }
+
+    width =0; depth = 5; height = 14;
+    posi.x = width;
+    posi.z = depth;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+
+    width = 0; depth =-5;
+    posi.x = width;
+    posi.z = depth;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+
+    width = -5; depth =0;
+    posi.x = width;
+    posi.z = depth;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+
+    width = 5; depth = 0;
+    posi.x = width;
+    posi.z = depth;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+
+   //3層目　二段目ハーフブロック
+    height = 15;
+   for (sita = 0.0; sita < 2 * PI; sita += (PI/100)) {
+        for (radius = ((baseRadius - 14) / 2 - 1); radius >= 0; radius -= 1) {
+            posi.x = static_cast<WN::position>( std::round( double(radius) * std::cos(sita) ) );
+            posi.z = static_cast<WN::position>( std::round( double(radius) * std::sin(sita) ) );
+            posi.rotation(facing);
+            posi.z += defaultPosi.z +size.depth/2;
+            posi.x += defaultPosi.x +size.width/2;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::polishedDioriteSlab;
+        }
+    }
+
+   for (sita = 0.0; sita < 2 * PI; sita += (PI/100)) {
+       for (radius = ((baseRadius - 16)/ 2 - 1); radius >= 0; radius -= 1) {
+           posi.x = static_cast<WN::position>( std::round( double(radius) * std::cos(sita) ) );
+           posi.z = static_cast<WN::position>( std::round( double(radius) * std::sin(sita) ) );
+           posi.rotation(facing);
+           posi.z += defaultPosi.z +size.depth/2;
+           posi.x += defaultPosi.x +size.width/2;
+           (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+       }
+   }
+
+
+   //3層目　二段目クォーツブロック
+   height = 13;
+   for (sita = 0.0; sita < 2 * PI; sita += (PI/100)) {
+       for (radius = ((baseRadius - 16) / 2 - 1); radius >= 0; radius -= 1) {
+           posi.x = static_cast<WN::position>( std::round( double(radius) * std::cos(sita) ) );
+           posi.z = static_cast<WN::position>( std::round( double(radius) * std::sin(sita) ) );
+           posi.rotation(facing);
+           posi.z += defaultPosi.z + size.depth/2;
+           posi.x += defaultPosi.x + size.width/2;
+           (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+       }
+   }
+
+   for (int i = -4; i < 5; i += 8) {
+        posi.x = i;
+        posi.z = 2;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.width/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+        
+        posi.x = i;
+        posi.z = -2;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.width/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+        
+    }
+
+    for (int i = -4; i < 5; i += 8) {
+        posi.x = 2;
+        posi.z = i;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.width/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+        
+        posi.x = -2;
+        posi.z = i;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.width/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+        
+    }
+
+    width =2; depth = -2; height = 13;
+    posi.x = width;
+    posi.z = depth;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
+
+    width = 2; depth =2;
+    posi.x = width;
+    posi.z = depth;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
+
+    width = -2; depth =2;
+    posi.x = width;
+    posi.z = depth;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
+
+    width = -2; depth = -2;
+    posi.x = width;
+    posi.z = depth;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
+
+///
+   //土台の柱作成；一層目
+    for(height = 1; height < 7; ++height){
+        for(width =1; width < 3; ++width){
+            for(depth =1; depth < 3; ++depth){
+                posi.z = depth;
+                posi.x = width;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z + size.depth/2;
+                posi.x += defaultPosi.x + size.depth/2;
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+            }
+        }
+    }
+
+    for(height = 1; height < 7; ++height){
+        for(width =-2; width < 0; ++width){
+            for(depth =1; depth < 3; ++depth){
+                posi.z = depth;
+                posi.x = width;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z + size.depth/2;
+                posi.x += defaultPosi.x + size.depth/2;
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+            }
+        } 
+    }
+
+    for(height = 1; height < 7; ++height){
+        for(width =1; width < 3; ++width){
+            for(depth =-2; depth < 0; ++depth){
+                posi.z = depth;
+                posi.x = width;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z + size.depth/2;
+                posi.x += defaultPosi.x + size.depth/2;
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+            }
+        }
+    }
+
+    for(height = 1; height < 7; ++height){
+        for(width =-2; width < 0; ++width){
+            for(depth =-2; depth < 0; ++depth){
+                posi.z = depth;
+                posi.x = width;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z + size.depth/2;
+                posi.x += defaultPosi.x + size.depth/2;
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+            }
+        }
+    }
+
+   //土台の階段作成；一層目
+    height = 1; depth = -3;
+    for(width = -2; width < 3; ++width){
+        if(width == 0 || width == -3){
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z + size.depth/2;
+            posi.x += defaultPosi.x + size.depth/2;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+            } else {
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z + size.depth/2;
+            posi.x += defaultPosi.x + size.depth/2;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
+        }
+    }
+
+   //土台のライト
+    height = 0; width =6; depth = -6;
+    posi.x = width;
+    posi.z = depth;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
+
+    height = 1;
+    posi.x = width;
+    posi.z = depth;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::endRod;
+
+    height = 2;
+    posi.x = width;
+    posi.z = depth;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::polishedDioriteSlab;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "waterlogged = true";
+
+
+    height = 0;width = -6; depth = -6;
+    posi.x = width;
+    posi.z = depth;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
+
+    height = 1;
+    posi.x = width;
+    posi.z = depth;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::endRod;
+
+    height = 2;
+    posi.x = width;
+    posi.z = depth;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::polishedDioriteSlab;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "waterlogged = true";
+
+    height = 0;width = -6; depth = 6;
+    posi.x = width;
+    posi.z = depth;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
+
+    height = 1;
+    posi.x = width;
+    posi.z = depth;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::endRod;
+
+    height = 2;
+    posi.x = width;
+    posi.z = depth;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::polishedDioriteSlab;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "waterlogged = true";
+
+    height = 0;width = 6; depth = 6;
+    posi.x = width;
+    posi.z = depth;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
+
+    height = 1;
+    posi.x = width;
+    posi.z = depth;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::endRod;
+
+    height = 2;
+    posi.x = width;
+    posi.z = depth;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::polishedDioriteSlab;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "waterlogged = true";
+
+    height = 1; depth = 3;
+    for(width = -2; width < 3; ++width){
+        if(width == 0 || width == -3){
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z + size.depth/2;
+            posi.x += defaultPosi.x + size.depth/2;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+            } else {
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z + size.depth/2;
+            posi.x += defaultPosi.x + size.depth/2;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+        }
+    }
+
+    height = 1; width = -3;
+    for(depth = -2; depth < 3; ++depth){
+        if(depth == 0 || depth == -3){
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z + size.depth/2;
+            posi.x += defaultPosi.x + size.depth/2;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+            } else {
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z + size.depth/2;
+            posi.x += defaultPosi.x + size.depth/2;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
+        }
+    }
+
+    height = 1; width = 3;
+    for(depth = -3; depth < 3; ++depth){
+        if(depth == 0 || depth == -3){
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z + size.depth/2;
+            posi.x += defaultPosi.x + size.depth/2;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+            } else {
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z + size.depth/2;
+            posi.x += defaultPosi.x + size.depth/2;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
+        }
+    }
+
+   //土台；2層目
+    height = 7;
+    for(width = -1; width < 2; ++width){
+        for(depth = -1; depth < 2; ++depth){
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z + size.depth/2;
+            posi.x += defaultPosi.x + size.depth/2;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+        }
+    }
+
+   //土台２層目;柱
+   ////柵
+    width = 1; depth = 1;
+    for(height = 8; height < 13; ++height){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glassPane;
+    }
+
+    width = -1; depth = 1;
+    for(height = 8; height < 13; ++height){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glassPane;
+    }
+
+    width = 1; depth = -1;
+    for(height = 8; height < 13; ++height){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glassPane;
+    }
+
+    width = -1; depth = -1;
+    for(height = 8; height < 13; ++height){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glassPane;
+    }
+
+   ////ガラス
+    depth = -1; width = 0;
+    for(height = 8; height < 13; ++height){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
+    }
+
+    depth = 1; width = 0;
+    for(height = 8; height < 13; ++height){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
+    }
+
+    depth = 0; width = 1;
+    for(height = 8; height < 13; ++height){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
+    }
+
+    depth = 0; width = -1;
+    for(height = 8; height < 13; ++height){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
+    }
+
+   //3層目;柱
+    width = 1; depth = 1;
+    for(height = 13; height < 18; ++height){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+    }
+
+    width = -1; depth = 1;
+    for(height = 13; height < 18; ++height){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+    }
+
+    width = 1; depth = -1;
+    for(height = 13; height < 18; ++height){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+    }
+
+    width = -1; depth = -1;
+    for(height = 13; height < 18; ++height){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+    }
+
+   //3層目;仕上げハーフブロックと階段
+   ////階段
+    height =19;
+    for(width = -2; width < 3; ++width){
+        for(depth = -2; depth < 3; ++depth){
+            if(depth == 0 && width == 0){
+                posi.z = depth;
+                posi.x = width;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z + size.depth/2;
+                posi.x += defaultPosi.x + size.depth/2;
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneTorch;
+                } else {
+                posi.z = depth;
+                posi.x = width;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z + size.depth/2;
+                posi.x += defaultPosi.x + size.depth/2;
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "type = top";
+            }
+        }
+    }
+
+   ////シーランタン
+    height = 19; width = 2; depth = 2;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
+
+    width = -2; depth = 2;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
+
+    width = 2; depth = -2;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
+
+    width = -2; depth = -2;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
+
+    height = 18; width = 2; depth = 2;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
+
+    width = -2; depth = 2;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
+
+    width = 2; depth = -2;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
+
+    width = -2; depth = -2;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
+
+   ////ハーフブロックと逆階段と中段階段2と最上階の逆階段
+    height = 18; width = 0; depth = 1;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+    height = 19;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half = top";
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+    height = 21;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+    height = 23;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half = top";
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+
+    height = 18; width = 0; depth = -1;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+    height = 19;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half = top";
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
+    height = 21;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
+    height = 23;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half = top";
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
+
+    height = 18; width = 1; depth = 0;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+    height = 19;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half = top";
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
+    height = 21;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
+    height = 23;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half = top";
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
+
+    height = 18; width = -1; depth = 0;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+    height = 19;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half = top";
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
+    height = 21;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
+    height = 23;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half = top";
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
+
+
+   //中段階段と最上階ハーフブロック
+    height = 20;
+    width = 0; depth = 2;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+    height = 24;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+
+    height = 20;
+    width = 0; depth = -2;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
+    height = 24;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+
+    height = 20;
+    width = 2; depth = 0;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
+    height = 24;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+
+    height = 20;
+    width = -2; depth = 0;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzStairs;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
+    height = 24;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+
+   //中段ハーフブロック
+    height = 20;
+    width = -1; depth = -3;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+    depth = 3;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+    width = 1;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+    depth = -3;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+
+    width = -3; depth = -1;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+    depth = 1;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+    width = 3;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+    depth = -1;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+}
+///////////////
 
 
 

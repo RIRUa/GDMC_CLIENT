@@ -470,6 +470,7 @@ void gimmick::createFountain(
                             WN::direction facing,
                             const WN::Vec3 &defaultPosi,
                             const houseSize &size,
+                            const WN::Vec3 &sendPosition,
                             std::string &commands
                             ) {
     WN::EveryDirection directions = WN::EveryDirection(facing);
@@ -485,8 +486,8 @@ void gimmick::createFountain(
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
-        posi.z += defaultPosi.z;
-        posi.x += defaultPosi.x;
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneTorch;
     }
 
@@ -496,8 +497,8 @@ void gimmick::createFountain(
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
-        posi.z += defaultPosi.z;
-        posi.x += defaultPosi.x;
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneLamp;
     }
 
@@ -506,85 +507,106 @@ void gimmick::createFountain(
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::dispenser;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
-    commands += std::string("replaceitem")+" "+"block"+" "+std::to_string(posi.x - defaultPosi.x  -15+center.x)+" "+std::to_string(defaultPosi.y + height + 4 + center.y)+" "+std::to_string(posi.z -defaultPosi.z -15+center.z)+" "+"container.4"+" "+"minecraft:water_bucket"+" "+"1"+"\n";
+
+    WN::Vec3 dispensorPosi = (*block3d)[defaultPosi.y + height][posi.z][posi.x].position;
+    commands += Minecraft::Command::itemInBox(WN::Vec3(
+                                                                           dispensorPosi.x + sendPosition.x,
+                                                                           dispensorPosi.y + sendPosition.y,
+                                                                           dispensorPosi.z + sendPosition.z
+                                                                           ),
+                                                                  4,
+                                                                  "minecraft:water_bucket",
+                                                                  1
+                                                                  );
 
     width = 0; depth = -1; height = 15;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::dispenser;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
-    commands += std::string("replaceitem")+" "+"block"+" "+std::to_string(posi.x - defaultPosi.x  -15+center.x)+" "+std::to_string(defaultPosi.y + height + 4 + center.y)+" "+std::to_string(posi.z -defaultPosi.z -15+center.z)+" "+"container.4"+" "+"minecraft:water_bucket"+" "+"1"+"\n";
 
+    dispensorPosi = (*block3d)[defaultPosi.y + height][posi.z][posi.x].position;
+
+    commands += Minecraft::Command::itemInBox(WN::Vec3(
+                                                                           dispensorPosi.x + sendPosition.x,
+                                                                           dispensorPosi.y + sendPosition.y,
+                                                                           dispensorPosi.z + sendPosition.z
+                                                                           ),
+                                                                  4,
+                                                                  "minecraft:water_bucket",
+                                                                  1
+                                                                  );
+                                                                  
     width = 0; depth = 1; height = 15;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::dispenser;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
-    commands += std::string("replaceitem")+" "+"block"+" "+std::to_string(posi.x - defaultPosi.x  -15+center.x)+" "+std::to_string(defaultPosi.y + height + 4 + center.y)+" "+std::to_string(posi.z -defaultPosi.z -15+center.z)+" "+"container.4"+" "+"minecraft:water_bucket"+" "+"1"+"\n";
+
+    dispensorPosi = (*block3d)[defaultPosi.y + height][posi.z][posi.x].position;
+
+    commands += Minecraft::Command::itemInBox(WN::Vec3(
+                                                                           dispensorPosi.x + sendPosition.x,
+                                                                           dispensorPosi.y + sendPosition.y,
+                                                                           dispensorPosi.z + sendPosition.z
+                                                                           ),
+                                                                  4,
+                                                                  "minecraft:water_bucket",
+                                                                  1
+                                                                  );
 
     width = 1; depth = 0; height = 15;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::dispenser;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
-    commands += std::string("replaceitem")+" "+"block"+" "+std::to_string(posi.x - defaultPosi.x  -15+center.x)+" "+std::to_string(defaultPosi.y + height + 4 + center.y)+" "+std::to_string(posi.z -defaultPosi.z -15+center.z)+" "+"container.4"+" "+"minecraft:water_bucket"+" "+"1"+"\n";
+
+    dispensorPosi = (*block3d)[defaultPosi.y + height][posi.z][posi.x].position;
+
+    commands += Minecraft::Command::itemInBox(WN::Vec3(
+                                                                           dispensorPosi.x + sendPosition.x,
+                                                                           dispensorPosi.y + sendPosition.y,
+                                                                           dispensorPosi.z + sendPosition.z
+                                                                           ),
+                                                                  4,
+                                                                  "minecraft:water_bucket",
+                                                                  1
+                                                                  );
     
     width = -1; depth = 0; height = 15;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::dispenser;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
-    commands += std::string("replaceitem")+" "+"block"+" "+std::to_string(posi.x - defaultPosi.x  -15+center.x)+" "+std::to_string(defaultPosi.y + height + 4 + center.y)+" "+std::to_string(posi.z -defaultPosi.z -15+center.z)+" "+"container.4"+" "+"minecraft:water_bucket"+" "+"1"+"\n";
+
+    dispensorPosi = (*block3d)[defaultPosi.y + height][posi.z][posi.x].position;
+
+    commands += Minecraft::Command::itemInBox(WN::Vec3(
+                                                                           dispensorPosi.x + sendPosition.x,
+                                                                           dispensorPosi.y + sendPosition.y,
+                                                                           dispensorPosi.z + sendPosition.z
+                                                                           ),
+                                                                  4,
+                                                                  "minecraft:water_bucket",
+                                                                  1
+                                                                  );
     std::cout << commands;
-
-    //ana wo akeru
-    width = -3; depth = 3; height = 13;
-    posi.z = depth;
-    posi.x = width;
-    posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
-
-    width = -3; depth = -3; height = 13;
-    posi.z = depth;
-    posi.x = width;
-    posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
-
-    width = 3; depth = 3; height = 13;
-    posi.z = depth;
-    posi.x = width;
-    posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
-
-    width = 3; depth = -3; height = 13;
-    posi.z = depth;
-    posi.x = width;
-    posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
 
     //レッドストーン
     width = 0; height = -2;
@@ -592,8 +614,8 @@ void gimmick::createFountain(
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
-        posi.z += defaultPosi.z;
-        posi.x += defaultPosi.x;
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
     }
 
@@ -602,8 +624,8 @@ void gimmick::createFountain(
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
-        posi.z += defaultPosi.z;
-        posi.x += defaultPosi.x;
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
     }
 
@@ -612,8 +634,8 @@ void gimmick::createFountain(
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
-        posi.z += defaultPosi.z;
-        posi.x += defaultPosi.x;
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
     }
 
@@ -622,8 +644,8 @@ void gimmick::createFountain(
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::repeater;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
 
@@ -631,8 +653,8 @@ void gimmick::createFountain(
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::repeater;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
 
@@ -640,8 +662,8 @@ void gimmick::createFountain(
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::repeater;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
 
@@ -652,8 +674,8 @@ void gimmick::createFountain(
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
-        posi.z += defaultPosi.z;
-        posi.x += defaultPosi.x;
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::repeater;
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "delay = 4";
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
@@ -664,8 +686,8 @@ void gimmick::createFountain(
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
-        posi.z += defaultPosi.z;
-        posi.x += defaultPosi.x;
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::repeater;
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "delay = 4";
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
@@ -677,8 +699,8 @@ void gimmick::createFountain(
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
-        posi.z += defaultPosi.z;
-        posi.x += defaultPosi.x;
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
     }
 
@@ -688,8 +710,8 @@ void gimmick::createFountain(
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWallTorch;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
 
@@ -698,8 +720,8 @@ void gimmick::createFountain(
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::comparator;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "mode = subtract";
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
@@ -709,16 +731,16 @@ void gimmick::createFountain(
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
 
     width = -2; depth = -21; height = 0;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "south = side";
     
@@ -728,32 +750,32 @@ void gimmick::createFountain(
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
 
     height = 0; width = 2; depth = -17; 
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
     
     height = 1; width = -2; depth = -19; 
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
 
     height = 1; width = 2; depth = -19; 
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
 
 
@@ -762,8 +784,8 @@ void gimmick::createFountain(
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
-        posi.z += defaultPosi.z;
-        posi.x += defaultPosi.x;
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
     }
 
@@ -772,8 +794,8 @@ void gimmick::createFountain(
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
-        posi.z += defaultPosi.z;
-        posi.x += defaultPosi.x;
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
     }
 
@@ -783,8 +805,8 @@ void gimmick::createFountain(
             posi.z = depth;
             posi.x = width;
             posi.rotation(facing);
-            posi.z += defaultPosi.z;
-            posi.x += defaultPosi.x;
+            posi.z += defaultPosi.z + size.depth/2;
+            posi.x += defaultPosi.x + size.depth/2;
             (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
         }
     }
@@ -794,8 +816,8 @@ void gimmick::createFountain(
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
-        posi.z += defaultPosi.z;
-        posi.x += defaultPosi.x;
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
     }
 
@@ -804,8 +826,8 @@ void gimmick::createFountain(
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
-        posi.z += defaultPosi.z;
-        posi.x += defaultPosi.x;
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
     }
 
@@ -815,8 +837,8 @@ void gimmick::createFountain(
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzBlock;
     }
 
@@ -825,8 +847,8 @@ void gimmick::createFountain(
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
     }
 
@@ -836,8 +858,8 @@ void gimmick::createFountain(
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
-        posi.z += defaultPosi.z;
-        posi.x += defaultPosi.x;
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzBlock;
         }
     }
@@ -847,9 +869,9 @@ void gimmick::createFountain(
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
-        posi.z += defaultPosi.z;
-        posi.x += defaultPosi.x;
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::netherBrickSlab;
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "type = top";
         }
 
@@ -858,8 +880,8 @@ void gimmick::createFountain(
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWallTorch;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
 
@@ -868,8 +890,8 @@ void gimmick::createFountain(
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::tripwireHook;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
 
@@ -877,8 +899,8 @@ void gimmick::createFountain(
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::tripwireHook;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
 
@@ -886,10 +908,9 @@ void gimmick::createFountain(
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
-    posi.z += defaultPosi.z;
-    posi.x += defaultPosi.x;
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::tripwire;
-    // (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
 }
 
 void gimmick::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,

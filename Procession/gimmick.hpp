@@ -56,6 +56,7 @@ namespace gimmick {
                             WN::direction facing,
                             const WN::Vec3 &defaultPosi,
                             const houseSize &size,
+                            const WN::Vec3 &sendPosition,
                             std::string &commands
                             );
 
