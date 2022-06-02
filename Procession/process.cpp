@@ -299,15 +299,6 @@ void  Process::createFountain(const WN::Vec3 &center) {
                           *(this->sendPosi),
                           this->commands
                           );
-
-    // interior::createFountain(
-    //                     this->createArea,
-    //                     center,
-    //                     facing,
-    //                     defaultPosi,
-    //                     size,
-    //                     this->commands
-    //                     );
 }
 
 void Process::createPigBurner(const WN::Vec3 &center) {
