@@ -629,15 +629,15 @@ void gimmick::createFountain(
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
     }
 
-    height = -2; width = -2; 
-    for(depth = -12; depth > -17; --depth){
-        posi.z = depth;
-        posi.x = width;
-        posi.rotation(facing);
-        posi.z += defaultPosi.z + size.depth/2;
-        posi.x += defaultPosi.x + size.depth/2;
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
-    }
+    // height = -2; width = -2; 
+    // for(depth = -12; depth > -17; --depth){
+    //     posi.z = depth;
+    //     posi.x = width;
+    //     posi.rotation(facing);
+    //     posi.z += defaultPosi.z + size.depth/2;
+    //     posi.x += defaultPosi.x + size.depth/2;
+    //     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
+    //}
 
     //リピーター
     width = 0; depth = -1; height = -2;
@@ -658,14 +658,14 @@ void gimmick::createFountain(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::repeater;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
 
-    width = -2; depth = -20; height = -1;
-    posi.z = depth;
-    posi.x = width;
-    posi.rotation(facing);
-    posi.z += defaultPosi.z + size.depth/2;
-    posi.x += defaultPosi.x + size.depth/2;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::repeater;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+    // width = -2; depth = -20; height = -1;
+    // posi.z = depth;
+    // posi.x = width;
+    // posi.rotation(facing);
+    // posi.z += defaultPosi.z + size.depth/2;
+    // posi.x += defaultPosi.x + size.depth/2;
+    // (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::repeater;
+    // (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
 
     //クロック回路
     ////リピータ
@@ -706,14 +706,15 @@ void gimmick::createFountain(
 
 
     //ウォールトーチ
-    width = -2; depth = -18; height = -1;
-    posi.z = depth;
-    posi.x = width;
-    posi.rotation(facing);
-    posi.z += defaultPosi.z + size.depth/2;
-    posi.x += defaultPosi.x + size.depth/2;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWallTorch;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
+    // width = -2; depth = -18; height = -1;
+    // posi.z = depth;
+    // posi.x = width;
+    // posi.rotation(facing);
+    // posi.z += defaultPosi.z + size.depth/2;
+    // posi.x += defaultPosi.x + size.depth/2;
+    // (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWallTorch;
+    // (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
+    // (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "lit = false";
 
     //レッドストーンコンパレーター
     height = -2; width = -2; depth = -13; 
@@ -726,191 +727,201 @@ void gimmick::createFountain(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "mode = subtract";
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
 
+    //レバー
+    height = -2; width = -2; depth = -14;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::lever;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "powered = true";
+
     //レッドストーン
-    width = -2; depth = -17; height = -1;
-    posi.z = depth;
-    posi.x = width;
-    posi.rotation(facing);
-    posi.z += defaultPosi.z + size.depth/2;
-    posi.x += defaultPosi.x + size.depth/2;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
+    // width = -2; depth = -17; height = -1;
+    // posi.z = depth;
+    // posi.x = width;
+    // posi.rotation(facing);
+    // posi.z += defaultPosi.z + size.depth/2;
+    // posi.x += defaultPosi.x + size.depth/2;
+    // (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
 
-    width = -2; depth = -21; height = 0;
-    posi.z = depth;
-    posi.x = width;
-    posi.rotation(facing);
-    posi.z += defaultPosi.z + size.depth/2;
-    posi.x += defaultPosi.x + size.depth/2;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "south = side";
+    // width = -2; depth = -21; height = 0;
+    // posi.z = depth;
+    // posi.x = width;
+    // posi.rotation(facing);
+    // posi.z += defaultPosi.z + size.depth/2;
+    // posi.x += defaultPosi.x + size.depth/2;
+    // (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
+    // (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "south = side";
     
 
-    //椅子
-    height = 0; width = -2; depth = -17; 
-    posi.z = depth;
-    posi.x = width;
-    posi.rotation(facing);
-    posi.z += defaultPosi.z + size.depth/2;
-    posi.x += defaultPosi.x + size.depth/2;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+    // //椅子
+    // height = 0; width = -2; depth = -17; 
+    // posi.z = depth;
+    // posi.x = width;
+    // posi.rotation(facing);
+    // posi.z += defaultPosi.z + size.depth/2;
+    // posi.x += defaultPosi.x + size.depth/2;
+    // (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
 
-    height = 0; width = 2; depth = -17; 
-    posi.z = depth;
-    posi.x = width;
-    posi.rotation(facing);
-    posi.z += defaultPosi.z + size.depth/2;
-    posi.x += defaultPosi.x + size.depth/2;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+    // height = 0; width = 2; depth = -17; 
+    // posi.z = depth;
+    // posi.x = width;
+    // posi.rotation(facing);
+    // posi.z += defaultPosi.z + size.depth/2;
+    // posi.x += defaultPosi.x + size.depth/2;
+    // (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
     
-    height = 1; width = -2; depth = -19; 
-    posi.z = depth;
-    posi.x = width;
-    posi.rotation(facing);
-    posi.z += defaultPosi.z + size.depth/2;
-    posi.x += defaultPosi.x + size.depth/2;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+    // height = 1; width = -2; depth = -19; 
+    // posi.z = depth;
+    // posi.x = width;
+    // posi.rotation(facing);
+    // posi.z += defaultPosi.z + size.depth/2;
+    // posi.x += defaultPosi.x + size.depth/2;
+    // (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
 
-    height = 1; width = 2; depth = -19; 
-    posi.z = depth;
-    posi.x = width;
-    posi.rotation(facing);
-    posi.z += defaultPosi.z + size.depth/2;
-    posi.x += defaultPosi.x + size.depth/2;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+    // height = 1; width = 2; depth = -19; 
+    // posi.z = depth;
+    // posi.x = width;
+    // posi.rotation(facing);
+    // posi.z += defaultPosi.z + size.depth/2;
+    // posi.x += defaultPosi.x + size.depth/2;
+    // (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
 
 
-    width = -2; depth = -20; 
-    for(height = 0; height < 2; ++height){
-        posi.z = depth;
-        posi.x = width;
-        posi.rotation(facing);
-        posi.z += defaultPosi.z + size.depth/2;
-        posi.x += defaultPosi.x + size.depth/2;
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
-    }
+    // width = -2; depth = -20; 
+    // for(height = 0; height < 2; ++height){
+    //     posi.z = depth;
+    //     posi.x = width;
+    //     posi.rotation(facing);
+    //     posi.z += defaultPosi.z + size.depth/2;
+    //     posi.x += defaultPosi.x + size.depth/2;
+    //     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+    // }
 
-    width = 2; depth = -20; 
-    for(height = 0; height < 2; ++height){
-        posi.z = depth;
-        posi.x = width;
-        posi.rotation(facing);
-        posi.z += defaultPosi.z + size.depth/2;
-        posi.x += defaultPosi.x + size.depth/2;
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
-    }
+    // width = 2; depth = -20; 
+    // for(height = 0; height < 2; ++height){
+    //     posi.z = depth;
+    //     posi.x = width;
+    //     posi.rotation(facing);
+    //     posi.z += defaultPosi.z + size.depth/2;
+    //     posi.x += defaultPosi.x + size.depth/2;
+    //     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+    // }
 
-    depth = -21; 
-    for(height = 0; height < 2; ++height){
-        for(width = -1;width < 2; ++width){
-            posi.z = depth;
-            posi.x = width;
-            posi.rotation(facing);
-            posi.z += defaultPosi.z + size.depth/2;
-            posi.x += defaultPosi.x + size.depth/2;
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
-        }
-    }
+    // depth = -21; 
+    // for(height = 0; height < 2; ++height){
+    //     for(width = -1;width < 2; ++width){
+    //         posi.z = depth;
+    //         posi.x = width;
+    //         posi.rotation(facing);
+    //         posi.z += defaultPosi.z + size.depth/2;
+    //         posi.x += defaultPosi.x + size.depth/2;
+    //         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+    //     }
+    // }
 
-    height = 0; width = -2; 
-    for(depth = -20; depth < -17; ++depth){
-        posi.z = depth;
-        posi.x = width;
-        posi.rotation(facing);
-        posi.z += defaultPosi.z + size.depth/2;
-        posi.x += defaultPosi.x + size.depth/2;
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
-    }
+    // height = 0; width = -2; 
+    // for(depth = -20; depth < -17; ++depth){
+    //     posi.z = depth;
+    //     posi.x = width;
+    //     posi.rotation(facing);
+    //     posi.z += defaultPosi.z + size.depth/2;
+    //     posi.x += defaultPosi.x + size.depth/2;
+    //     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+    // }
 
-    height = 0; width = 2; 
-    for(depth = -20; depth < -17; ++depth){
-        posi.z = depth;
-        posi.x = width;
-        posi.rotation(facing);
-        posi.z += defaultPosi.z + size.depth/2;
-        posi.x += defaultPosi.x + size.depth/2;
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
-    }
+    // height = 0; width = 2; 
+    // for(depth = -20; depth < -17; ++depth){
+    //     posi.z = depth;
+    //     posi.x = width;
+    //     posi.rotation(facing);
+    //     posi.z += defaultPosi.z + size.depth/2;
+    //     posi.x += defaultPosi.x + size.depth/2;
+    //     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+    // }
 
-    //座る部分
-    height = 0;depth = -20; 
-    for(width = -1; width < 2; ++width){
-    posi.z = depth;
-    posi.x = width;
-    posi.rotation(facing);
-    posi.z += defaultPosi.z + size.depth/2;
-    posi.x += defaultPosi.x + size.depth/2;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzBlock;
-    }
+    // //座る部分
+    // height = 0;depth = -20; 
+    // for(width = -1; width < 2; ++width){
+    // posi.z = depth;
+    // posi.x = width;
+    // posi.rotation(facing);
+    // posi.z += defaultPosi.z + size.depth/2;
+    // posi.x += defaultPosi.x + size.depth/2;
+    // (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzBlock;
+    // }
 
-    height = 0;depth = -19; 
-    for(width = -1; width < 2; ++width){
-    posi.z = depth;
-    posi.x = width;
-    posi.rotation(facing);
-    posi.z += defaultPosi.z + size.depth/2;
-    posi.x += defaultPosi.x + size.depth/2;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
-    }
+    // height = 0;depth = -19; 
+    // for(width = -1; width < 2; ++width){
+    // posi.z = depth;
+    // posi.x = width;
+    // posi.rotation(facing);
+    // posi.z += defaultPosi.z + size.depth/2;
+    // posi.x += defaultPosi.x + size.depth/2;
+    // (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+    // }
 
-    height = -1;
-    for(depth = -18; depth < -16; ++depth){ 
-        for(width = -1; width < 2; ++width){
-        posi.z = depth;
-        posi.x = width;
-        posi.rotation(facing);
-        posi.z += defaultPosi.z + size.depth/2;
-        posi.x += defaultPosi.x + size.depth/2;
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzBlock;
-        }
-    }
+    // height = -1;
+    // for(depth = -18; depth < -16; ++depth){ 
+    //     for(width = -1; width < 2; ++width){
+    //     posi.z = depth;
+    //     posi.x = width;
+    //     posi.rotation(facing);
+    //     posi.z += defaultPosi.z + size.depth/2;
+    //     posi.x += defaultPosi.x + size.depth/2;
+    //     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzBlock;
+    //     }
+    // }
 
-    height = -1; depth = -16;
-    for(width = -2; width < 3; ++width){
-        posi.z = depth;
-        posi.x = width;
-        posi.rotation(facing);
-        posi.z += defaultPosi.z + size.depth/2;
-        posi.x += defaultPosi.x + size.depth/2;
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "type = top";
-        }
+    // height = -1; depth = -16;
+    // for(width = -2; width < 3; ++width){
+    //     posi.z = depth;
+    //     posi.x = width;
+    //     posi.rotation(facing);
+    //     posi.z += defaultPosi.z + size.depth/2;
+    //     posi.x += defaultPosi.x + size.depth/2;
+    //     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+    //     (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "type = top";
+    //     }
 
-    //ウォールトーチ
-    width = -2; depth = -21; height = 1;
-    posi.z = depth;
-    posi.x = width;
-    posi.rotation(facing);
-    posi.z += defaultPosi.z + size.depth/2;
-    posi.x += defaultPosi.x + size.depth/2;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWallTorch;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+    // //ウォールトーチ
+    // width = -2; depth = -21; height = 1;
+    // posi.z = depth;
+    // posi.x = width;
+    // posi.rotation(facing);
+    // posi.z += defaultPosi.z + size.depth/2;
+    // posi.x += defaultPosi.x + size.depth/2;
+    // (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWallTorch;
+    // (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
 
-    //トリップワイヤー
-    height = 1;depth = -20;width = -1;
-    posi.z = depth;
-    posi.x = width;
-    posi.rotation(facing);
-    posi.z += defaultPosi.z + size.depth/2;
-    posi.x += defaultPosi.x + size.depth/2;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::tripwireHook;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
+    // //トリップワイヤー
+    // height = 1;depth = -20;width = -1;
+    // posi.z = depth;
+    // posi.x = width;
+    // posi.rotation(facing);
+    // posi.z += defaultPosi.z + size.depth/2;
+    // posi.x += defaultPosi.x + size.depth/2;
+    // (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::tripwireHook;
+    // (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
 
-    height = 1;depth = -20;width = 1;
-    posi.z = depth;
-    posi.x = width;
-    posi.rotation(facing);
-    posi.z += defaultPosi.z + size.depth/2;
-    posi.x += defaultPosi.x + size.depth/2;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::tripwireHook;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
+    // height = 1;depth = -20;width = 1;
+    // posi.z = depth;
+    // posi.x = width;
+    // posi.rotation(facing);
+    // posi.z += defaultPosi.z + size.depth/2;
+    // posi.x += defaultPosi.x + size.depth/2;
+    // (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::tripwireHook;
+    // (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
 
-    height = 1;depth = -20;width = 0;
-    posi.z = depth;
-    posi.x = width;
-    posi.rotation(facing);
-    posi.z += defaultPosi.z + size.depth/2;
-    posi.x += defaultPosi.x + size.depth/2;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::tripwire;
+    // height = 1;depth = -20;width = 0;
+    // posi.z = depth;
+    // posi.x = width;
+    // posi.rotation(facing);
+    // posi.z += defaultPosi.z + size.depth/2;
+    // posi.x += defaultPosi.x + size.depth/2;
+    // (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::tripwire;
 }
 
 void gimmick::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
