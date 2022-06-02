@@ -270,7 +270,7 @@ void  Process::createFountain(const WN::Vec3 &center) {
     WN::EveryDirection directions = WN::EveryDirection();
     const houseSize size = {26,26};
 
-    WN::direction facing = WN::direction::East;
+    WN::direction facing = WN::direction::North;
 
     WN::Vec3 defaultPosi(
                          size.width/2,

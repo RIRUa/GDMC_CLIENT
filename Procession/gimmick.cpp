@@ -736,6 +736,8 @@ void gimmick::createFountain(
     posi.x += defaultPosi.x + size.depth/2;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::lever;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "powered = true";
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
+
 
     //レッドストーン
     // width = -2; depth = -17; height = -1;
