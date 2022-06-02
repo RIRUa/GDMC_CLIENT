@@ -461,6 +461,17 @@ void gimmick::automaticWaterField(
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::dispenser;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
+
+    WN::Vec3 dispensorPosi = (*block3d)[defaultPosi.y + height][posi.z][posi.x].position;
+    commands += Minecraft::Command::itemInBox(WN::Vec3(
+                                                                           dispensorPosi.x + sendPosition.x,
+                                                                           dispensorPosi.y + sendPosition.y,
+                                                                           dispensorPosi.z + sendPosition.z
+                                                                           ),
+                                                                  4,
+                                                                  "minecraft:water_bucket",
+                                                                  1
+                                                                  );
 }
 
 void gimmick::createFountain(
