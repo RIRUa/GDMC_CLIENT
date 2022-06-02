@@ -659,7 +659,7 @@ void gimmick::createFountain(
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
 
     //クロック回路
-    ////リピータ
+    //リピータ
     depth = -12; height = -2;
     for(width = -3; width > -10; --width){
         posi.z = depth;
@@ -684,7 +684,7 @@ void gimmick::createFountain(
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
     }
 
-    ////レッドストーン
+    //レッドストーン
     width = -10; height = -2;
     for(depth = -13; depth < -11; ++depth){
         posi.z = depth;

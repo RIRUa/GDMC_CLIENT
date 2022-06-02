@@ -2509,7 +2509,7 @@ void building::createFountain(
     }
 
    //土台２層目;柱
-   ////柵
+   //柵
     width = 1; depth = 1;
     for(height = 8; height < 13; ++height){
         posi.z = depth;
@@ -2550,7 +2550,7 @@ void building::createFountain(
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glassPane;
     }
 
-   ////ガラス
+   //ガラス
     depth = -1; width = 0;
     for(height = 8; height < 13; ++height){
         posi.z = depth;
@@ -2633,7 +2633,7 @@ void building::createFountain(
     }
 
    //3層目;仕上げハーフブロックと階段
-   ////階段
+   //階段
     height =19;
     for(width = -2; width < 3; ++width){
         for(depth = -2; depth < 3; ++depth){
@@ -2656,7 +2656,7 @@ void building::createFountain(
         }
     }
 
-   ////シーランタン
+   //シーランタン
     height = 19; width = 2; depth = 2;
     posi.z = depth;
     posi.x = width;
@@ -2721,7 +2721,7 @@ void building::createFountain(
     posi.x += defaultPosi.x + size.depth/2;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
 
-   ////ハーフブロックと逆階段と中段階段2と最上階の逆階段
+   //ハーフブロックと逆階段と中段階段2と最上階の逆階段
     height = 18; width = 0; depth = 1;
     posi.z = depth;
     posi.x = width;
@@ -2988,12 +2988,6 @@ void building::createFountain(
     posi.x += defaultPosi.x + size.depth/2;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
 }
-///////////////
-
-
-
-
-
 
 void building::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
                                const WN::Vec3 &center,
