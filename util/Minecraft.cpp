@@ -81,6 +81,10 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
         case Minecraft::MinecraftBlock::glass:
             blockName += "glass";
             break;
+
+        case Minecraft::MinecraftBlock::glassPane:
+            blockName += "glass_pane";
+            break;
             
         /*****コンクリート類 *****/
         case Minecraft::MinecraftBlock::whiteConcrete:
@@ -127,6 +131,10 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
 
         case Minecraft::MinecraftBlock::smoothQuartzSlab:
             blockName += "smooth_quartz_slab";
+            break;
+
+        case Minecraft::MinecraftBlock::polishedDioriteSlab:
+            blockName += "polished_diorite_slab";
             break;
 
         /***** 階段 *****/
@@ -257,6 +265,10 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
         case Minecraft::MinecraftBlock::redstoneLamp:
             blockName += "redstone_lamp";
             break;
+        
+        case Minecraft::MinecraftBlock::endRod:
+            blockName += "end_rod";
+            break;
         /***** レッドストーン系 *****/
 
         /********** 信号を伝えたりするもの **********/
@@ -286,6 +298,14 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             
         case Minecraft::MinecraftBlock::polishedBlackstonePressurePlate:
             blockName += "polished_blackstone_pressure_plate";
+            break;
+
+        case Minecraft::MinecraftBlock::tripwireHook:
+            blockName += "tripwire_hook";
+            break;
+
+        case Minecraft::MinecraftBlock::tripwire:
+            blockName += "tripwire";
             break;
             
         /*********************************レッドストーンで作られるもの*********************************/

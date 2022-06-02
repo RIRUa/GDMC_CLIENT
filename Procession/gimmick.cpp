@@ -461,18 +461,261 @@ void gimmick::automaticWaterField(
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::dispenser;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
-    
-    // コマンド作成
-    WN::Vec3 dispenserPosi = (*block3d)[defaultPosi.y + height][posi.z][posi.x].position;
+
+    WN::Vec3 dispensorPosi = (*block3d)[defaultPosi.y + height][posi.z][posi.x].position;
     commands += Minecraft::Command::itemInBox(WN::Vec3(
-                                                       dispenserPosi.x + sendPosition.x,
-                                                       dispenserPosi.y + sendPosition.y,
-                                                       dispenserPosi.z + sendPosition.z
-                                                       ),
-                                              4,
-                                              "minecraft:water_bucket",
-                                              1
-                                              );
+                                                                           dispensorPosi.x + sendPosition.x,
+                                                                           dispensorPosi.y + sendPosition.y,
+                                                                           dispensorPosi.z + sendPosition.z
+                                                                           ),
+                                                                  4,
+                                                                  "minecraft:water_bucket",
+                                                                  1
+                                                                  );
+}
+
+void gimmick::createFountain(
+                            std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
+                            const WN::Vec3 &center,
+                            WN::direction facing,
+                            const WN::Vec3 &defaultPosi,
+                            const houseSize &size,
+                            const WN::Vec3 &sendPosition,
+                            std::string &commands
+                            ) {
+    WN::EveryDirection directions = WN::EveryDirection(facing);
+    
+    WN::Vec3 posi(0,0,0);
+    
+    int width, height, depth;
+
+    //レッドストーントーチ
+    width = 0; depth = 0;
+        for(int j = 1; j < 14; j++){
+        height = -3 + 2*j;
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneTorch;
+    }
+
+    //レッドストーンランプ
+    for(int i = 0; i < 13; i++){
+        height = -2 + 2*i ;
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneLamp;
+    }
+
+    //ディスペンサー
+    width = 0; depth = 0; height = 24;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::dispenser;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
+
+    WN::Vec3 dispensorPosi = (*block3d)[defaultPosi.y + height][posi.z][posi.x].position;
+    commands += Minecraft::Command::itemInBox(WN::Vec3(
+                                                                           dispensorPosi.x + sendPosition.x,
+                                                                           dispensorPosi.y + sendPosition.y,
+                                                                           dispensorPosi.z + sendPosition.z
+                                                                           ),
+                                                                  4,
+                                                                  "minecraft:water_bucket",
+                                                                  1
+                                                                  );
+
+    width = 0; depth = -1; height = 15;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::dispenser;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+
+    dispensorPosi = (*block3d)[defaultPosi.y + height][posi.z][posi.x].position;
+
+    commands += Minecraft::Command::itemInBox(WN::Vec3(
+                                                                           dispensorPosi.x + sendPosition.x,
+                                                                           dispensorPosi.y + sendPosition.y,
+                                                                           dispensorPosi.z + sendPosition.z
+                                                                           ),
+                                                                  4,
+                                                                  "minecraft:water_bucket",
+                                                                  1
+                                                                  );
+                                                                  
+    width = 0; depth = 1; height = 15;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::dispenser;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
+
+    dispensorPosi = (*block3d)[defaultPosi.y + height][posi.z][posi.x].position;
+
+    commands += Minecraft::Command::itemInBox(WN::Vec3(
+                                                                           dispensorPosi.x + sendPosition.x,
+                                                                           dispensorPosi.y + sendPosition.y,
+                                                                           dispensorPosi.z + sendPosition.z
+                                                                           ),
+                                                                  4,
+                                                                  "minecraft:water_bucket",
+                                                                  1
+                                                                  );
+
+    width = 1; depth = 0; height = 15;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::dispenser;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
+
+    dispensorPosi = (*block3d)[defaultPosi.y + height][posi.z][posi.x].position;
+
+    commands += Minecraft::Command::itemInBox(WN::Vec3(
+                                                                           dispensorPosi.x + sendPosition.x,
+                                                                           dispensorPosi.y + sendPosition.y,
+                                                                           dispensorPosi.z + sendPosition.z
+                                                                           ),
+                                                                  4,
+                                                                  "minecraft:water_bucket",
+                                                                  1
+                                                                  );
+    
+    width = -1; depth = 0; height = 15;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::dispenser;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
+
+    dispensorPosi = (*block3d)[defaultPosi.y + height][posi.z][posi.x].position;
+
+    commands += Minecraft::Command::itemInBox(WN::Vec3(
+                                                                           dispensorPosi.x + sendPosition.x,
+                                                                           dispensorPosi.y + sendPosition.y,
+                                                                           dispensorPosi.z + sendPosition.z
+                                                                           ),
+                                                                  4,
+                                                                  "minecraft:water_bucket",
+                                                                  1
+                                                                  );
+    std::cout << commands;
+
+    //レッドストーン
+    width = 0; height = -2;
+    for(depth = -2; depth > -13; --depth){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
+    }
+
+    depth = -12; height = -2;
+    for(width = -2; width < 0; ++width){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
+    }
+
+    //リピーター
+    width = 0; depth = -1; height = -2;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::repeater;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+
+    depth = -9; 
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::repeater;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+
+    //クロック回路
+    //リピータ
+    depth = -12; height = -2;
+    for(width = -3; width > -10; --width){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::repeater;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "delay = 4";
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
+    }
+
+    depth = -13; height = -2;
+    for(width = -3; width > -10; --width){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::repeater;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "delay = 4";
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
+    }
+
+    //レッドストーン
+    width = -10; height = -2;
+    for(depth = -13; depth < -11; ++depth){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z + size.depth/2;
+        posi.x += defaultPosi.x + size.depth/2;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
+    }
+
+    //レッドストーンコンパレーター
+    height = -2; width = -2; depth = -13; 
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::comparator;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "mode = subtract";
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+
+    //レバー
+    height = -2; width = -2; depth = -14;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z + size.depth/2;
+    posi.x += defaultPosi.x + size.depth/2;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::lever;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "powered = true";
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
 }
 
 void gimmick::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
