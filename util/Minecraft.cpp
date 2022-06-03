@@ -95,6 +95,11 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "light_gray_concrete";
             break;
             
+        /*****彩釉テラコッタ類 *****/
+        case Minecraft::MinecraftBlock::blueGlazedTerracotta:
+            blockName += "blue_glazed_terracotta";
+            break;
+            
         /***** 鉱材 *****/
         case Minecraft::MinecraftBlock::quartzBlock:
             blockName += "quartz_block";

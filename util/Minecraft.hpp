@@ -64,6 +64,11 @@ namespace Minecraft {
         grayConcrete,
         // 薄灰色コンクリート
         lightGrayConcrete,
+        
+        /*****彩釉テラコッタ類 *****/
+        // 青色の彩釉テラコッタ
+        blueGlazedTerracotta,
+        
 
         /***** ガラス類 *****/
         // 透明ガラスブロック
