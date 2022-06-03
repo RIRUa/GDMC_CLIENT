@@ -524,6 +524,66 @@ void building::createHouse1(
     posi.x += defaultPosi.x;
     
     (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::enchantingTable;
+    
+    for (height = -6; height < -2; ++height) {
+        for (depth = size.depth / 2 - 5; depth < size.depth / 2 - 2; ++depth) {
+            for (width = size.width / 2 + 3; width < size.width - 4; ++width) {
+                
+                posi.z = depth;
+                posi.x = width;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z;
+                posi.x += defaultPosi.x;
+                
+                if (depth == size.depth / 2 - 4
+                    && height == -6
+                    ) {
+                    (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
+                    
+                }else if (depth == size.depth / 2 - 4
+                          && height >= -5
+                          && height <= -4
+                          ) {
+                    (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+                    (*block3d)[heightDefault + height][posi.z][posi.x].angle = nullptr;
+                } else {
+                    (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::blueGlazedTerracotta;
+                    (*block3d)[heightDefault + height][posi.z][posi.x].angle = Minecraft::glazedTerracottaFacing(width, depth, height);
+                }
+                
+            }
+        }
+    }
+    
+    for (height = -6; height < -2; ++height) {
+        for (width = size.width - 6; width < size.width - 3; ++width) {
+            for (depth = size.depth / 2 - 7; depth < size.depth / 2 - 3; ++depth) {
+                posi.z = depth;
+                posi.x = width;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z;
+                posi.x += defaultPosi.x;
+                
+                if (height == -6) {
+                    (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
+                    (*block3d)[heightDefault + height][posi.z][posi.x].angle = nullptr;
+                } else if (width == size.width - 5
+                    && height >= -5
+                    && height <= -4
+                    ) {
+                    (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+                    (*block3d)[heightDefault + height][posi.z][posi.x].angle = nullptr;
+                } else if (depth != size.depth / 2 - 4
+                           || width != size.width - 6
+                           ){
+                    (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::blueGlazedTerracotta;
+                    (*block3d)[heightDefault + height][posi.z][posi.x].angle = Minecraft::glazedTerracottaFacing(width, depth, height);
+                }
+                
+                
+            }
+        }
+    }
 
     // TODO: ２階に鉄格子
 
