@@ -352,6 +352,24 @@ void interior::createHouse1(
     (*block3d)[heightDefault + height][posi.z][posi.x].addition = "part=head";
     
     
+    width = size.width - 5;
+    depth = size.depth / 2 - 7;
+    for (height = -3; height < 2; ++height) {
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        
+        if (height != -1) {
+            (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+        } else {
+            (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::water;
+        }
+        
+        (*block3d)[heightDefault + height][posi.z][posi.x].angle = nullptr;
+        
+    }
 }
 
 void interior::createHouse2(

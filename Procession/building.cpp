@@ -580,10 +580,21 @@ void building::createHouse1(
                     (*block3d)[heightDefault + height][posi.z][posi.x].angle = Minecraft::glazedTerracottaFacing(width, depth, height);
                 }
                 
-                
             }
         }
     }
+    
+    height = -4;
+    width = size.width - 5;
+    depth = size.depth / 2 - 7;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    
+    (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakWallSign;
+    (*block3d)[heightDefault + height][posi.z][posi.x].angle = directions.behind;
 
     // TODO: ２階に鉄格子
 
