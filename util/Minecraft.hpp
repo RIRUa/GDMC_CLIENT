@@ -251,6 +251,8 @@ namespace Minecraft {
         jukebox,
         // エンダーチェスト
         enderChest,
+        // エンチャントテーブル
+        enchantingTable,
         
         /***** ベッド *****/
         // 白

@@ -397,6 +397,10 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "ender_chest";
             break;
             
+        case Minecraft::MinecraftBlock::enchantingTable:
+            blockName += "enchanting_table";
+            break;
+            
         /***** ベッド *****/
         case Minecraft::MinecraftBlock::whiteBed:
             blockName += "white_bed";
