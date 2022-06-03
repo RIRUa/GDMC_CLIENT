@@ -281,6 +281,41 @@ void Process::createAutomaticWaterField(const WN::Vec3 &center) {
                                  );
 }
 
+void  Process::createFountain(const WN::Vec3 &center) {
+    WN::EveryDirection directions = WN::EveryDirection();
+    const houseSize size = {26,26};
+
+    WN::direction facing = WN::direction::North;
+
+    WN::Vec3 defaultPosi(
+                         size.width/2,
+                         this->groundHeight,
+                         size.depth/2
+                         );
+    defaultPosi.rotation(facing);
+    defaultPosi.x = this->area.x/2 + center.x - defaultPosi.x;
+    defaultPosi.z = this->area.z/2 + center.z - defaultPosi.z;
+
+    building::createFountain(
+                           this->createArea,
+                           center,
+                           facing,
+                           defaultPosi,
+                           size,
+                           this->commands
+                           );
+
+   gimmick::createFountain(
+                          this->createArea,
+                          center,
+                          facing,
+                          defaultPosi,
+                          size,
+                          *(this->sendPosi),
+                          this->commands
+                          );
+}
+
 void Process::createPigBurner(const WN::Vec3 &center) {
     WN::EveryDirection directions = WN::EveryDirection();
     
