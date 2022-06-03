@@ -460,11 +460,13 @@ void building::createHouse1(
     }
     
     // 地下１階を作成
+    bool isUseBookshelf;
     for (height = -5; height < -2; ++height) {
         for (depth = size.depth / 2 - 6; depth < size.depth/2 - 1; ++depth) {
             for (width = size.width / 2 - 2; width < size.width / 2 + 3; ++width) {
                 
                 counter = 0;
+                isUseBookshelf = false;
                 
                 posi.z = depth;
                 posi.x = width;
@@ -474,25 +476,54 @@ void building::createHouse1(
                 
                 if (depth == size.depth / 2 - 6) {
                     counter++;
+                    
+                    if (height >= -5 && height <= -4 && width < size.width / 2 + 2) {
+                        isUseBookshelf = true;
+                    }
                 }
                 
                 if (depth == size.depth/2 - 2) {
                     counter++;
+                    
+                    if (height >= -5 && height <= -4 && width < size.width / 2 + 2) {
+                        isUseBookshelf = true;
+                    }
                 }
                 
                 if (width == size.width / 2 - 2) {
                     counter++;
+                    
+                    if (height >= -5 && height <= -4) {
+                        isUseBookshelf = true;
+                    }
                 }
                 
                 if (counter == 0) {
                     (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
                 } else if (counter == 1) {
-                    (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::blueGlazedTerracotta;
-                    (*block3d)[heightDefault + height][posi.z][posi.x].angle = Minecraft::glazedTerracottaFacing(width, depth, height);
+                    
+                    if (isUseBookshelf) {
+                        (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::bookshelf;
+                    } else {
+                        (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::blueGlazedTerracotta;
+                        (*block3d)[heightDefault + height][posi.z][posi.x].angle = Minecraft::glazedTerracottaFacing(width, depth, height);
+                    }
                 }
             }
         }
     }
+    
+    height = -5;
+    depth = size.depth / 2 - 4;
+    width = size.width / 2;
+    
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    
+    (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::enchantingTable;
 
     // TODO: ２階に鉄格子
 
