@@ -308,6 +308,8 @@ namespace Minecraft {
     using blockInfoOf3D = std::vector<std::vector<std::vector<blockInfo> > >;
     void initBlockInfoOf3D(blockInfoOf3D &object, const WN::Vec3 &size);
     void initBlockInfoOf3D(blockInfoOf3D &object, const WN::Vec3 &size, const WN::Vec3 &center);
+
+    std::shared_ptr<WN::direction> glazedTerracottaFacing(int width, int depth, int height);
     
     namespace Command {
         std::string itemInBox(

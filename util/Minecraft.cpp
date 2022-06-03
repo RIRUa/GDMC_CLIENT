@@ -585,6 +585,47 @@ void Minecraft::initBlockInfoOf3D(blockInfoOf3D &object, const WN::Vec3 &size, c
     
 }
 
+std::shared_ptr<WN::direction> Minecraft::glazedTerracottaFacing(int width, int depth, int height) {
+    
+    WN::EveryDirection directions = WN::EveryDirection();
+    
+    if (height % 2 == 0) {
+        switch ((width + depth) % 4) {
+            case 0:
+                return directions.front;
+                
+            case 1:
+                return directions.left;
+                
+            case 2:
+                return directions.behind;
+                
+            case 3:
+                return directions.right;
+                
+            default:
+                return directions.front;
+        }
+    } else {
+        switch ((width + depth) % 4 + 1) {
+            case 0:
+                return directions.behind;
+                
+            case 1:
+                return directions.right;
+                
+            case 2:
+                return directions.front;
+                
+            case 3:
+                return directions.left;
+                
+            default:
+                return directions.front;
+        }
+    }
+}
+
 std::string Minecraft::Command::itemInBox(
                                           const WN::Vec3 &posi,
                                           int containerPosition,

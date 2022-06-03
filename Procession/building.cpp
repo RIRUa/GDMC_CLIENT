@@ -458,6 +458,41 @@ void building::createHouse1(
             }
         }
     }
+    
+    // 地下１階を作成
+    for (height = -5; height < -2; ++height) {
+        for (depth = size.depth / 2 - 6; depth < size.depth/2 - 1; ++depth) {
+            for (width = size.width / 2 - 2; width < size.width / 2 + 3; ++width) {
+                
+                counter = 0;
+                
+                posi.z = depth;
+                posi.x = width;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z;
+                posi.x += defaultPosi.x;
+                
+                if (depth == size.depth / 2 - 6) {
+                    counter++;
+                }
+                
+                if (depth == size.depth/2 - 2) {
+                    counter++;
+                }
+                
+                if (width == size.width / 2 - 2) {
+                    counter++;
+                }
+                
+                if (counter == 0) {
+                    (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+                } else if (counter == 1) {
+                    (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::blueGlazedTerracotta;
+                    (*block3d)[heightDefault + height][posi.z][posi.x].angle = Minecraft::glazedTerracottaFacing(width, depth, height);
+                }
+            }
+        }
+    }
 
     // TODO: ２階に鉄格子
 
