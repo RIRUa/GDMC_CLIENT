@@ -64,6 +64,11 @@ namespace Minecraft {
         grayConcrete,
         // 薄灰色コンクリート
         lightGrayConcrete,
+        
+        /*****彩釉テラコッタ類 *****/
+        // 青色の彩釉テラコッタ
+        blueGlazedTerracotta,
+        
 
         /***** ガラス類 *****/
         // 透明ガラスブロック
@@ -227,6 +232,44 @@ namespace Minecraft {
         //ホッパー
         hopper,
 
+        
+        /********** その他 **********/
+        
+        /***** ユーズフル *****/
+        // クラフトテーブル
+        craftingTable,
+        // かまど
+        furnace,
+        // 燻製機
+        smoker,
+        // 溶鉱炉
+        blastFurnace,
+        // 製図台
+        cartographyTable,
+        // 矢細工台
+        fletchingTable,
+        // 砥石
+        grindstone,
+        // 鍛治台
+        smithingTable,
+        // 石切台
+        stonecutter,
+        // 金床
+        anvil,
+        // ジュークボックス
+        jukebox,
+        // エンダーチェスト
+        enderChest,
+        // エンチャントテーブル
+        enchantingTable,
+        
+        /***** ベッド *****/
+        // 白
+        whiteBed,
+        // 赤紫（マゼンタ）
+        magentaBed,
+        
+        
         /***** その他 *****/
         // スポナー（豚）
         spawner,
@@ -276,6 +319,8 @@ namespace Minecraft {
     using blockInfoOf3D = std::vector<std::vector<std::vector<blockInfo> > >;
     void initBlockInfoOf3D(blockInfoOf3D &object, const WN::Vec3 &size);
     void initBlockInfoOf3D(blockInfoOf3D &object, const WN::Vec3 &size, const WN::Vec3 &center);
+
+    std::shared_ptr<WN::direction> glazedTerracottaFacing(int width, int depth, int height);
     
     namespace Command {
         std::string itemInBox(

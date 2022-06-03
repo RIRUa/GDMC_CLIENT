@@ -99,6 +99,11 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "light_gray_concrete";
             break;
             
+        /*****彩釉テラコッタ類 *****/
+        case Minecraft::MinecraftBlock::blueGlazedTerracotta:
+            blockName += "blue_glazed_terracotta";
+            break;
+            
         /***** 鉱材 *****/
         case Minecraft::MinecraftBlock::quartzBlock:
             blockName += "quartz_block";
@@ -362,6 +367,69 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "hopper";
             break;
 
+        /********** その他 **********/
+        /***** ユーズフル *****/
+        case Minecraft::MinecraftBlock::craftingTable:
+            blockName += "crafting_table";
+            break;
+            
+        case Minecraft::MinecraftBlock::furnace:
+            blockName += "furnace";
+            break;
+            
+        case Minecraft::MinecraftBlock::smoker:
+            blockName += "smoker";
+            break;
+            
+        case Minecraft::MinecraftBlock::blastFurnace:
+            blockName += "blast_furnace";
+            break;
+            
+        case Minecraft::MinecraftBlock::cartographyTable:
+            blockName += "cartography_table";
+            break;
+            
+        case Minecraft::MinecraftBlock::fletchingTable:
+            blockName += "fletching_table";
+            break;
+            
+        case Minecraft::MinecraftBlock::grindstone:
+            blockName += "grindstone";
+            break;
+            
+        case Minecraft::MinecraftBlock::smithingTable:
+            blockName += "smithing_table";
+            break;
+            
+        case Minecraft::MinecraftBlock::stonecutter:
+            blockName += "stonecutter";
+            break;
+            
+        case Minecraft::MinecraftBlock::anvil:
+            blockName += "anvil";
+            break;
+            
+        case Minecraft::MinecraftBlock::jukebox:
+            blockName += "jukebox";
+            break;
+            
+        case Minecraft::MinecraftBlock::enderChest:
+            blockName += "ender_chest";
+            break;
+            
+        case Minecraft::MinecraftBlock::enchantingTable:
+            blockName += "enchanting_table";
+            break;
+            
+        /***** ベッド *****/
+        case Minecraft::MinecraftBlock::whiteBed:
+            blockName += "white_bed";
+            break;
+            
+        case Minecraft::MinecraftBlock::magentaBed:
+            blockName += "magenta_bed";
+            break;
+            
         /***** その他 *****/
         case Minecraft::MinecraftBlock::spawner:
             blockName += "spawner";
@@ -539,6 +607,47 @@ void Minecraft::initBlockInfoOf3D(blockInfoOf3D &object, const WN::Vec3 &size, c
         }
     }
     
+}
+
+std::shared_ptr<WN::direction> Minecraft::glazedTerracottaFacing(int width, int depth, int height) {
+    
+    WN::EveryDirection directions = WN::EveryDirection();
+    
+    if (height % 2 == 0) {
+        switch ((width + depth) % 4) {
+            case 0:
+                return directions.front;
+                
+            case 1:
+                return directions.left;
+                
+            case 2:
+                return directions.behind;
+                
+            case 3:
+                return directions.right;
+                
+            default:
+                return directions.front;
+        }
+    } else {
+        switch ((width + depth) % 4 + 1) {
+            case 0:
+                return directions.behind;
+                
+            case 1:
+                return directions.right;
+                
+            case 2:
+                return directions.front;
+                
+            case 3:
+                return directions.left;
+                
+            default:
+                return directions.front;
+        }
+    }
 }
 
 std::string Minecraft::Command::itemInBox(

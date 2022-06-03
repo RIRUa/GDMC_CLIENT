@@ -845,3 +845,172 @@ void gimmick::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &block
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::warpedButton;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
 }
+
+
+void gimmick::automaticEquipment(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
+                        const WN::Vec3 &center,
+                        WN::direction facing,
+                        const WN::Vec3 &defaultPosi,
+                        const houseSize &size,
+                        const WN::Vec3 &sendPosition,
+                        std::string &commands,
+                        const WN::Vec3 &equipPosi
+                        ) {
+    WN::EveryDirection directions = WN::EveryDirection(facing);
+    WN::Vec3 posi(0,0,0);
+    int width, height, depth;
+    int i;
+    int boxPosiInside;
+    
+    WN::Vec3 boxPosi;
+    
+    
+    height = equipPosi.y;
+    width = equipPosi.x;depth = equipPosi.z;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::warpedPressurePlate;
+    
+    for (i = 0; i < 2; ++i) {
+        
+        height = equipPosi.y + i;
+        
+        width = equipPosi.x - 1;depth = equipPosi.z;
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::dispenser;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
+        boxPosi = (*block3d)[defaultPosi.y + height][posi.z][posi.x].position;
+        if (i == 0) {
+            for (boxPosiInside = 0; boxPosiInside < 9; ++boxPosiInside) {
+                commands += Minecraft::Command::itemInBox(
+                                                          WN::Vec3(boxPosi.x + sendPosition.x,
+                                                                   boxPosi.y + sendPosition.y,
+                                                                   boxPosi.z + sendPosition.z),
+                                                          boxPosiInside,
+                                                          "minecraft:netherite_leggings",
+                                                          1
+                                                          );
+            }
+        } else {
+            for (boxPosiInside = 0; boxPosiInside < 9; ++boxPosiInside) {
+                commands += Minecraft::Command::itemInBox(
+                                                          WN::Vec3(boxPosi.x + sendPosition.x,
+                                                                   boxPosi.y + sendPosition.y,
+                                                                   boxPosi.z + sendPosition.z),
+                                                          boxPosiInside,
+                                                          "minecraft:netherite_helmet",
+                                                          1
+                                                          );
+            }
+        }
+        
+        width = equipPosi.x;depth = equipPosi.z + 1;
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::dispenser;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+        boxPosi = (*block3d)[defaultPosi.y + height][posi.z][posi.x].position;
+        
+        if (i == 0) {
+            for (boxPosiInside = 0; boxPosiInside < 9; ++boxPosiInside) {
+                commands += Minecraft::Command::itemInBox(
+                                                          WN::Vec3(boxPosi.x + sendPosition.x,
+                                                                   boxPosi.y + sendPosition.y,
+                                                                   boxPosi.z + sendPosition.z),
+                                                          boxPosiInside,
+                                                          "minecraft:netherite_boots",
+                                                          1
+                                                          );
+            }
+        } else {
+            for (boxPosiInside = 0; boxPosiInside < 9; ++boxPosiInside) {
+                commands += Minecraft::Command::itemInBox(
+                                                          WN::Vec3(boxPosi.x + sendPosition.x,
+                                                                   boxPosi.y + sendPosition.y,
+                                                                   boxPosi.z + sendPosition.z),
+                                                          boxPosiInside,
+                                                          "minecraft:netherite_chestplate",
+                                                          1
+                                                          );
+            }
+        }
+        
+        width = equipPosi.x - 1;depth = equipPosi.z + 1;
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::dispenser;
+        
+        if (i == 0) {
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneTorch;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "lit=false";
+        } else {
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::diamondBlock;
+        }
+    }
+    
+    height = equipPosi.y - 2;
+    
+    for (width = equipPosi.x; width < equipPosi.x + 2; ++width) {
+        depth = equipPosi.z;
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
+    }
+    
+    for (width = equipPosi.x; width < equipPosi.x + 2; ++width) {
+        depth = equipPosi.z + 1;
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+    }
+    
+    width = equipPosi.x - 1;depth = equipPosi.z + 1;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneTorch;
+    
+    height = equipPosi.y - 3;
+    width = equipPosi.x;
+    depth = equipPosi.z + 1;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::repeater;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
+    
+    height = equipPosi.y - 3;
+    width = equipPosi.x + 1;
+    depth = equipPosi.z + 1;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
+    
+}
+

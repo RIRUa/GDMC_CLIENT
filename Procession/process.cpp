@@ -115,6 +115,21 @@ void Process::createHouse1(const WN::Vec3 &center) {
                            Minecraft::MinecraftBlock::air
                            );
     
+    WN::Vec3 equipPosi = WN::Vec3(
+                              25,
+                              1,
+                              22
+                              );
+    
+    gimmick::automaticEquipment(this->createArea,
+                                center,
+                                facing,
+                                defaultPosi,
+                                size,
+                                *(this->sendPosi),
+                                this->commands,
+                                equipPosi
+                                );
 }
 
 void  Process::createHouse2(const WN::Vec3 &center) {
