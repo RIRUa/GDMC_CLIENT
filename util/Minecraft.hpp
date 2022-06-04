@@ -96,6 +96,8 @@ namespace Minecraft {
         ironBlock,
         // 金ブロック
         goldBlock,
+        // エメラルドブロック
+        emeraldBlock,
         // ダイアモンドブロック
         diamondBlock,
 

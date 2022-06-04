@@ -137,6 +137,10 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "gold_block";
             break;
             
+        case Minecraft::MinecraftBlock::emeraldBlock:
+            blockName += "emerald_block";
+            break;
+            
         case Minecraft::MinecraftBlock::diamondBlock:
             blockName += "diamond_block";
             break;
