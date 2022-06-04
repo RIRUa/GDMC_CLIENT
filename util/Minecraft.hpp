@@ -46,16 +46,25 @@ namespace Minecraft {
         stone,
         // 丸石
         cobbleStone,
-        // 磨かれたブラックストーンレンガ
-        polishedBlackstoneBricks,
-        //ネザーレンガ
-        netherBricks,
         // プリズマリンの塀
         prismarineWall,
         //マグマブロック
         magmaBlock,
         //ソウルサンド
         soulSand,
+        // プルプァブロック
+        purpurBlock,
+        
+        /***** レンガ類 *****/
+        // 磨かれたブラックストーンレンガ
+        polishedBlackstoneBricks,
+        //ネザーレンガ
+        netherBricks,
+        
+        /***** 柱類 *****/
+        // プルプァの柱
+        purpurPillar,
+        
         
         /*****コンクリート類 *****/
         // 白色コンクリート

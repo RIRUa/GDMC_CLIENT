@@ -57,14 +57,6 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "cobblestone";
             break;
             
-        case Minecraft::MinecraftBlock::polishedBlackstoneBricks:
-            blockName += "polished_blackstone_bricks";
-            break;
-            
-        case Minecraft::MinecraftBlock::netherBricks:
-            blockName += "nether_bricks";
-            break;
-
         case Minecraft::MinecraftBlock::prismarineWall:
             blockName += "prismarine_wall";
             break;
@@ -76,7 +68,27 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
         case Minecraft::MinecraftBlock::soulSand:
             blockName += "soul_sand";
             break;
+            
+        case Minecraft::MinecraftBlock::purpurBlock:
+            blockName += "purpur_block";
+            break;
+            
+            
+        /***** レンガ類 *****/
+        case Minecraft::MinecraftBlock::polishedBlackstoneBricks:
+            blockName += "polished_blackstone_bricks";
+            break;
+            
+        case Minecraft::MinecraftBlock::netherBricks:
+            blockName += "nether_bricks";
+            break;
+            
+        /***** 柱類 *****/
+        case Minecraft::MinecraftBlock::purpurPillar:
+            blockName += "purpur_pillar";
+            break;
 
+            
         /***** ガラス類 *****/
         case Minecraft::MinecraftBlock::glass:
             blockName += "glass";
