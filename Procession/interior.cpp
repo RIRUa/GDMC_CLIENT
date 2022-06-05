@@ -1349,3 +1349,110 @@ void interior::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &bloc
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakWallSign;
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void interior::createGateBuilding(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
+                        const WN::Vec3 &center,
+                        WN::direction facing,
+                        const WN::Vec3 &defaultPosi,
+                        const houseSize &size,
+                        const WN::Vec3 &sendPosition,
+                        std::string &commands
+                        ) {
+    WN::EveryDirection directions = WN::EveryDirection(facing);
+    
+    WN::Vec3 posi(0,0,0);
+    
+    int width, height, depth;
+    
+    // 高さ用のデフォルト値
+    const int heightDefault = defaultPosi.y + 1;
+    
+    int counter = 0;
+    
+    width = 2;
+    height = 0;
+    depth = 1;
+    
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    
+    (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::chest;
+    (*block3d)[heightDefault + height][posi.z][posi.x].angle = directions.behind;
+    // コマンド作成
+    WN::Vec3 chestPosi = (*block3d)[heightDefault + height][posi.z][posi.x].position;
+    
+    for (counter = 0; counter < 28; ++counter) {
+        commands += Minecraft::Command::itemInBox(WN::Vec3(
+                                                           chestPosi.x + sendPosition.x,
+                                                           chestPosi.y + sendPosition.y,
+                                                           chestPosi.z + sendPosition.z
+                                                           ),
+                                                  counter,
+                                                  "minecraft:flint_and_steel",
+                                                  1
+                                                  );
+    }
+    
+    width = 1;
+    for (height = 0; height < 6; ++height) {
+        for (depth = 1; depth < 8; ++depth) {
+            counter = 0;
+            
+            if (depth == 1) {
+                counter++;
+            }
+            if (height == 0) {
+                counter++;
+            }
+            if (depth == 7) {
+                counter++;
+            }
+            if (height == 5) {
+                counter++;
+            }
+            
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            
+            
+            if (counter > 0) {
+                (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::obsidian;
+            }
+            
+        }
+    }
+    
+}
+

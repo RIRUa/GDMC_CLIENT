@@ -426,5 +426,15 @@ void Process::createGateBuilding(const WN::Vec3 &center) {
                            10,
                            std::vector<int>{8}
                            );
+    
+    interior::createGateBuilding(
+                                 this->createArea,
+                                 center,
+                                 facing,
+                                 defaultPosi,
+                                 size,
+                                 *(this->sendPosi),
+                                 this->commands
+                                 );
 }
 
