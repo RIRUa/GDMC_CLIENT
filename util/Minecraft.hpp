@@ -288,6 +288,8 @@ namespace Minecraft {
         
         
         /***** その他 *****/
+        // エンドポータルフレーム
+        endPortalFrame,
         // スポナー（豚）
         spawner,
         // レール

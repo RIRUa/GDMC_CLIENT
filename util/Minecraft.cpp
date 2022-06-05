@@ -460,6 +460,10 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             break;
             
         /***** その他 *****/
+        case Minecraft::MinecraftBlock::endPortalFrame:
+            blockName += "end_portal_frame";
+            break;
+            
         case Minecraft::MinecraftBlock::spawner:
             blockName += "spawner";
             break;

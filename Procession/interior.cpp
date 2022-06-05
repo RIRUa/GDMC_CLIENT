@@ -1454,5 +1454,76 @@ void interior::createGateBuilding(std::shared_ptr< Minecraft::blockInfoOf3D > &b
         }
     }
     
+    height = 8;
+    
+    for (width = size.width / 2 - 1; width < size.width / 2 + 2; ++width) {
+        depth = 1;
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        
+        (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::endPortalFrame;
+        (*block3d)[heightDefault + height][posi.z][posi.x].angle = directions.behind;
+        
+        depth = 5;
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        
+        (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::endPortalFrame;
+        (*block3d)[heightDefault + height][posi.z][posi.x].angle = directions.front;
+    }
+    
+    for (depth = 2; depth < 5; ++depth) {
+        width = size.width / 2 - 2;
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        
+        (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::endPortalFrame;
+        (*block3d)[heightDefault + height][posi.z][posi.x].angle = directions.right;
+        
+        width = size.width / 2 + 2;
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        
+        (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::endPortalFrame;
+        (*block3d)[heightDefault + height][posi.z][posi.x].angle = directions.left;
+    }
+    
+    width = 2;
+    depth = 1;
+    
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    
+    (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::chest;
+    (*block3d)[heightDefault + height][posi.z][posi.x].angle = directions.behind;
+    // コマンド作成
+    chestPosi = (*block3d)[heightDefault + height][posi.z][posi.x].position;
+    
+    commands += Minecraft::Command::itemInBox(WN::Vec3(
+                                                       chestPosi.x + sendPosition.x,
+                                                       chestPosi.y + sendPosition.y,
+                                                       chestPosi.z + sendPosition.z
+                                                       ),
+                                              0,
+                                              "minecraft:ender_eye",
+                                              64
+                                              );
+    
+    
 }
 
