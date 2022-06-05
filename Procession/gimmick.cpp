@@ -278,12 +278,23 @@ void gimmick::waterElevator(
         if(std::find(floor.begin(),floor.end(),height) != floor.end()){
             (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
             (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
-            (*block3d)[elePosi.y + height][posi.z -2][posi.x].block = Minecraft::MinecraftBlock::stoneButton;
+            
+            depth = elePosi.z - 2;
+            width = elePosi.x + 2;
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            
+            (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::stoneButton;
+            (*block3d)[elePosi.y + height][posi.z][posi.x].angle = directions.front;
         } else {
             (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::observer;
             (*block3d)[elePosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
         }
 
+        depth = elePosi.z;
         width = elePosi.x - 2;
         posi.z = depth;
         posi.x = width;
@@ -293,7 +304,17 @@ void gimmick::waterElevator(
         if(std::find(floor.begin(),floor.end(),height) != floor.end()){
             (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
             (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
-            (*block3d)[elePosi.y + height][posi.z -2][posi.x].block = Minecraft::MinecraftBlock::stoneButton;
+            
+            depth = elePosi.z - 2;
+            width = elePosi.x - 2;
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            
+            (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::stoneButton;
+            (*block3d)[elePosi.y + height][posi.z][posi.x].angle = directions.front;
         } else {
             (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::observer;
             (*block3d)[elePosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
@@ -302,14 +323,15 @@ void gimmick::waterElevator(
 
     //石のボタン
     height = 0;
-    depth = elePosi.z;
+    depth = elePosi.z - 2;
     width = elePosi.x - 2;
     posi.z = depth;
     posi.x = width;
     posi.rotation(facing);
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
-    (*block3d)[elePosi.y + height][posi.z -2][posi.x].block = Minecraft::MinecraftBlock::stoneButton;
+    (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::stoneButton;
+    (*block3d)[elePosi.y + height][posi.z][posi.x].angle = directions.front;
 
     width = elePosi.x + 2;
     posi.z = depth;
@@ -317,7 +339,8 @@ void gimmick::waterElevator(
     posi.rotation(facing);
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
-    (*block3d)[elePosi.y + height][posi.z -2][posi.x].block = Minecraft::MinecraftBlock::stoneButton;
+    (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::stoneButton;
+    (*block3d)[elePosi.y + height][posi.z][posi.x].angle = directions.front;
 
     //ソウルサンドとマグマブロック
     height = -1;
