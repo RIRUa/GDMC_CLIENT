@@ -73,6 +73,18 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "purpur_block";
             break;
             
+        case Minecraft::MinecraftBlock::gildedBlackstone:
+            blockName += "gilded_blackstone";
+            break;
+            
+        case Minecraft::MinecraftBlock::obsidian:
+            blockName += "obsidian";
+            break;
+            
+        case Minecraft::MinecraftBlock::cryingObsidian:
+            blockName += "crying_obsidian";
+            break;
+            
             
         /***** レンガ類 *****/
         case Minecraft::MinecraftBlock::polishedBlackstoneBricks:

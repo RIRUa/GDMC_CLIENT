@@ -3354,3 +3354,109 @@ void building::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &bloc
     
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void building::createGateBuilding(std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
+                                  const WN::Vec3 &center,
+                                  WN::direction facing,
+                                  const WN::Vec3 &defaultPosi,
+                                  const houseSize &size,
+                                  const WN::Vec3 &sendPosition,
+                                  std::string &commands
+                                  ) {
+    WN::EveryDirection directions = WN::EveryDirection(facing);
+    
+    WN::Vec3 posi(0,0,0);
+    
+    int width, height, depth;
+    
+    // 高さ用のデフォルト値
+    const int heightDefault = defaultPosi.y + 1;
+    
+    // １階分の高さ
+    constexpr int floorHeight = 8;
+    
+    
+    for (depth = 0; depth < size.depth; ++depth) {
+        for (width = 0; width < size.width; ++width) {
+            
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            
+            (*block3d)[defaultPosi.y][posi.z][posi.x].block = Minecraft::MinecraftBlock::gildedBlackstone;
+        }
+    }
+    
+    int counter = 0;
+    
+    for (height = 0; height < 2 * floorHeight; ++height) {
+        for (depth = 0; depth < size.depth; ++depth) {
+            for (width = 0; width < size.width; ++width) {
+                counter = 0;
+                
+                if (depth == 0 &&
+                    !(
+                      (width >= size.width/2-1) &&
+                      (width <= size.width/2) &&
+                      height < 2
+                      )
+                    ) {
+                    counter++;
+                }
+                if (width == 0) {
+                    counter++;
+                }
+                if (depth == (size.depth - 1)) {
+                    counter++;
+                }
+                if (width == (size.width - 1)) {
+                    counter++;
+                }
+                
+                posi.z = depth;
+                posi.x = width;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z;
+                posi.x += defaultPosi.x;
+                
+                if (counter == 1) {
+                    (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::whiteConcrete;
+                } else if (counter == 2) {
+                    (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::gildedBlackstone;
+                }
+                
+            }
+        }
+    }
+    
+    for (height = 7; height < 18; height += floorHeight) {
+        for (depth = 1; depth < size.depth - 1; ++depth) {
+            for (width = 1; width < size.width - 1; ++width) {
+                posi.z = depth;
+                posi.x = width;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z;
+                posi.x += defaultPosi.x;
+                
+                (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::cryingObsidian;
+            }
+        }
+    }
+}
+

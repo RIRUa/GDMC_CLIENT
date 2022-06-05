@@ -54,6 +54,12 @@ namespace Minecraft {
         soulSand,
         // プルプァブロック
         purpurBlock,
+        // きらめくブラックストーン
+        gildedBlackstone,
+        // 黒曜石
+        obsidian,
+        // 泣く黒曜石
+        cryingObsidian,
         
         /***** レンガ類 *****/
         // 磨かれたブラックストーンレンガ
