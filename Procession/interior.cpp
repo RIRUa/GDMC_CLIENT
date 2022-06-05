@@ -1066,7 +1066,7 @@ void interior::createStreetlight1(
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::South);
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half=top";
 
     depth = size.depth - 1;
@@ -1076,7 +1076,7 @@ void interior::createStreetlight1(
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::North);
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half=top";
 
     depth = 1; width = 0;
@@ -1086,7 +1086,7 @@ void interior::createStreetlight1(
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::East);
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half=top";
 
     width = size.width - 1;
@@ -1096,7 +1096,7 @@ void interior::createStreetlight1(
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::West);
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half=top";
 
     //上の支え
@@ -1108,7 +1108,7 @@ void interior::createStreetlight1(
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::South);
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
 
     depth = size.depth - 1;
     posi.z = depth;
@@ -1118,7 +1118,7 @@ void interior::createStreetlight1(
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::North);
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
 
     depth = 1; width = 0;
     posi.z = depth;
@@ -1128,7 +1128,7 @@ void interior::createStreetlight1(
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::East);
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
 
     width = size.width - 1;
     posi.z = depth;
@@ -1138,7 +1138,7 @@ void interior::createStreetlight1(
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::West);
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
 
     //ライト
     height = 4; depth = 1; width = 1;
