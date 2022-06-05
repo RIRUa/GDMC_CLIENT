@@ -46,16 +46,31 @@ namespace Minecraft {
         stone,
         // 丸石
         cobbleStone,
-        // 磨かれたブラックストーンレンガ
-        polishedBlackstoneBricks,
-        //ネザーレンガ
-        netherBricks,
         // プリズマリンの塀
         prismarineWall,
         //マグマブロック
         magmaBlock,
         //ソウルサンド
         soulSand,
+        // プルプァブロック
+        purpurBlock,
+        // きらめくブラックストーン
+        gildedBlackstone,
+        // 黒曜石
+        obsidian,
+        // 泣く黒曜石
+        cryingObsidian,
+        
+        /***** レンガ類 *****/
+        // 磨かれたブラックストーンレンガ
+        polishedBlackstoneBricks,
+        //ネザーレンガ
+        netherBricks,
+        
+        /***** 柱類 *****/
+        // プルプァの柱
+        purpurPillar,
+        
         
         /*****コンクリート類 *****/
         // 白色コンクリート
@@ -87,6 +102,8 @@ namespace Minecraft {
         ironBlock,
         // 金ブロック
         goldBlock,
+        // エメラルドブロック
+        emeraldBlock,
         // ダイアモンドブロック
         diamondBlock,
 
@@ -271,6 +288,8 @@ namespace Minecraft {
         
         
         /***** その他 *****/
+        // エンドポータルフレーム
+        endPortalFrame,
         // スポナー（豚）
         spawner,
         // レール

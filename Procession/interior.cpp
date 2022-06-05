@@ -1066,7 +1066,7 @@ void interior::createStreetlight1(
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::South);
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half=top";
 
     depth = size.depth - 1;
@@ -1076,7 +1076,7 @@ void interior::createStreetlight1(
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::North);
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half=top";
 
     depth = 1; width = 0;
@@ -1086,7 +1086,7 @@ void interior::createStreetlight1(
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::East);
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half=top";
 
     width = size.width - 1;
@@ -1096,7 +1096,7 @@ void interior::createStreetlight1(
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::West);
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half=top";
 
     //上の支え
@@ -1108,7 +1108,7 @@ void interior::createStreetlight1(
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::South);
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.behind;
 
     depth = size.depth - 1;
     posi.z = depth;
@@ -1118,7 +1118,7 @@ void interior::createStreetlight1(
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::North);
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
 
     depth = 1; width = 0;
     posi.z = depth;
@@ -1128,7 +1128,7 @@ void interior::createStreetlight1(
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::East);
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
 
     width = size.width - 1;
     posi.z = depth;
@@ -1138,7 +1138,7 @@ void interior::createStreetlight1(
     posi.x += defaultPosi.x;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzStairs;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::West);
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
 
     //ライト
     height = 4; depth = 1; width = 1;
@@ -1349,3 +1349,181 @@ void interior::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &bloc
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakWallSign;
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void interior::createGateBuilding(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
+                        const WN::Vec3 &center,
+                        WN::direction facing,
+                        const WN::Vec3 &defaultPosi,
+                        const houseSize &size,
+                        const WN::Vec3 &sendPosition,
+                        std::string &commands
+                        ) {
+    WN::EveryDirection directions = WN::EveryDirection(facing);
+    
+    WN::Vec3 posi(0,0,0);
+    
+    int width, height, depth;
+    
+    // 高さ用のデフォルト値
+    const int heightDefault = defaultPosi.y + 1;
+    
+    int counter = 0;
+    
+    width = 2;
+    height = 0;
+    depth = 1;
+    
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    
+    (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::chest;
+    (*block3d)[heightDefault + height][posi.z][posi.x].angle = directions.behind;
+    // コマンド作成
+    WN::Vec3 chestPosi = (*block3d)[heightDefault + height][posi.z][posi.x].position;
+    
+    for (counter = 0; counter < 28; ++counter) {
+        commands += Minecraft::Command::itemInBox(WN::Vec3(
+                                                           chestPosi.x + sendPosition.x,
+                                                           chestPosi.y + sendPosition.y,
+                                                           chestPosi.z + sendPosition.z
+                                                           ),
+                                                  counter,
+                                                  "minecraft:flint_and_steel",
+                                                  1
+                                                  );
+    }
+    
+    width = 1;
+    for (height = 0; height < 6; ++height) {
+        for (depth = 1; depth < 8; ++depth) {
+            counter = 0;
+            
+            if (depth == 1) {
+                counter++;
+            }
+            if (height == 0) {
+                counter++;
+            }
+            if (depth == 7) {
+                counter++;
+            }
+            if (height == 5) {
+                counter++;
+            }
+            
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            
+            
+            if (counter > 0) {
+                (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::obsidian;
+            }
+            
+        }
+    }
+    
+    height = 8;
+    
+    for (width = size.width / 2 - 1; width < size.width / 2 + 2; ++width) {
+        depth = 1;
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        
+        (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::endPortalFrame;
+        (*block3d)[heightDefault + height][posi.z][posi.x].angle = directions.behind;
+        
+        depth = 5;
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        
+        (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::endPortalFrame;
+        (*block3d)[heightDefault + height][posi.z][posi.x].angle = directions.front;
+    }
+    
+    for (depth = 2; depth < 5; ++depth) {
+        width = size.width / 2 - 2;
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        
+        (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::endPortalFrame;
+        (*block3d)[heightDefault + height][posi.z][posi.x].angle = directions.right;
+        
+        width = size.width / 2 + 2;
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        
+        (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::endPortalFrame;
+        (*block3d)[heightDefault + height][posi.z][posi.x].angle = directions.left;
+    }
+    
+    width = 2;
+    depth = 1;
+    
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    
+    (*block3d)[heightDefault + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::chest;
+    (*block3d)[heightDefault + height][posi.z][posi.x].angle = directions.behind;
+    // コマンド作成
+    chestPosi = (*block3d)[heightDefault + height][posi.z][posi.x].position;
+    
+    commands += Minecraft::Command::itemInBox(WN::Vec3(
+                                                       chestPosi.x + sendPosition.x,
+                                                       chestPosi.y + sendPosition.y,
+                                                       chestPosi.z + sendPosition.z
+                                                       ),
+                                              0,
+                                              "minecraft:ender_eye",
+                                              64
+                                              );
+    
+    
+}
+

@@ -46,6 +46,8 @@ public:
     void createAutomaticWaterField(const WN::Vec3 &center);
     void createFountain(const WN::Vec3 &center);
     void createPigBurner(const WN::Vec3 &center);
+    
+    void createGateBuilding(const WN::Vec3 &center);
 };
 
 #endif /* process_hpp */

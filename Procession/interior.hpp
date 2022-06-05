@@ -66,6 +66,16 @@ namespace interior {
                          const WN::Vec3 &sendPosition,
                          std::string &commands
                          );
+
+
+    void createGateBuilding(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
+                            const WN::Vec3 &center,
+                            WN::direction facing,
+                            const WN::Vec3 &defaultPosi,
+                            const houseSize &size,
+                            const WN::Vec3 &sendPosition,
+                            std::string &commands
+                            );
 }
 
 #endif /* interior_hpp */
