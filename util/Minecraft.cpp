@@ -381,6 +381,7 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             
         case Minecraft::MinecraftBlock::observer:
             blockName += "observer";
+            break;
 
         case Minecraft::MinecraftBlock::daylightDetector:
             blockName += "daylight_detector";

@@ -410,6 +410,21 @@ void Process::createGateBuilding(const WN::Vec3 &center) {
                                  *(this->sendPosi),
                                  this->commands
                                  );
-    
+    gimmick::waterElevator(
+                           this->createArea,
+                           center,
+                           facing,
+                           defaultPosi,
+                           size,
+                           *(this->sendPosi),
+                           this->commands,
+                           WN::Vec3(
+                                    5,
+                                    this->groundHeight + 1,
+                                    8
+                                    ),
+                           10,
+                           std::vector<int>{8}
+                           );
 }
 

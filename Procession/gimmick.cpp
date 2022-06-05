@@ -206,7 +206,7 @@ void gimmick::waterElevator(
                 posi.rotation(facing);
                 posi.z += defaultPosi.z;
                 posi.x += defaultPosi.x;
-                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+                (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
             }
         }  
     }
@@ -220,8 +220,8 @@ void gimmick::waterElevator(
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
     
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::piston;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
+    (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::piston;
+    (*block3d)[elePosi.y + height][posi.z][posi.x].angle = directions.left;
 
     width = elePosi.x -2;
     posi.z = depth;
@@ -230,8 +230,8 @@ void gimmick::waterElevator(
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
 
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::piston;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
+    (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::piston;
+    (*block3d)[elePosi.y + height][posi.z][posi.x].angle = directions.right;
 
     //空気を置く。
     height = -1; depth = elePosi.z; width = elePosi.x + 1;
@@ -241,7 +241,7 @@ void gimmick::waterElevator(
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
 
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+    (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
     // レッドストーンワイヤの回路
     height = -1; depth = elePosi.z -1;
     width = elePosi.x + 2;
@@ -251,8 +251,8 @@ void gimmick::waterElevator(
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
 
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
+    (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+    (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
 
     width = elePosi.x - 2;
     posi.z = depth;
@@ -261,8 +261,8 @@ void gimmick::waterElevator(
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
 
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
+    (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+    (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
 
     //オブザーバーの設置
     for (height = 0; height < elevatorHeight; ++height) {
@@ -276,12 +276,12 @@ void gimmick::waterElevator(
         posi.x += defaultPosi.x;
     
         if(std::find(floor.begin(),floor.end(),height) != floor.end()){
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
-            (*block3d)[defaultPosi.y + height][posi.z -2][posi.x].block = Minecraft::MinecraftBlock::stoneButton;
+            (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+            (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
+            (*block3d)[elePosi.y + height][posi.z -2][posi.x].block = Minecraft::MinecraftBlock::stoneButton;
         } else {
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::observer;
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
+            (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::observer;
+            (*block3d)[elePosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
         }
 
         width = elePosi.x - 2;
@@ -291,12 +291,12 @@ void gimmick::waterElevator(
         posi.z += defaultPosi.z;
         posi.x += defaultPosi.x;
         if(std::find(floor.begin(),floor.end(),height) != floor.end()){
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
-            (*block3d)[defaultPosi.y + height][posi.z -2][posi.x].block = Minecraft::MinecraftBlock::stoneButton;
+            (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+            (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::redstoneWire;
+            (*block3d)[elePosi.y + height][posi.z -2][posi.x].block = Minecraft::MinecraftBlock::stoneButton;
         } else {
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::observer;
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
+            (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::observer;
+            (*block3d)[elePosi.y + height][posi.z][posi.x].angle = std::make_shared <WN::direction>(WN::direction::Up);
         }
     }
 
@@ -309,7 +309,7 @@ void gimmick::waterElevator(
     posi.rotation(facing);
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z -2][posi.x].block = Minecraft::MinecraftBlock::stoneButton;
+    (*block3d)[elePosi.y + height][posi.z -2][posi.x].block = Minecraft::MinecraftBlock::stoneButton;
 
     width = elePosi.x + 2;
     posi.z = depth;
@@ -317,7 +317,7 @@ void gimmick::waterElevator(
     posi.rotation(facing);
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z -2][posi.x].block = Minecraft::MinecraftBlock::stoneButton;
+    (*block3d)[elePosi.y + height][posi.z -2][posi.x].block = Minecraft::MinecraftBlock::stoneButton;
 
     //ソウルサンドとマグマブロック
     height = -1;
@@ -328,7 +328,7 @@ void gimmick::waterElevator(
     posi.rotation(facing);
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::magmaBlock;
+    (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::magmaBlock;
 
     width = elePosi.x -1;
     depth = elePosi.z;
@@ -337,7 +337,7 @@ void gimmick::waterElevator(
     posi.rotation(facing);
     posi.z += defaultPosi.z;
     posi.x += defaultPosi.x;
-    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::soulSand;
+    (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::soulSand;
 
     //水
     width = elePosi.x;
@@ -348,7 +348,7 @@ void gimmick::waterElevator(
         posi.rotation(facing);
         posi.z += defaultPosi.z;
         posi.x += defaultPosi.x;
-        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::water;
+        (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::water;
         }
 
     //ガラスと看板
@@ -364,11 +364,11 @@ void gimmick::waterElevator(
         if(std::find(floor.begin(),floor.end(),height) != floor.end() ||
         std::find(floor.begin(),floor.end(),height -1) != floor.end() || 
         height == 0 || height == 1){  
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::warpedFenceGate;
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+            (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
+            (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::warpedFenceGate;
+            (*block3d)[elePosi.y + height][posi.z][posi.x].angle = directions.front;
         } else {
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
+            (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
         }
     }
 }
