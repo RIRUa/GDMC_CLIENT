@@ -639,7 +639,6 @@ void gimmick::createFountain(
                                                                   "minecraft:water_bucket",
                                                                   1
                                                                   );
-    std::cout << commands;
 
     //レッドストーン
     width = 0; height = -2;
