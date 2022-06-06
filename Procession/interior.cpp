@@ -386,12 +386,13 @@ void interior::createHouse2(
     WN::Vec3 posi(0,0,0);
     
     int width, height, depth;
+    int i,j;
 
     //地面の照明
     height = -1;
-    for(int i=0; i < 28; i+=3){
+    for(i=0; i < 28; i+=3){
         width = 7 + i; 
-        for(int j=0; j < 28; j+=2){
+        for(j=0; j < 28; j+=2){
             depth = 7 + j;
 
             posi.z = depth;
@@ -403,10 +404,238 @@ void interior::createHouse2(
         }
     }
 
+    //玄関周りの地面の照明
+    height = -1; depth = 2; 
+    for(i=0; i < 37; i+=3){
+        width = 2 + i; 
+        if(i == 18){
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+        } else {
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glowstone;
+        }
+    }
+
+    height = -1; depth = 37;
+    for(i=0; i < 37; i+=3){
+        width = 2 + i; 
+
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glowstone;
+    }
+
+    for(i=0; i < 28; i+=3){
+        width = 2;
+        depth = 6 + i; 
+
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glowstone;
+
+        width = 38;
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glowstone;
+    }
+
+
+    //醸造台の作成
+    height = 0;
+    for(i=0; i < 4; i+=3){
+        width = 29 + i; 
+        for(j=0; j < 25; j+=4){
+            depth = 7 + j;
+
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::cauldron;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "level = 3";
+        }
+    }
+
+    for(i=0; i < 4; i+=3){
+        width = 29 + i; 
+        for(j=0; j < 25; j+=4){
+            depth = 8 + j;
+
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].block = Minecraft::MinecraftBlock::brewingStand;
+            (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].addition = "has_bottle_0 = false";
+            (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].addition = "has_bottle_1 = true";
+            (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].addition += ",has_bottle_2 = true";
+        }
+    }
+
+    for(i=0; i < 4; i+=3){
+        width = 29 + i; 
+        for(j=0; j < 25; j+=4){
+            depth = 9 + j;
+
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::chest;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
+            WN::Vec3 chestPosi = (*block3d)[defaultPosi.y + height][posi.z][posi.x].position;
+            commands += Minecraft::Command::itemInBox(WN::Vec3(
+                                                                            chestPosi.x + sendPosition.x,
+                                                                            chestPosi.y + sendPosition.y,
+                                                                            chestPosi.z + sendPosition.z
+                                                                            ),
+                                                                    0,
+                                                                    "minecraft:glass_bottle",
+                                                                    64
+                                                                    );
+        }
+    }
+
+    //first glass
+    depth = 5;
+    for(height = 1; height < 3; ++height){
+        for(i = 0; i < 10; i+=4){
+        width = 7 + i;
+
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
+        }
+    }
+
+    for(height = 1; height < 3; ++height){
+        for(i = 0; i < 10; i+=4){
+        width = 8 + i;
+
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
+        }
+    }
+
+    for(height = 1; height < 3; ++height){
+        for(i = 0; i < 5; i+=4){
+        width = 26 + i;
+
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
+        }
+    }
+
+    for(height = 1; height < 3; ++height){
+        for(i = 0; i < 5; i+=4){
+        width = 27 + i;
+
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
+        }
+    }
+
+    depth = 35;
+    for(height = 1; height < 3; ++height){
+        for(i = 0; i < 5; i+=4){
+        width = 26 + i;
+
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
+        }
+    }
+
+    for(height = 1; height < 3; ++height){
+        for(i = 0; i < 5; i+=4){
+        width = 27 + i;
+
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
+        }
+    }
+
+    width = 35;
+    for(height = 1; height < 3; ++height){
+        for(i = 0; i < 23; i+=4){
+        depth = 9 + i; 
+
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
+        }
+    }
+
+    for(height = 1; height < 3; ++height){
+        for(i = 0; i < 23; i+=4){
+        depth = 10 + i; 
+
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
+        }
+    }
+
     //second glass
     depth = 5;
     for(height = 6; height < 8; ++height){
-        for(int i = 0; i < 10; i+=4){
+        for(i = 0; i < 10; i+=4){
         width = 24 + i;
 
         posi.z = depth;
@@ -419,7 +648,7 @@ void interior::createHouse2(
     }
 
     for(height = 6; height < 8; ++height){
-        for(int i = 0; i < 10; i+=4){
+        for(i = 0; i < 10; i+=4){
         width = 25 + i;
 
         posi.z = depth;
@@ -433,7 +662,7 @@ void interior::createHouse2(
 
     depth = 35;
     for(height = 6; height < 8; ++height){
-        for(int i = 0; i < 10; i+=4){
+        for(i = 0; i < 10; i+=4){
         width = 24 + i;
 
         posi.z = depth;
@@ -446,7 +675,7 @@ void interior::createHouse2(
     }
 
     for(height = 6; height < 8; ++height){
-        for(int i = 0; i < 10; i+=4){
+        for(i = 0; i < 10; i+=4){
         width = 25 + i;
 
         posi.z = depth;
@@ -460,7 +689,7 @@ void interior::createHouse2(
 
     width = 35;
     for(height = 6; height < 8; ++height){
-        for(int i = 0; i < 27; i+=4){
+        for(i = 0; i < 27; i+=4){
         depth = 7 + i; 
 
         posi.z = depth;
@@ -473,7 +702,7 @@ void interior::createHouse2(
     }
 
     for(height = 6; height < 8; ++height){
-        for(int i = 0; i < 27; i+=4){
+        for(i = 0; i < 27; i+=4){
         depth = 8 + i; 
 
         posi.z = depth;
@@ -487,9 +716,9 @@ void interior::createHouse2(
 
     //二階のシャンデリア
     //プール
-    for(int i=0; i < 14; i+=5){
+    for(i=0; i < 14; i+=5){
         width = 8 + i; 
-        for(int j=0; j < 15; j+=6){
+        for(j=0; j < 15; j+=6){
             depth = 19 + j;
             for(height = 9; height > 6; --height){
                 
@@ -504,9 +733,9 @@ void interior::createHouse2(
     }
 
     height = 7;
-    for(int i=0; i < 15; i+=5){
+    for(i=0; i < 15; i+=5){
         width = 7 + i; 
-        for(int j=0; j < 15; j+=6){
+        for(j=0; j < 15; j+=6){
             depth = 19 + j;
 
             posi.z = depth;
@@ -518,9 +747,9 @@ void interior::createHouse2(
         }
     }
 
-    for(int i=0; i < 14; i+=5){
+    for(i=0; i < 14; i+=5){
         width = 9 + i; 
-        for(int j=0; j < 15; j+=6){
+        for(j=0; j < 15; j+=6){
             depth = 19 + j;
 
             posi.z = depth;
@@ -532,9 +761,9 @@ void interior::createHouse2(
         }
     }
 
-    for(int i=0; i < 14; i+=5){
+    for(i=0; i < 14; i+=5){
         width = 8 + i; 
-        for(int j=0; j < 15; j+=6){
+        for(j=0; j < 15; j+=6){
             depth = 20 + j;
 
             posi.z = depth;
@@ -546,9 +775,9 @@ void interior::createHouse2(
         }
     }
 
-    for(int i=0; i < 14; i+=5){
+    for(i=0; i < 14; i+=5){
         width = 8 + i; 
-        for(int j=0; j < 15; j+=6){
+        for(j=0; j < 15; j+=6){
             depth = 18 + j;
 
             posi.z = depth;
@@ -561,9 +790,9 @@ void interior::createHouse2(
     }
 
     height = 8;
-    for(int i=0; i < 15; i+=5){
+    for(i=0; i < 15; i+=5){
         width = 7 + i; 
-        for(int j=0; j < 15; j+=6){
+        for(j=0; j < 15; j+=6){
             depth = 19 + j;
 
             posi.z = depth;
@@ -575,9 +804,9 @@ void interior::createHouse2(
         }
     }
 
-    for(int i=0; i < 14; i+=5){
+    for(i=0; i < 14; i+=5){
         width = 9 + i; 
-        for(int j=0; j < 15; j+=6){
+        for(j=0; j < 15; j+=6){
             depth = 19 + j;
 
             posi.z = depth;
@@ -589,9 +818,9 @@ void interior::createHouse2(
         }
     }
 
-    for(int i=0; i < 14; i+=5){
+    for(i=0; i < 14; i+=5){
         width = 8 + i; 
-        for(int j=0; j < 15; j+=6){
+        for(j=0; j < 15; j+=6){
             depth = 20 + j;
 
             posi.z = depth;
@@ -603,9 +832,9 @@ void interior::createHouse2(
         }
     }
 
-    for(int i=0; i < 14; i+=5){
+    for(i=0; i < 14; i+=5){
         width = 8 + i; 
-        for(int j=0; j < 15; j+=6){
+        for(j=0; j < 15; j+=6){
             depth = 18 + j;
 
             posi.z = depth;
@@ -618,9 +847,9 @@ void interior::createHouse2(
     }
 
 //広場
-    for(int i=0; i < 9; i+=5){
+    for(i=0; i < 9; i+=5){
         width = 26 + i; 
-        for(int j=0; j < 23; j+=6){
+        for(j=0; j < 23; j+=6){
             depth = 11 + j;
             for(height = 9; height > 6; --height){
                 
@@ -635,9 +864,9 @@ void interior::createHouse2(
     }
 
     height = 7;
-    for(int i=0; i < 9; i+=5){
+    for(i=0; i < 9; i+=5){
         width = 25 + i; 
-        for(int j=0; j < 23; j+=6){
+        for(j=0; j < 23; j+=6){
             depth = 11 + j;
             
             posi.z = depth;
@@ -649,9 +878,9 @@ void interior::createHouse2(
         }
     }
 
-    for(int i=0; i < 9; i+=5){
+    for(i=0; i < 9; i+=5){
         width = 27 + i; 
-        for(int j=0; j < 23; j+=6){
+        for(j=0; j < 23; j+=6){
             depth = 11 + j;
             
             posi.z = depth;
@@ -663,9 +892,9 @@ void interior::createHouse2(
         }
     }
 
-    for(int i=0; i < 9; i+=5){
+    for(i=0; i < 9; i+=5){
         width = 26 + i; 
-        for(int j=0; j < 23; j+=6){
+        for(j=0; j < 23; j+=6){
             depth = 10 + j;
             
             posi.z = depth;
@@ -677,9 +906,9 @@ void interior::createHouse2(
         }
     }
 
-    for(int i=0; i < 9; i+=5){
+    for(i=0; i < 9; i+=5){
         width = 26 + i; 
-        for(int j=0; j < 23; j+=6){
+        for(j=0; j < 23; j+=6){
             depth = 12 + j;
             
             posi.z = depth;
@@ -692,9 +921,9 @@ void interior::createHouse2(
     }
 
     height = 8;
-    for(int i=0; i < 9; i+=5){
+    for(i=0; i < 9; i+=5){
         width = 25 + i; 
-        for(int j=0; j < 23; j+=6){
+        for(j=0; j < 23; j+=6){
             depth = 11 + j;
             
             posi.z = depth;
@@ -706,9 +935,9 @@ void interior::createHouse2(
         }
     }
 
-    for(int i=0; i < 9; i+=5){
+    for(i=0; i < 9; i+=5){
         width = 27 + i; 
-        for(int j=0; j < 23; j+=6){
+        for(j=0; j < 23; j+=6){
             depth = 11 + j;
             
             posi.z = depth;
@@ -720,9 +949,9 @@ void interior::createHouse2(
         }
     }
 
-    for(int i=0; i < 9; i+=5){
+    for(i=0; i < 9; i+=5){
         width = 26 + i; 
-        for(int j=0; j < 23; j+=6){
+        for(j=0; j < 23; j+=6){
             depth = 12 + j;
             
             posi.z = depth;
@@ -734,9 +963,9 @@ void interior::createHouse2(
         }
     }
 
-    for(int i=0; i < 9; i+=5){
+    for(i=0; i < 9; i+=5){
         width = 26 + i; 
-        for(int j=0; j < 23; j+=6){
+        for(j=0; j < 23; j+=6){
             depth = 10 + j;
             
             posi.z = depth;
@@ -749,7 +978,7 @@ void interior::createHouse2(
     }
 
 
-    // dark fence 
+    // dark fenceと松明の生成
     for(width = 5; width < 22; ++width){
         height = 5; depth = 5;
 
@@ -774,7 +1003,7 @@ void interior::createHouse2(
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::netherBrickFence;
     }
 
-    for(int i = 0; i < 7; ++i){
+    for(i = 0; i < 7; ++i){
         width = 9; depth = 8 + i; height = 5 + i;
 
         posi.z = depth;
@@ -783,6 +1012,7 @@ void interior::createHouse2(
         posi.z += defaultPosi.z;
         posi.x += defaultPosi.x;
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::netherBrickFence;
+        (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].block = Minecraft::MinecraftBlock::torch;
 
         width = 18;
         posi.z = depth;
@@ -791,6 +1021,7 @@ void interior::createHouse2(
         posi.z += defaultPosi.z;
         posi.x += defaultPosi.x;
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::netherBrickFence;
+        (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].block = Minecraft::MinecraftBlock::torch;
     }
 
     for(width = 5; width < 10; ++width){
@@ -874,7 +1105,7 @@ void interior::createHouse2(
 
 // 3階の照明
     height = 15; width = 28;
-    for(int i = 0; i < 20; i+=3){
+    for(i = 0; i < 20; i+=3){
         depth = 11 + i; 
 
         posi.z = depth;
@@ -887,7 +1118,7 @@ void interior::createHouse2(
     }
 
     height = 15; width = 29;
-    for(int i = 0; i < 20; i+=3){
+    for(i = 0; i < 20; i+=3){
         depth = 11 + i; 
 
         posi.z = depth;
@@ -900,7 +1131,7 @@ void interior::createHouse2(
     }
 
     height = 14; width = 28;
-    for(int i = 0; i < 20; i+=3){
+    for(i = 0; i < 20; i+=3){
         depth = 11 + i; 
 
         posi.z = depth;
@@ -913,7 +1144,7 @@ void interior::createHouse2(
     }
 
     height = 14; width = 29;
-    for(int i = 0; i < 20; i+=3){
+    for(i = 0; i < 20; i+=3){
         depth = 11 + i; 
 
         posi.z = depth;
@@ -928,7 +1159,7 @@ void interior::createHouse2(
 //三階のガラス
     depth = 8;
     for(height = 12; height < 14; ++height){
-        for(int i = 0; i < 7; i+=4){
+        for(i = 0; i < 7; i+=4){
         width = 26 + i;
 
         posi.z = depth;
@@ -941,7 +1172,7 @@ void interior::createHouse2(
     }
 
     for(height = 12; height < 14; ++height){
-        for(int i = 0; i < 7; i+=4){
+        for(i = 0; i < 7; i+=4){
         width = 27 + i;
 
         posi.z = depth;
@@ -955,7 +1186,7 @@ void interior::createHouse2(
 
     depth = 32;
     for(height = 12; height < 14; ++height){
-        for(int i = 0; i < 7; i+=4){
+        for(i = 0; i < 7; i+=4){
         width = 26 + i;
 
         posi.z = depth;
@@ -968,7 +1199,7 @@ void interior::createHouse2(
     }
 
     for(height = 12; height < 14; ++height){
-        for(int i = 0; i < 7; i+=4){
+        for(i = 0; i < 7; i+=4){
         width = 27 + i;
 
         posi.z = depth;
@@ -978,6 +1209,51 @@ void interior::createHouse2(
         posi.x += defaultPosi.x;
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
         }
+    }
+    //屋上のエレベータにつく松明
+    height = 13; 
+    for(i= 0; i < 5;i +=4){
+        width = 8 +i; depth = size.depth -8;
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::wallTorch;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+    }
+
+    //ランタン
+    height = 14;
+    for(width = 8; width < 22; width +=3){
+        for(depth = 16; depth < size.depth -10; depth +=3){
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::lantern;
+        }
+    }
+
+    //3階の屋根の照明
+    height = 15;
+    for(i= 0; i < 10;i +=9){
+        width = 24 +i; depth = 7;
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glowstone;
+
+        depth = size.depth -7;
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glowstone;
     }
 }
     

@@ -288,6 +288,10 @@ namespace Minecraft {
         
         
         /***** その他 *****/
+        //醸造台
+        brewingStand,
+        //大釜
+        cauldron,
         // エンドポータルフレーム
         endPortalFrame,
         // スポナー（豚）
