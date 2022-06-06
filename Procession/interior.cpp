@@ -403,6 +403,60 @@ void interior::createHouse2(
         }
     }
 
+    //醸造台の作成
+    height = 0;
+    for(int i=0; i < 4; i+=3){
+        width = 29 + i; 
+        for(int j=0; j < 25; j+=4){
+            depth = 7 + j;
+
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::cauldron;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "level = 3";
+            
+        }
+    }
+
+    for(int i=0; i < 4; i+=3){
+        width = 29 + i; 
+        for(int j=0; j < 25; j+=4){
+            depth = 8 + j;
+
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].block = Minecraft::MinecraftBlock::brewingStand;
+        }
+    }
+
+    for(int i=0; i < 4; i+=3){
+        width = 29 + i; 
+        for(int j=0; j < 25; j+=4){
+            depth = 9 + j;
+
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::chest;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
+        }
+    }
+
     //second glass
     depth = 5;
     for(height = 6; height < 8; ++height){
