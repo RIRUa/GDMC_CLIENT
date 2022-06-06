@@ -614,6 +614,7 @@ void building::createHouse2(
     WN::Vec3 posi(0,0,0);
     
     int width, height, depth;
+    int i;
     
     // その位置が壁か角か判別するためのカウンター
     int wallCounter;
@@ -691,8 +692,8 @@ void building::createHouse2(
         }
     }
 
-    height = 0; depth = 8;
-    for(int i = 0; i < 2; i++){
+    height = 0; depth = 8; 
+    for(i = 0; i < 2; i++){
         if(i == 0){
             posi.z = depth + i;
             posi.x = width;
@@ -875,7 +876,7 @@ void building::createHouse2(
 //floor stairs
 
     for (width = 20; width < 22; ++width){
-        for (int i = 0; i < 5; ++i){
+        for (i = 0; i < 5; ++i){
             height = 4 - i; depth = 9 + i;
             posi.z = depth;
             posi.x = width;
@@ -888,7 +889,7 @@ void building::createHouse2(
     }
 
     for (width = 6; width < 8; ++width){
-        for (int i = 0; i < 5; ++i){
+        for (i = 0; i < 5; ++i){
             height = 4 - i; depth = 9 + i;
             posi.z = depth;
             posi.x = width;
@@ -1117,7 +1118,7 @@ void building::createHouse2(
 
 //third floor roof
     for(depth = 11; depth < size.depth -9; ++depth){
-        for(int i = 0; i < 4; i++){
+        for(i = 0; i < 4; i++){
             width = 25 + i; height = 16 + i;
             posi.z = depth;
             posi.x = width;
@@ -1129,7 +1130,7 @@ void building::createHouse2(
     }
 
     for(depth = 11; depth < 30; ++depth){
-        for(int i = 0; i < 4; i++){
+        for(i = 0; i < 4; i++){
             width = 29 + i; height = 19 - i;
             posi.z = depth;
             posi.x = width;
@@ -1190,7 +1191,7 @@ void building::createHouse2(
 
 //third floor stair roof
     for(depth = 11; depth < 30; ++depth){
-        for(int i = 0; i < 5; i++){
+        for(i = 0; i < 5; i++){
             width = 24 + i; height = 16 + i;
             posi.z = depth;
             posi.x = width;
@@ -1203,7 +1204,7 @@ void building::createHouse2(
     }
 
     for(depth = 11; depth < 30; ++depth){
-        for(int i = 0; i < 5; i++){
+        for(i = 0; i < 5; i++){
             width = 29 + i; height = 20 - i;
             posi.z = depth;
             posi.x = width;
@@ -1216,7 +1217,7 @@ void building::createHouse2(
     }
 
     for(width = 28; width < 30; ++width){
-        for(int i = 0; i < 5; i++){
+        for(i = 0; i < 5; i++){
             depth = 7 + i; height = 16 + i;
             posi.z = depth;
             posi.x = width;
@@ -1229,7 +1230,7 @@ void building::createHouse2(
     }
 
     for(width = 28; width < 30; ++width){
-        for(int i = 0; i < 5; i++){
+        for(i = 0; i < 5; i++){
             depth = 29 + i; height = 20 - i;
             posi.z = depth;
             posi.x = width;
@@ -1242,7 +1243,7 @@ void building::createHouse2(
     }
 
     for(width = 25; width < 28; ++width){
-        for(int i = 0; i < 2; i++){
+        for(i = 0; i < 2; i++){
             height = 16 + i; depth = 7 + i;
             posi.z = depth;
             posi.x = width;
@@ -1255,7 +1256,7 @@ void building::createHouse2(
     }
 
     for(width = 30; width < size.width -7; ++width){
-        for(int i = 0; i < 2; i++){
+        for(i = 0; i < 2; i++){
             height = 16 + i; depth = 7 + i;
             posi.z = depth;
             posi.x = width;
@@ -1268,7 +1269,7 @@ void building::createHouse2(
     }
 
     for(width = 25; width < 28; ++width){
-        for(int i = 0; i < 2; i++){
+        for(i = 0; i < 2; i++){
             height = 17 - i; depth = 32 + i;
             posi.z = depth;
             posi.x = width;
@@ -1281,7 +1282,7 @@ void building::createHouse2(
     }
 
     for(width = 30; width < size.width-7; ++width){
-        for(int i = 0; i < 2; i++){
+        for(i = 0; i < 2; i++){
             height = 17 - i; depth = 32 + i;
             posi.z = depth;
             posi.x = width;
@@ -1294,7 +1295,7 @@ void building::createHouse2(
     }
 
     for(depth = 30; depth < size.depth -7; ++depth){
-        for(int i = 0; i < 2; i++){
+        for(i = 0; i < 2; i++){
             height = 17 - i; width = 32 + i;
             posi.z = depth;
             posi.x = width;
@@ -1307,7 +1308,7 @@ void building::createHouse2(
     }
 
     for(depth = 8; depth < 11; ++depth){
-        for(int i = 0; i < 2; i++){
+        for(i = 0; i < 2; i++){
             height = 17 - i; width = 32 + i;
             posi.z = depth;
             posi.x = width;
@@ -1320,7 +1321,7 @@ void building::createHouse2(
     }
     
     for(depth = 29; depth < size.depth -7; ++depth){
-        for(int i = 0; i < 2; i++){
+        for(i = 0; i < 2; i++){
             height = 16 + i; width = 24 + i;
             posi.z = depth;
             posi.x = width;
@@ -1333,7 +1334,7 @@ void building::createHouse2(
     }
 
     for(depth = 8; depth < 11; ++depth){
-        for(int i = 0; i < 2; i++){
+        for(i = 0; i < 2; i++){
             height = 16 + i; width = 24 + i;
             posi.z = depth;
             posi.x = width;
@@ -1619,7 +1620,6 @@ void building::createHouse2(
             posi.rotation(facing);
             posi.z += defaultPosi.z;
             posi.x += defaultPosi.x;
-
             (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
             if(width == 9|| width == 18){
                 height = 9;
@@ -1628,7 +1628,6 @@ void building::createHouse2(
                 posi.rotation(facing);
                 posi.z += defaultPosi.z;
                 posi.x += defaultPosi.x;
-
                 (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
             }   
         }
@@ -1640,7 +1639,6 @@ void building::createHouse2(
             posi.rotation(facing);
             posi.z += defaultPosi.z;
             posi.x += defaultPosi.x;
-            
             (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
             if(width == 9 || width == 18){
                 height = 10;
@@ -1649,11 +1647,9 @@ void building::createHouse2(
                 posi.rotation(facing);
                 posi.z += defaultPosi.z;
                 posi.x += defaultPosi.x;
-
                 (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
             }   
         }
-
     }
 }
 
