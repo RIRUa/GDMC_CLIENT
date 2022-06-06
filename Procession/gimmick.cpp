@@ -388,8 +388,8 @@ void gimmick::waterElevator(
         std::find(floor.begin(),floor.end(),height -1) != floor.end() || 
         height == 0 || height == 1){  
             (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::air;
-            (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::warpedFenceGate;
-            (*block3d)[elePosi.y + height][posi.z][posi.x].angle = directions.front;
+            (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakWallSign;
+            (*block3d)[elePosi.y + height][posi.z][posi.x].angle = directions.left;
         } else {
             (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
         }

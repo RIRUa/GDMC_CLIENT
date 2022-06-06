@@ -667,6 +667,134 @@ void building::createHouse2(
         }
     }
 
+//一階の部屋分け
+    width = 24;
+    for(height = 0; height < 5; ++height){
+        for(depth  = 6; depth  < 8; ++depth){
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;    
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+        }
+    }
+
+    for(height = 2; height < 5; ++height){
+        for(depth  = 8; depth  < 10; ++depth){
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;    
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+        }
+    }
+
+    height = 0; depth = 8;
+    for(int i = 0; i < 2; i++){
+        if(i == 0){
+            posi.z = depth + i;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;    
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakDoor;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half = lower";
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition += ",hinge = right";
+
+            (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakDoor;
+            (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].angle = directions.left;
+            (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].addition = "half = upper";
+            (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].addition += ",hinge = right";
+        } else {
+            posi.z = depth + i;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakDoor;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half = lower";
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition += ",hinge = left";
+
+            (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakDoor;
+            (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].angle = directions.left;
+            (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].addition = "half = upper";
+            (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].addition += ",hinge = left";
+        }
+    }
+
+    for(height = 0; height < 5; ++height){
+        for(depth  = 10; depth  < 33; ++depth){
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;    
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+        }
+    }
+
+    for(height = 2; height < 5; ++height){
+        for(depth  = 33; depth  < 35; ++depth){
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;    
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+        }
+    }
+
+    height = 0; depth = 33;
+    for(int i = 0; i < 2; i++){
+        if(i == 0){
+            posi.z = depth +i;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;    
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakDoor;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half = lower";
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition += ",hinge = left";
+
+            (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakDoor;
+            (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].angle = directions.right;
+            (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].addition = "half = upper";
+            (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].addition += ",hinge = left";
+        } else {
+            posi.z = depth + i;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakDoor;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "half = lower";
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition += ",hinge = right";
+
+            (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakDoor;
+            (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].angle = directions.right;
+            (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].addition = "half = upper";
+            (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].addition += ",hinge = right";
+        }
+    }
+
+    depth = 20;
+    for(height = 0; height < 5; ++height){
+        for(width  = 5; width  < 24; ++width){
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;    
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+        }
+    }
+
 //warped_fence
     height = 0; depth = 0;
     for (width = 0; width < size.width +1; ++width){
