@@ -492,6 +492,7 @@ void interior::createHouse2(
             posi.z += defaultPosi.z;
             posi.x += defaultPosi.x;
             (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].block = Minecraft::MinecraftBlock::brewingStand;
+            (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].addition = "has_bottle_0 = false";
             (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].addition = "has_bottle_1 = true";
             (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].addition += ",has_bottle_2 = true";
         }
