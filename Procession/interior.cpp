@@ -417,7 +417,6 @@ void interior::createHouse2(
             posi.x += defaultPosi.x;
             (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::cauldron;
             (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "level = 3";
-            
         }
     }
 
@@ -439,6 +438,8 @@ void interior::createHouse2(
             posi.z += defaultPosi.z;
             posi.x += defaultPosi.x;
             (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].block = Minecraft::MinecraftBlock::brewingStand;
+            (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].addition = "has_bottle_1 = true";
+            (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].addition += ",has_bottle_2 = true";
         }
     }
 
@@ -454,6 +455,98 @@ void interior::createHouse2(
             posi.x += defaultPosi.x;
             (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::chest;
             (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
+            WN::Vec3 chestPosi = (*block3d)[defaultPosi.y + height][posi.z][posi.x].position;
+            commands += Minecraft::Command::itemInBox(WN::Vec3(
+                                                                            chestPosi.x + sendPosition.x,
+                                                                            chestPosi.y + sendPosition.y,
+                                                                            chestPosi.z + sendPosition.z
+                                                                            ),
+                                                                    0,
+                                                                    "minecraft:glass_bottle",
+                                                                    64
+                                                                    );
+        }
+    }
+
+    //first glass
+    depth = 5;
+    for(height = 1; height < 3; ++height){
+        for(int i = 0; i < 5; i+=4){
+        width = 26 + i;
+
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
+        }
+    }
+
+    for(height = 1; height < 3; ++height){
+        for(int i = 0; i < 5; i+=4){
+        width = 27 + i;
+
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
+        }
+    }
+
+    depth = 35;
+    for(height = 1; height < 3; ++height){
+        for(int i = 0; i < 5; i+=4){
+        width = 26 + i;
+
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
+        }
+    }
+
+    for(height = 1; height < 3; ++height){
+        for(int i = 0; i < 5; i+=4){
+        width = 27 + i;
+
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
+        }
+    }
+
+    width = 35;
+    for(height = 1; height < 3; ++height){
+        for(int i = 0; i < 23; i+=4){
+        depth = 9 + i; 
+
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
+        }
+    }
+
+    for(height = 1; height < 3; ++height){
+        for(int i = 0; i < 23; i+=4){
+        depth = 10 + i; 
+
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
         }
     }
 
