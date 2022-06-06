@@ -403,6 +403,60 @@ void interior::createHouse2(
         }
     }
 
+    //玄関周りの地面の照明
+    height = -1; depth = 2;
+    for(int i=0; i < 37; i+=3){
+        width = 2 + i; 
+        if(i == 18){
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+        } else {
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glowstone;
+        }
+    }
+
+    height = -1; depth = 37;
+    for(int i=0; i < 37; i+=3){
+        width = 2 + i; 
+
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glowstone;
+    }
+
+    for(int i=0; i < 28; i+=3){
+        width = 2;
+        depth = 6 + i; 
+
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glowstone;
+
+        width = 38;
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glowstone;
+    }
+
+
     //醸造台の作成
     height = 0;
     for(int i=0; i < 4; i+=3){
@@ -470,6 +524,32 @@ void interior::createHouse2(
 
     //first glass
     depth = 5;
+    for(height = 1; height < 3; ++height){
+        for(int i = 0; i < 10; i+=4){
+        width = 7 + i;
+
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
+        }
+    }
+
+    for(height = 1; height < 3; ++height){
+        for(int i = 0; i < 10; i+=4){
+        width = 8 + i;
+
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
+        }
+    }
+
     for(height = 1; height < 3; ++height){
         for(int i = 0; i < 5; i+=4){
         width = 26 + i;
@@ -896,7 +976,7 @@ void interior::createHouse2(
     }
 
 
-    // dark fence 
+    // dark fenceと松明の生成
     for(width = 5; width < 22; ++width){
         height = 5; depth = 5;
 
@@ -931,6 +1011,13 @@ void interior::createHouse2(
         posi.x += defaultPosi.x;
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::netherBrickFence;
 
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].block = Minecraft::MinecraftBlock::torch;
+
         width = 18;
         posi.z = depth;
         posi.x = width;
@@ -938,6 +1025,13 @@ void interior::createHouse2(
         posi.z += defaultPosi.z;
         posi.x += defaultPosi.x;
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::netherBrickFence;
+
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height +1][posi.z][posi.x].block = Minecraft::MinecraftBlock::torch;
     }
 
     for(width = 5; width < 10; ++width){
@@ -1125,6 +1219,51 @@ void interior::createHouse2(
         posi.x += defaultPosi.x;
         (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glass;
         }
+    }
+    //屋上のエレベータにつく松明
+    height = 13; 
+    for(int i= 0; i < 5;i +=4){
+        width = 8 +i; depth = size.depth -8;
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::wallTorch;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+    }
+
+    //ランタン
+    height = 14;
+    for(width = 8; width < 22; width +=3){
+        for(depth = 16; depth < size.depth -10; depth +=3){
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::lantern;
+        }
+    }
+
+    //3階の屋根の照明
+    height = 15;
+    for(int i= 0; i < 10;i +=9){
+        width = 24 +i; depth = 7;
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glowstone;
+
+        depth = size.depth -7;
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glowstone;
     }
 }
     
