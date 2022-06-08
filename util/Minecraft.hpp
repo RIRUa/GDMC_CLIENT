@@ -112,8 +112,14 @@ namespace Minecraft {
         netherBrickSlab,
         //滑らかなクォーツのハーフブロック
         smoothQuartzSlab,
+        //クォーツのハーフブロック
+        quartzSlab,
         //磨かれた閃緑岩のハーフブロック
         polishedDioriteSlab,
+        //レンガのハーフブロック
+        brickSlab,
+        //プリズマリンレンガのハーフブロック
+        prismarineBrickSlab,
         
         /***** 木材 *****/
         // オークの木材

@@ -166,8 +166,20 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "smooth_quartz_slab";
             break;
 
+        case Minecraft::MinecraftBlock::quartzSlab:
+            blockName += "quartz_slab";
+            break;
+
         case Minecraft::MinecraftBlock::polishedDioriteSlab:
             blockName += "polished_diorite_slab";
+            break;
+
+        case Minecraft::MinecraftBlock::brickSlab:
+            blockName += "brick_slab";
+            break;
+
+        case Minecraft::MinecraftBlock::prismarineBrickSlab:
+            blockName += "prismarine_brick_slab";
             break;
 
         /***** 階段 *****/
