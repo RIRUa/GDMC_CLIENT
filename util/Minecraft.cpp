@@ -270,6 +270,10 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
         case Minecraft::MinecraftBlock::warpedFenceGate:
             blockName += "warped_fence_gate";
             break;
+
+        case Minecraft::MinecraftBlock::oakFenceGate:
+            blockName += "oak_fence_gate";
+            break;
             
         /***** 光源 *****/
         case Minecraft::MinecraftBlock::torch:

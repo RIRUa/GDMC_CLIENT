@@ -176,6 +176,8 @@ namespace Minecraft {
         /***** ゲート *****/
         // 歪んだフェンスゲート
         warpedFenceGate,
+        // オークのフェンスゲート
+        oakFenceGate,
 
         /***** 光源 *****/
         // トーチ
