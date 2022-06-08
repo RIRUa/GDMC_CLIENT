@@ -365,26 +365,6 @@ void Process::createPigBurner(const WN::Vec3 &center) {
                               );
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void Process::createGateBuilding(const WN::Vec3 &center) {
     WN::EveryDirection directions = WN::EveryDirection();
     
@@ -438,3 +418,42 @@ void Process::createGateBuilding(const WN::Vec3 &center) {
                                  );
 }
 
+void Process::createBridge(const WN::Vec3 &center) {
+    WN::EveryDirection directions = WN::EveryDirection();
+    
+    const houseSize size = {8,18};
+    
+    WN::Vec3 posi(0,0,0);
+    
+    WN::direction facing = WN::direction::West;
+    
+    WN::Vec3 defaultPosi(
+                         size.width/2,
+                         this->groundHeight,
+                         size.depth/2
+                         );
+    defaultPosi.rotation(facing);
+    defaultPosi.x = this->area.x/2 + center.x - defaultPosi.x;
+    defaultPosi.z = this->area.z/2 + center.z - defaultPosi.z;
+    
+    building::createBridge(
+                              this->createArea,
+                              center,
+                              facing,
+                              defaultPosi,
+                              size,
+                              *(this->sendPosi),
+                              this->commands
+                              );
+
+    interior::createBridge(
+                              this->createArea,
+                              center,
+                              facing,
+                              defaultPosi,
+                              size,
+                              *(this->sendPosi),
+                              this->commands
+                              );
+
+}
