@@ -63,12 +63,13 @@ bool Process::sendData() {
     return true;
 }
 
-void Process::createHouse1(const WN::Vec3 &center) {
+void Process::createHouse1(
+                           const WN::Vec3 &center,
+                           const WN::direction &facing
+                           ) {
     WN::EveryDirection directions = WN::EveryDirection();
     
     const houseSize size = {40,40};
-    
-    WN::direction facing = WN::direction::North;
     
     WN::Vec3 defaultPosi(
                          size.width/2,
@@ -132,11 +133,12 @@ void Process::createHouse1(const WN::Vec3 &center) {
                                 );
 }
 
-void  Process::createHouse2(const WN::Vec3 &center) {
+void  Process::createHouse2(
+                            const WN::Vec3 &center,
+                            const WN::direction &facing
+                            ) {
     WN::EveryDirection directions = WN::EveryDirection();
     const houseSize size = {40,40};
-    
-    WN::direction facing = WN::direction::North;
     
     WN::Vec3 defaultPosi(
                          size.width/2,
@@ -183,11 +185,9 @@ void  Process::createHouse2(const WN::Vec3 &center) {
                            );
 }
 
-void  Process::createStreetlight1(const WN::Vec3 &center) {
+void  Process::createStreetlight1(const WN::Vec3 &center, const WN::direction &facing) {
     WN::EveryDirection directions = WN::EveryDirection();
     const houseSize size = {3,3};
-    
-    WN::direction facing = WN::direction::North;
     
     WN::Vec3 defaultPosi(
                          size.width/2,
@@ -209,11 +209,9 @@ void  Process::createStreetlight1(const WN::Vec3 &center) {
                                  );
 }
 
-void  Process::createStreetlight2(const WN::Vec3 &center) {
+void  Process::createStreetlight2(const WN::Vec3 &center, const WN::direction &facing) {
     WN::EveryDirection directions = WN::EveryDirection();
     const houseSize size = {2,1};
-    
-    WN::direction facing = WN::direction::North;
     
     WN::Vec3 defaultPosi(
                          size.width/2,
@@ -235,11 +233,9 @@ void  Process::createStreetlight2(const WN::Vec3 &center) {
                                  );
 }
 
-void Process::createAutomaticWaterField(const WN::Vec3 &center) {
+void Process::createAutomaticWaterField(const WN::Vec3 &center, const WN::direction &facing) {
     WN::EveryDirection directions = WN::EveryDirection();
     const houseSize size = {13,20};
-    
-    WN::direction facing = WN::direction::North;
     
     WN::Vec3 defaultPosi(
                          size.width/2,
@@ -281,11 +277,9 @@ void Process::createAutomaticWaterField(const WN::Vec3 &center) {
                                  );
 }
 
-void  Process::createFountain(const WN::Vec3 &center) {
+void  Process::createFountain(const WN::Vec3 &center, const WN::direction &facing) {
     WN::EveryDirection directions = WN::EveryDirection();
     const houseSize size = {26,26};
-
-    WN::direction facing = WN::direction::North;
 
     WN::Vec3 defaultPosi(
                          size.width/2,
@@ -316,14 +310,12 @@ void  Process::createFountain(const WN::Vec3 &center) {
                           );
 }
 
-void Process::createPigBurner(const WN::Vec3 &center) {
+void Process::createPigBurner(const WN::Vec3 &center, const WN::direction &facing) {
     WN::EveryDirection directions = WN::EveryDirection();
     
     const houseSize size = {11,11};
     
     WN::Vec3 posi(0,0,0);
-    
-    WN::direction facing = WN::direction::North;
     
     WN::Vec3 defaultPosi(
                          size.width/2,
@@ -385,12 +377,10 @@ void Process::createPigBurner(const WN::Vec3 &center) {
 
 
 
-void Process::createGateBuilding(const WN::Vec3 &center) {
+void Process::createGateBuilding(const WN::Vec3 &center, const WN::direction &facing) {
     WN::EveryDirection directions = WN::EveryDirection();
     
     const houseSize size = {10,10};
-    
-    WN::direction facing = WN::direction::North;
     
     WN::Vec3 defaultPosi(
                          size.width/2,

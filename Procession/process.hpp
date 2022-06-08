@@ -39,15 +39,15 @@ public:
     bool init();
     bool sendData();
     
-    void createHouse1(const WN::Vec3 &center);
-    void createHouse2(const WN::Vec3 &center);
-    void createStreetlight1(const WN::Vec3 &center);
-    void createStreetlight2(const WN::Vec3 &center);
-    void createAutomaticWaterField(const WN::Vec3 &center);
-    void createFountain(const WN::Vec3 &center);
-    void createPigBurner(const WN::Vec3 &center);
+    void createHouse1(const WN::Vec3 &center, const WN::direction &facing);
+    void createHouse2(const WN::Vec3 &center, const WN::direction &facing);
+    void createStreetlight1(const WN::Vec3 &center, const WN::direction &facing);
+    void createStreetlight2(const WN::Vec3 &center, const WN::direction &facing);
+    void createAutomaticWaterField(const WN::Vec3 &center, const WN::direction &facing);
+    void createFountain(const WN::Vec3 &center, const WN::direction &facing);
+    void createPigBurner(const WN::Vec3 &center, const WN::direction &facing);
     
-    void createGateBuilding(const WN::Vec3 &center);
+    void createGateBuilding(const WN::Vec3 &center, const WN::direction &facing);
 };
 
 #endif /* process_hpp */
