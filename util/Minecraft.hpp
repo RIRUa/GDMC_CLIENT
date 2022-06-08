@@ -200,6 +200,8 @@ namespace Minecraft {
         redstoneLamp,
         //エンドロット
         endRod,
+        //焚き火
+        campfire,
 
         /***** レッドストーン系 *****/
 
