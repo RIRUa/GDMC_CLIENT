@@ -15,6 +15,16 @@ Process::Process(WN::Vec3 *sendPosi) {
 Process::~Process() {
 }
 
+// -MARK: 実行関数
+void Process::operator()() {
+    std::cout << "ここに書き込み" << std::endl;
+    
+    
+    /** 送信部位（消さない） **/
+    this->sendData();
+}
+
+
 bool Process::init() {
     this->commands = "";
     this->createArea = std::make_shared< Minecraft::blockInfoOf3D >();

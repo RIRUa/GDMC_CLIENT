@@ -32,6 +32,11 @@ public:
     Process(WN::Vec3 *sendPosi);
     ~Process();
     
+    // -MARK: 実行箇所
+    void operator()();
+    
+    
+private:
     bool init();
     bool sendData();
     
