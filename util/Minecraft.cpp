@@ -314,6 +314,10 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
         case Minecraft::MinecraftBlock::endRod:
             blockName += "end_rod";
             break;
+
+        case Minecraft::MinecraftBlock::campfire:
+            blockName += "campfire";
+            break;
         /***** レッドストーン系 *****/
 
         /********** 信号を伝えたりするもの **********/
