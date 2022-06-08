@@ -23,7 +23,6 @@ bool Process::init() {
                                  this->area,
                                  WN::Vec3(0, 0, 0)
                                  );
-    this->possibility = std::make_shared< possibilities >( this->area.z, std::vector< bool >(this->area.x, true) );
     
     WN::Vec3 defaultPosi(
                          this->area.x/2,

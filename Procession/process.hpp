@@ -14,9 +14,6 @@
 #include "interior.hpp"
 #include <memory>
 
-// WFCの可能性を入れる配列の型の定義
-using possibilities = std::vector< std::vector<bool> >;
-
 
 class Process {
     // width, height, depth
@@ -28,7 +25,6 @@ class Process {
     WN::Vec3 *sendPosi;
     
     std::shared_ptr< Minecraft::blockInfoOf3D > createArea;
-    std::shared_ptr< possibilities > possibility;
     
     std::string commands;
     
