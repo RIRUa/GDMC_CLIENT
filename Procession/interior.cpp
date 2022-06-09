@@ -1883,7 +1883,6 @@ void interior::createBridge(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d
         }
     }
 
-    //フェンスゲート
     height = 7;
     for(i = 0; i < 9; i += 8){
         for(j = 6; j < 13; ++j){
@@ -1892,10 +1891,11 @@ void interior::createBridge(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d
             posi.rotation(facing);
             posi.z += defaultPosi.z;
             posi.x += defaultPosi.x;
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakFenceGate;
-            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakFence;
         }
     }
+
+    //フェンスゲート
 
     for(i = 1; i < 8; ++i){
         for(j = 5; j < 14; j += 8){
@@ -1919,6 +1919,7 @@ void interior::createBridge(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d
             posi.z += defaultPosi.z;
             posi.x += defaultPosi.x;
             (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::lantern;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "hanging = true";
         }
     }
 
@@ -1931,10 +1932,11 @@ void interior::createBridge(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d
             posi.z += defaultPosi.z;
             posi.x += defaultPosi.x;
             (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::lantern;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "hanging = true";
         }
     }
 
-    height = 5;
+    height = 6;
     for(i = 0; i < 9; i += 8){
         for(j = 7; j < 12; j += 2){
             posi.z = j;
@@ -1943,6 +1945,7 @@ void interior::createBridge(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d
             posi.z += defaultPosi.z;
             posi.x += defaultPosi.x;
             (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::lantern;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "hanging = true";
         }
     }
 }
