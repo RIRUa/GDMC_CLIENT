@@ -166,8 +166,20 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
             blockName += "smooth_quartz_slab";
             break;
 
+        case Minecraft::MinecraftBlock::quartzSlab:
+            blockName += "quartz_slab";
+            break;
+
         case Minecraft::MinecraftBlock::polishedDioriteSlab:
             blockName += "polished_diorite_slab";
+            break;
+
+        case Minecraft::MinecraftBlock::brickSlab:
+            blockName += "brick_slab";
+            break;
+
+        case Minecraft::MinecraftBlock::prismarineBrickSlab:
+            blockName += "prismarine_brick_slab";
             break;
 
         /***** 階段 *****/
@@ -258,6 +270,10 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
         case Minecraft::MinecraftBlock::warpedFenceGate:
             blockName += "warped_fence_gate";
             break;
+
+        case Minecraft::MinecraftBlock::oakFenceGate:
+            blockName += "oak_fence_gate";
+            break;
             
         /***** 光源 *****/
         case Minecraft::MinecraftBlock::torch:
@@ -301,6 +317,10 @@ std::string Minecraft::getMinecraftBlockName(MinecraftBlock block, std::string a
         
         case Minecraft::MinecraftBlock::endRod:
             blockName += "end_rod";
+            break;
+
+        case Minecraft::MinecraftBlock::campfire:
+            blockName += "campfire";
             break;
         /***** レッドストーン系 *****/
 
