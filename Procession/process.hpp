@@ -14,9 +14,6 @@
 #include "interior.hpp"
 #include <memory>
 
-// WFCの可能性を入れる配列の型の定義
-using possibilities = std::vector< std::vector<bool> >;
-
 
 class Process {
     // width, height, depth
@@ -28,7 +25,6 @@ class Process {
     WN::Vec3 *sendPosi;
     
     std::shared_ptr< Minecraft::blockInfoOf3D > createArea;
-    std::shared_ptr< possibilities > possibility;
     
     std::string commands;
     
@@ -36,18 +32,23 @@ public:
     Process(WN::Vec3 *sendPosi);
     ~Process();
     
+    // -MARK: 実行箇所
+    void operator()();
+    
+    
+private:
     bool init();
     bool sendData();
     
-    void createHouse1(const WN::Vec3 &center);
-    void createHouse2(const WN::Vec3 &center);
-    void createStreetlight1(const WN::Vec3 &center);
-    void createStreetlight2(const WN::Vec3 &center);
-    void createAutomaticWaterField(const WN::Vec3 &center);
-    void createFountain(const WN::Vec3 &center);
-    void createPigBurner(const WN::Vec3 &center);
-    void createGateBuilding(const WN::Vec3 &center);
-    void createBridge(const WN::Vec3 &center);
+    void createHouse1(const WN::Vec3 &center, const WN::direction &facing);
+    void createHouse2(const WN::Vec3 &center, const WN::direction &facing);
+    void createStreetlight1(const WN::Vec3 &center, const WN::direction &facing);
+    void createStreetlight2(const WN::Vec3 &center, const WN::direction &facing);
+    void createAutomaticWaterField(const WN::Vec3 &center, const WN::direction &facing);
+    void createFountain(const WN::Vec3 &center, const WN::direction &facing);
+    void createPigBurner(const WN::Vec3 &center, const WN::direction &facing);
+    void createGateBuilding(const WN::Vec3 &center, const WN::direction &facing);
+    void createBridge(const WN::Vec3 &center, const WN::direction &facing);
 };
 
 #endif /* process_hpp */
