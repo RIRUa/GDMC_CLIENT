@@ -41,18 +41,48 @@ bool Process::init() {
     int height;
     const double PI = std::acos(-1.0);
     double sita = 0.0;
-    int radius = 0;
+    double radius = 0;
     WN::Vec3 posi(0,0,0);
     
     // sita += (PI / 1000)のところはもう少し良いアルゴリズムを探すべきかも
     for (height = 0; height < this->groundHeight; ++height) {
-        for (sita = 0.0; sita < 2 * PI; sita += (PI / 1000)) {
-            for (radius = (this->area.x / 2 - 1); radius >= 0; radius -= 1) {
+        for (radius = (this->area.x / 2 - 1); radius >= 0; radius -= 0.5) {
+            for (sita = 0.0; sita < 2 * PI; sita += (PI / 1000)) {
                 posi.x = static_cast<WN::position>( std::round( double(radius) * std::cos(sita) ) );
                 posi.z = static_cast<WN::position>( std::round( double(radius) * std::sin(sita) ) );
-                (*this->createArea)[height][defaultPosi.z + posi.z][defaultPosi.x + posi.x].block = Minecraft::MinecraftBlock::lightGrayConcrete;
                 
+                if (height == this->groundHeight - 1 && radius >= (this->area.x / 2 - 1.5)) {
+                    (*this->createArea)[height][defaultPosi.z + posi.z][defaultPosi.x + posi.x].block = Minecraft::MinecraftBlock::water;
+                    (*this->createArea)[height - 1][defaultPosi.z + posi.z][defaultPosi.x + posi.x].block = Minecraft::MinecraftBlock::seaLantern;
+                } else {
+                    (*this->createArea)[height][defaultPosi.z + posi.z][defaultPosi.x + posi.x].block = Minecraft::MinecraftBlock::lightGrayConcrete;
+                }
             }
+        }
+    }
+    
+    height = this->groundHeight - 1;
+    int i, j;
+    
+    for (i = this->area.z / -2; i < this->area.z / 2; ++i) {
+        for (j = -5; j < 5; ++j) {
+            
+            if ((*this->createArea)[this->groundHeight - 1][defaultPosi.z + i][defaultPosi.x + j].block != Minecraft::MinecraftBlock::air) {
+                (*this->createArea)[this->groundHeight - 2][defaultPosi.z + i][defaultPosi.x + j].block = Minecraft::MinecraftBlock::seaLantern;
+                (*this->createArea)[this->groundHeight - 1][defaultPosi.z + i][defaultPosi.x + j].block = Minecraft::MinecraftBlock::water;
+            }
+            
+        }
+    }
+    
+    for (i = this->area.z / -2; i < this->area.z / 2; ++i) {
+        for (j = -5; j < 5; ++j) {
+            
+            if ((*this->createArea)[this->groundHeight - 1][defaultPosi.z + j][defaultPosi.x + i].block != Minecraft::MinecraftBlock::air) {
+                (*this->createArea)[this->groundHeight - 2][defaultPosi.z + j][defaultPosi.x + i].block = Minecraft::MinecraftBlock::seaLantern;
+                (*this->createArea)[this->groundHeight - 1][defaultPosi.z + j][defaultPosi.x + i].block = Minecraft::MinecraftBlock::water;
+            }
+            
         }
     }
     

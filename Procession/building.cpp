@@ -3581,7 +3581,7 @@ void building::createBridge(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d
     
     WN::Vec3 posi(0,0,0);
     
-    int width, height, depth;
+    int height, depth;
     
     int i, j;
 

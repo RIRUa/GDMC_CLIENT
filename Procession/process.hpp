@@ -17,7 +17,7 @@
 
 class Process {
     // width, height, depth
-    const WN::Vec3 area = WN::Vec3(200, 30, 200);
+    const WN::Vec3 area = WN::Vec3(400, 30, 400);
     // 地面の高さ（+1すると空気）
     const int groundHeight = 5;
     
