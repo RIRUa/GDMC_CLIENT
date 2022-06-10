@@ -112,8 +112,14 @@ namespace Minecraft {
         netherBrickSlab,
         //滑らかなクォーツのハーフブロック
         smoothQuartzSlab,
+        //クォーツのハーフブロック
+        quartzSlab,
         //磨かれた閃緑岩のハーフブロック
         polishedDioriteSlab,
+        //レンガのハーフブロック
+        brickSlab,
+        //プリズマリンレンガのハーフブロック
+        prismarineBrickSlab,
         
         /***** 木材 *****/
         // オークの木材
@@ -170,6 +176,8 @@ namespace Minecraft {
         /***** ゲート *****/
         // 歪んだフェンスゲート
         warpedFenceGate,
+        // オークのフェンスゲート
+        oakFenceGate,
 
         /***** 光源 *****/
         // トーチ
@@ -194,6 +202,8 @@ namespace Minecraft {
         redstoneLamp,
         //エンドロット
         endRod,
+        //焚き火
+        campfire,
 
         /***** レッドストーン系 *****/
 

@@ -3478,21 +3478,6 @@ void building::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &bloc
     
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void building::createGateBuilding(std::shared_ptr<Minecraft::blockInfoOf3D> &block3d,
                                   const WN::Vec3 &center,
                                   WN::direction facing,
@@ -3583,4 +3568,367 @@ void building::createGateBuilding(std::shared_ptr<Minecraft::blockInfoOf3D> &blo
         }
     }
 }
+
+void building::createBridge(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
+                               const WN::Vec3 &center,
+                               WN::direction facing,
+                               const WN::Vec3 &defaultPosi,
+                               const houseSize &size,
+                               const WN::Vec3 &sendPosition,
+                               std::string &commands
+                               ) {
+    WN::EveryDirection directions = WN::EveryDirection(facing);
+    
+    WN::Vec3 posi(0,0,0);
+    
+    int width, height, depth;
+    
+    int i, j;
+
+    /*外側*/
+    //ジャックオランタン
+    height = 0;
+    for(i = 0; i < 9; i += 8){
+        for(j = 0; j < 19; j += 18){
+            if (i == 0) {
+                posi.z = j;
+                posi.x = i;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z;
+                posi.x += defaultPosi.x;
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::jackOLantern;
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
+            } else {
+            posi.z = j;
+            posi.x = i;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::jackOLantern;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
+            }
+        }
+    }
+
+    height = 2;
+    for(i = 0; i < 9; i += 8){
+        for(j = 5; j < 14; j += 8){
+            if (i == 0) {
+                posi.z = j;
+                posi.x = i;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z;
+                posi.x += defaultPosi.x;
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::jackOLantern;
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
+            } else {
+            posi.z = j;
+            posi.x = i;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::jackOLantern;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
+            }
+        }
+    }
+
+    //橋のクォーツブロック
+    height = 0;
+    for(i = 0; i < 9; i += 8){
+        for(j = 1; j < 19; j += 16){
+            posi.z = j;
+            posi.x = i;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+        }
+    }
+
+    //ハーフブロック
+    for(height = 0; height < 2; ++height){
+        for(i = 0; i < 9; i += 8){
+            for(j = 2; j < 18; j += 14){
+                posi.z = j;
+                posi.x = i;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z;
+                posi.x += defaultPosi.x;
+                if(height == 0){
+                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "type = top";
+                    } else {
+                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+                }
+            }
+        }
+    }
+
+    //橋のクォーツブロック
+    height = 1;
+    for(i = 0; i < 9; i += 8){
+        for(j = 3; j < 18; j += 12){
+            posi.z = j;
+            posi.x = i;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+        }
+    }
+
+    //ハーフブロック
+    for(height = 1; height < 3; ++height){
+        for(i = 0; i < 9; i += 8){
+            for(j = 4; j < 15; j += 10){
+                posi.z = j;
+                posi.x = i;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z;
+                posi.x += defaultPosi.x;
+                if(height == 1){
+                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "type = top";
+                    } else {
+                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+                }
+            }
+        }
+    }
+
+    //橋の中心(ハーフブロック類)
+    for(height = 2; height < 4; ++height){
+        for(i = 0; i < 9; i += 8){
+            for(j = 6; j < 15; j += 6){
+                posi.z = j;
+                posi.x = i;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z;
+                posi.x += defaultPosi.x;
+                if(height == 2){
+                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+                    } else {
+                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+                }
+            }
+        }
+    }
+
+    height = 1;
+    for(i = 0; i < 9; i += 8){
+        for(j = 5; j < 15; ++j){
+        posi.z = j;
+        posi.x = i;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "type = top";
+        }
+    }
+
+    height = 2;
+    for(i = 0; i < 9; i += 8){
+        for(j = 7; j < 12; ++j){
+        posi.z = j;
+        posi.x = i;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+            if (j == 9) {
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::jackOLantern; 
+                if (i == 0) {
+                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
+                } else {
+                    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.right;
+                }
+            } else {
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+            }
+        }
+    }
+
+    height = 3;
+    for(i = 0; i < 9; i += 8){
+        for(j = 7; j < 12; ++j){
+        posi.z = j;
+        posi.x = i;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartzSlab;
+        }
+    }
+
+    /*内側*/
+    //橋のはじめの渡る部分
+    height = 0;
+    for(i = 1; i < 8; ++i){
+        for(j = 0; j < 2; ++j){
+        posi.z = j;
+        posi.x = i;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        if ( i > 2 && i < 6){
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::brickSlab;
+        } else {
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzSlab;
+        }
+        }
+    }
+
+    height = 0;
+    for(i = 1; i < 8; ++i){
+        for(j = 17; j < 19; ++j){
+        posi.z = j;
+        posi.x = i;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        if ( i > 2 && i < 6){
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::brickSlab;
+        } else {
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzSlab;
+        }
+        }
+    }
+
+    //橋の階段部分
+    height = 0; depth = 2;
+    for(i = 1; i < 8; ++i){
+        posi.z = depth;
+        posi.x = i;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzSlab;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "type = top";
+    }
+
+    height = 1;
+    for(i = 1; i < 8; ++i){
+        for(j = 3; j < 5; ++j){
+        posi.z = j;
+        posi.x = i;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzSlab;
+        if ( j == 3){
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "type =bottom";
+        } else {
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "type = top";
+        }
+        }
+    }
+
+    height = 2; depth = 5;
+    for(i = 1; i < 8; ++i){
+        posi.z = depth;
+        posi.x = i;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzSlab;
+    }
+
+    height = 0; depth = 16;
+    for(i = 1; i < 8; ++i){
+        posi.z = depth;
+        posi.x = i;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzSlab;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "type = top";
+    }
+
+    height = 1;
+    for(i = 1; i < 8; ++i){
+        for(j = 15; j > 13; --j){
+        posi.z = j;
+        posi.x = i;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzSlab;
+        if ( j == 15){
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "type =bottom";
+        } else {
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "type = top";
+        }
+        }
+    }
+
+    height = 2; depth = 13;
+    for(i = 1; i < 8; ++i){
+        posi.z = depth;
+        posi.x = i;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzSlab;
+    }
+
+    //橋の中心部分
+    height = 2;
+    for(i = 1; i < 8; ++i){
+        for(j = 6; j < 8; ++j){
+        posi.z = j;
+        posi.x = i;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "type = top";
+        if ( i > 2 && i < 6){
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::brickSlab;
+        } else {
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzSlab;
+        }
+        }
+    }
+
+    for(i = 1; i < 8; ++i){
+        for(j = 8; j < 11; ++j){
+        posi.z = j;
+        posi.x = i;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        if ( i > 2 && i < 6){ 
+            if (j == 9 && i == 4){
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glowstone;
+            } else {
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::prismarineBrickSlab;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "type = top";
+            }
+        } else {
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzSlab;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "type = top";
+        }
+        }
+    }
+
+    for(i = 1; i < 8; ++i){
+        for(j = 11; j < 13; ++j){
+        posi.z = j;
+        posi.x = i;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "type = top";
+        if ( i > 2 && i < 6){
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::brickSlab;
+        } else {
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::quartzSlab;
+        }
+        }
+    }
+}
+
+
+
+
 

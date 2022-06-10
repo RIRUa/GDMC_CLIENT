@@ -1626,32 +1626,6 @@ void interior::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &bloc
     
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void interior::createGateBuilding(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
                         const WN::Vec3 &center,
                         WN::direction facing,
@@ -1799,7 +1773,181 @@ void interior::createGateBuilding(std::shared_ptr< Minecraft::blockInfoOf3D > &b
                                               "minecraft:ender_eye",
                                               64
                                               );
-    
-    
 }
+
+void interior::createBridge(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
+                        const WN::Vec3 &center,
+                        WN::direction facing,
+                        const WN::Vec3 &defaultPosi,
+                        const houseSize &size,
+                        const WN::Vec3 &sendPosition,
+                        std::string &commands
+                        ) {
+    WN::EveryDirection directions = WN::EveryDirection(facing);
+    
+    WN::Vec3 posi(0,0,0);
+    
+    int width, height, depth;
+    int i,j;
+
+    //焚火の屋根
+    height = 8; 
+    for(width = 0; width < 9; ++width){
+        for(depth = 5; depth < 14; ++depth){
+            posi.z = depth;
+            posi.x = width;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::campfire;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.left;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "lit = false";
+        }
+    }
+
+    //フェンス
+    height = 1;
+    for(i = 0; i < 9; i += 8){
+        for(j = 0; j < 19; j += 18){
+            posi.z = j;
+            posi.x = i;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakFence;
+        }
+    }
+
+    for(height = 1; height < 5; ++height){
+        for(i = 0; i < 9; i += 8){
+            for(j = 1; j < 19; j += 16){
+                posi.z = j;
+                posi.x = i;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z;
+                posi.x += defaultPosi.x;
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakFence;
+            }
+        }
+    }
+
+    for(height = 3; height < 8; ++height){
+        for(i = 0; i < 9; i += 8){
+            for(j = 5; j < 14; j += 8){
+                posi.z = j;
+                posi.x = i;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z;
+                posi.x += defaultPosi.x;
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakFence;
+            }
+        }
+    }
+
+    for(height = 4; height < 6; ++height){
+        for(i = 0; i < 9; i += 8){
+            for(j = 2; j < 17; j += 14){
+                posi.z = j;
+                posi.x = i;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z;
+                posi.x += defaultPosi.x;
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakFence;
+            }
+        }
+    }
+
+    for(height = 5; height < 7; ++height){
+        for(i = 0; i < 9; i += 8){
+            for(j = 3; j < 17; j += 12){
+                posi.z = j;
+                posi.x = i;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z;
+                posi.x += defaultPosi.x;
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakFence;
+            }
+        }
+    }
+
+    for(height = 6; height < 8; ++height){
+        for(i = 0; i < 9; i += 8){
+            for(j = 4; j < 17; j += 10){
+                posi.z = j;
+                posi.x = i;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z;
+                posi.x += defaultPosi.x;
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakFence;
+            }
+        }
+    }
+
+    height = 7;
+    for(i = 0; i < 9; i += 8){
+        for(j = 6; j < 13; ++j){
+            posi.z = j;
+            posi.x = i;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakFence;
+        }
+    }
+
+    //フェンスゲート
+
+    for(i = 1; i < 8; ++i){
+        for(j = 5; j < 14; j += 8){
+            posi.z = j;
+            posi.x = i;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakFenceGate;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+        }
+    }
+
+    //ランタン
+    height = 3;
+    for(i = 0; i < 9; i += 8){
+        for(j = 2; j < 19; j += 14){
+            posi.z = j;
+            posi.x = i;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::lantern;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "hanging = true";
+        }
+    }
+
+    height = 5;
+    for(i = 0; i < 9; i += 8){
+        for(j = 4; j < 19; j += 10){
+            posi.z = j;
+            posi.x = i;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::lantern;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "hanging = true";
+        }
+    }
+
+    height = 6;
+    for(i = 0; i < 9; i += 8){
+        for(j = 7; j < 12; j += 2){
+            posi.z = j;
+            posi.x = i;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::lantern;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].addition = "hanging = true";
+        }
+    }
+}
+
 

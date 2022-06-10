@@ -17,8 +17,7 @@ Process::~Process() {
 
 // -MARK: 実行関数
 void Process::operator()() {
-    
-    this->createHouse1(WN::Vec3(0, 0, 0), WN::direction::South);
+    this->createBridge(WN::Vec3(0,0,0), WN::direction::North);
     
     /** 送信部位（消さない） **/
     this->sendData();
@@ -396,26 +395,6 @@ void Process::createPigBurner(const WN::Vec3 &center, const WN::direction &facin
                               );
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void Process::createGateBuilding(const WN::Vec3 &center, const WN::direction &facing) {
     WN::EveryDirection directions = WN::EveryDirection();
     
@@ -467,3 +446,40 @@ void Process::createGateBuilding(const WN::Vec3 &center, const WN::direction &fa
                                  );
 }
 
+void Process::createBridge(const WN::Vec3 &center, const WN::direction &facing) {
+    WN::EveryDirection directions = WN::EveryDirection();
+    
+    const houseSize size = {8,18};
+    
+    WN::Vec3 posi(0,0,0);
+    
+    WN::Vec3 defaultPosi(
+                         size.width/2,
+                         this->groundHeight,
+                         size.depth/2
+                         );
+    defaultPosi.rotation(facing);
+    defaultPosi.x = this->area.x/2 + center.x - defaultPosi.x;
+    defaultPosi.z = this->area.z/2 + center.z - defaultPosi.z;
+    
+    building::createBridge(
+                              this->createArea,
+                              center,
+                              facing,
+                              defaultPosi,
+                              size,
+                              *(this->sendPosi),
+                              this->commands
+                              );
+
+    interior::createBridge(
+                              this->createArea,
+                              center,
+                              facing,
+                              defaultPosi,
+                              size,
+                              *(this->sendPosi),
+                              this->commands
+                              );
+
+}
