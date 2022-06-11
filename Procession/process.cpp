@@ -77,6 +77,11 @@ void Process::operator()() {
     
     for (j = 0; j < 8; j++) {
         for (i = 30; i < 185 - (circleFunc(j) * 20); i += 20) {
+            
+            if (j >= 3 && j <= 4 && i > 80 && i < 115) {
+                continue;
+            }
+            
             this->createPigBurner(WN::Vec3(
                                            i,
                                            0,
