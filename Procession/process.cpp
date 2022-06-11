@@ -28,14 +28,41 @@ void Process::operator()() {
     }
     
     for (i = -100; i < 150; i += 100) {
-        for (j = -100; j < 150; j += 100) {
-            if (i== 0 || j == 0) {
+        if (i== 0) {
+            continue;
+        }
+        this->createFountain(WN::Vec3(i,0,i), WN::direction::North);
+        this->createFountain(WN::Vec3(i,0,-i), WN::direction::North);
+        
+    }
+
+    this->createHouse1(WN::Vec3(-140,0,50), WN::direction::East);
+    this->createHouse1(WN::Vec3(-140,0,-50), WN::direction::East);
+    
+    this->createHouse1(WN::Vec3(-40,0,50), WN::direction::South);
+    this->createHouse1(WN::Vec3(-40,0,-50), WN::direction::North);
+    
+    this->createHouse2(WN::Vec3(-40,0,140), WN::direction::North);
+    this->createHouse2(WN::Vec3(-40,0,-140), WN::direction::South);
+    
+    for (i = 1; i < 7; i++) {
+        for (j = 30; j < 185 - (i - 1) * 15; j += 15) {
+            
+            if (j > 85 && j < 120 && i >= 3 && i <= 5 ) {
                 continue;
             }
-            this->createFountain(WN::Vec3(i,0,i), WN::direction::North);
-            this->createFountain(WN::Vec3(i,0,-i), WN::direction::North);
+            
+            this->createAutomaticWaterField(
+                                            WN::Vec3(
+                                                     j,
+                                                     0,
+                                                     i * 25
+                                                     ),
+                                            WN::direction::South
+                                            );
         }
     }
+    
     
     /** 送信部位（消さない） **/
     this->sendData();
