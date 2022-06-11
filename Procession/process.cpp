@@ -63,7 +63,31 @@ void Process::operator()() {
         }
     }
     
+    auto circleFunc = [](int a) -> int {
+        if (a < 3) {
+            return 0;
+        } else if (a < 5) {
+            return 1;
+        } else if (a == 7) {
+            return 5;
+        } else {
+            return a - 3;
+        }
+    };
     
+    for (j = 0; j < 8; j++) {
+        for (i = 30; i < 185 - (circleFunc(j) * 20); i += 20) {
+            this->createPigBurner(WN::Vec3(
+                                           i,
+                                           0,
+                                           -30 + j * -20
+                                           ),
+                                  WN::direction::South
+                                  );
+        }
+    }
+    
+    std::cout << "------------送信開始------------" << std::endl;
     /** 送信部位（消さない） **/
     this->sendData();
 }
