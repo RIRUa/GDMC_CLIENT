@@ -17,8 +17,8 @@ Process::~Process() {
 
 // -MARK: 実行関数
 void Process::operator()() {
-    this->createBridge(WN::Vec3(0,0,0), WN::direction::North);
-    
+    this->createAutomaticWaterField(WN::Vec3(0,0,0), WN::direction::North);
+    this->createPigBurner(WN::Vec3(20,0,0), WN::direction::North);
     /** 送信部位（消さない） **/
     this->sendData();
 }

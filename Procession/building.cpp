@@ -1541,7 +1541,7 @@ void building::createHouse2(
         }
     }
 
-//secondfloor stairs
+//second floor stairs
     for(width = 9; width < 19; ++width){
         if(width == 9 || width == 18){
             depth = 9; height = 5;
@@ -1667,6 +1667,7 @@ void building::createAutomaticWaterField(
     WN::Vec3 posi(0,0,0);
     
     int width, height, depth;
+    int i;
 
     //空気
     height = -1; depth = 2;
@@ -1726,7 +1727,7 @@ void building::createAutomaticWaterField(
 
     //囲いクォーツ
     height = -1; depth = 0;
-    for(width = 1; width < size.width; ++width){
+    for(width = 0; width < size.width; ++width){
         posi.z = depth;
         posi.x = width;
         posi.rotation(facing);
@@ -2126,6 +2127,45 @@ void building::createAutomaticWaterField(
                                               "minecraft:wheat_seeds",
                                               64
                                               );
+
+    //明かりの追加
+    height = 3; 
+    for(i=0; i < 13;i += 12){
+        for(depth = 1; depth < 20; depth += 6){
+            posi.z = depth;
+            posi.x = i;
+            posi.rotation(facing);
+            posi.z += defaultPosi.z;
+            posi.x += defaultPosi.x;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::jackOLantern;
+            (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+        }
+    }
+
+    width = 6; depth = 19;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::jackOLantern;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].angle = directions.front;
+
+    height = -1; depth = 6;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glowstone;
+
+    height = 0; depth = size.depth - 7;
+    posi.z = depth;
+    posi.x = width;
+    posi.rotation(facing);
+    posi.z += defaultPosi.z;
+    posi.x += defaultPosi.x;
+    (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::glowstone;
 }
 
 void building::createFountain(
