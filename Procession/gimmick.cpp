@@ -185,7 +185,8 @@ void gimmick::waterElevator(
                             std::string &commands,
                             WN::Vec3 elePosi,
                             int elevatorHeight,
-                            const std::vector< int > &floor
+                            const std::vector< int > &floor,
+                            Minecraft::MinecraftBlock blockType
                             ) {
     // 方角指定
     WN::EveryDirection directions = WN::EveryDirection(facing);
@@ -206,7 +207,7 @@ void gimmick::waterElevator(
                 posi.rotation(facing);
                 posi.z += defaultPosi.z;
                 posi.x += defaultPosi.x;
-                (*block3d)[elePosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::smoothQuartz;
+                (*block3d)[elePosi.y + height][posi.z][posi.x].block = blockType;
             }
         }  
     }
