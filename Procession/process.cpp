@@ -17,7 +17,130 @@ Process::~Process() {
 
 // -MARK: 実行関数
 void Process::operator()() {
-    this->createBridge(WN::Vec3(0,0,0), WN::direction::North);
+    int i,j;
+    for(i=-180;i < 181; i+= 60){
+        if(i == 0){
+            continue;
+        } 
+            this->createBridge(WN::Vec3(i,0,0), WN::direction::North);
+            this->createBridge(WN::Vec3(0,0,i), WN::direction::West);
+    }
+
+    for(i=-190;i < 191; i+= 20){
+        if(i > -11 && i < 11){
+            continue;
+        } 
+        this->createStreetlight1(WN::Vec3(i,0,11), WN::direction::North);
+        this->createStreetlight1(WN::Vec3(i,0,-11), WN::direction::North);
+        this->createStreetlight1(WN::Vec3(11,0,i), WN::direction::North);
+        this->createStreetlight1(WN::Vec3(-11,0,i), WN::direction::North);
+    }
+
+    for(i=-100;i < 101; i+= 50){
+        if(i == 0){
+            continue;
+            } 
+        this->createFountain(WN::Vec3(i,0,i), WN::direction::North);
+        this->createFountain(WN::Vec3(i,0,-i), WN::direction::North);
+        
+    }
+
+    // for(i=-150;i < 151; i+= 20){
+    //     this->createStreetlight1(WN::Vec3(i,0,110), WN::direction::North);
+    //     this->createStreetlight1(WN::Vec3(i,0,90), WN::direction::North);
+    //     this->createStreetlight1(WN::Vec3(110,0,i), WN::direction::North);
+    //     this->createStreetlight1(WN::Vec3(90,0,i), WN::direction::North);
+    //     this->createStreetlight1(WN::Vec3(i,0,-110), WN::direction::North);
+    //     this->createStreetlight1(WN::Vec3(i,0,-90), WN::direction::North);
+    //     this->createStreetlight1(WN::Vec3(-110,0,i), WN::direction::North);
+    //     this->createStreetlight1(WN::Vec3(-90,0,i), WN::direction::North);
+    // }
+
+    for(i=-160;i < 161; i+= 320){
+        this->createHouse2(WN::Vec3(35,0,i), WN::direction::West);
+        this->createHouse2(WN::Vec3(-35,0,i), WN::direction::East);
+    }
+
+    for(i=-25;i < 26; i+= 50){
+        if(i == 25){
+            this->createAutomaticWaterField(WN::Vec3(30,0,i), WN::direction::North);
+            this->createAutomaticWaterField(WN::Vec3(-30,0,i), WN::direction::North);
+            this->createAutomaticWaterField(WN::Vec3(50,0,i), WN::direction::North);
+            this->createAutomaticWaterField(WN::Vec3(-50,0,i), WN::direction::North);
+            this->createAutomaticWaterField(WN::Vec3(70,0,i), WN::direction::North);
+            this->createAutomaticWaterField(WN::Vec3(-70,0,i), WN::direction::North);
+            this->createAutomaticWaterField(WN::Vec3(130,0,i), WN::direction::North);
+            this->createAutomaticWaterField(WN::Vec3(-130,0,i), WN::direction::North);
+        } else {
+            this->createAutomaticWaterField(WN::Vec3(30,0,i), WN::direction::South);
+            this->createAutomaticWaterField(WN::Vec3(-30,0,i), WN::direction::South);
+            this->createAutomaticWaterField(WN::Vec3(50,0,i), WN::direction::South);
+            this->createAutomaticWaterField(WN::Vec3(-50,0,i), WN::direction::South);
+            this->createAutomaticWaterField(WN::Vec3(70,0,i), WN::direction::South);
+            this->createAutomaticWaterField(WN::Vec3(-70,0,i), WN::direction::South);
+            this->createAutomaticWaterField(WN::Vec3(130,0,i), WN::direction::South);
+            this->createAutomaticWaterField(WN::Vec3(-130,0,i), WN::direction::South);
+        }
+    }
+
+    for(i=-75;i < 76; i+= 150){
+        if(i == -75){
+            this->createAutomaticWaterField(WN::Vec3(30,0,i), WN::direction::North);
+            this->createAutomaticWaterField(WN::Vec3(-30,0,i), WN::direction::North);
+            this->createAutomaticWaterField(WN::Vec3(50,0,i), WN::direction::North);
+            this->createAutomaticWaterField(WN::Vec3(-50,0,i), WN::direction::North);
+            this->createAutomaticWaterField(WN::Vec3(70,0,i), WN::direction::North);
+            this->createAutomaticWaterField(WN::Vec3(-70,0,i), WN::direction::North);
+            this->createAutomaticWaterField(WN::Vec3(130,0,i), WN::direction::North);
+            this->createAutomaticWaterField(WN::Vec3(-130,0,i), WN::direction::North);
+            this->createAutomaticWaterField(WN::Vec3(150,0,i), WN::direction::North);
+            this->createAutomaticWaterField(WN::Vec3(-150,0,i), WN::direction::North);
+            this->createAutomaticWaterField(WN::Vec3(170,0,i), WN::direction::North);
+            this->createAutomaticWaterField(WN::Vec3(-170,0,i), WN::direction::North);
+        } else {
+            this->createAutomaticWaterField(WN::Vec3(30,0,i), WN::direction::South);
+            this->createAutomaticWaterField(WN::Vec3(-30,0,i), WN::direction::South);
+            this->createAutomaticWaterField(WN::Vec3(50,0,i), WN::direction::South);
+            this->createAutomaticWaterField(WN::Vec3(-50,0,i), WN::direction::South);
+            this->createAutomaticWaterField(WN::Vec3(70,0,i), WN::direction::South);
+            this->createAutomaticWaterField(WN::Vec3(-70,0,i), WN::direction::South);
+            this->createAutomaticWaterField(WN::Vec3(130,0,i), WN::direction::South);
+            this->createAutomaticWaterField(WN::Vec3(-130,0,i), WN::direction::South);
+            this->createAutomaticWaterField(WN::Vec3(150,0,i), WN::direction::South);
+            this->createAutomaticWaterField(WN::Vec3(-150,0,i), WN::direction::South);
+            this->createAutomaticWaterField(WN::Vec3(170,0,i), WN::direction::South);
+            this->createAutomaticWaterField(WN::Vec3(-170,0,i), WN::direction::South);
+        }
+    }
+
+    for(i=-125;i < 126; i+= 250){
+        if(i == 125){
+            this->createAutomaticWaterField(WN::Vec3(30,0,i), WN::direction::North);
+            this->createAutomaticWaterField(WN::Vec3(-30,0,i), WN::direction::North);
+            this->createAutomaticWaterField(WN::Vec3(50,0,i), WN::direction::North);
+            this->createAutomaticWaterField(WN::Vec3(-50,0,i), WN::direction::North);
+            this->createAutomaticWaterField(WN::Vec3(70,0,i), WN::direction::North);
+            this->createAutomaticWaterField(WN::Vec3(-70,0,i), WN::direction::North);
+        } else {
+            this->createAutomaticWaterField(WN::Vec3(30,0,i), WN::direction::South);
+            this->createAutomaticWaterField(WN::Vec3(-30,0,i), WN::direction::South);
+            this->createAutomaticWaterField(WN::Vec3(50,0,i), WN::direction::South);
+            this->createAutomaticWaterField(WN::Vec3(-50,0,i), WN::direction::South);
+            this->createAutomaticWaterField(WN::Vec3(70,0,i), WN::direction::South);
+            this->createAutomaticWaterField(WN::Vec3(-70,0,i), WN::direction::South);
+        }
+    }
+
+    for(i=-50;i < 51; i+= 100){
+            this->createPigBurner(WN::Vec3(30,0,i), WN::direction::East);
+            this->createPigBurner(WN::Vec3(-30,0,i), WN::direction::West);
+    }
+
+    for(i=-160;i < 161; i+= 320){
+        this->createHouse1(WN::Vec3(i,0,35), WN::direction::North);
+        this->createHouse1(WN::Vec3(i,0,-35), WN::direction::South);
+    }
+
     
     /** 送信部位（消さない） **/
     this->sendData();
