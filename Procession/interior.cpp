@@ -1610,6 +1610,7 @@ void interior::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &bloc
     WN::Vec3 posi(0,0,0);
     int width, height, depth;
     
+    
     height = 2;
     
     width = (size.width - 1) / 2;
@@ -1623,7 +1624,29 @@ void interior::createPigBurner(std::shared_ptr< Minecraft::blockInfoOf3D > &bloc
     
     height = 1;
     (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::oakWallSign;
-    
+
+    for(height = 1;height < 10; height += 4){
+        for(width = 0; width < size.width; width += 10){
+            for(depth = 0; depth < size.depth; depth +=5){
+                posi.z = depth;
+                posi.x = width;
+                posi.rotation(facing);
+                posi.z += defaultPosi.z;
+                posi.x += defaultPosi.x;
+                (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
+            }
+        }
+    }
+
+    height = 9; width = (size.width - 1) / 2;
+    for(depth = 0; depth < size.depth; depth +=10){
+        posi.z = depth;
+        posi.x = width;
+        posi.rotation(facing);
+        posi.z += defaultPosi.z;
+        posi.x += defaultPosi.x;
+        (*block3d)[defaultPosi.y + height][posi.z][posi.x].block = Minecraft::MinecraftBlock::seaLantern;
+    }
 }
 
 void interior::createGateBuilding(std::shared_ptr< Minecraft::blockInfoOf3D > &block3d,
