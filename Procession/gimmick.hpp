@@ -37,7 +37,8 @@ namespace gimmick {
                        std::string &commands,
                        WN::Vec3 elePosi,
                        int elevatorHeight,
-                       const std::vector< int > &floor
+                       const std::vector< int > &floor,
+                       Minecraft::MinecraftBlock blockType
                        );
 
     void automaticWaterField(

@@ -293,7 +293,8 @@ void  Process::createHouse2(
                            this->commands,
                            elePosi,
                            13,
-                           std::vector<int>{5, 11}
+                           std::vector<int>{5, 11},
+                           Minecraft::MinecraftBlock::smoothQuartz
                            );
 }
 
@@ -506,7 +507,8 @@ void Process::createGateBuilding(const WN::Vec3 &center, const WN::direction &fa
                                     8
                                     ),
                            10,
-                           std::vector<int>{8}
+                           std::vector<int>{8},
+                           Minecraft::MinecraftBlock::whiteConcrete
                            );
     
     interior::createGateBuilding(
