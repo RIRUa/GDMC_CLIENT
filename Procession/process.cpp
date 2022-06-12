@@ -36,14 +36,92 @@ void Process::operator()() {
         
     }
 
-    this->createHouse1(WN::Vec3(-140,0,50), WN::direction::East);
-    this->createHouse1(WN::Vec3(-140,0,-50), WN::direction::East);
+    for(i = -160; i < 161; i += 20){
+        if (i < 11 && i > -11) {
+            continue;
+        } 
+        if (i < -91 && i > -111) {
+            continue;
+        } 
+        if (i < 111 && i > 89) {
+            continue;
+        } 
+        this->createStreetlight1(WN::Vec3(-90,0,i), WN::direction::North);
+        this->createStreetlight1(WN::Vec3(-110,0,i), WN::direction::North);
+    }
+
+    for(i = -160; i < -9; i += 20){
+        if (i < -91 && i > -111) {
+            continue;
+        } 
+        this->createStreetlight1(WN::Vec3(i,0,-90), WN::direction::North);
+        this->createStreetlight1(WN::Vec3(i,0,-110), WN::direction::North);
+        this->createStreetlight1(WN::Vec3(i,0,90), WN::direction::North);
+        this->createStreetlight1(WN::Vec3(i,0,110), WN::direction::North);
+    }
+
+    for(i = -180; i < 181; i += 20){
+        if (i < 11 && i > -11) {
+            continue;
+        } 
+        if (i < -91 && i > -111) {
+            continue;
+        } 
+        if (i < 111 && i > 89) {
+            continue;
+        } 
+        this->createStreetlight2(WN::Vec3(-80,0,i), WN::direction::North);
+        this->createStreetlight2(WN::Vec3(-20,0,i), WN::direction::North);
+    }
+
+    for(i = -140; i < 141; i += 20){
+        if (i < 11 && i > -11) {
+            continue;
+        } 
+        if (i < -91 && i > -111) {
+            continue;
+        } 
+        if (i < 111 && i > 89) {
+            continue;
+        } 
+        this->createStreetlight2(WN::Vec3(-120,0,i), WN::direction::North);
+    }
+
+    for(i = -120; i < 121; i += 240){
+        this->createStreetlight2(WN::Vec3(-140,0,i), WN::direction::North);
+    }
+
+    for(i = -60; i < -39; i += 20){
+        this->createStreetlight2(WN::Vec3(i,0,-80), WN::direction::North);
+        this->createStreetlight2(WN::Vec3(i,0,-120), WN::direction::North);
+        this->createStreetlight2(WN::Vec3(i,0,80), WN::direction::North);
+        this->createStreetlight2(WN::Vec3(i,0,120), WN::direction::North);
+        this->createStreetlight2(WN::Vec3(i,0,20), WN::direction::North);
+        this->createStreetlight2(WN::Vec3(i,0,-20), WN::direction::North);
+        this->createStreetlight2(WN::Vec3(i,0,180), WN::direction::North);
+        this->createStreetlight2(WN::Vec3(i,0,-180), WN::direction::North);
+
+    }
+
+    this->createHouse1(WN::Vec3(-150,0,25), WN::direction::North);
+    this->createHouse1(WN::Vec3(-150,0,-25), WN::direction::South);
+    this->createHouse2(WN::Vec3(-150,0,65), WN::direction::South);
+    this->createHouse2(WN::Vec3(-150,0,-65), WN::direction::North);
     
-    this->createHouse1(WN::Vec3(-40,0,50), WN::direction::South);
-    this->createHouse1(WN::Vec3(-40,0,-50), WN::direction::North);
+    this->createHouse1(WN::Vec3(-50,0,50), WN::direction::South);
+    this->createHouse1(WN::Vec3(-50,0,-50), WN::direction::North);
     
-    this->createHouse2(WN::Vec3(-40,0,140), WN::direction::North);
-    this->createHouse2(WN::Vec3(-40,0,-140), WN::direction::South);
+    this->createHouse2(WN::Vec3(-50,0,150), WN::direction::North);
+    this->createHouse2(WN::Vec3(-50,0,-150), WN::direction::South);
+
+    for (i = -130; i < 131; i += 260) {
+        if(i == -130){
+            this->createGateBuilding(WN::Vec3(-130,0,i), WN::direction::South);
+        } else {
+            this->createGateBuilding(WN::Vec3(-130,0,i), WN::direction::North);
+        }
+    }
+
     
     for (i = 1; i < 7; i++) {
         for (j = 30; j < 185 - (i - 1) * 15; j += 15) {
