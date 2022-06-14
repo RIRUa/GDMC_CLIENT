@@ -155,6 +155,29 @@ void interior::createHouse1(
                     (*block3d)[heightDefault + height][posi.z][posi.x].addition = "type=right";
                 } else {
                     (*block3d)[heightDefault + height][posi.z][posi.x].addition = "type=left";
+                    
+                    // コマンド作成
+                    WN::Vec3 chestPosi = (*block3d)[defaultPosi.y + height][posi.z][posi.x].position;
+                    
+                    commands += Minecraft::Command::itemInBox(WN::Vec3(
+                                                                       chestPosi.x + sendPosition.x,
+                                                                       chestPosi.y + sendPosition.y,
+                                                                       chestPosi.z + sendPosition.z
+                                                                       ),
+                                                              0,
+                                                              "minecraft:netherite_sword",
+                                                              1
+                                                              );
+                    
+                    commands += Minecraft::Command::itemInBox(WN::Vec3(
+                                                                       chestPosi.x + sendPosition.x,
+                                                                       chestPosi.y + sendPosition.y,
+                                                                       chestPosi.z + sendPosition.z
+                                                                       ),
+                                                              1,
+                                                              "minecraft:lapis_lazuli",
+                                                              64
+                                                              );
                 }
             }
         }
