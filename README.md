@@ -2,19 +2,46 @@
 
 ## Installation
 
-Please install compiler for c++
+- Please install compiler for c++
 MinGW
 
-Please install libcurl in your pc. This is C Library.<br>
+- Please install libcurl in your pc. This is C Library.<br>
 [libcurl API](https://curl.se/libcurl/c/)
 
-Please install make in your pc.<br>
+- Please install make in your pc.<br>
 [make for windows](http://gnuwin32.sourceforge.net/packages/make.htm)
 
-Please install cmake in your pc.<br>
+- Please install cmake in your pc.<br>
 [cmake Homepage](https://cmake.org/install/)
 
+
+
+## Request to change the code before run
+
+1. Please calculate the center coordinate of our area `(x, z)`
+2. Please open file, `main.cpp`
+3. Please re-write just like below code.
+
+past
+```
+WN::Vec3 center = WN::Vec3(0,220,0);
+```
+
+re-writed
+```
+WN::Vec3 center = WN::Vec3(x,220,z);
+```
+
+4.Please save it.
+
+*I appliciate your changing!!*
+
+<br>
+
 ## How to Run
+
+`##` is comment line.
+
 ### For Windows
 ```
 ## go to this directry in your pc
