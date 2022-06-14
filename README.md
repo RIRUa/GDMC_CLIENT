@@ -2,16 +2,16 @@
 
 ## Installation
 
-Please install compiler for c++
+- Please install compiler for c++
 MinGW
 
-Please install libcurl in your pc. This is C Library.<br>
+- Please install libcurl in your pc. This is C Library.<br>
 [libcurl API](https://curl.se/libcurl/c/)
 
-Please install make in your pc.<br>
+- Please install make in your pc.<br>
 [make for windows](http://gnuwin32.sourceforge.net/packages/make.htm)
 
-Please install cmake in your pc.<br>
+- Please install cmake in your pc.<br>
 [cmake Homepage](https://cmake.org/install/)
 
 
@@ -39,6 +39,9 @@ WN::Vec3 center = WN::Vec3(x,220,z);
 <br>
 
 ## How to Run
+
+`##` is comment line.
+
 ### For Windows
 ```
 ## go to this directry in your pc
