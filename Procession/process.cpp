@@ -276,8 +276,6 @@ void Process::createHouse1(
     defaultPosi.x = this->area.x/2 + center.x - defaultPosi.x;
     defaultPosi.z = this->area.z/2 + center.z - defaultPosi.z;
     
-    std::cout << defaultPosi.x << "," << defaultPosi.z << std::endl;
-    
     building::createHouse1(
                            this->createArea,
                            center,
