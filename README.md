@@ -1,6 +1,10 @@
 # GDMC_CLIENT
 
 ## Installation
+
+Please install compiler for c++
+MinGW
+
 Please install libcurl in your pc. This is C Library.<br>
 [libcurl API](https://curl.se/libcurl/c/)
 
