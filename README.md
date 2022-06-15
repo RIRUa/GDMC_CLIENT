@@ -41,6 +41,8 @@ WN::Vec3 center = WN::Vec3(x,220,z);
 ## How to Run
 
 `##` is comment line.
+x,y is position of begining.
+size_x, size_z is area size.
 
 ### For Windows
 ```
@@ -52,7 +54,7 @@ cd build
 cmake -G "MinGW Makefiles" ..
 make
 ## run
-./GDMC_CLIENT
+./GDMC_CLIENT x z size_x size_z
 ```
 
 ### For Mac and You have Xcode
